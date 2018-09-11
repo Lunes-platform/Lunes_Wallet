@@ -1,0 +1,102 @@
+/*
+
+1. ERROR 
+  1.1 BASES  
+  1.2 TEXTS
+
+2. ERROR 404
+
+3. ERROR 500
+
+*/
+
+/* ------------------------------------------------------------------------- */
+/* 1. ERROR */
+
+/* 1.1 BASE */
+
+:local(.containerError) {
+    display: flex;    
+    justify-content: center;
+    align-content: center; 
+}
+
+:local(.contentError img) {
+    position: absolute;
+    height: 15vw;
+}
+
+:local(.contentError) {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+:local(.mainError) {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+}
+
+:local(.contentError h1) {
+    display: flex;
+    margin: 0;
+    color: #654fa4;
+    font-size: 20vw;
+}
+
+:local(.alignItemsError) {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+:local(.alignMainError) {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+/* Button */
+:local(.buttonToHome) {
+    composes: buttonEnable from "../../components/bases/buttonBase.css";
+    width: 220px;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 599px) {
+    :local(.contentError img) {
+        height: 28vw;
+    }
+    :local(.contentError h1) {
+        font-size: 28vh;
+    }
+    :local(.alignItemsError) {
+        padding-top: 10vh;
+    }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2. ERROR 404 */
+:local(.itemsError404 h2) {
+    text-align: center;
+    margin: 0;
+    font-size: 3vh;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 3. ERROR 500 */
+:local(.itemsError500) {
+    text-align: center;
+    margin: 0;
+    font-size: 2.2vh;
+}
+:local(.counter500) {
+    color: #68f285;
+    font-weight: bold;
+    font-size: 2.2vh;
+}
+/* ------------------------------------------------------------------------- */

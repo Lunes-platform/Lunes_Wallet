@@ -1,0 +1,111 @@
+/* BASE */
+:local .box {
+  composes: box from "../style.css";
+}
+
+:local .transparentBox {
+  composes: transparentBox from "../style.css";
+}
+
+:local .headerBox {
+  composes: bgPurpleDefault from "../../../components/bases/colorBase.css";
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  max-height: 2rem;
+}
+
+:local .historyItems {
+  padding-right: 1rem;
+  overflow-y: auto;
+  max-height: 55vh;
+}
+
+@media screen and (min-width: 599px) {
+  :local .historyItems {
+    padding: 0 1.5rem 0 1rem;
+  }
+}
+
+:local(.row) {
+  margin: 0.5rem 0 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+:local .row p {
+  min-height: 2rem;
+  align-content: center;
+}
+
+:local .line {
+  border-bottom: 2px solid #42227d;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+/* TEXT */
+:local .defaultText {
+  composes: defaultText from "../style.css";
+  font-size: 12px;
+}
+
+:local .invoiceInfo {
+  composes: defaultText from "../style.css";
+  text-align: center;
+  font-weight: bold;
+}
+
+:local .itemLeft {
+  text-align: left;
+}
+
+:local .itemRight {
+  text-align: right;
+}
+
+:local .description {
+  composes: defaultText;
+  composes: clGreenDefault from "../../../components/bases/colorBase.css";
+  font-size: 18px;
+  font-weight: bold;
+}
+
+:local .statusDefault {
+  composes: defaultText;
+  font-weight: bold;
+}
+
+:local .statusConfirmed {
+  composes: statusDefault;
+  composes: clGreenDefault from "../../../components/bases/colorBase.css";
+}
+
+:local .statusUnconfirmed {
+  composes: statusDefault;
+  composes: clWarning from "../../../components/bases/colorBase.css";
+}
+
+:local .coinValue {
+  composes: statusDefault;
+  font-size: 14px;
+  font-weight: bolx;
+}
+
+/* IMAGE */
+:local .icon {
+  margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 599px) {
+  :local .icon {
+    margin-right: 1rem;
+  }
+}
+
+:local .icon img {
+  margin-top: 5px;
+  width: 25px;
+}

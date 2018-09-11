@@ -1,0 +1,146 @@
+/*
+
+1. LOGIN
+  1.1 BUTTON
+  1.2 INPUT
+  1.3 LINKS
+  1.4 TEXTS
+  1.5 LOGO 
+
+2. FOOTER 
+  2.1. LINKS
+
+3. RESET PASS
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. LOGIN */
+:local(.formLogin) {
+  margin: 25px;
+  padding: 15px;
+  width: 100%;
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 1.1 BUTTON */
+:local(.buttonEnable) {
+  composes: buttonGreenLight from "../../components/Bases/buttonBase.css";
+}
+
+:local(.buttonDisable) {
+  composes: buttonPurpleDark from "../../components/Bases/buttonBase.css";
+}
+
+:local(.buttonPurpleClear) {
+  composes: buttonPurpleClear from "../../components/Bases/buttonBase.css";
+}
+
+:local(.buttonBorderGreen) {
+  composes: buttonBorderGreen from "../../components/Bases/buttonBase.css";
+}
+
+/* 1.2 INPUT */
+:local(.inputTextDefault) {
+  composes: inputTextDefault from "../../components/Bases/inputBase.css";
+  margin-bottom: 30px;
+}
+
+/* 1.3 LINKS */
+:local(.link) {
+  composes: linkDefault from "../../components/Bases/textBase.css";
+}
+
+:local(.doNotLink) {
+  composes: linkDefault from "../../components/Bases/textBase.css";
+  font-size: 16px;
+}
+
+/* 1.4 TEXT DESCRIPTION */
+:local(.description) {
+  composes: textDefault from "../../components/Bases/textBase.css";
+  display: block;
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+:local(.textForgetPass) {
+  composes: textDefault from "../../components/Bases/textBase.css";
+  display: block;
+  text-align: right;
+  margin-bottom: 25px;
+  text-decoration: none;
+}
+
+:local(.doNotHaveAccount) {
+  composes: textDefault from "../../components/Bases/textBase.css";
+  font-size: 16px;
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+/* 1.5 LOGO */
+:local(.logo) {
+  display: block;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2. FOOTER */
+/* 2.1 GENERAL */
+:local(.footer) {
+  composes: clGreenDefault from "../../components/Bases/colorBase.css";
+  font-size: 12px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+
+/* 2.1 LINKS */
+:local(.footerLink) {
+  composes: linkDefault from "../../components/Bases/textBase.css";
+  font-size: 12px;
+}
+
+:local(.footerSpace) {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* 3. RESET PASS */
+:local(.iconHeader) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
+:local(.helpText) {
+  font-size: 10px;
+  display: block;
+  text-align: center;
+}
+
+:local(.itensValid) {
+  margin-bottom: 20px;
+  font-size: 10px;
+}
+
+:local(.iconListValid) {
+  margin: 0;
+  margin-bottom: -8px;
+  margin-right: 10px;
+  width: 14px;
+}

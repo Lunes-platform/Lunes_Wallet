@@ -1,0 +1,548 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: 2018-08-29T17:21:41.414Z\n"
+"PO-Revision-Date: 2018-08-30 14:27-0300\n"
+"Language: en\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.1.1\n"
+
+msgctxt "FILEDS"
+msgid "MESSAGE_ERROR"
+msgstr "The following fields are missing or wrong"
+
+msgctxt "FILEDS"
+msgid "MESSAGE_ERROR_EMPTY"
+msgstr "Some fields are empty"
+
+msgctxt "SERVICE"
+msgid "MESSAGE_TERMS_OF"
+msgstr "You need to accept the terms of service"
+
+msgctxt "SERVICE"
+msgid "PLACEHOLDER_TERMS_OF"
+msgstr "Terms of Services"
+
+msgctxt "PASSWORD"
+msgid "MESSAGE"
+msgstr "Password"
+
+msgctxt "PASSWORD"
+msgid "PLACEHOLDER"
+msgstr "Password"
+
+msgctxt "EMAIL"
+msgid "MESSAGE_USER"
+msgstr "User/Email"
+
+msgctxt "EMAIL"
+msgid "PLACEHOLDER_USERNAME"
+msgstr "Username or Email"
+
+msgctxt "EMAIL"
+msgid "PLACEHOLDER"
+msgstr "Email"
+
+msgctxt "EMAIL"
+msgid "BTN_RECEIVE"
+msgstr "E-mail"
+
+msgctxt "ADDRESS"
+msgid "MESSAGE_INVALID"
+msgstr "Invalid Address"
+
+msgctxt "SEED"
+msgid "PLACEHOLDER"
+msgstr "Seed Words"
+
+msgctxt "SEED"
+msgid "BTN_IMPORT"
+msgstr "Import"
+
+msgctxt "SEED"
+msgid "BTN_NEW"
+msgstr "GENERATE NEW SEED"
+
+msgctxt "SEED"
+msgid "SEED_INSERT"
+msgstr "Insert your SeedWords"
+
+msgctxt "NAME"
+msgid "PLACEHOLDER_FIRST"
+msgstr "First name"
+
+msgctxt "NAME"
+msgid "PLACEHOLDER_LAST"
+msgstr "Last name"
+
+msgctxt "REPEAT"
+msgid "PLACEHOLDER_PASSWORD"
+msgstr "Repeat password"
+
+msgctxt "SUBMIT"
+msgid "BTN"
+msgstr "Submit"
+
+msgctxt "SEND"
+msgid "BTN"
+msgstr "Send"
+
+msgctxt "RECEIVE"
+msgid "BTN"
+msgstr "Receive"
+
+msgctxt "CREATE"
+msgid "BTN"
+msgstr "Create"
+
+msgctxt "CREATE"
+msgid "PIN"
+msgstr "CREATE your PIN"
+
+msgctxt "NEXT"
+msgid "BTN"
+msgstr "Next"
+
+msgctxt "PREV"
+msgid "BTN"
+msgstr "Previous"
+
+msgctxt "BACK"
+msgid "BTN"
+msgstr "Back"
+
+msgctxt "LOGIN"
+msgid "BTN"
+msgstr "Login"
+
+msgctxt "CONFIRM"
+msgid "BTN"
+msgstr "Confirm"
+
+msgctxt "PIN"
+msgid "BTN_CONFIRM"
+msgstr "Validate"
+
+msgctxt "RESET"
+msgid "BTN"
+msgstr "Reset"
+
+msgctxt "SAVE"
+msgid "BTN"
+msgstr "Save"
+
+msgctxt "2FA"
+msgid "BTN"
+msgstr "Activate 2FA"
+
+msgctxt "FINALIZE"
+msgid "BTN"
+msgstr "Finalize"
+
+msgctxt "DESCRIPTION"
+msgid "LOGIN_SLIDE"
+msgid_plural "LOGIN_SLIDE"
+msgstr[0] ""
+"Enjoy the usability and technology of this incredible wallet and store your "
+"crypto with a high level of security"
+msgstr[1] ""
+"Enjoy the usability and technology of this incredible portfolio and store your "
+"crypto-coins with a high level of security ..."
+msgstr[2] ""
+"Enjoy the usability and technology of this incredible portfolio and store your "
+"crypto-coins with a high level of security ..."
+msgstr[3] ""
+msgstr[4] ""
+
+msgctxt "DESCRIPTION"
+msgid "CARD_HOME"
+msgid_plural "CARD_HOME"
+msgstr[0] ""
+"Thank you for choosing Lunes as your multicoin wallet. Enjoy the usability and "
+"technology of this incrediblewallet and store your cryptos with a high level of "
+"security"
+msgstr[1] ""
+"Muito obrigado por escolher a Wallet Lunes como sua carteira multicoin. "
+"Aproveite da usabilidade e tecnologia desta incrível carteira e armazene suas "
+"criptomoedas com um alto nível de segurança.."
+msgstr[2] ""
+"Muito obrigado por escolher a Wallet Lunes como sua carteira multicoin. "
+"Aproveite da usabilidade e tecnologia desta incrível carteira e armazene suas "
+"criptomoedas com um alto nível de segurança.."
+msgstr[3] ""
+"Muito obrigado por escolher a Wallet Lunes como sua carteira multicoin. "
+"Aproveite da usabilidade e tecnologia desta incrível carteira e armazene suas "
+"criptomoedas com um alto nível de segurança.."
+msgstr[4] ""
+"Muito obrigado por escolher a Wallet Lunes como sua carteira multicoin. "
+"Aproveite da usabilidade e tecnologia desta incrível carteira e armazene suas "
+"criptomoedas com um alto nível de segurança.."
+
+msgid "JANUARY"
+msgstr "January"
+
+msgid "FEBRUARY"
+msgstr "February"
+
+msgid "MARCH"
+msgstr "March"
+
+msgid "APRIL"
+msgstr "April"
+
+msgid "MAY"
+msgstr "May"
+
+msgid "JUNE"
+msgstr "June"
+
+msgid "JULY"
+msgstr "July"
+
+msgid "AUGUST"
+msgstr "August"
+
+msgid "SEPTEMBER"
+msgstr "September"
+
+msgid "OCTOBER"
+msgstr "October"
+
+msgid "NOVEMBER"
+msgstr "November"
+
+msgid "DECEMBER"
+msgstr "December"
+
+msgid "LEASING"
+msgstr "Leasing"
+
+msgctxt "HEADER"
+msgid "LOGIN"
+msgstr "Enter your data"
+
+msgctxt "HEADER"
+msgid "NEW_ACCOUNT"
+msgstr "Enter the necessary information to make your registration"
+
+msgctxt "HEADER"
+msgid "NEW_ACCOUNT_PASSWORD"
+msgstr "Digit your password"
+
+msgctxt "HEADER"
+msgid "2FA"
+msgstr "2FA Confirmation"
+
+msgctxt "HEADER"
+msgid "RESET"
+msgstr "Forgot your password"
+
+msgctxt "HEADER"
+msgid "RESET_NEW_PASSWORD"
+msgstr "Type your new password"
+
+msgctxt "LINK"
+msgid "LOGIN_FORGET_PASSWORD"
+msgstr "Forgot your password"
+
+msgctxt "LINK"
+msgid "LOGIN_SINGUP_ACCOUNT"
+msgstr "Sign up"
+
+msgctxt "LINK"
+msgid "PIN_FORGET_PIN"
+msgstr "Forgot your PIN"
+
+msgctxt "LABEL"
+msgid "LOGIN_CREATE_ACCOUNT"
+msgstr "Do not have an account yet"
+
+msgctxt "LABEL"
+msgid "LEASING_AMOUNT"
+msgstr "Amount to lease"
+
+msgctxt "LABEL"
+msgid "LEASING_BALANCE"
+msgstr "Your balance"
+
+msgctxt "HOME"
+msgid "LOGIN_FOOTER"
+msgstr "Main"
+
+msgctxt "HOME"
+msgid "MENU"
+msgstr "Home"
+
+msgctxt "SUPPORT"
+msgid "LOGIN_FOOTER"
+msgstr "Support"
+
+msgctxt "SUPPORT"
+msgid "MENU"
+msgstr "Support"
+
+msgctxt "LANG"
+msgid "LOGIN_FOOTER"
+msgstr "English"
+
+msgctxt "FOOTER"
+msgid "LOGIN"
+msgstr "2018 lunes.io All Rights Reserved"
+
+msgctxt "ENTER"
+msgid "PIN"
+msgstr "ENTER your PIN"
+
+msgctxt "TERMS"
+msgid "NEW_ACCOUNT_ACCEPT"
+msgstr "I agree with Terms of Services"
+
+msgctxt "SENDED"
+msgid "NEW_ACCOUNT_MESSAGE"
+msgstr "A message with an activation link has been sent to your email address"
+
+msgctxt "SENDED"
+msgid "RESET_EMAIL"
+msgstr "A message with a password reset link has been sent to your email address"
+
+msgctxt "DOWNLOAD"
+msgid "NEW_ACCOUNT_TERMS"
+msgstr "Click to download and finish the registration"
+
+msgctxt "TITLE"
+msgid "2FA_INSTRUCTIONS"
+msgstr "Device verification"
+
+msgctxt "TITLE"
+msgid "CARD_HOME"
+msgid_plural "CARD_HOME"
+msgstr[0] "Recharge"
+msgstr[1] "Pay"
+msgstr[2] "Purchase"
+msgstr[3] "Purchase"
+msgstr[4] "Portfolio"
+
+msgctxt "TITLE"
+msgid "WALLET_MODAL_SEND"
+msgstr "Transaction"
+
+msgctxt "TITLE"
+msgid "WALLET_MODAL_RECEIVE"
+msgstr "Receive"
+
+msgctxt "TITLE"
+msgid "TRANSACTION_HISTORY"
+msgstr "Transactions"
+
+msgctxt "TITLE"
+msgid "COUPON"
+msgid_plural "COUPON"
+msgstr[0] "Coupon"
+msgstr[1] "Voucher"
+msgstr[2] "Lunes Gift"
+msgstr[3] ""
+msgstr[4] ""
+
+msgctxt "TITLE"
+msgid "SETTINGS"
+msgstr "Choose the right privacy settings for you"
+
+msgctxt "INSTRUCTIONS"
+msgid "2FA"
+msgid_plural "2FA"
+msgstr[0] ""
+"Confirm the code provided in google authenticator and enter the 6 digits below"
+msgstr[1] "Enter the six-digit code of the second factor of your Monday Wallet!"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+
+msgctxt "INSTRUCTIONS"
+msgid "RESET"
+msgstr "We will send your instructions"
+
+msgctxt "INSTRUCTIONS"
+msgid "COUPON"
+msgstr "Instructions"
+
+msgctxt "FIND"
+msgid "2FA_INSTRUCTIONS_LINK_WHERE_TO"
+msgstr "Where do I find the code"
+
+msgctxt "INSTRUCTIONS2"
+msgid "RESET"
+msgstr "About resetting it"
+
+msgctxt "INSTRUCTION"
+msgid "RESET_NEW_PASSWORD"
+msgstr "Your password must follow the rules below"
+
+msgctxt "HINT"
+msgid "RESET_NEW_PASSWORD"
+msgid_plural "RESET_NEW_PASSWORD"
+msgstr[0] "Numbers"
+msgstr[1] "Symbols"
+msgstr[2] "Min 8 characters"
+msgstr[3] "Upcase letter"
+msgstr[4] "Downcase letter"
+
+msgctxt "ERROR"
+msgid "RESET_NEW_PASSWORD"
+msgid_plural "RESET_NEW_PASSWORD"
+msgstr[0] "The password must meet the items described"
+msgstr[1] "Passwords are not the same"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+
+msgctxt "LOGOUT"
+msgid "MENU"
+msgstr "Logout"
+
+msgctxt "PORTFOLIO"
+msgid "MENU"
+msgstr "Portfolio"
+
+msgctxt "WALLET"
+msgid "MENU"
+msgstr "Wallet"
+
+msgctxt "RECHARGE"
+msgid "MENU"
+msgstr "Recharge"
+
+msgctxt "PAY"
+msgid "MENU"
+msgstr "Pay"
+
+msgctxt "PURCHASE"
+msgid "MENU"
+msgstr "Purchase"
+
+msgctxt "COUPONS"
+msgid "MENU"
+msgstr "Coupons"
+
+msgctxt "SETTING"
+msgid "MENU"
+msgstr "Settings"
+
+msgctxt "LEASING"
+msgid "MENU"
+msgstr "Leasing"
+
+msgctxt "PRIVACY"
+msgid "MENU"
+msgstr "Privacy"
+
+msgctxt "AMOUNT"
+msgid "WALLET_MY"
+msgstr "Balance"
+
+msgctxt "AMOUNT"
+msgid "LEASING_TITLE"
+msgstr "Leased"
+
+msgctxt "MESSAGE"
+msgid "MODAL_RECEIVE"
+msgstr "Copied Address"
+
+msgctxt "COPY"
+msgid "BTN_RECEIVE"
+msgstr "Copy"
+
+msgctxt "PRINT"
+msgid "BTN_RECEIVE"
+msgstr "Print"
+
+msgctxt "SHARED"
+msgid "BTN_RECEIVE"
+msgstr "Shared"
+
+msgctxt "BALANCE"
+msgid "WALLET"
+msgstr "Balance"
+
+msgctxt "BALANCE"
+msgid "LEASING"
+msgstr "Total Lunes Balance"
+
+msgctxt "FEE"
+msgid "LEASING"
+msgstr "Fee"
+
+msgctxt "TEXT"
+msgid "LEASING_HELP"
+msgstr ""
+"Always keep at least 2 or more Lunes in your wallet. A small amount of Lunes "
+"will be recquired to cancel the Leasing"
+
+msgctxt "START"
+msgid "LEASING_BT"
+msgstr "START LEASING"
+
+msgctxt "CANCEL"
+msgid "LEASING_BT"
+msgstr "Cancel"
+
+msgctxt "EXPLORER"
+msgid "LEASING_TITLE"
+msgstr "Blockexplorer"
+
+msgctxt "ACTIVE"
+msgid "LEASING_BALANCE"
+msgstr "Leasing"
+
+msgctxt "NEW"
+msgid "LEASING_TITLE"
+msgstr "New Leasing"
+
+msgctxt "NODE"
+msgid "LEASING_TITLE"
+msgstr "Node"
+
+msgctxt "STATUS"
+msgid "LEASING_TITLE"
+msgstr "Status"
+
+msgctxt "CUPON"
+msgid "INSTRUCTION_MODAL"
+msgid_plural "INSTRUCTION_MODAL"
+msgstr[0] "Enter the 4-digit code of your coupon"
+msgstr[1] "Item"
+msgstr[2] "Choose which option you have"
+msgstr[3] "Enter your mobile phone number with DDD and carrier"
+msgstr[4] ""
+
+msgctxt "NUMBER"
+msgid "VOUCHER"
+msgstr "Number"
+
+msgctxt "CODE"
+msgid "VOUCHER"
+msgstr "Code"
+
+msgctxt "BUTTON"
+msgid "VOUCHER"
+msgstr "Rescue"
+
+msgctxt "INFO"
+msgid "SETTINGS_HEADER"
+msgstr ""
+"Control your personal information. With these settings, you can manage which "
+"information is private and which is saved to your account to enhance your Lunes "
+"Wallet experience"
+
+msgctxt "CARD"
+msgid "SETTINGS"
+msgid_plural "SETTINGS"
+msgstr[0] "WALLETS"
+msgstr[1] "CONSENT"
+msgstr[2] "DEFINITIONS"
+msgstr[3] "USER DATA"
+msgstr[4] "2FA AUTHENTICATION"

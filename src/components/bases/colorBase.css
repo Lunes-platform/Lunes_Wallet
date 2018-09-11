@@ -1,0 +1,140 @@
+/*
+
+1 PURPLE
+  1.1 BACKGROUND (bgColorName)
+  1.2 COLOR (clColorName)
+2 GREEN
+  2.1 BACKGROUND
+  2.2 COLOR
+  2.3 BORDER
+3 COINS
+  3.1 BACKGROUND
+  3.2 COLOR
+4 MESSAGES
+  4.1 BACKGROUND
+  4.2 COLOR
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1 PURPLE */
+/* 1.1 BACKGROUND */
+:local(.bgPurpleDefault) {
+  background-color: #473088;
+}
+:local(.bgPurpleClear) {
+  background-color: #654fa4;
+}
+:local(.bgPurpleLight) {
+  background-color: #473088;
+}
+:local(.bgPrupleMedium) {
+  background-color: #442181;
+}
+:local(.bgPurpleDark) {
+  background-color: #42227d;
+}
+
+/* 1.2 COLOR */
+:local(.clPurpleDefault) {
+  color: #473088;
+}
+:local(.clPurpleClear) {
+  color: #654fa4;
+}
+:local(.clPurpleLight) {
+  color: #654fa4;
+}
+:local(.clPurpleDark) {
+  color: #42227d;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2 GREEN */
+/* 2.1 BACKGROUND */
+:local(.bgGreenDefault) {
+  background-color: #68f285;
+}
+:local(.bgGreenLight) {
+  background-color: #68f285;
+}
+:local(.bgGreenDark) {
+  background-color: #000;
+}
+
+/* 2.2 COLOR */
+:local(.clGreenDefault) {
+  color: #68f285;
+}
+:local(.clGreenLight) {
+  color: #68f285;
+}
+:local(.clGreenDark) {
+  color: #000;
+}
+
+/* 2.3 BORDER */
+:local(.bdPurpleDefault) {
+  border-color: #473088;
+}
+:local(.bdGreenDefault) {
+  border-color: #68f285;
+}
+:local(.bdGreenLight) {
+  border-color: #68f285;
+}
+:local(.bdGreenDark) {
+  border-color: #000;
+}
+:local(.bdError) {
+  border-color: #f05252;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 3 COINS */
+/* 3.1 BACKGROUND */
+:local(.bgCoinLunes) {
+  background-color: #4cd566;
+}
+:local(.bgCoinBitcoin) {
+  background-color: #f7921a;
+}
+
+/* 3.2 COLOR */
+:local(.clCoinLunes) {
+  color: #4cd566;
+}
+:local(.clCoinBitcoin) {
+  color: #f7921a;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 4 MESSAGES */
+/* 4.1 BACKGROUND */
+:local(.bgSuccess) {
+  background-color: #68f285;
+}
+:local(.bgError) {
+  background-color: #f05252;
+}
+:local(.bgInfo) {
+  background-color: #ffffff;
+}
+
+/* 4.2 COLOR */
+:local(.clSuccess) {
+  color: #68f285;
+}
+:local(.clError) {
+  color: #f05252;
+}
+:local(.clInfo) {
+  color: #ffffff;
+}
+
+:local(.clWarning) {
+  color: #ffcf49;
+}

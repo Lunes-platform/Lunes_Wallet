@@ -1,0 +1,92 @@
+/*
+1. BASE
+
+2. TEXT
+
+3. INPUTS
+
+4. MODAL
+
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. BASE */
+
+:local(.row) {
+  margin: 1rem 0 1.5rem 0;
+}
+
+:local(.giftRow) {
+  margin: calc(6rem - 4px) 0 3rem 0;
+}
+
+:local(.cupomRow) {
+  margin: calc(6rem - 4px) 0 calc(7rem - 4px) 0;
+}
+
+@media screen and (min-width: 600px) {
+  :local(.row) {
+    margin: 1rem 5rem 3rem 5rem;
+  }
+
+  :local(.giftRow) {
+    margin: calc(9rem - 10px) 5rem 5rem 5rem;
+  }
+
+  :local(.cupomRow) {
+    margin: calc(9rem - 10px) 5rem calc(5rem - 5px) 5rem;
+  }
+}
+
+:local(.box) {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0px 0px 10px 0px rgba(51,51,51,.1);
+  min-height: 70vh;
+}
+
+@media screen and (min-width: 600px) {
+  :local(.box) {
+    max-width: 60vw !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  :local(.box) {
+    max-width: 40vw !important;
+  }
+}
+
+/* 2. TEXT */
+
+:local(.defaultText) {
+  composes: inputTextDefault from "../../components/bases/textBase.css";
+}
+
+:local(.inputTextDefault) {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+:local(label) {
+  display: block;
+  position: relative;
+  text-align: center;
+  left: -5px;
+  margin-bottom: .5rem;
+}
+
+@media screen and (min-width: 600px) {
+  :local(label) {
+    text-align: left;
+    left: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+:local(.buttonBorderGreen) {
+  composes: buttonBorderGreen from "../../components/bases/buttonBase.css";
+}

@@ -1,24 +1,53 @@
 /* eslint-disable */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ObjectRestSpreadPlugin = require('@sucrase/webpack-object-rest-spread-plugin');
 
+console.log("\n", "\x1b[1m", "\x1b[31m");
+console.log("------------------------------------------------------------------------------------------");
+console.log("---------------------------------- VISERION IS RISING! -----------------------------------");
+console.log("---------------------------------------- V 1.0 -------------------------------------------");
+console.log("-----------------------------------------------------------------------------------------",);
 console.log("\n");
-console.log(
-  "\x1b[1m",
-  "\x1b[31m",
-  "-----------------------------------------------------------"
-);
-console.log("-------------------- VISERION IS RISING! ---------------------");
-console.log("--------------------------- V 1.0 ----------------------------");
-console.log(
-  "-----------------------------------------------------------",
-  "\x1b[0m",
-  "\x1b[21m"
-);
-console.log("\n");
+
+console.log("                                                       /===-_---~~~~~~~~~------____");
+console.log("                                                |===-~___                _,-' ");
+console.log("                 -==\\                         `//~\\   ~~~~`---.___.-~~ ");
+console.log("             ______-==|                         | |  \\           _-~` ");
+console.log("       __--~~~  ,-/-==\\                        | |   `\        ,' ");
+console.log("    _-~       /'    |  \\                      / /      \      / ");
+console.log("  .'        /       |   \\                   /' /        \   /' ");
+console.log(" /  ____  /         |    \`\.__/-~~ ~ \ _ _/'  /          \/' ");
+console.log("/-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~` ");
+console.log("                  \_|      /        _)   ;  ),   __--~~ ");
+console.log("                    '~~--_/      _-~/-  / \   '-~ \ ");
+console.log("                   {\__--_/}    / \\_&gt;- )&lt;__\      \  ");
+console.log("                   /'   (_/  _-~  | |__&gt;--&lt;__|      | ");
+console.log("                  |0  0 _/) )-~     | |__&gt;--&lt;__|     | ");
+console.log("                  / /~ ,_/       / /__&gt;---&lt;__/      | ");
+console.log("                 o o _//        /-~_&gt;---&lt;__-~      / ");
+console.log("                 (^(~          /~_&gt;---&lt;__-      _-~ ");
+console.log("                ,/|           /__&gt;--&lt;__/     _-~ ");
+console.log("            ,//('(           |__&gt;--&lt;__|     /                  .----_      ");
+console.log("            ( ( '))          |__&gt;--&lt;__|    |                 /' _---_~\    ");
+console.log("         `-)) )) (           |__&gt;--&lt;__|    |               /'  /     ~\\  ");
+console.log("       ,/,'//( (             \__&gt;--&lt;__\    \                /'  //       ||  ");
+console.log("      ,( ( ((, ))              ~-__&gt;--&lt;_~-_  ~--____---~' _/'/        /'   ");
+console.log("    `~/  )` ) ,/|                 ~-_~&gt;--&lt;_/-__       __-~ _/  ");
+console.log(" ._-~//( )/ )) `                    ~~-'_/_/ /~~~~~~~__--~  ");
+console.log("  ;'( ')/ ,)(                              ~~~~~~~~~~  ");
+console.log(" ' ') '( (/  ");
+console.log("    '   '  `     ");             
+console.log("                       ");
+console.log("                         ");
+
+
+console.log("\n", "\x1b[0m", "\x1b[21m");
+
 
 module.exports = {
   entry: "./src/index.jsx",
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -27,8 +56,8 @@ module.exports = {
         loader: "babel-loader",
         options: {
           babelrc: false,
-          presets: ["react", "es2015"],
-          plugins: ["syntax-dynamic-import"]
+          presets: ["react", "env"],
+          plugins: ["syntax-dynamic-import", "transform-class-properties", "transform-object-rest-spread"]
         }
       },
       {
@@ -53,6 +82,7 @@ module.exports = {
     port: 6001
   },
   plugins: [
+    new ObjectRestSpreadPlugin(),
     new HtmlWebpackPlugin({
       template: "public/index.html"
     })

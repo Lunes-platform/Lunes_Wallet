@@ -1,0 +1,18 @@
+/* BASE */
+:local(.instructions) {
+  composes: textDefault from '../bases/textBase.css';
+  display: block;
+  text-align: center;
+}
+
+:local(.instructions a) {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+:local(.instructions img) {
+  position: relative;
+  left: 10px;
+  top: 5px;
+}

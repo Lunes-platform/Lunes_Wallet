@@ -1,13 +1,6 @@
-:global(.bg) {
-  background-color: black;
-}
-
 :local(.defaultP) {
-  font-size: 12px;
-}
-
-:local(.clWhite) {
   color: white;
+  font-size: 14px;
 }
 
 :local(.clGreen) {
