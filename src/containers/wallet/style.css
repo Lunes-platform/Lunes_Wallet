@@ -116,19 +116,22 @@
 /* 1.2 TEXTS */
 
 :local .boxLabelCoin {
+  font-size: 12px;
   text-align: right;
   padding-top: 12px;
   padding-right: 5px;
+  word-wrap: break-word;
 }
 
 :local .boxLabelCoinDisabled {
   font-size: 12px;
   text-align: right;
   padding-top: 25px;
+  word-wrap: break-word;
 }
 
 :local .labelPercent {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* ------------------------------------------------------------------------- */
