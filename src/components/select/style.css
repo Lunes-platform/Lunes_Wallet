@@ -1,0 +1,40 @@
+:local .wrapper {
+  cursor: pointer;
+  padding: 10px 10px 5px 10px;
+  position: relative;
+}
+
+:local .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+:local .title {
+  display: flex;
+}
+
+:local .list {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  display: block;
+  list-style: none;
+  margin-left: -10px;
+  margin-top: 12px;
+  max-height: 150px;
+  padding: 5px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 99999;
+}
+
+:local .listItem {
+  display: flex;
+  padding: 10px;
+}
+
+:local .wrapper img {
+  margin-right: 1rem;
+  max-width: 25px;
+  max-height: 25px;
+  position: relative;
+  top: -2px;
+}

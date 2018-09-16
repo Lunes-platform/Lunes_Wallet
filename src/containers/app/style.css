@@ -1,0 +1,68 @@
+/*
+
+1. CONATINER LOGIN
+2. CONTAINER SKELETON
+3. SCROLLBAR
+4. FONT
+
+  
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. CONATINER LOGIN */
+
+:local(.textDefault) {
+  composes: textDefault from "../../components/bases/textBase.css";
+}
+
+:local .link {
+  composes: linkDefault from "../../components/bases/textBase.css";
+}
+
+:local(.colLeft) {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 8%;
+}
+
+@media only screen and (max-width: 958px) {
+  :local(.colLeft) {
+    padding: 10% 10%;
+    overflow: auto;
+    display: block;
+  }
+}
+
+/* 1.2 COLUMN LEFT */
+:local(.colRight) {
+  composes: bgPurpleDark from "../../components/bases/colorBase.css";
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2. CONTAINER SKELETON */
+
+/* ------------------------------------------------------------------------- */
+
+/* 3. SCROLLBAR */
+::-webkit-scrollbar              {
+  background-color: transparent;
+  height: 5px;
+  width: 5px;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-thumb        {
+  background-color: #654fa4;
+  border-radius: 6px;
+}

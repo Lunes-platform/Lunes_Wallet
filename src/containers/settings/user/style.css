@@ -1,0 +1,268 @@
+
+/*
+  1. HEADER SETTINGS
+  2. BASE
+  3. TEXT
+  4. AVATAR
+*/
+
+
+/* ------------------------------------------------------------------------- */
+:local(body) {
+  color: white;
+}
+
+/* 1. HEADER SETTINGS */
+:local(a) {
+  text-decoration: none;
+}
+
+:local(.containerHeaderSettings) {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+:local(.headerSettingsDefault) { 
+  display: flex;
+}
+
+:local(.headerSettingsDefault p) {
+  color: #68f285;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+:local(.headerSettingsDefault h3) {
+  text-align: right;
+  margin: 0;
+  padding-right: 15px;
+}
+
+#hr hr{
+  border: 0;
+  width: 100%;
+  border-bottom: 2px dotted #654fa4;
+  size: 15px;
+  height: 4px;
+}
+
+#hr {
+  display: flex;
+}
+
+@media screen and (min-width: 1199px) {
+  :local(.headerSettingsDefault p) {
+    padding-left: 0.82cm;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  :local(.headerSettingsDefault p) {
+    float: left;
+    padding: 0 5px;
+    font-size: 9px;
+  }
+  :local(.headerSettingsDefault h3) {
+    font-size: 9px;
+  }
+  :local(.headerSettingsDefault) { 
+    display: block;
+  }
+  #hr hr {
+    height: 0.4px;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2 BASE */
+:local(.container) {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  width: auto !important;
+}
+
+@media screen and (min-width: 599px) {
+  :local(.container) {
+    margin: 0 2rem;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  :local(.container) {
+    margin: 0 5rem;
+  }
+}
+
+:local(.row) {
+  composes: bgPurpleDefault from "../../../components/bases/colorBase.css";
+  margin: 1rem .5rem !important;
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+:local(.rowAdress){
+  composes: row;
+  padding: 6px;
+  display: flex;
+}
+
+:local(.content) {
+  margin: 0 1.5rem;
+}
+
+:local(.buttonContainer) {
+  margin: 0.5rem !important;
+}
+
+:local(.buttonEnable) {
+  composes: buttonEnable from "../../../components/bases/buttonBase.css";
+}
+
+:local(.line) {
+  border-bottom: 2px solid #473088;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  float: left;
+}
+
+@media screen and (min-width: 599px) {
+  :local(.line) {
+    width: 80%;
+    float: right;
+    top: -8px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  :local(.rowAdress){
+    display: block;
+  }
+}
+/* 3 TEXT */
+:local(.textDefault) {
+  composes: textDefault from "../../../components/bases/textBase.css";
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+:local(.linkDefault) {
+  composes: linkDefault from "../../../components/bases/textBase.css";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+:local(.successDefault) {
+  composes: clSuccess from "../../../components/bases/colorBase.css";
+}
+
+:local(.errorDefault) {
+  composes: clError from "../../../components/bases/colorBase.css";
+}
+
+:local(.header) {
+  margin: 0 0.5rem !important;
+  font-size: 12px;
+}
+
+:local(.header p) {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  margin: 0;
+}
+
+@media screen and (min-width: 599px) {
+  :local(.header p) {
+    text-align: left;
+  }
+}
+
+:local(.whiteTitle) {
+  composes: textDefault;
+  font-weight: 600;
+}
+
+:local(.successStatus) {
+  composes: successDefault;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+:local(.errorStatus) {
+  composes: errorDefault;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+:local(.statusItem) {
+  position: relative;
+  top: -0.5rem;
+  left: 0.5rem;
+}
+
+:local(.selectLabel) {
+  composes: textDefault;
+  display: block;
+  position: relative;
+}
+
+/* 4 AVATAR */
+:local(.avatarAlign) {
+  display: flex;
+  justify-content: center;
+  margin: 0.75rem;
+}
+
+:local(.avatar) {
+  width: 7.5rem !important;
+  height: 7.5rem !important;
+}
+
+:local(.btnAvatar) {
+  composes: bgPurpleDefault from "../../../components/bases/colorBase.css";
+  width: 3rem !important;
+  height: 3rem !important;
+  cursor: pointer;
+  margin-top: -2.5rem;
+  padding: 0;
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,.3);
+}
+
+@media screen and (min-width: 599px) {
+  :local(.avatar) {
+    width: 8.5rem !important;
+    height: 8.5rem !important;
+  }
+}
+:local(.selectItem) {
+  height: 60px;
+}
+
+:local(.selectItem path) {
+  color: #654ea6;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+:local(.inputTextDefault) {
+  composes: inputTextDefault from "../../../components/bases/inputBase.css";
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  border-bottom: 1px solid #3b1878;
+  height: 30px;
+  color: white;
+}
+
+:local(.inputTextDefault::placeholder) {
+  font-size: 10px;
+}

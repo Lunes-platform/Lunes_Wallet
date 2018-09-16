@@ -1,0 +1,41 @@
+@import url("./colorBase.css");
+/*
+
+1. INPUT TEXT
+    1.1 INPUT TEXT PLACEHOLDER
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1 INPUT TEXT*/
+:local(.inputTextDefault) {
+  composes: bgPurpleDark from "./colorBase.css";
+  composes: textDefault from "./textBase.css";
+  composes: bdPurpleDefault from "./colorBase.css";
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 25px;
+  border-radius: 6px;
+  width: 90%;
+  height: 50px;
+  padding: 0 5%;
+  position: relative;  
+  font-size: 17px;
+}
+
+:local(.inputTextError) {
+  composes: inputTextDefault;
+  composes: bgPurpleLight from "./colorBase.css";
+  composes: bdError from "./colorBase.css";
+  border-style: solid;
+  border-width: 1px;
+}
+
+/* 1.1 INPUT TEXT PLACEHOLDER*/
+:local(.inputTextDefault::placeholder) {
+  opacity: 0.5;
+  color: white;
+  font-size: 17px;
+}
+
+/* ------------------------------------------------------------------------- */

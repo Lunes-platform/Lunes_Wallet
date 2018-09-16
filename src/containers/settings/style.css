@@ -1,0 +1,336 @@
+/*
+
+1. SETTINGS
+    1.1 BASES
+    1.2 TEXTS
+
+2. SECURITY
+    2.1 BASES
+        2.1.1 MOBILE
+    2.2 TEXTS
+    2.3 IMAGES
+    2.4 INPUTS
+    2.5 BUTTONS
+    2.6 HEADER SETTINGS
+
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. SETTINGS */
+
+/* 1.1 BASES */
+:local(a) {
+  text-decoration: none;
+}
+
+:local(.containerSettings) {
+  justify-content: center;
+  border-radius: 8px;
+}
+
+:local(.headerSettings) {
+  padding-right: 20%;
+}
+
+:local(.containerCardsSettings) {
+  display: flex;
+  padding: 0 15px 90px 15px;
+}
+
+:local(.cardsSettings) {
+  padding: 5px;
+}
+
+:local(.cards) {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  border-radius: 8px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 12px;
+  min-width: 130px;
+  text-align: center;
+  padding: 5px;
+  composes: clInfo from "../../components/bases/colorBase.css";
+}
+
+:local(.cards a, .cards a:visited) {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+:local(.cards:hover) {
+  background-color: #68f285;
+  transition-duration: 0.3s;
+}
+
+/* 1.2 TEXTS */
+:local(.headerSettings p) {
+  font-size: 12px;
+  margin-bottom: 3.5%;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.headerSettings) {
+    padding: 0;
+  }
+  :local(.headerSettings p) {
+    font-size: 8px;
+    margin-bottom: 7%;
+  }
+  :local(.headerSettings h2) {
+    font-size: 9px;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+/* 2. SECURITY */
+
+/* 2.1 BASES */
+:local(.indicatorItem) {
+  composes: clPurpleClear from "../../components/bases/colorBase.css";
+  font-size: 100px;
+  font-weight: bold;
+  width: 100%;
+}
+
+:local(.containerSecurity) {
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+:local(.containerItemsWeb) {
+  display: flex;
+  justify-content: space-between;
+}
+
+:local(.item) {
+  display: flex;
+}
+
+:local(.counterItems) {
+  display: flex;
+  justify-content: space-between;
+}
+
+:local(.containerItems) {
+  display: flex;
+  margin-bottom: 50px;
+  float: right;
+}
+
+:local(.contentItem) {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  align-self: flex-end;
+}
+
+:local(.headerSecurity) {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+:local(.headerSecurity p) {
+  padding-left: 22px;
+  color: #68f285;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  text-align: right;
+}
+
+:local(.headerSecurity h3) {
+  margin: 0;
+  text-align: right;
+}
+
+#hr hr {
+  border: 0;
+  width: 100%;
+  border-bottom: 1px dashed #654fa4;
+  size: 15px;
+  height: 2px;
+}
+
+:local(.allSecurity) {
+  display: flex;
+}
+
+/* 2.1.1 BASES - MOBILE */
+:local(.columItemsMobile) {
+  justify-content: center;
+}
+
+:local(.alignLaunchMobile) {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 2.2 TEXTS */
+:local(.indicatorItem p) {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  width: 75%;
+}
+
+/* 2.3 IMAGES */
+:local(.allSecurity img) {
+  max-width: 100%;
+}
+
+:local(.alignLaunchMobile img) {
+  height: 80%;
+  width: 95%;
+}
+
+/* 2.4 INPUTS */
+:local(.inputTwoFactorAuthenticator) {
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #979797;
+  width: 14%;
+  height: 50px;
+  margin: 25px 1px 0px 0px;
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+}
+
+:local(.inputTwoFactorAuthenticatorError) {
+  composes: inputTwoFactorAuthenticator;
+  border-bottom: 1px solid #f05252;
+  color: #f05252;
+}
+
+:local(.alignInputTwoFactorAuthenticator) {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 2.5 BUTTON */
+:local(.buttonEnable) {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+  margin-bottom: 10%;
+}
+
+:local(.buttonBorderGreen) {
+  composes: buttonBorderGreen from "../../components/bases/buttonBase.css";
+  margin-bottom: 10%;
+}
+
+:local(.buttonError) {
+  composes: buttonGeneral from "../../components/bases/buttonBase.css";
+  background-color: #f05252;
+  border-color: #f05252;
+  margin-bottom: 10%;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.indicatorItem) {
+    font-size: 12px;
+    color: #68f285;
+    text-align: right;
+    padding: 0;
+    font-size: 9px;
+  }
+  :local(.indicatorItem p) {
+    margin: 0;
+    width: 90%;
+    font-size: 8px;
+    padding-left: 10%;
+  }
+  :local(.counterItems) {
+    display: block;
+  }
+  :local(.columItems) {
+    display: flex;
+  }
+  :local(.contentItemSpecific img) {
+    width: 45%;
+  }
+  :local(.containerItems) {
+    margin-bottom: 0;
+  }
+  :local(.headerSecurity p) {
+    float: left;
+    font-size: 9px;
+  }
+  :local(.headerSecurity h3) {
+    font-size: 9px;
+  }
+}
+
+/* 2.6 HEADER SETTINGS */
+:local(a) {
+  text-decoration: none;
+}
+
+:local(.containerHeaderSettings) {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+:local(.headerSettingsDefault) {
+  display: flex;
+}
+
+:local(.headerSettingsDefault p) {
+  padding-left: 22px;
+  color: #68f285;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+:local(.headerSettingsDefault h3) {
+  text-align: right;
+  margin: 0;
+  padding-right: 15px;
+}
+
+#hr hr {
+  border: 0;
+  width: 100%;
+  border-bottom: 2px dotted #654fa4;
+  size: 15px;
+  height: 4px;
+}
+
+#hr {
+  display: flex;
+}
+
+:local(.twoFactorQr) {
+  display: contents;
+}
+
+@media screen and (max-width: 599px) {
+  :local(.headerSettingsDefault p) {
+    float: left;
+    padding: 0 5px;
+    font-size: 9px;
+  }
+  :local(.headerSettingsDefault h3) {
+    font-size: 9px;
+  }
+  :local(.headerSettingsDefault) {
+    display: block;
+  }
+  #hr hr {
+    height: 0.4px;
+  }
+}
+
+/* ------------------------------------------------------------------------- */

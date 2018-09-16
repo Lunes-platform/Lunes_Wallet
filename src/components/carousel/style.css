@@ -1,0 +1,16 @@
+:local(.center) {
+    width:  80%;
+    margin: auto auto
+}
+
+:local(.paragraph) {
+    color: #fff;
+    text-align: center;    
+}
+
+:local(.imageResponsive){
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 98%;
+    height: auto;
+}

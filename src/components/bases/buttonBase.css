@@ -1,0 +1,110 @@
+@import url("./colorBase.css");
+/*
+
+1. BUTTON
+  1.1 BUTTON GREEN
+  1.2 BUTTON PURPLE
+  1.3 BUTTON RED
+
+2. BUTTON ACTION
+  2.1 BUTTON RECEIVE
+  2.2 BUTTON SEND
+
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. BUTTON GENERAL*/
+:local(.buttonGeneral) {
+  composes: textDefault from "./textBase.css";
+  border-radius: 6px;
+  border: none;
+  color: white;
+  padding: 15px;
+  width: 100%;
+  height: 50px;
+}
+
+:local(.buttonDefault) {
+  composes: textDefault from "./textBase.css";
+  border-radius: 6px;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  height: 50px;
+}
+
+:local(.buttonDefault:hover) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+:local(.buttonDisabled) {
+  composes: textDefault from "./textBase.css";
+  border-radius: 6px;
+  padding: 15px;
+  width: 100%;
+  height: 50px;
+}
+
+:local(.buttonDisabled:hover) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* 1.1 BUTTON GREEN */
+:local(.buttonEnable) {
+  composes: buttonDefault;
+  composes: bgGreenLight from "./colorBase.css";
+}
+
+/* 1.2 BUTTON PURPLE */
+:local(.buttonPurpleClear) {
+  composes: buttonGeneral;
+  composes: bgPurpleClear from "./colorBase.css";
+}
+:local(.buttonPurpleLight) {
+  composes: buttonGeneral;
+  composes: bgPurpleDefault from "./colorBase.css";
+}
+:local(.buttonPurpleDark) {
+  composes: buttonGeneral;
+  composes: bgPurpleDark from "./colorBase.css";
+}
+
+:local(.buttonBorderGreen) {
+  composes: buttonDisabled;
+  composes: bdGreenLight from "./colorBase.css";
+  background-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+}
+
+/* 1.3 BUTTON RED */
+:local(.buttonRed) {
+  composes: buttonGeneral;
+  composes: bgError from "./colorBase.css";
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2 BUTTON ACTION */
+:local(.actionButtonDefaul) {
+  composes: buttonDefault;
+  font-size: 16px;
+  height: 60px;
+  width: 48%;
+  font-weight: bold;
+}
+
+/* 2.1 BUTTON RECEIVE */
+:local(.receiveButton) {  
+  composes: actionButtonDefaul;
+  composes: bgGreenDefault from "./colorBase.css";
+}
+
+/* 2.2 BUTTON SEND */
+:local(.sentButton) {  
+  composes: actionButtonDefaul;
+  composes: bgError from "./colorBase.css";
+}

@@ -1,0 +1,85 @@
+:local(.modalBox) {
+  background-color: #473088;
+  border-radius: 8px;
+  top: 20px;
+  left: 8px;
+  right: 8px;
+  bottom: 20px;
+  margin: auto;
+  max-width: 730px;
+  min-width: 306px;
+  max-height: 639px;
+  min-height: 538px;
+  position: absolute;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:local(.content) {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+:local(.overlay) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(59, 24, 120, 0.8);
+}
+
+:local(.header) {
+  composes: textDefault from "../bases/textBase.css";
+  border-bottom: 2px solid #3b1878;
+  display: block;
+  height: 46px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+:local(.headerImage) {
+  width: 8%;
+  cursor: pointer;
+  padding-top: 9px;
+  padding-left: 9px;
+  text-align: center;
+  transition: 0.2s;
+  position: absolute;
+}
+
+:local(.headerImageClose) {
+  width: 7%;
+  cursor: pointer;
+  padding: 11px 9px 0 9px;
+  text-align: center;
+  transition: 0.2s;
+  position: absolute;
+  right: 0px;
+  display: inline-flex;
+}
+
+:local(.headerImage:hover) {
+  padding-left: 3px;
+  opacity: 1;
+}
+
+:local(.headerImage > img) {
+  width: 30px;
+}
+
+:local(.headerTitle) {
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  padding-top: 11px;
+  text-align: center;
+  float: left;
+}

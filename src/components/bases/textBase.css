@@ -1,0 +1,28 @@
+/*
+
+  1. FONTS
+  2. TEXT
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. FONTS */
+:local(.offside) {
+  font-family: "Offside", cursive;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. TEXT */
+:local(.textDefault) {
+  font-family: 'Noto Sans', sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+:local(.linkDefault) {
+  composes: clGreenLight from "./colorBase.css";
+  font-size: 14px;
+  text-decoration: none;
+}

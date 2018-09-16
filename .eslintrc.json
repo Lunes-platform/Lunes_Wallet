@@ -5,9 +5,8 @@
         "browser": true
     },
     "parserOptions": {
-        "no-console": ["error", { "allow": ["warn", "error"] }],
         "indent": ["error", "tab"],
-        "ecmaVersion": 6,
+        "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
@@ -16,5 +15,8 @@
     "globals": {
         "localStorage": true,
         "fetch": true
-    }
+    },
+    "rules": {
+        "no-console": ["error", { "allow": ["warn", "error"] }]
+      }
 }

@@ -1,0 +1,414 @@
+/*
+
+1. GENERAL COMPONENTS
+  1.1 CONTAINER GENERAL
+  1.2 BUTTON
+  1.3 INPUT
+  1.4 LINKS
+  1.5 IMAGES 
+
+2. FOOTER 
+  2.1 GENERAL
+  2.2 LINKS
+
+3. LOGIN
+  3.1 TEXTS
+
+4. RESET
+  4.1 TEXTS
+  4.2 ICONSreset
+  4.2 LINKS
+
+5. CREATE / NEW ACCOUNT
+  5.1 TEXTS
+  5.2 ICONS
+  5.3 INPUT - CHECKBOX
+
+6. TWO FACTORS AUTHENTICATOR 
+  6.1 INPUT
+  6.2 TEXTS
+
+7. SEED
+  7.1 INPUT
+  7.2 TEXTS
+
+*/
+
+/* ------------------------------------------------------------------------- */
+
+/* 1. GENERAL COMPONENTS */
+
+/* 1.1 CONTAINER GENERAL */
+:local(.contGeneral) {
+  width: 100%;
+}
+
+/* 1.2 BUTTON */
+:local(.buttonEnable) {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+  margin-top: 10px;
+}
+
+:local(.buttonDisable) {
+  composes: buttonPurpleDark from "../../components/bases/buttonBase.css";
+}
+
+:local(.buttonPurpleClear) {
+  composes: buttonPurpleClear from "../../components/bases/buttonBase.css";
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+:local(.buttonBorderGreen) {
+  composes: buttonBorderGreen from "../../components/bases/buttonBase.css";
+  margin-top: 15px;
+}
+
+/* 1.3 INPUT */
+:local(.inputTextDefault) {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+}
+
+:local(.inputTextError) {
+  composes: inputTextError from "../../components/bases/inputBase.css";
+}
+
+/* 1.4 LINKS */
+:local(.link) {
+  composes: linkDefault from "../../components/bases/textBase.css";
+}
+
+:local(.doNotLink) {
+  composes: linkDefault from "../../components/bases/textBase.css";
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* 1.5 IMAGES */
+:local(.logo) {
+  display: block;
+  max-width: 100%;
+  width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 2. FOOTER */
+
+/* 2.1 GENERAL */
+:local(.footer) {
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+/* 2.1 LINKS */
+:local(.footerLink) {
+  composes: linkDefault from "../../components/bases/textBase.css";
+  font-size: 12px;
+}
+
+:local(.footerSpace) {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 3 LOGIN */
+
+/* 3.1 TEXTS */
+:local(.description) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+:local(.textForgetPass) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  display: block;
+  text-align: right;
+  margin-bottom: 25px;
+  text-decoration: none;
+}
+
+:local(.doNotHaveAccount) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  font-size: 16px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 4. RESET */
+
+/* 4.1 TEXTS */
+:local(.resetHeader) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  composes: description;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+:local(.resetInstruction) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  text-align: center;
+  margin: 20px 0px 25px 0px;
+  font-weight: bold;
+}
+
+:local(.resetEmailSend) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  margin: 55px 0 100px 0;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+}
+
+:local(.passwordRules) {
+  font-size: 10px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+:local(.passwordRulesItens) {
+  margin: 20px 0;
+  font-size: 12px;
+}
+
+/* 4.2 ICONS */
+:local(.iconArrowBack) {
+  float: left;
+  width: 24px;
+  margin-top: 6px;
+  position: absolute;
+}
+
+:local(.iconEmail) {
+  display: block;
+  max-width: 100%;
+  width: 55px;
+  height: 58px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+:local(.iconListValid) {
+  margin: 0;
+  margin-bottom: -8px;
+  margin-right: 10px;
+  width: 14px;
+}
+
+/* 4.3 LINKS */
+:local(.resetLinkLogin) {
+  composes: defaultP from "../../components/bases/textBase.css";
+  color: white;
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------------------- */
+
+:local(.alignInputsDefault) {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 5.2 TEXTS */
+
+/* ------------------------------------------------------------------------- */
+
+/* 6. CREATE / NEW ACCOUNT */
+
+/* 6.1 TEXTS */
+:local(.newAccountHeader) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  margin-top: 35px;
+  margin-bottom: 55px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+:local(.acceptTermsOfServices) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  display: inline;
+  font-size: 14px;
+}
+
+:local(.messageConfirmationRegister) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  font-size: 23px;
+  text-align: center;
+  font-weight: bold;
+  margin: 70px 0;
+}
+
+:local(.alignInfoDownloadTerms) {
+  text-align: center;
+  margin: 35px 0;
+}
+
+:local(.infoDownloadTerms) {
+  margin-top: 15px;
+  padding: 0% 10%;
+  font-weight: bold;
+  color: white;
+}
+
+:local(.linkDownloadTerms) {
+  composes: link;
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+/* 6.2 ICONS */
+:local(.iconEmailCreateAccount) {
+  composes: iconEmail;
+  width: 92px;
+  height: 95px;
+  margin-top: 18vh;
+  margin-bottom: 2vh;
+}
+
+:local(.arrowToLoginAlign) {
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
+  display: flex; 
+  text-align: center;
+}
+
+:local(.arrowCircle) {
+  border-radius: 100%;
+  height: 50px;
+  min-width: 50px;
+  background-color: white;
+}
+
+:local(.arrowCircle img) {
+  margin-top: 19px;
+}
+
+/* 6.3 INPUT - CHECKBOX */
+:loal(.checkbox) {
+  color: white;
+}
+
+:local(.checkboxError) {
+  color: #f05252;
+}
+/* ------------------------------------------------------------------------- */
+
+/* 7. TWO FACTORS AUTHENTICATOR */
+
+/* 7.1 INPUT */
+:local(.inputTwoFactorAuthenticator) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #979797;
+  width: 49px;
+  height: 50px;
+  margin: 25px 1px 0px 0px;
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+}
+
+:local(.inputTwoFactorAuthenticatorError) {
+  composes: inputTwoFactorAuthenticator;
+  border-bottom: 1px solid #f05252;
+  color: #f05252;
+}
+
+:local(.alignInputTwoFactorAuthenticator) {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 7.2 TEXTS */
+:local(.instructions) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  text-align: center;
+}
+
+:local(.instructions_2) {
+  composes: description;
+  margin: 30px 0px 50px 0px;
+}
+
+:local(.linkWhereToFind) {
+  composes: link;
+  color: white;
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 8. SEED */
+
+/* 8.1 INPUT ( TEXTAREA ) */
+:local(.inputTextArea) {
+  composes: bgPurpleDark from "../../components/bases/colorBase.css";
+  composes: textDefault from "../../components/bases/textBase.css";
+  composes: bdPurpleDefault from "../../components/bases/colorBase.css";
+  margin-bottom: 25px;
+  border-radius: 6px;
+  border-width: 1px;
+  border-style: solid;
+  max-width: 79%;
+  width: 79%;
+  height: 50px;
+  padding: 10%;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  white-space: normal;
+  overflow: auto;
+  resize: none;  
+}
+
+:local(.inputTextArea::placeholder) {
+  font-family: 'Noto Sans', sans-serif;
+  opacity: 0.5;
+  color: white;
+  font-size: 17px;
+}
+
+:local(.inputTextAreaError) {
+  composes: inputTextArea;
+  color: #f05252;
+  border: 1px solid #f05252;
+}
+
+/* 8.2 TEXTS */
+:local(.insertSeed) {
+  margin: 40px 0 30px 0;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------------- */
+
+

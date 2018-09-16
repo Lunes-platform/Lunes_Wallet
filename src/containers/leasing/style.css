@@ -1,0 +1,469 @@
+
+/* 1. BASES */
+:local(.displayAlign) {
+  display: flex;
+  justify-content: center;
+}
+
+:local(.containerTransactions) {
+  composes: displayAlign;  
+}
+
+:local .headerContent {
+  padding: 10px 0;
+  border-bottom: solid 2px rgba(0,0,0,.2);
+  text-align: center;
+  font-size: 12px;
+}
+
+:local(.contentTransactions) {
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.05);
+  background-color: #473088;
+  max-height: 55vh;
+  overflow: auto;   
+  padding-bottom: 100px;
+}
+
+:local .boxCard {
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.05);
+  background-color: #473088;
+  margin-right: 15px;
+  margin-bottom:15px;
+  margin-top:5px;
+  padding:15px;
+  font-size: 12px;
+}
+
+:local(.contentTransactions::-webkit-scrollbar-thumb) {
+  background-color: #68f285;
+}
+
+:local(.itemHistorico) {
+  display: flex;
+  border: 0;
+  border-bottom: 1px;
+  border-color: #3a1d71;
+  border-style: solid;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 20px;
+  opacity: 1;
+  padding-top:10px;
+  padding-bottom:10px;
+  text-align:center;
+}
+
+:local(.itemDataHistorico) {
+  background-color: #381e67;
+  display: block;
+  cursor: default;
+  font-size: 9px;
+}
+
+:local(.toggleHistory) {
+  display: none;
+  transition: 2s;
+}
+
+:local(.opacityItem) {
+  composes: itemHistorico;
+  opacity: 0.4;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.itemHistorico) {
+    margin: 0;
+    font-size:9px;
+  }
+  :local(.contentTransactions) {
+    box-shadow: none;
+  }
+  :local .boxCard {
+    font-size: 10px;
+    box-shadow: none;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-bottom: 10px;
+    padding: 10px;
+    min-height: 45px;
+  }
+  :local .headerContent {
+    font-size:9px;
+  }
+}
+
+/* 2. TEXTS */
+:local .strongText {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+:local .textGreen {
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+}
+
+:local .strongTextGreen {
+  composes: strongText;
+  composes: textGreen;
+}
+
+:local(.titleBlockExplorer) {
+  padding: 10px 15px; 
+  margin: auto auto;
+  font-weight: bold;
+}
+
+:local(.descriptionHistory) {
+  padding: 10px 15px;
+  font-size: 12px;
+}
+
+:local .descriptionHistory a {
+  color: #fff;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.descriptionHistory) {
+    font-size: 9px;
+  }  
+  :local .strongText {
+    font-size: 10px;
+  }
+}
+
+/* 3. ICONS */
+:local .iconLeasing {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 9px;
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+}
+
+/* 4. BUTTONS */
+
+:local .buttonEnable {
+  max-width: 200px;
+  float:right;
+  margin-top:14px;
+  margin-bottom:10px;
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+}
+
+@media only screen and (max-width: 599px) {
+  :local .buttonEnable {
+    max-width: none;
+    float: none;
+    margin-top: 0px;
+  }
+}
+
+/* 5. MODAL */
+
+:local .baseStep {
+  padding-left: 20px;
+  padding-right: 20px;
+  align-self: center;
+  width: 100%;
+  padding: 30px;
+  text-align: right;
+  padding: 16;
+  color: #fff;
+}
+
+:local .modalBox {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #fff;
+}
+
+:local .boxQr {
+  composes: modalBox;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+  padding-bottom: 0;
+}
+
+:local .totalConfirm {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+:local .addressConfirm {
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+  font-weight: 700;
+}
+
+:local .modalBox .hoverShow {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+:local .modalBox:hover .hoverShow {
+  opacity: 1;
+}
+
+:local .bt {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+:local(.btContinue) {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+  composes: bt;
+}
+
+:local(.btContinueDisabled) {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+  composes: bt;
+  cursor: not-allowed;
+  background-color: #cacaca;
+}
+
+:local(.btError) {
+  composes: buttonGeneral from "../../components/bases/buttonBase.css";
+  composes: bgError from "../../components/bases/colorBase.css";
+  composes: bt;
+}
+
+:local(.btContinueDisable) {
+  composes: buttonBorderGreen from "../../components/bases/buttonBase.css";
+  composes: bt;
+}
+
+:local .boxDecription {
+  margin-bottom: 5%;
+}
+
+:local .inputClear {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 0px;
+  background: transparent;
+  border-bottom: solid 1px #68f285;
+  text-align: right;
+  max-width: 500px;
+  color: #68f285;
+  margin: 0px;
+}
+
+:local .boxPercent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+:local .boxPercent span {
+  display: block;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+  opacity: 0.5;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+:local .boxPercent span:hover {
+  opacity: 1;
+  border-color: #fff;
+}
+
+:local .boxFee {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+:local .labelFee {
+  display: block;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom:1px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+  width:100%;
+  text-align: center;
+}
+
+:local .labelFee:hover {
+  opacity: 1;
+  border-bottom-width: 1px;
+  margin-bottom: 0px;
+}
+
+:local .greenLabelFee {
+  composes: labelFee;
+  border-bottom: solid 0px greenyellow;
+  color: greenyellow;
+}
+
+:local .yellowLabelFee {
+  composes: labelFee;
+  border-bottom: solid 0px orange;
+  color: orange;
+}
+
+:local .redLabelFee {
+  composes: labelFee;
+  border-bottom: solid 0px red;
+  color: red;
+}
+
+:local .textHelp {
+  opacity: 0.3;
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+:local .confirmFee {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 10px;
+}
+
+:local .txtamount {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  color: #68f285;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: transparent;
+  font-size: 42px;
+  text-align: right;
+}
+
+:local .txtamount::placeholder {
+  font-size: 42px;
+  text-align: center;
+}
+
+:local(.inputTextDefault) {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  max-width: 260px;
+}
+
+:local .modalIconCoin {
+  max-width: 50px;
+  margin-bottom: 20px;
+}
+
+:local .errorString {
+  composes: clError from "../../components/bases/colorBase.css";
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom:40px;
+}
+
+:local .labelHelp {
+  font-size: 11px;
+  opacity: .5;
+  text-align: left;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-top:10px;
+  border-top: solid 1px rgba(255,255,255,.3);
+}
+
+:local .titleFee {
+  margin-top:10px;
+  text-align:right;
+}
+
+:local .feeVal {
+  display: block;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+:local .boxLine {
+  border-bottom: solid 1px rgba(0,0,0,.2);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+:local .formBlock {
+  display: block;
+}
+
+/* 1. CUSTOM SELECT  */
+
+:local .btNode {
+  background: transparent;
+  border: none;
+  color: #a59bc5;
+  padding: 3px;
+  font-size: 12px;
+}
+
+:local .btNodeSelected {
+  background: transparent;
+  border: none;
+  color: #68f285;
+  padding: 3px;
+  font-size: 12px;
+}
+
+:local .baseSelect {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  position: absolute;
+  padding-top:15px;
+  padding-bottom:15px;
+  right: 16px;
+  z-index:999;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  max-height: 140px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+:local .baseSelect div {
+  text-align: left;
+  min-width: 100px;
+  font-size: 11px;
+  color: white;
+  padding:5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+:local .baseSelect div:hover {
+  background-color: #654fa4;
+  color: #68f285;
+}
+
+:local .arrowSelect {
+  color: white;
+  display:absolute;
+  margin-top:7px;
+  margin-bottom:-7px;
+  margin-left: 10px;
+}
+
+/*custom input number (remove arrows up and down)*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    
+    -webkit-appearance: none;
+    margin: 0;
+}

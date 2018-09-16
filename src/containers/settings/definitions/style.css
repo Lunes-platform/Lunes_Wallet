@@ -1,0 +1,346 @@
+/**
+
+1. HEADER SETTINGS
+2. CONTAINERS
+3. IMAGES & UI
+4. TEXT
+5. CUSTOM SELECT 
+
+*/
+
+
+/* ------------------------------------------------------------------------- */
+/* 1. HEADER SETTINGS */
+:local(a) {
+  text-decoration: none;
+}
+
+:local(.containerHeaderSettings) {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+:local(.headerSettingsDefault) { 
+  display: flex;
+}
+
+:local(.headerSettingsDefault p) {
+  padding-left: 20px;
+  color: #68f285;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+:local(.headerSettingsDefault h3) {
+  text-align: right;
+  margin: 0;
+  padding-right: 15px;
+}
+
+#hr hr{
+  border: 0;
+  width: 100%;
+  border-bottom: 2px dotted #654fa4;
+  size: 15px;
+  height: 4px;
+}
+
+#hr {
+  display: flex;
+}
+
+@media screen and (max-width: 599px) {
+  :local(.headerSettingsDefault p) {
+    float: left;
+    padding: 0 5px;
+    font-size: 9px;
+  }
+  :local(.headerSettingsDefault h3) {
+    font-size: 9px;
+  }
+  :local(.headerSettingsDefault) { 
+    display: block;
+  }
+  #hr hr {
+    height: 0.4px;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/*2. CONTAINERS */
+:local .box {
+  composes: textDefault from "../../../components/bases/textBase.css";
+  composes: bgPurpleDefault from "../../../components/bases/colorBase.css";
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,.05);
+  min-height: 75vh;
+  padding-top: 30px;
+  overflow-y: auto;
+}
+
+:local .aliasNameRow {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+:local .alignCenter {
+  text-align:center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:local .boxSeed {
+  margin-top:40px;
+}
+
+@media screen and (max-width: 599px) {
+  :local .boxSeed {
+    margin-top:20px;
+  }  
+}
+
+/*3. IMAGES & UI */
+
+:local .buttonWalletRow {
+  /* max-width: 160px;
+  float: right;
+  margin-right:10px; */
+  margin-left:15px;
+}
+
+:local .buttonDanger {
+  composes: buttonRed from "../../../components/bases/buttonBase.css";
+  composes: buttonWalletRow;
+}
+
+:local .buttonPurple {
+  composes: buttonPurpleClear from "../../../components/bases/buttonBase.css";
+  composes: buttonWalletRow;
+}
+
+:local .buttonGreen {
+  composes: buttonEnable from "../../../components/bases/buttonBase.css";
+  composes: buttonWalletRow;
+}
+
+:local .buttonImport {
+  composes: buttonGreen;
+  margin:0px;
+  max-width: 300px;
+  align-self: center;
+}
+
+:local .coinIcon {
+  width: 30px;
+  height: 30px;
+  display:block;
+  position:relative;
+  left: 50%;
+  margin-left:-15px;
+  margin-top:10px;
+}
+
+:local .coinIconAlias {
+  width: 58px;
+  height: 58px;
+  display:block;
+  position:relative;
+  left: 50%;
+  margin-left:-28px;
+  margin-bottom:20px;
+}
+
+:local .inputClear {
+  composes: inputTextDefault from "../../../components/bases/inputBase.css";
+  background-color: transparent;
+  border: solid 1px rgba(255,255,255,.1);
+  text-align: center;
+}
+
+:local .textArea {
+  composes: inputTextDefault from "../../../components/bases/inputBase.css";
+  background-color: rgba(0,0,0,.15);
+  min-height: 140px;
+  border-radius: 15px;
+  text-align:center;
+  padding:15px;
+  font-size:22px;
+  margin-top:20px;
+}
+
+:local .line {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border:none;
+  border-bottom: solid 1px rgba(0,0,0,.2);
+}
+
+@media screen and (max-width: 599px) {
+  :local .buttonWalletRow {
+    font-size:9px;
+    padding:0px;
+    margin-left:10px;
+    height:32px;
+  }
+  
+  :local .coinIcon {
+    width: 24px;
+    height: 24px;
+    margin-top:5px;
+  }
+  
+  :local .inputClear {
+    font-size:9px;
+    height:32px;
+    margin-bottom: 7px;
+  }
+
+  :local .coinIconAlias {
+    width: 32px;
+    height: 32px;
+    left: 50%;
+    margin-left:-17px;
+  }
+
+  :local .buttonGreen {
+    max-width:100%;
+    margin:0px;
+  }
+  
+  :local .textArea {
+    min-height: 80px;
+    border-radius: 5px;
+    padding:10px;
+    font-size:12px;
+    margin-top:10px;
+  }
+  
+}
+
+/*4. TEXT */
+:local .formSwitch {
+  /* margin-left: 15%;
+  margin-right: 15%;*/
+  /* margin-bottom: 30px;  */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+:local .labelCoin {
+  border: solid 1px rgba(255,255,255,.1);
+  border-radius:5px;
+  text-align:center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height:50px;
+}
+
+:local .boldHead {
+  font-size:16px;
+  font-weight: 700;
+  margin-top:30px;
+}
+
+:local .formDefinition {
+  font-size:11px;
+}
+
+@media screen and (max-width: 599px) {
+  :local .description {
+    font-size: 9px;
+    margin-top: 15px;
+  }
+  :local .formSwitch {
+    font-size: 9px;
+  }
+  :local .labelCoin {
+    font-size:9px;
+    height:32px;
+  }
+  :local .boldHead {
+    font-size:12px;
+    font-weight: 700;
+    margin-top:20px;
+  }
+}
+
+
+/* 5. CUSTOM SELECT  */
+:local .btSelect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 3px;
+  font-size: 14px;
+  color: #fff;
+  padding: 5px;
+  border-bottom: solid 1px rgba(0,0,0,.2);
+  width: 100%;
+  max-width: 140px;
+  cursor: pointer;
+  margin-bottom:15px;
+}
+:local .btSelect img {
+  width:32px;
+  margin-right:15px;
+}
+:local .baseSelect {
+  composes: bgPurpleDefault from "../../../components/bases/colorBase.css";
+  position: absolute;
+  padding-top:15px;
+  padding-bottom:15px;
+  z-index:999;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  max-height: 140px;
+  width: 100%;
+  max-width: 240px;   
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+:local .baseSelect div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  min-width: 100px;
+  font-size: 14px;
+  color: white;
+  padding:5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+:local .baseSelect div img {
+  width:32px;
+  margin-right:15px;
+}
+:local .baseSelect div:hover {
+  background-color: #654fa4;
+  color: #68f285;
+}
+
+:local .arrowSelect {
+  color: #68f285;
+}
+
+
+@media screen and (max-width: 599px) {
+  :local .btSelect {
+    width: 100%;
+    max-width: none;
+  }
+  :local .baseSelect {
+    margin-top:-15px;
+  }
+}

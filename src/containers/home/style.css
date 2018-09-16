@@ -1,0 +1,92 @@
+/*
+1. BASE
+  1.1 BUTTON
+
+2. CARD
+  2.1 CARD
+
+*/
+
+/* ------------------------------------------------------------------------- */
+/* 1. BASE */
+
+/* 1.1 BUTTON */
+:local(.buttonCard) {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+  width: 30%;
+  height: 45px;
+  font-weight: bold;
+  margin: 2vh;
+}
+
+/* 2. CARD */
+
+/* 2.1 CARD */
+:local(.cardHome) {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  width: 275px;
+  padding: 20px 5px 8px 5px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
+  align-items: center;
+  max-width: 100%;
+  min-height: 305px;
+}
+
+:local(.descriptionCard) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  padding: 1vh 2vh;
+  max-width: 100%;
+  min-height: 140px;
+}
+
+:local(.cardIcon){
+  margin: auto;
+  max-width: 100%;
+}
+
+:local(.cardTitle) {
+  composes: textDefault from "../../components/bases/textBase.css";
+  font-weight: bold;
+  padding: 2vh;
+}
+
+:local(.homeContainer) {
+  justify-content: center;
+  height: 90vh;
+  align-items: center;
+  margin-bottom: 30%;
+}
+
+@media only screen and (max-width: 1023px) {
+    :local(.homeContainer) {
+      flex-wrap: nowrap !important;
+      overflow-x: scroll;
+      justify-content: space-between;
+      height: 75vh;
+      align-items: center;
+    }
+}
+
+:local(.boxContainer) {
+  margin: 0;
+}
+
+@media only screen and (min-width: 1180px) {
+  :local(.boxContainer) {
+    margin: 0 5%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  :local(.boxContainer) {
+    margin: 0 15%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  :local(.boxContainer) {
+    margin: 0 20%;
+  }
+}

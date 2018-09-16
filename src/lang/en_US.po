@@ -1,0 +1,1111 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2018-09-14T02:24:07.774Z\n"
+"PO-Revision-Date: 2018-09-14T02:24:07.774Z\n"
+"Language: en\n"
+
+msgctxt "FAILED"
+msgid "MESSAGE_TRANSACTION"
+msgstr "Your transaction could not be completed."
+
+msgctxt "VOUCHER"
+msgid "MESSAGE_INVALID"
+msgstr "Invalid Voucher"
+
+msgctxt "AMOUNT"
+msgid "MESSAGE_INVALID"
+msgstr "Invalid Amount"
+
+msgctxt "AMOUNT"
+msgid "WALLET_MY"
+msgstr "Balance"
+
+msgctxt "AMOUNT"
+msgid "LEASING_TITLE"
+msgstr "Leased"
+
+msgctxt "AMOUNT"
+msgid "PAYMENT_FEE"
+msgstr "Sua taxa de transação na rede "
+
+msgctxt "PASSWORD"
+msgid "MESSAGE_INVALID"
+msgstr "Invalid Password"
+
+msgctxt "PASSWORD"
+msgid "PLACEHOLDER_USER"
+msgstr "Username or Password"
+
+msgctxt "PASSWORD"
+msgid "SETTINGS_USER"
+msgstr "Change password"
+
+msgctxt "PASSWORD"
+msgid "SETTINGS_USER_CURRENT"
+msgstr "Current password"
+
+msgctxt "PASSWORD"
+msgid "SETTINGS_USER_NEW"
+msgstr "New password"
+
+msgctxt "PASSWORD"
+msgid "SETTINGS_USER_CHANGE"
+msgstr "Change password"
+
+msgctxt "PASSWORD"
+msgid "MESSAGE"
+msgstr "Password"
+
+msgctxt "PASSWORD"
+msgid "PLACEHOLDER"
+msgstr "Password"
+
+msgctxt "FEE"
+msgid "MESSAGE_SELECT"
+msgstr "Select a Fee"
+
+msgctxt "FEE"
+msgid "LEASING"
+msgstr "Fee"
+
+msgctxt "SERVICE"
+msgid "MESSAGE_NOT"
+msgstr "Service not available"
+
+msgctxt "SERVICE"
+msgid "MESSAGE_TERMS_OF"
+msgstr "You need to accept the terms of service"
+
+msgctxt "SERVICE"
+msgid "PLACEHOLDER_TERMS_OF"
+msgstr "Terms of Services"
+
+msgctxt "FOUND"
+msgid "MESSAGE_NOTHING"
+msgstr "Service not available"
+
+msgctxt "YET"
+msgid "MESSAGE_NOT_SERVICE"
+msgstr "Service not available yet."
+
+msgctxt "IS"
+msgid "TEXT"
+msgstr "is"
+
+msgctxt "LOW"
+msgid "TEXT"
+msgstr "Low"
+
+msgctxt "LOW"
+msgid "FEE"
+msgstr "Baixo"
+
+msgctxt "MEDIUM"
+msgid "TEXT"
+msgstr "Medium"
+
+msgctxt "MEDIUM"
+msgid "FEE"
+msgstr "Medio"
+
+msgctxt "HIGH"
+msgid "TEXT"
+msgstr "High"
+
+msgctxt "PREV"
+msgid "TEXT"
+msgstr "Prev"
+
+msgctxt "PREV"
+msgid "BTN"
+msgstr "Previous"
+
+msgctxt "UNAVAILABLE"
+msgid "TEXT"
+msgstr "Unavailable"
+
+msgctxt "TO"
+msgid "TEXT"
+msgstr "To:"
+
+msgctxt "TO"
+msgid "PAYMENT_PASS"
+msgstr " para o endereço "
+
+msgctxt "FROM"
+msgid "TEXT"
+msgstr "From:"
+
+msgctxt "PROMOTIONAL"
+msgid "TEXT"
+msgstr "Promo:"
+
+msgctxt "ID"
+msgid "TEXT"
+msgstr "ID:"
+
+msgctxt "BLOCKEXPLORER"
+msgid "TEXT"
+msgstr "Blockexplorer:"
+
+msgctxt "GO"
+msgid "BTN"
+msgstr "Ir"
+
+msgctxt "SOON"
+msgid "BTN_COMMING"
+msgstr "Soon"
+
+msgctxt "DESCRIPTION"
+msgid "LOGIN_SLIDE"
+msgid_plural "LOGIN_SLIDE"
+msgstr[0] ""
+"Realize recargas de crédito de celular com suas moedas virtuais de forma "
+"rápida e segura."
+msgstr[1] ""
+"Envie, receba e armazene as principais criptomoedas do mercado em uma "
+"carteira descentralizada."
+msgstr[2] ""
+"Enjoy the usability and technology of this incredible wallet and store your "
+"crypto with a high level of security"
+msgstr[3] ""
+
+msgctxt "DESCRIPTION"
+msgid "SETTINGS_CONSENTS_GDPR"
+msgstr "Accept the GDPR terms?"
+
+msgctxt "DESCRIPTION"
+msgid "SET_ALIAS"
+msgstr ""
+"Voce pode customizar um nome para sua carteira Lunes, se preferir. Caso "
+"faça essa mudança, o valor a ser descontado de seu saldo é de 5 LUNES."
+
+msgctxt "DESCRIPTION"
+msgid "CARD_HOME"
+msgid_plural "CARD_HOME"
+msgstr[0] ""
+"Recarregue seu celular, de qualquer lugar e a qualquer momento, usando as "
+"criptomoedas disponíveis na carteira Lunes, de maneira rápida, fácil e "
+"segura."
+msgstr[1] ""
+"Pague seus boletos bancários com criptomoedas da forma mais simples "
+"possível. Um procedimento rápido e fácil, com toda segurança e confiança "
+"que apenas a Lunes têm."
+msgstr[2] ""
+"Transfira dinheiro para qualquer conta bancária no Brasil usando moedas "
+"digitais. Esqueça as filas de bancos! Faça tudo isso de qualquer lugar e a "
+"qualquer momento."
+msgstr[3] ""
+"Complete o passo-a-passo e resgate suas moedas compradas através do cupom "
+"ou voucher em um dos pontos de vendas de criptomoedas."
+msgstr[4] ""
+"A carteira Lunes é a forma mais segura de armazenar suas criptomoedas. "
+"Importe carteiras, veja seu histórico, transfira, receba, confira cotações "
+"e muito mais."
+msgstr[5] ""
+"Faça o investimento de baixo risco que te retorna até 5% ao ano. Tenha "
+"total segurança e controle de suas moedas, com um rendimento melhor que o "
+"da poupança."
+
+msgctxt "DESCRIPTION"
+msgid "PAYMENT_SHORT"
+msgstr "Short description"
+
+msgctxt "ADDRESS"
+msgid "PLACEHOLDER_EX"
+msgstr "Ex: 37n724hxf4XnCFfJFnCzj4TbYryoizdfGCV"
+
+msgctxt "ADDRESS"
+msgid "SETTINGS_USER"
+msgstr "Address"
+
+msgctxt "ADDRESS"
+msgid "MESSAGE_INVALID"
+msgstr "Invalid Address"
+
+msgctxt "ADDRESS"
+msgid "MODAL_SEND_QR_CODE"
+msgstr "Enviar Scaneando QrCode"
+
+msgctxt "ADDRESS"
+msgid "MODAL_SEND_TO"
+msgstr "para o endereço"
+
+msgid "FEBRUARY"
+msgstr "February"
+
+msgid "JANUARY"
+msgstr "January"
+
+msgid "MARCH"
+msgstr "March"
+
+msgid "APRIL"
+msgstr "April"
+
+msgid "MAY"
+msgstr "May"
+
+msgid "JUNE"
+msgstr "June"
+
+msgid "JULY"
+msgstr "July"
+
+msgid "AUGUST"
+msgstr "August"
+
+msgid "SEPTEMBER"
+msgstr "September"
+
+msgid "OCTOBER"
+msgstr "October"
+
+msgid "NOVEMBER"
+msgstr "November"
+
+msgid "DECEMBER"
+msgstr "December"
+
+msgid "LEASING"
+msgstr "Leasing"
+
+msgctxt "INSTRUCTIONS"
+msgid "2FA"
+msgid_plural "2FA"
+msgstr[0] ""
+"Confirm the code provided in google authenticator and enter the 6 digits "
+"below"
+msgstr[1] ""
+
+msgctxt "INSTRUCTIONS"
+msgid "RESET"
+msgstr "We will send your instructions"
+
+msgctxt "INSTRUCTIONS"
+msgid "COUPON"
+msgstr "Instructions"
+
+msgctxt "INSTRUCTIONS"
+msgid "MODAL_SEND_QR_CODE"
+msgstr ""
+"Para esse procedimento em deskop você precisa usar uma webcam para "
+"visualizar o qrcode que deseja enviar."
+
+msgctxt "INSTRUCTIONS"
+msgid "MODAL_SEND_AMOUNT"
+msgstr "Você também pode enviar uma parte de todos os seus ativos"
+
+msgctxt "HINT"
+msgid "RESET_NEW_PASSWORD"
+msgid_plural "RESET_NEW_PASSWORD"
+msgstr[0] "Numbers"
+msgstr[1] "Symbols"
+msgstr[2] "Min 8 characters"
+msgstr[3] "Numbers"
+msgstr[4] "Downcase letter"
+
+msgctxt "ERROR"
+msgid "RESET_NEW_PASSWORD"
+msgid_plural "RESET_NEW_PASSWORD"
+msgstr[0] "The password must meet the items described"
+msgstr[1] ""
+
+msgctxt "ERROR"
+msgid "PAGE"
+msgstr "Sua sessão expirou, logue novamente"
+
+msgctxt "ERROR"
+msgid "PAYMENT_GDPR"
+msgstr "You must accept the GDPR terms to continue"
+
+msgctxt "ERROR"
+msgid "PAYMENT_AMOUNT"
+msgstr "Your balance is insufficient to make this payment"
+
+msgctxt "ERROR"
+msgid "MODAL_SEND_INFO"
+msgstr "Falha no procedimento de envio"
+
+msgctxt "SUCCESS"
+msgid "MODAL_LEASING_MESSAGE"
+msgstr "Leasing iniciado!"
+
+msgctxt "SUCCESS"
+msgid "MODAL_LEASING_CANCEL"
+msgstr "Cancelado com sucesso!"
+
+msgctxt "SUCCESS"
+msgid "PAYMENT"
+msgid_plural "PAYMENT"
+msgstr[0] "Você acabou de debitar um boleto no valor de "
+msgstr[1] " em sua carteira Lunes"
+
+msgctxt "SUCCESS"
+msgid "MODAL_SEND_INFO"
+msgstr "O envio foi feito com sucesso"
+
+msgctxt "CUPON"
+msgid "INSTRUCTION_MODAL"
+msgid_plural "INSTRUCTION_MODAL"
+msgstr[0] "Enter the 4-digit code of the your coupon"
+msgstr[1] "Item"
+msgstr[2] "Enter the 4-digit code of your coupon"
+msgstr[3] ""
+
+msgctxt "TITLE"
+msgid "COUPON"
+msgid_plural "COUPON"
+msgstr[0] "Coupon"
+msgstr[1] "Coupon"
+msgstr[2] ""
+
+msgctxt "TITLE"
+msgid "SETTING_WALLETS"
+msgstr "Wallets"
+
+msgctxt "TITLE"
+msgid "SECURITY"
+msgstr "2FA Authenticator"
+
+msgctxt "TITLE"
+msgid "DEFINITIONS"
+msgstr "Definitions"
+
+msgctxt "TITLE"
+msgid "CONSENT"
+msgstr "Consent"
+
+msgctxt "TITLE"
+msgid "SET_SEED"
+msgstr "BACKUP DE INFORMAÇÃO DA CONTA"
+
+msgctxt "TITLE"
+msgid "CARD_HOME"
+msgid_plural "CARD_HOME"
+msgstr[0] "Recharges"
+msgstr[1] "Invoices"
+msgstr[2] "Favorites Coins"
+msgstr[3] "Withdrawal"
+msgstr[4] "Wallet"
+msgstr[5] "Leasing"
+
+msgctxt "TITLE"
+msgid "2FA_INSTRUCTIONS"
+msgstr "Device verification"
+
+msgctxt "TITLE"
+msgid "WALLET_MODAL_SEND"
+msgstr "Transaction"
+
+msgctxt "TITLE"
+msgid "WALLET_MODAL_RECEIVE"
+msgstr "Receive"
+
+msgctxt "TITLE"
+msgid "TRANSACTION_HISTORY"
+msgstr "Transactions"
+
+msgctxt "TITLE"
+msgid "SETTINGS"
+msgstr "Choose the right privacy settings for you"
+
+msgctxt "TITLE"
+msgid "PAYMENT_MODAL"
+msgstr "Pagamento de Boleto"
+
+msgctxt "TITLE"
+msgid "GDPR"
+msgstr "Termo GDPR"
+
+msgctxt "TITLE"
+msgid "PAYMENT_HEADER"
+msgstr "Online Payment"
+
+msgctxt "TITLE"
+msgid "PAYMENT"
+msgstr "Invoices"
+
+msgctxt "CARD"
+msgid "SETTINGS"
+msgid_plural "SETTINGS"
+msgstr[0] "WALLETS"
+msgstr[1] "CONSENT"
+msgstr[2] "DEFINITIONS"
+msgstr[3] "WALLETS"
+msgstr[4] "2FA AUTHENTICATION"
+
+msgctxt "USER"
+msgid "SETTINGS"
+msgstr "User profile"
+
+msgctxt "BACK"
+msgid "SETTINGS_USER"
+msgstr "Back to the settings"
+
+msgctxt "BACK"
+msgid "BTN"
+msgstr "Back"
+
+msgctxt "IMAGE"
+msgid "SETTINGS_USER"
+msgstr "User image"
+
+msgctxt "STATUS"
+msgid "SETTINGS_USER"
+msgstr "Status"
+
+msgctxt "STATUS"
+msgid "LEASING_TITLE"
+msgstr "Status"
+
+msgctxt "VERIFIED"
+msgid "SETTINGS_USER_ACCOUNT"
+msgstr "Account verified"
+
+msgctxt "VERIFIED"
+msgid "SETTINGS_USER_ACCOUNT_NOT"
+msgstr "Account not verified"
+
+msgctxt "VERIFIED"
+msgid "SETTINGS_USER_EMAIL"
+msgstr "E-mail verified"
+
+msgctxt "VERIFIED"
+msgid "SETTINGS_USER_2FA"
+msgstr "2FA authentication verified"
+
+msgctxt "NAME"
+msgid "SETTINGS_USER_FIRST"
+msgstr "First name"
+
+msgctxt "NAME"
+msgid "SET_ALIAS_SAVE"
+msgstr "Save name"
+
+msgctxt "NAME"
+msgid "PLACEHOLDER_FIRST"
+msgstr "First name"
+
+msgctxt "NAME"
+msgid "PLACEHOLDER_LAST"
+msgstr "Last name"
+
+msgctxt "NAME"
+msgid "PAYMENT_TITLE"
+msgstr "Nome"
+
+msgctxt "NAME"
+msgid "PAYMENT"
+msgstr "Name"
+
+msgctxt "NAME"
+msgid "PAYMENT_FIND"
+msgstr "Find by name"
+
+msgctxt "SURNAME"
+msgid "SETTINGS_USER"
+msgstr "Surname"
+
+msgctxt "CONTACT"
+msgid "SETTINGS_USER"
+msgstr "Contact"
+
+msgctxt "CODE"
+msgid "SETTINGS_USER"
+msgstr "Code"
+
+msgctxt "CODE"
+msgid "SETTINGS_USER_ZIP"
+msgstr "Zip code"
+
+msgctxt "CODE"
+msgid "VOUCHER"
+msgstr "Code"
+
+msgctxt "CODE"
+msgid "MODAL_SEND_QR"
+msgstr "Enviar Scaneando QrCode"
+
+msgctxt "NUMBER"
+msgid "SETTINGS_USER"
+msgstr "Phone"
+
+msgctxt "NUMBER"
+msgid "VOUCHER"
+msgstr "Number"
+
+msgctxt "BIRTHDATE"
+msgid "SETTINGS_USER"
+msgstr "Birth date"
+
+msgctxt "DAY"
+msgid "SETTINGS_USER"
+msgstr "Day"
+
+msgctxt "MONTH"
+msgid "SETTINGS_USER"
+msgstr "Month"
+
+msgctxt "YEAR"
+msgid "SETTINGS_USER"
+msgstr "Year"
+
+msgctxt "SELECT"
+msgid "SETTINGS_USER"
+msgstr "Select"
+
+msgctxt "CITY"
+msgid "SETTINGS_USER"
+msgstr "City"
+
+msgctxt "STATE"
+msgid "SETTINGS_USER"
+msgstr "State"
+
+msgctxt "DATA"
+msgid "SETTINGS_USER_SAVE"
+msgstr "Save data"
+
+msgctxt "LUNES"
+msgid "SETTINGS_ALIAS_WALLET"
+msgstr "Wallet Lunes"
+
+msgctxt "ITEM"
+msgid "SECURITY"
+msgid_plural "SECURITY"
+msgstr[0] "Insira o Número de Autheticação para ativar o 2FA em sua conta."
+msgstr[1] "Install: Google Authenticator on your Smartphone"
+msgstr[2] "Open Google Authenticator, Enter the code manually or Scan the QR code below"
+
+msgctxt "RETURN"
+msgid "SETTING_LINK"
+msgstr "Back to the settings"
+
+msgctxt "RETURN"
+msgid "SECURITY_LINK"
+msgstr "Back to the settings"
+
+msgctxt "REGISTRED"
+msgid "SECURITY_2FA"
+msgstr "Two Factor Authentication already registered!"
+
+msgctxt "WORDS"
+msgid "SET_SEED"
+msgstr "Suas palavras chaves"
+
+msgctxt "IMPORT"
+msgid "SET_BUTTON_SEED"
+msgstr "Importar Seed"
+
+msgctxt "REMOVE"
+msgid "SET_BUTTON"
+msgstr "Remover"
+
+msgctxt "FAV"
+msgid "SET_BUTTON"
+msgstr "Favoritar"
+
+msgctxt "TITLE1"
+msgid "SET_DEFINITIONS"
+msgstr "Definições padrões por região"
+
+msgctxt "DESC1"
+msgid "SET_DEFINITIONS"
+msgstr ""
+"O idioma selecionado será automaticamente exibido quando voce acessar sua "
+"plataforma."
+
+msgctxt "TITLE2"
+msgid "SET_DEFINITIONS"
+msgstr "Opções de Logout"
+
+msgctxt "OPTION1"
+msgid "SET_DEFINITIONS"
+msgstr ""
+"Deletar todos os metadados locais ao fazer logout - o seu próximo login "
+"demorará mais para ser processado."
+
+msgctxt "OPTION2"
+msgid "SET_DEFINITIONS"
+msgstr ""
+"Salve localmente os metadados criptografados para um login mais rápido na "
+"sua proxima sessao."
+
+msgctxt "LANG"
+msgid "SET_DEFINITIONS_LABEL"
+msgstr "Idioma da interface"
+
+msgctxt "LANG"
+msgid "LOGIN_FOOTER"
+msgstr "English"
+
+msgctxt "CURR"
+msgid "SET_DEFINITIONS_LABEL"
+msgstr "Moeda Fiat padrão"
+
+msgctxt "COIN"
+msgid "SET_DEFINITIONS_LABEL"
+msgstr "Moeda padrão"
+
+msgctxt "REDIRECT"
+msgid "PAGE_ERROR_500"
+msgstr "Redirecting in"
+
+msgctxt "DEFAULT"
+msgid "LEASING_SELECT_NODE"
+msgstr "Nodes Profissionais"
+
+msgctxt "FIELD"
+msgid "LEASING_NOT_INFORMED"
+msgstr "Campo não informado"
+
+msgctxt "CONFIRM"
+msgid "MODAL_LEASING"
+msgstr "Deseja realmente cancelar?"
+
+msgctxt "CONFIRM"
+msgid "BTN"
+msgstr "Confirm"
+
+msgctxt "CONFIRM"
+msgid "PAYMENT"
+msgid_plural "PAYMENT"
+msgstr[0] ""
+"O tempo médio de confirmação do pagamento é de até 30 minutos. Somente "
+"conclua o pagamento se estiver de acordo."
+msgstr[1] "Confirme os dados para concluir seu pagamento"
+msgstr[2] "Será debitado da sua carteira "
+
+msgctxt "FAILURE"
+msgid "MODAL_LEASING_MESSAGE"
+msgstr "Não foi possível iniciar o leasing"
+
+msgctxt "FAILURE"
+msgid "MODAL_LEASING_CANCEL"
+msgstr "Não foi possível cancelar"
+
+msgctxt "FILEDS"
+msgid "MESSAGE_ERROR"
+msgstr "The following fields are missing or wrong"
+
+msgctxt "FILEDS"
+msgid "MESSAGE_ERROR_EMPTY"
+msgstr "Some fields are empty"
+
+msgctxt "EMAIL"
+msgid "MESSAGE_USER"
+msgstr "User/Email"
+
+msgctxt "EMAIL"
+msgid "PLACEHOLDER_USERNAME"
+msgstr "Username or Email"
+
+msgctxt "EMAIL"
+msgid "PLACEHOLDER"
+msgstr "Email"
+
+msgctxt "EMAIL"
+msgid "BTN_RECEIVE"
+msgstr "E-mail"
+
+msgctxt "SEED"
+msgid "PLACEHOLDER"
+msgstr "Seed Words"
+
+msgctxt "SEED"
+msgid "BTN_IMPORT"
+msgstr "Import"
+
+msgctxt "SEED"
+msgid "BTN_NEW"
+msgstr "GENERATE NEW SEED"
+
+msgctxt "SEED"
+msgid "SEED_INSERT"
+msgstr "Insert your SeedWords"
+
+msgctxt "REPEAT"
+msgid "PLACEHOLDER_PASSWORD"
+msgstr "Repeat password"
+
+msgctxt "SUBMIT"
+msgid "BTN"
+msgstr "Submit"
+
+msgctxt "SEND"
+msgid "BTN"
+msgstr "Send"
+
+msgctxt "SEND"
+msgid "MODAL_TO_SEND"
+msgstr "você esta enviando"
+
+msgctxt "RECEIVE"
+msgid "BTN"
+msgstr "Receive"
+
+msgctxt "CREATE"
+msgid "BTN"
+msgstr "Create"
+
+msgctxt "CREATE"
+msgid "PIN"
+msgstr "CREATE your PIN"
+
+msgctxt "NEXT"
+msgid "BTN"
+msgstr "Next"
+
+msgctxt "LOGIN"
+msgid "BTN"
+msgstr "Login"
+
+msgctxt "PIN"
+msgid "BTN_CONFIRM"
+msgstr "Validate"
+
+msgctxt "RESET"
+msgid "BTN"
+msgstr "Reset"
+
+msgctxt "SAVE"
+msgid "BTN"
+msgstr "Save"
+
+msgctxt "2FA"
+msgid "BTN"
+msgstr "Activate 2FA"
+
+msgctxt "FINALIZE"
+msgid "BTN"
+msgstr "Finalize"
+
+msgctxt "CONTINUE"
+msgid "BTN"
+msgstr "Continue"
+
+msgctxt "HEADER"
+msgid "LOGIN"
+msgstr "Enter your data"
+
+msgctxt "HEADER"
+msgid "NEW_ACCOUNT"
+msgstr "Enter the necessary information to make your registration"
+
+msgctxt "HEADER"
+msgid "NEW_ACCOUNT_PASSWORD"
+msgstr "Digit your password"
+
+msgctxt "HEADER"
+msgid "2FA"
+msgstr "2FA Confirmation"
+
+msgctxt "HEADER"
+msgid "RESET"
+msgstr "Forgot your password"
+
+msgctxt "HEADER"
+msgid "RESET_NEW_PASSWORD"
+msgstr "Type your new password"
+
+msgctxt "LINK"
+msgid "LOGIN_FORGET_PASSWORD"
+msgstr "Forgot your password"
+
+msgctxt "LINK"
+msgid "LOGIN_SINGUP_ACCOUNT"
+msgstr "Sign up"
+
+msgctxt "LINK"
+msgid "PIN_FORGET_PIN"
+msgstr "Forgot your PIN"
+
+msgctxt "LABEL"
+msgid "LOGIN_CREATE_ACCOUNT"
+msgstr "Do not have an account yet"
+
+msgctxt "LABEL"
+msgid "LEASING_AMOUNT"
+msgstr "Amount to lease"
+
+msgctxt "LABEL"
+msgid "LEASING_BALANCE"
+msgstr "Your balance"
+
+msgctxt "HOME"
+msgid "LOGIN_FOOTER"
+msgstr "Main"
+
+msgctxt "HOME"
+msgid "MENU"
+msgstr "Home"
+
+msgctxt "ASSETS"
+msgid "MENU"
+msgstr "Assets"
+
+msgctxt "SUPPORT"
+msgid "LOGIN_FOOTER"
+msgstr "Support"
+
+msgctxt "SUPPORT"
+msgid "MENU"
+msgstr "Support"
+
+msgctxt "FOOTER"
+msgid "LOGIN"
+msgstr "2018 lunes.io All Rights Reserved"
+
+msgctxt "ENTER"
+msgid "PIN"
+msgstr "ENTER your PIN"
+
+msgctxt "TERMS"
+msgid "NEW_ACCOUNT_ACCEPT"
+msgstr "I agree with Terms of Services"
+
+msgctxt "SENDED"
+msgid "NEW_ACCOUNT_MESSAGE"
+msgstr "A message with an activation link has been sent to your email address"
+
+msgctxt "SENDED"
+msgid "RESET_EMAIL"
+msgstr "A message with a password reset link has been sent to your email address"
+
+msgctxt "DOWNLOAD"
+msgid "NEW_ACCOUNT_TERMS"
+msgstr "Click to download and finish the registration"
+
+msgctxt "FIND"
+msgid "2FA_INSTRUCTIONS_LINK_WHERE_TO"
+msgstr "Where do I find the code"
+
+msgctxt "INSTRUCTIONS2"
+msgid "RESET"
+msgstr "About resetting it"
+
+msgctxt "INSTRUCTION"
+msgid "RESET_NEW_PASSWORD"
+msgstr "Your password must follow the rules below"
+
+msgctxt "LOGOUT"
+msgid "MENU"
+msgstr "Logout"
+
+msgctxt "PORTFOLIO"
+msgid "MENU"
+msgstr "Portfolio"
+
+msgctxt "WALLET"
+msgid "MENU"
+msgstr "Wallet"
+
+msgctxt "RECHARGE"
+msgid "MENU"
+msgstr "Recharge"
+
+msgctxt "PAY"
+msgid "MENU"
+msgstr "Pay"
+
+msgctxt "PAY"
+msgid "PAYMENT_BTN"
+msgstr "Pagar agora"
+
+msgctxt "PURCHASE"
+msgid "MENU"
+msgstr "Purchase"
+
+msgctxt "COUPONS"
+msgid "MENU"
+msgstr "Coupons"
+
+msgctxt "SETTING"
+msgid "MENU"
+msgstr "Settings"
+
+msgctxt "LEASING"
+msgid "MENU"
+msgstr "Leasing"
+
+msgctxt "LEASING"
+msgid "MODAL_TITLE_START"
+msgstr "Start Leasing"
+
+msgctxt "PRIVACY"
+msgid "MENU"
+msgstr "Privacy"
+
+msgctxt "MESSAGE"
+msgid "MODAL_RECEIVE"
+msgstr "Copied Address"
+
+msgctxt "COPY"
+msgid "BTN_RECEIVE"
+msgstr "Copy"
+
+msgctxt "PRINT"
+msgid "BTN_RECEIVE"
+msgstr "Print"
+
+msgctxt "SHARED"
+msgid "BTN_RECEIVE"
+msgstr "Shared"
+
+msgctxt "BALANCE"
+msgid "WALLET"
+msgstr "Balance"
+
+msgctxt "BALANCE"
+msgid "LEASING"
+msgstr "Total Lunes Balance"
+
+msgctxt "TEXT"
+msgid "LEASING_HELP"
+msgstr ""
+"Always keep at least 2 or more Lunes in your wallet. A small amount of "
+"Lunes will be recquired to cancel the Leasing"
+
+msgctxt "TEXT"
+msgid "PAYMENT_FEE"
+msgid_plural "PAYMENT_FEE"
+msgstr[0] "Você esta enviando "
+msgstr[1] " para o endereco "
+
+msgctxt "TEXT"
+msgid "PAYMENT_DETAILS"
+msgid_plural "PAYMENT_DETAILS"
+msgstr[0] ", conforme informações abaixo:"
+msgstr[1] ""
+"Atenção: Confira abaixo os dados do seu pedido, para que não haja erros. Se "
+"a informação estiver incorreta, clique em voltar."
+msgstr[2] " e será pago um título de "
+
+msgctxt "START"
+msgid "LEASING_BT"
+msgstr "START LEASING"
+
+msgctxt "CANCEL"
+msgid "LEASING_BT"
+msgstr "Cancel"
+
+msgctxt "EXPLORER"
+msgid "LEASING_TITLE"
+msgstr "Blockexplorer"
+
+msgctxt "ACTIVE"
+msgid "LEASING_BALANCE"
+msgstr "Leasing"
+
+msgctxt "NEW"
+msgid "LEASING_TITLE"
+msgstr "New Leasing"
+
+msgctxt "NODE"
+msgid "LEASING_TITLE"
+msgstr "Node"
+
+msgctxt "BUTTON"
+msgid "VOUCHER"
+msgstr "Rescue"
+
+msgctxt "INFO"
+msgid "SETTINGS_HEADER"
+msgstr ""
+"Control your personal information. With these settings, you can manage "
+"which information is private and which is saved to your account to enhance "
+"your Lunes Wallet experience"
+
+msgctxt "CONFIRMATION"
+msgid "PAYMENT_PASS"
+msgstr "Para confirmar sua transação, informe sua senha e conclua o envio de "
+
+msgctxt "HISTORY"
+msgid "PAYMENT_TEXT"
+msgstr "Você pode visualizar a transação em sua seção \"Históricos\""
+
+msgctxt "HISTORY"
+msgid "PAYMENT"
+msgstr "Histories"
+
+msgctxt "BANK"
+msgid "PAYMENT_TITLE"
+msgstr "Banco/Instituição"
+
+msgctxt "DATE"
+msgid "PAYMENT_TITLE"
+msgstr "Vencimento"
+
+msgctxt "DATE"
+msgid "PAYMENT_DUE"
+msgstr "Due date"
+
+msgctxt "DOC"
+msgid "PAYMENT_TITLE"
+msgstr "CPF"
+
+msgctxt "VALUE"
+msgid "PAYMENT_TITLE"
+msgstr "Valor"
+
+msgctxt "VALUE"
+msgid "PAYMENT"
+msgstr "Value"
+
+msgctxt "DESC"
+msgid "GDPR"
+msgstr "Lorem ipsum asd asdsd sdsdsjks"
+
+msgctxt "HIGHT"
+msgid "FEE"
+msgstr "Alto"
+
+msgctxt "SUBTITLE"
+msgid "PAYMENT_HEADER"
+msgstr "Do your payments online with cryptocoins"
+
+msgctxt "INVOICE"
+msgid "PAYMENT"
+msgstr "Pay Invoice"
+
+msgctxt "ASSIGNOR"
+msgid "PAYMENT"
+msgstr "Assignor"
+
+msgctxt "CNPJ"
+msgid "PAYMENT_CPF"
+msgstr "CPF / CNPJ (only numbers)"
+
+msgctxt "SYMBOL"
+msgid "PAYMENT_VALUE"
+msgstr "$"
+
+msgctxt "SEPARATOR"
+msgid "PAYMENT_DECIMAL"
+msgstr ","
+
+msgctxt "NOW"
+msgid "PAYMENT_PAY"
+msgstr "Pay now"
+
+msgctxt "INSTRUCIONS"
+msgid "MODAL_TITLE"
+msgstr "Instructions"
+
+msgctxt "TRANSACTION"
+msgid "MODAL_SEND_INFO"
+msgstr "Para confirmar sua transação, informe sua senha e conclua o envio de "
+
+msgctxt "TRANSACTION"
+msgid "MODAL_SEND_FEE"
+msgstr "Sua taxa de transação na rede"
+
+msgctxt "BLOCKCHAIN"
+msgid "MODAL_SEND_INFO"
+msgstr "Sua transação esta sendo processada dentro do Blockchain"

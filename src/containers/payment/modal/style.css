@@ -1,0 +1,192 @@
+/*
+  1. BASES
+  2. TEXTS 
+  3. BUTTONS/INPUTS
+*/
+
+/* 1. BASES */
+
+:local .modalBox {
+  text-align: center;
+  align-self: center;
+  padding: 20px;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #fff;
+}
+
+:local .inlineInfo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 12px;
+}
+
+:local .inlineInfo > div {
+  padding: 10px;
+  border-right: solid 1px rgba(0, 0, 0, 0.3);
+  text-align: right;
+}
+
+:local .inlineInfo > div:last-child {
+  border: none;
+}
+
+:local .boxFee {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+:local .modalIconCoin {
+  max-width: 50px;
+  margin-bottom: 20px;
+}
+
+:local .imageResult {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 599px) {
+  :local .modalBox {
+    font-size: 10px;
+  }
+  :local .inlineInfo {
+    border-top: solid 1px rgba(0, 0, 0, 0.3);
+    font-size: 9px;
+    padding-top: 10px;
+  }
+
+  :local .inlineInfo > div {
+    padding: 5px;
+    text-align: left;
+    border: none;
+  }
+}
+
+/* 2. TEXTS */
+:local .strongText {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+:local .textGreen {
+  composes: clGreenDefault from "../../../components/bases/colorBase.css";
+}
+
+:local .strongTextGreen {
+  composes: strongText;
+  composes: textGreen;
+}
+
+:local .inlineInfoLabel {
+  composes: textGreen;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+:local .labelFee {
+  display: block;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+:local .labelFee:hover {
+  opacity: 1;
+  border-bottom-width: 3px;
+  padding-top: 3px;
+}
+
+:local .greenLabelFee {
+  composes: labelFee;
+  border-bottom: solid 1px greenyellow;
+}
+
+:local .yellowLabelFee {
+  composes: labelFee;
+  border-bottom: solid 1px orange;
+}
+
+:local .redLabelFee {
+  composes: labelFee;
+  border-bottom: solid 1px red;
+}
+
+:local .txtamount {
+  composes: inputTextDefault from "../../../components/bases/inputBase.css";
+  background: transparent;
+  font-size: 42px;
+  text-align: center;
+}
+
+:local .txtamount::placeholder {
+  font-size: 42px;
+  text-align: center;
+}
+
+:local .confirmFee {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 10px;
+}
+
+:local .addressConfirm {
+  composes: clGreenDefault from "../../../components/bases/colorBase.css";
+  font-weight: 700;
+}
+
+:local .totalConfirm {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+:local .totalConfirmBlock {
+  composes: clGreenDefault from "../../../components/bases/colorBase.css";
+  display: block;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+:local .smallDescription {
+  font-size: 11px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 599px) {
+  :local .strongText {
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+
+/* 3. BUTTONS */
+
+:local .bt {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+:local(.btContinue) {
+  composes: buttonEnable from "../../../components/bases/buttonBase.css";
+  composes: bt;
+}
+
+:local .inputTextDefault {
+  composes: inputTextDefault from "../../../components/bases/inputBase.css";
+  max-width: 260px;
+}

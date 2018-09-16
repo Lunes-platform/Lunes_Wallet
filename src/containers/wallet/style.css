@@ -1,0 +1,734 @@
+@import url("~slick-carousel/slick/slick.css");
+/*
+
+1 BOX COIN
+  1.1 BASE
+  1.2 TEXTS
+
+2. COINS INFO
+  2.1 BASES 
+  2.2 TEXTS
+  2.3 BUTTONS
+
+3. HISTORY
+  3.1 BASES
+  3.2 TEXTS
+  3.3 ICONS
+
+3. MODAL
+*/
+
+/* ------------------------------------------------------------------------- */
+/* 1. BOX COIN*/
+
+/* 1.1 BASES */
+:local .boxCoin {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 10px;
+  border-radius: 8px;
+  opacity: 0.8;
+  transition: opacity 0.5s;
+  height: 60px;
+}
+
+:local .boxCoinDisabled {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+:local .boxCoinActive {
+  composes: bgPurpleClear from "../../components/bases/colorBase.css";
+  composes: boxCoin;
+}
+
+:local .boxCoin:hover {
+  include: bgPurpleClear from "../../components/bases/colorBase.css";
+  cursor: pointer;
+  opacity: 1;
+}
+
+:local .contentCoins {
+  composes: bgPurpleLight from "../../components/bases/colorBase.css";
+  box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.05);
+  margin-left: 1px;
+}
+
+:local .boxIconCoin {
+  composes: bgPurpleClear from "../../components/bases/colorBase.css";
+  padding: 18px;
+  float: left;
+  border-radius: 8px;
+}
+
+:local .iconCoin {
+  width: 24px;
+  height: 24px;
+}
+
+:local .arrowControl {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+:local .arrowPercent {
+  width: 10px;
+  margin-bottom: -8px;
+}
+
+:local .arrowPercentDown {
+  composes: arrowPercent;
+  composes: clCoinBitcoin from "../../components/bases/colorBase.css";
+}
+
+:local .arrowPercentUp {
+  composes: arrowPercent;
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+}
+
+:local .arrowPercentDisabled {
+  padding-top: 2px;
+}
+
+:local .paddingTop8 {
+  padding-top: 8%;
+}
+
+:local .boxArrowPercent {
+  margin-top: 17px;
+  margin-left: 39px;
+  position: absolute;
+}
+
+@media only screen and (max-width: 812px) {
+  :local .boxIconCoin {
+    background-color: transparent;
+    margin-left: -5px;
+  }
+  :local .boxCoinActive {
+    composes: bgPurpleClear from "../../components/bases/colorBase.css";
+    composes: boxCoin;
+    max-width: 80px;
+  }
+}
+
+/* 1.2 TEXTS */
+
+:local .boxLabelCoin {
+  font-size: 12px;
+  text-align: right;
+  padding-top: 12px;
+  padding-right: 5px;
+  word-wrap: break-word;
+}
+
+:local .boxLabelCoinDisabled {
+  font-size: 12px;
+  text-align: right;
+  padding-top: 25px;
+  word-wrap: break-word;
+}
+
+:local .labelPercent {
+  font-size: 11px;
+}
+
+/* ------------------------------------------------------------------------- */
+/* 2. COINS INFO */
+
+/* 2.1 BASES */
+:local(.styleCoinDefalt){
+  box-shadow: 0 2px 36px -18px rgba(0, 0, 0, 0.6);
+}
+
+:local(.contentInfo) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:local(.coinSel) {
+  composes: styleCoinDefalt;
+  background-color: #473088;
+  border-radius: 7px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+:local(.coinSel img) {
+  width: 49px;
+  height: 49px;
+  margin: 5px;
+}
+
+:local(.floatRight) {
+  height: 100%;
+  padding-left: 1.5%;
+}
+
+:local(.containerInfo) {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+:local(.balanceItem) {
+  background-color: #473088;
+  text-align: right;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+:local(.balanceItemMobile) {
+  composes: balanceItem;
+  padding: 5px 10px;
+  height: 100%;
+}
+
+:local(.alignValues) {
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 16px;
+}
+:local(.coinBalanceGreen) {
+  color: #68f285;
+  display: inline;
+}
+:local(.balanceItem p) {
+  font-weight: normal;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.coinSel img) {
+    width: 34px;
+    height: 34px;
+  }
+  :local(.coinSel h3) {
+    font-size: 14px;
+  }
+  :local(.coinSel h2) {
+    font-size: 14px;
+  }
+  :local(.styleCoinDefalt) {
+    box-shadow: none;
+  }
+  :local(.balanceItemMobile h2) {
+    font-size: 14px;
+  }
+  :local(.balanceItem p) {
+    font-size: 18px;
+  }
+  :local(.alignValues) {
+    font-size: 14px;
+  }
+  :local(.containerInfo) {
+    margin-top: 30px
+  }
+}
+
+/* 2.2 TEXTS */
+:local(.coinSel h3) {
+  font-size: 19px;
+  margin: 0;
+}
+:local(.coinSel h2) {
+  margin: 0;
+}
+:local(.balanceItem h2) {
+  margin: 0 0 15px 0;
+}
+
+/* 2.3 BUTTONS */
+:local(.alignButtons) {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2%;
+}
+:local(.receiveButton) {
+  composes: receiveButton from "../../components/bases/buttonBase.css";
+  composes: styleCoinDefalt;
+}
+
+:local(.sentButton) {
+  composes: sentButton from "../../components/bases/buttonBase.css";
+  composes: styleCoinDefalt;
+}
+
+:local(.sentButtonMobile) {
+  composes: sentButton;
+  padding: 0;
+  height: 40px;
+}
+:local(.receiveButtonMobile) {
+  composes: receiveButton;
+  padding: 0;
+  height: 40px;
+}
+/* ------------------------------------------------------------------------- */
+/* 3. HISTORY */
+
+/* 3.1 BASES */
+:local(.displayAlign) {
+  display: flex;
+  justify-content: center;
+}
+
+:local(.containerTransactions) {
+  composes: displayAlign;  
+}
+
+:local(.contentTransactions) {
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.05);
+  background-color: #473088;
+  max-height: 55vh;
+  overflow: auto;   
+  padding-bottom: 100px;
+}
+
+:local(.contentTransactions::-webkit-scrollbar-thumb) {
+  background-color: #68f285;
+}
+
+:local(.typeItems) {
+  text-align: center;
+  padding: 10px 0; 
+  margin: auto auto;
+}
+
+:local(.itemHistorico) {
+  display: flex;
+  border: 0;
+  border-bottom: 1px;
+  border-color: #3a1d71;
+  border-style: solid;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 20px;
+  opacity: 1;
+}
+
+:local(.itemDataHistorico) {
+  background-color: #381e67;
+  display: flex;
+  cursor: default;
+  font-size: 9px;
+}
+
+:local(.toggleHistory) {
+  display: none;
+  transition: 2s;
+}
+
+:local(.alignItemsHeaderHistory) {
+  composes: textDefault from "../../components/bases/textBase.css";  
+  padding: 15px 0;
+  font-weight: bold;
+}
+
+:local(.alignTimeInValueHistory) {
+  composes: displayAlign;    
+}
+
+:local(.opacityItem) {
+  composes: itemHistorico;
+  opacity: 0.4;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.nivel3) {
+    padding-bottom: 60px;
+  }
+  :local(.itemHistorico) {
+    margin: 0;
+  }
+  :local(.contentTransactions) {
+    box-shadow: none;
+  }
+}
+
+/* 3.2 TEXTS */
+:local(.historyTitle) {
+  text-align: center;
+  font-size: 16px;
+  padding-left: 25px;
+}
+
+:local(.titleBlockExplorer) {
+  padding: 10px 15px; 
+  margin: auto auto;
+  font-weight: bold;
+}
+
+:local(.descriptionHistory) {
+  padding: 10px 15px;
+  font-size: 12px;
+}
+
+:local(.descriptionHistory a) {
+  text-decoration: none;
+  color: white;
+}
+
+:local(.notFound) {
+  text-align: center;
+  padding-top: 5%;
+}
+
+:local(.valueHistory) {
+  text-align: right;
+  padding-right: 15px;
+}
+
+:local(.timeInValueHistory) {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+:local(.sentHistory) {
+  composes: clError from "../../components/bases/colorBase.css";
+}
+
+:local(.sentButton) {
+  composes: submitButton from "../../components/bases/buttonBase.css";
+  composes: styleCoinDefalt;
+}
+:local(.receivedHistory) {
+  composes: clGreenLight from "../../components/bases/colorBase.css";
+}
+
+:local(.timeHistory) {
+  font-weight: bold;
+  text-align: center;
+}
+
+:local(.sentButtonMobile) {
+  composes: submitButton from "../../components/bases/buttonBase.css";
+  composes: styleCoinDefalt;
+  height: 40px;
+}
+:local(.dateHistory) {
+  font-size: 9px;
+}
+
+:local(.idTransactionHistory) {
+  padding: 0px 15px;
+  font-size: 9px;
+}
+
+:local(.fromTransactionHistory) {
+  composes: clError from "../../components/bases/colorBase.css";
+  padding: 0px 15px;
+  font-size: 9px;
+}
+
+:local(.forTransactionHistory) {
+  composes: clGreenLight from "../../components/bases/colorBase.css";
+  padding: 0px 15px;
+  font-size: 9px;
+}
+
+@media only screen and (max-width: 599px) {
+  :local(.descriptionHistory) {
+    font-size: 9px;
+  }  
+  :local(.valueHistory) {
+    padding-right: 10px;
+  }
+}
+
+/* 3.2 ICONS */
+:local(.refleshIcon) {
+  composes: displayAlign;  
+  cursor: pointer;
+  background-color: #473088;
+  border-radius: 20px;
+  padding: 6px;
+  float: right;
+  align-content: center;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* 3. MODAL */
+
+:local .baseStep {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+  padding-top: 30px;
+}
+
+:local .modalBox {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #fff;
+}
+
+@media only screen and (max-width: 400px) {
+  :local .modalBox {
+    font-size: 12px;
+  }
+  :local .baseStep {
+    padding: 30px 0;
+  }
+}
+
+@media only screen and (min-width: 1279px) {
+  :local .modalBox {
+    width: 40vw;
+  }
+}
+
+:local .boxQr {
+  composes: modalBox;
+  text-align: -webkit-center;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+  padding-bottom: 0;
+}
+
+:local .totalConfirm {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+:local .addressConfirm {
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+  font-weight: 700;
+}
+
+:local .qrCodeBox {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+:local .qrCode {
+  max-width: 400px;
+}
+
+:local .modalBox .hoverShow {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+:local .modalBox:hover .hoverShow {
+  opacity: 1;
+}
+
+:local .bt {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+:local(.btContinue) {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+  composes: bt;
+}
+
+:local(.btError) {
+  composes: buttonGeneral from "../../components/bases/buttonBase.css";
+  composes: bgError from "../../components/bases/colorBase.css";
+  composes: bt;
+}
+
+:local(.btContinueDisable) {
+  composes: buttonBorderGreen from "../../components/bases/buttonBase.css";
+  composes: bt;
+}
+
+:local .boxDecription {
+  margin-bottom: 5%;
+}
+
+:local .inputClear {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  background: transparent;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 500px;
+  color: #68f285;
+  margin: 0px;
+}
+
+:local .boxPercent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+:local .boxPercent span {
+  display: block;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+  opacity: 0.5;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+:local .boxPercent span:hover {
+  opacity: 1;
+  border-color: #fff;
+}
+
+:local .boxFee {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+:local .labelFee {
+  display: block;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+:local .labelFee:hover {
+  opacity: 1;
+  border-bottom-width: 3px;
+  padding-top: 3px;
+}
+
+:local .greenLabelFee {
+  composes: labelFee;
+  border-bottom: solid 1px greenyellow;
+}
+
+:local .yellowLabelFee {
+  composes: labelFee;
+  border-bottom: solid 1px orange;
+}
+
+:local .redLabelFee {
+  composes: labelFee;
+  border-bottom: solid 1px red;
+}
+
+:local .textHelp {
+  opacity: 0.3;
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+:local .confirmFee {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 10px;
+}
+
+:local .txtamount {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  background: transparent;
+  font-size: 42px;
+  text-align: center;
+}
+
+:local .txtamount::placeholder {
+  font-size: 42px;
+  text-align: center;
+}
+
+:local(.inputTextDefault) {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  max-width: 260px;
+}
+
+:local(.processInfo) {
+  padding-bottom: 30px;
+}
+
+:local .modalIconCoin {
+  max-width: 50px;
+  margin-bottom: 20px;
+}
+
+:local .errorString {
+  composes: clError from "../../components/bases/colorBase.css";
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom:40px;
+}
+
+:local .boxReceive {
+  display: block;
+  width: 100%;
+}
+
+:local .boxReceive .qrCodeReceive{
+  padding-top: 15%;
+  width: 100%;
+  text-align: center;
+}
+
+:local .boxReceive .bgQrCode {
+  border-radius: 48px;
+  background-color: #fff;
+  padding: 30px 40px 30px 40px;
+  box-shadow: inset 0 1px 8px 0 #4b2c82;
+}
+
+:local .boxReceive .address{
+  color: #68f285;
+  text-align: center;
+}
+
+:local .boxReceive .qrMessage{
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+:local .boxReceive .spacingBox{
+  align-items: center;
+  padding: 5% 2% 2% 2%;
+  max-width: 50%;
+  margin-left: 23%;
+}
+
+:local .boxReceive .buttonReceive {
+  text-align: center;
+  opacity: 0.15;
+}
+
+:local .boxReceive .buttonReceive:hover {
+  opacity: 1;
+}
+
+:local .boxReceive span {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 9.7pt;
+}
