@@ -11,6 +11,7 @@ import {
   setWalletLoading,
   setUtxos
 } from "./redux/walletAction";
+import { errorRequest } from "../errors/redux/errorAction.js";
 
 import { loadWalletInfo } from "../skeleton/redux/skeletonAction";
 
@@ -27,6 +28,7 @@ import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import Modal from "../../components/modal";
 import SendModal from "./modal/sendModal/";
 import ReceiveModal from "./modal/receiveModal/";
+import Loading from "../../components/loading.jsx";
 
 // UTILS
 import i18n from "../../utils/i18n";
@@ -59,18 +61,12 @@ class CoinsInfo extends React.Component {
     }
   };
   handleSendModalOpen = () => {
-    // let { utxos } = this.props.wallet;
-    // let { data, message, userMessage, status } = utxos;
-    // let button = event.currentTarget;
-    // if (status === 'loading') {
-    //   button.textContent = i18n.t("BTN_SEND_LOADING"); return;
-    // }
-    // if (status === 'error' || data.length < 1) {
-    //   button.textContent = i18n.t("BTN_SEND_ERROR"); return;
-    // }
-    // if (status === 'success') {
-    //   button.textContent = i18n.t("BTN_SEND"); return;
-    // }
+    let { wallet, errorRequest, setWalletSendModalOpen } = this.props;
+    let utxos = !wallet.utxos ? {} : wallet.utxos;
+    if (utxos.status === 'error') {
+      errorRequest(utxos.message);
+      return;
+    }
     setWalletSendModalOpen()
   }
   componentDidUpdate() {
@@ -78,25 +74,15 @@ class CoinsInfo extends React.Component {
     let { wallet, coins, setUtxos } = this.props;
     let address = coins[(wallet.selectedCoin = wallet.selectedCoin)].address;
     if (lastCoin !== wallet.selectedCoin) {
-      setUtxos(wallet.selectedCoin, address)
-      this.setState({lastCoin: wallet.selectedCoin})
-      //TODO remove it!
-      window.store.dispatch({
-        type:"REQUEST_FAILED",
-        message: `last: ${lastCoin} | cur ${wallet.selectedCoin}`
-      })
+      setUtxos(wallet.selectedCoin, address);
+      this.setState({lastCoin: wallet.selectedCoin});
     }
   }
   componentDidMount = () => {
     let { wallet, coins, setUtxos } = this.props;
     let address = coins[(wallet.selectedCoin = wallet.selectedCoin)].address;
     setUtxos(wallet.selectedCoin, address)
-    this.setState({lastCoin: wallet.selectedCoin})
-    //TODO remove it!
-    window.store.dispatch({
-      type: "REQUEST_FAILED",
-      message: `componentDidMount`
-    })
+    this.setState({lastCoin: wallet.selectedCoin});
   }
   render() {
     let defaultCoin = getDefaultFiat();
@@ -194,7 +180,7 @@ class CoinsInfo extends React.Component {
                       this.handleSendModalOpen()
                     }}
                   >
-                    { utxos.status == 'loading' ? i18n.t("BTN_SEND_LOADING")
+                    { utxos.status == 'loading' ? <Loading/>
                     : utxos.status == 'error'   ? i18n.t("BTN_SEND_ERROR")
                     : i18n.t("BTN_SEND")}
                   </button>
@@ -251,6 +237,7 @@ CoinsInfo.propTypes = {
   setWalletModalStep: PropTypes.func.isRequired,
   setWalletSendModalOpen: PropTypes.func.isRequired,
   setWalletReceiveModalOpen: PropTypes.func,
+  errorRequest: PropTypes.func
 };
 
 const mapSateToProps = store => ({
@@ -268,6 +255,7 @@ const mapDispatchToProps = dispatch =>
       setWalletSendModalOpen,
       setWalletReceiveModalOpen,
       setUtxos,
+      errorRequest
     },
     dispatch
   );
