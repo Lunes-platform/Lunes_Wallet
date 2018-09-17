@@ -3,7 +3,9 @@ const initialState = {
     loading: false
   },
   coupon: {
-    loading: false
+    loading: false,
+    verified: undefined,
+    message: undefined
   },
   gift: {
     loading: false
@@ -14,6 +16,15 @@ const initialState = {
 
 const error = (state = initialState, action) => {
   switch (action.type) {
+    case "VERIFY_COUPON": {
+      let { data } = action;
+      return {
+        ...state,
+        coupon: {
+          ...data
+        }
+      }
+    }
     case "SET_VOUCHER_LOADING":
       return {
         ...state,

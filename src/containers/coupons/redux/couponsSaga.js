@@ -51,3 +51,28 @@ export function* getVoucher(action) {
     yield put(internalServerError());
   }
 }
+
+
+export function* verifyCoupon(action) {
+  try {
+    yield put({type: "VERIFY_COUPON", data: { loading: true }})
+    let token = yield call(getAuthToken);
+    let { type, data } = yield call(coinService.verifyCoupon, action.coupon, token);
+
+    if (!type) {
+      yield put({type: "VERIFY_COUPON", data: { loading: false, verified: true,
+      message: data.message}})
+      return;
+    }
+    if (type === 'error') {
+      yield put({type: "VERIFY_COUPON", data: { loading: false, verified: true,
+      message: data.message}})
+      return;
+    }
+
+    yield put({type: "VERIFY_COUPON", data: { loading: false, verified: true,
+    message: data.message}})
+  } catch(error) {
+    internalServerError();
+  }
+}
