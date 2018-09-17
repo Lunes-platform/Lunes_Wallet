@@ -43,6 +43,8 @@
   composes: bgPurpleDark from "../../components/bases/colorBase.css";
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 /* ------------------------------------------------------------------------- */
