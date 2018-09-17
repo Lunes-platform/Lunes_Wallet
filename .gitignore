@@ -27,3 +27,4 @@ yarn.lock
 package-lock.json
 .eslintcache
 .eslintcache
+marcelo*.js
