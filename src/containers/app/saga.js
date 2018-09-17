@@ -28,7 +28,7 @@ import {
   setWalletTransaction,
   setUtxos
 } from "../wallet/redux/walletSaga";
-import { getVoucher } from "../coupons/redux/couponsSaga";
+import { getVoucher, verifyCoupon } from "../coupons/redux/couponsSaga";
 import {
   getTwoFactorAuth,
   verifyTwoFactorAuthSettings
@@ -96,6 +96,7 @@ export default function* rootSaga() {
 
     // Coupons
     fork(takeLatest, "GET_VOUCHER_API", getVoucher),
+    fork(takeLatest, "VERIFY_COUPON_API", verifyCoupon),
 
     // Settings
     fork(takeLatest, "POST_SETTINGS_CREATE_2FA_API", getTwoFactorAuth),
