@@ -20,6 +20,7 @@ import {
   percentCalc,
   convertSmallerCoinUnit
 } from "../utils/numbers";
+import i18n from "../utils/i18n.js";
 
 let getPriceHistory = async (coiName, token) => {
   try {
@@ -490,6 +491,34 @@ class CoinService {
     } catch (error) {
       console.warn(error);
       internalServerError();
+    }
+  }
+
+  async verifyCoupon(coupon, token) {
+    try {
+      let endpoint = `${BASE_URL}/coupon/rescue/${coupon}`;
+
+      API_HEADER.headers.Authorization = token;
+      API_HEADER.validateStatus = function() {
+        return true;
+      }
+      let { data, headers } = await axios.post(endpoint, {}, API_HEADER)
+      let { status } = headers;
+      if (status != 200 && status != 201) {
+        let message;
+        if (status == 403 || status == 401)
+          message = i18n.t("COUPON_USER_NOT_AUTHORIZED");
+        else if (status.toString().startsWith('5'))
+          message = i18n.t("COUPON_SERVER_ERROR");
+        else
+          message = data.message;
+        return { type: 'error', data: { message } };
+      }
+
+      return { type: 'success', data: { message: data.message } }
+    } catch(error) {
+      internalServerError();
+      return { type: 'error', message: typeof error == 'string' ? error : error.message }
     }
   }
 }
