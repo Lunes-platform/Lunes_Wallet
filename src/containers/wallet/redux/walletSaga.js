@@ -190,3 +190,44 @@ export function* setWalletTransaction(action) {
     yield put(internalServerError());
   }
 }
+
+
+export function* setUtxos(action) {
+  try {
+    const { address, coin } = action;
+    if (coin.search(/lunes/i) !== -1) {
+      yield put({type:"SET_WALLET_UTXOS", status: 'success', data:[], message:''});
+      return;
+    }
+    yield put({type:"SET_WALLET_UTXOS", status: 'loading', data:[], message:''});
+    const token = yield call(getAuthToken);
+    const utxos = yield call(transactionService.utxo, address, coin, token)
+    let userMessage = '';
+    if (!utxos) {
+      userMessage = i18n.t("WALLET_UTXOS_EMPTY")
+      yield put({type:"SET_WALLET_UTXOS", message: 'Got an falsy value in utxos',
+      data: utxos, status: 'error', userMessage});
+      yield put({type:"REQUEST_FAILED",message: userMessage})
+      return;
+    }
+    if (utxos && utxos.constructor.name === 'Array' && utxos.length < 1) {
+      userMessage = i18n.t("WALLET_UTXOS_EMPTY")
+      yield put({type:"SET_WALLET_UTXOS", message: 'Got an empty utxos array',
+      data: utxos, status: 'error', userMessage: userMessage});
+      yield put({type:"REQUEST_FAILED",message: userMessage})
+      return;
+    }
+    //success
+    if (utxos && utxos.constructor.name === 'Array' && utxos.length > 0) {
+      yield put({type:"SET_WALLET_UTXOS", data: utxos,status: 'success',
+      message: userMessage});
+      return;
+    }
+    userMessage = i18n.t("WALLET_UTXOS_UNKNOWN_ERROR")
+    yield put({type:"SET_WALLET_UTXOS", message: '', data: utxos, status: 'success',
+    userMessage: userMessage});
+    yield put({type:"REQUEST_FAILED",message: userMessage})
+  } catch(error) {
+    yield put({ type: "" })
+  }
+}

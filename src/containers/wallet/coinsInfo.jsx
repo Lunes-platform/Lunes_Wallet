@@ -8,7 +8,8 @@ import {
   setWalletSendModalOpen,
   setWalletReceiveModalOpen,
   setWalletModalStep,
-  setWalletLoading
+  setWalletLoading,
+  setUtxos
 } from "./redux/walletAction";
 
 import { loadWalletInfo } from "../skeleton/redux/skeletonAction";
@@ -57,7 +58,46 @@ class CoinsInfo extends React.Component {
       return <ArrowDropUp className={style.arrowPercentUp} />;
     }
   };
-
+  handleSendModalOpen = () => {
+    // let { utxos } = this.props.wallet;
+    // let { data, message, userMessage, status } = utxos;
+    // let button = event.currentTarget;
+    // if (status === 'loading') {
+    //   button.textContent = i18n.t("BTN_SEND_LOADING"); return;
+    // }
+    // if (status === 'error' || data.length < 1) {
+    //   button.textContent = i18n.t("BTN_SEND_ERROR"); return;
+    // }
+    // if (status === 'success') {
+    //   button.textContent = i18n.t("BTN_SEND"); return;
+    // }
+    setWalletSendModalOpen()
+  }
+  componentDidUpdate() {
+    let { lastCoin } = this.state;
+    let { wallet, coins, setUtxos } = this.props;
+    let address = coins[(wallet.selectedCoin = wallet.selectedCoin)].address;
+    if (lastCoin !== wallet.selectedCoin) {
+      setUtxos(wallet.selectedCoin, address)
+      this.setState({lastCoin: wallet.selectedCoin})
+      //TODO remove it!
+      window.store.dispatch({
+        type:"REQUEST_FAILED",
+        message: `last: ${lastCoin} | cur ${wallet.selectedCoin}`
+      })
+    }
+  }
+  componentDidMount = () => {
+    let { wallet, coins, setUtxos } = this.props;
+    let address = coins[(wallet.selectedCoin = wallet.selectedCoin)].address;
+    setUtxos(wallet.selectedCoin, address)
+    this.setState({lastCoin: wallet.selectedCoin})
+    //TODO remove it!
+    window.store.dispatch({
+      type: "REQUEST_FAILED",
+      message: `componentDidMount`
+    })
+  }
   render() {
     let defaultCoin = getDefaultFiat();
     let {
@@ -76,6 +116,7 @@ class CoinsInfo extends React.Component {
     let coinPercent = coins[selectedCoin].price.percent;
     let fiatBalance = coin.balance[defaultCoin].toFixed(2);
     let balance = coin.balance.available;
+    let utxos = !wallet.utxos ? {} : wallet.utxos;
     return (
       <div>
         <Modal
@@ -94,10 +135,10 @@ class CoinsInfo extends React.Component {
               ? null
               : step === 5 || step === 6
                 ? () => {
-                    setWalletSendModalOpen(),
-                      setWalletLoading(true),
-                      loadWalletInfo(user.password);
-                  }
+                  setWalletSendModalOpen(),
+                  setWalletLoading(true),
+                  loadWalletInfo(user.password);
+                }
                 : () => setWalletSendModalOpen()
           }
           back={
@@ -148,9 +189,14 @@ class CoinsInfo extends React.Component {
 
                   <button
                     className={style.sentButton}
-                    onClick={() => setWalletSendModalOpen()}
+                    onClick={() => {
+                      if (utxos.status === 'loading') return;
+                      this.handleSendModalOpen()
+                    }}
                   >
-                    {i18n.t("BTN_SEND")}
+                    { utxos.status == 'loading' ? i18n.t("BTN_SEND_LOADING")
+                    : utxos.status == 'error'   ? i18n.t("BTN_SEND_ERROR")
+                    : i18n.t("BTN_SEND")}
                   </button>
                 </Grid>
               </Grid>
@@ -199,17 +245,18 @@ CoinsInfo.propTypes = {
   user: PropTypes.object.isRequired,
   wallet: PropTypes.object.isRequired,
   coins: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+  setUtxos: PropTypes.func.isRequired,
   loadWalletInfo: PropTypes.func.isRequired,
   setWalletLoading: PropTypes.func.isRequired,
   setWalletModalStep: PropTypes.func.isRequired,
   setWalletSendModalOpen: PropTypes.func.isRequired,
-  setWalletReceiveModalOpen: PropTypes.func
+  setWalletReceiveModalOpen: PropTypes.func,
 };
 
 const mapSateToProps = store => ({
   user: store.user.user,
   wallet: store.wallet,
-  coins: store.skeleton.coins
+  coins: store.skeleton.coins,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -219,7 +266,8 @@ const mapDispatchToProps = dispatch =>
       setWalletLoading,
       setWalletModalStep,
       setWalletSendModalOpen,
-      setWalletReceiveModalOpen
+      setWalletReceiveModalOpen,
+      setUtxos,
     },
     dispatch
   );
