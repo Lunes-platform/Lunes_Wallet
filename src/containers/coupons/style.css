@@ -70,6 +70,18 @@
   text-align: center;
   margin-bottom: 10px;
 }
+:local(.inputTextDefault.success) {
+  border-color: #68f285;
+  color: #68f285;
+}
+:local(.inputTextDefault.warning) {
+  border-color: #ffcf49;
+  color: #ffcf49;
+}
+:local(.inputTextDefault.error) {
+  border-color: #f05252;
+  color: #f05252;
+}
 
 :local(label) {
   display: block;

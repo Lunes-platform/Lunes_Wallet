@@ -20,6 +20,7 @@ import {
   percentCalc,
   convertSmallerCoinUnit
 } from "../utils/numbers";
+import i18n from "../utils/i18n.js";
 
 let getPriceHistory = async (coiName, token) => {
   try {
@@ -510,6 +511,47 @@ class CoinService {
     } catch (error) {
       console.warn(error);
       internalServerError();
+    }
+  }
+
+  async verifyCoupon(coupon, token) {
+    try {
+      let endpoint = `${BASE_URL}/coupon/rescue/${coupon}`;
+
+      API_HEADER.headers.Authorization = token;
+      API_HEADER.validateStatus = function() {
+        return true;
+      }
+      let { data, headers } = await axios.post(endpoint, {}, API_HEADER)
+
+      let errorMessage = {};
+      if (data.errorMessage) {
+        errorMessage = JSON.parse(data.errorMessage);
+      }
+      let status = parseInt(headers.status);
+      let code = parseInt(errorMessage.code) || parseInt(data.code);
+      if ((status != 200) && (code != 200)) {
+        let message;
+        if ((status === 403) || (code === 403))
+          message = i18n.t("COUPON_USER_NOT_AUTHORIZED");
+        else if ((status == 401) || (code == 401))
+          message = i18n.t("COUPON_INVALID");
+        else if ( (status && status.toString().startsWith('5'))
+        || (code && code.toString().startsWith('5')) )
+          message = i18n.t("COUPON_SERVER_ERROR");
+        else
+          message = i18n.t("COUPON_UNKNOWN_ERROR_1");
+        return { type: 'error', data: { message: message } };
+      }
+
+      return { type: 'success', data: { message: data.message } }
+    } catch(error) {
+      console.warn(error)
+      internalServerError();
+      return { type: 'error', data: {
+        message: typeof error === 'string' ? error
+        : error.message || i18n.t("COUPON_UNKNOWN_ERROR_2") }
+      }
     }
   }
 }
