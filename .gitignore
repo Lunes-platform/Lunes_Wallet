@@ -28,3 +28,6 @@ package-lock.json
 .eslintcache
 .eslintcache
 marcelo*.js
+
+# testnet
+src/constants/
