@@ -503,22 +503,35 @@ class CoinService {
         return true;
       }
       let { data, headers } = await axios.post(endpoint, {}, API_HEADER)
-      let { status } = headers;
-      if (status != 200 && status != 201) {
+
+      let errorMessage = {};
+      if (data.errorMessage) {
+        errorMessage = JSON.parse(data.errorMessage);
+      }
+      let status = parseInt(headers.status);
+      let code = parseInt(errorMessage.code) || parseInt(data.code);
+      if ((status != 200) && (code != 200)) {
         let message;
-        if (status == 403 || status == 401)
+        if ((status === 403) || (code === 403))
           message = i18n.t("COUPON_USER_NOT_AUTHORIZED");
-        else if (status.toString().startsWith('5'))
+        else if ((status == 401) || (code == 401))
+          message = i18n.t("COUPON_INVALID");
+        else if ( (status && status.toString().startsWith('5'))
+        || (code && code.toString().startsWith('5')) )
           message = i18n.t("COUPON_SERVER_ERROR");
         else
-          message = data.message;
-        return { type: 'error', data: { message } };
+          message = i18n.t("COUPON_UNKNOWN_ERROR_1");
+        return { type: 'error', data: { message: message } };
       }
 
       return { type: 'success', data: { message: data.message } }
     } catch(error) {
+      console.warn(error)
       internalServerError();
-      return { type: 'error', message: typeof error == 'string' ? error : error.message }
+      return { type: 'error', data: {
+        message: typeof error === 'string' ? error
+        : error.message || i18n.t("COUPON_UNKNOWN_ERROR_2") }
+      }
     }
   }
 }
