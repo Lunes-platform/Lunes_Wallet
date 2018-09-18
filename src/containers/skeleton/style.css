@@ -165,12 +165,20 @@
   color: #fff;
   width: 170px;
   opacity: 0.5;
-  transition: opacity 0.5s;
+  transition: opacity 0.3s;
 }
 
 :local .linkPopMenu:hover {
   opacity: 1;
+  
 }
+
+:local .linkPopMenu:hover img{
+  opacity: 1;
+  color: #ffffff
+  
+}
+
 
 /* ------------------------------------------------------------------------- */
 
@@ -238,11 +246,34 @@
   float: left;
   justify-content: center;
   text-align: center;
+
 }
 
 :local .linkPopMenu .boxIcon img {
+  
   height: 90%;
+   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes :local(shake) {
   25%,

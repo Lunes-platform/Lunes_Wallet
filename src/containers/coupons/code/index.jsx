@@ -14,12 +14,13 @@ class Code extends React.Component {
 
   renderCodeInputs = () => {
     const { values } = this.props;
+    let dic = ['first','second','third','fourth']
     return (
       [...Array(4).keys()].map((id) => {
         return (
           <Grid key={id} item xs={6} sm={3}>
             <input key={id}
-              className={style.inputTextDefault}
+              className={style.inputTextDefault+' '+dic[id]}
               value={values[id]}
               placeholder="1234"
               maxLength={4}

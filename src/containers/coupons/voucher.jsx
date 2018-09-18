@@ -85,6 +85,12 @@ class Voucher extends React.Component {
       ...this.state,
       code
     });
+    if (value.length === 4) {
+      let dic = ['first','second','third','fourth']
+      let next = document.querySelector(`.${dic[id + 1]}`)
+      if (next === null) return;
+      next.focus()
+    }
   };
 
   inputValidator = () => {
