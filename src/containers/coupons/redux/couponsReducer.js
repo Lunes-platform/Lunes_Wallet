@@ -21,6 +21,7 @@ const error = (state = initialState, action) => {
       return {
         ...state,
         coupon: {
+          ...state.coupon,
           ...data
         }
       }
