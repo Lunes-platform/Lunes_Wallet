@@ -200,6 +200,7 @@ class Invoice extends React.Component {
     const { payment } = this.props;
     const { invoice, coin } = this.state;
 
+
     const invoiceData = {
       ...invoice,
       assignor: payment.assignor || invoice.assignor,
@@ -391,12 +392,12 @@ class Invoice extends React.Component {
           className={style.transparentBox}
           style={{ marginTop: "10px" }}
         >
-          <button
-            className={style.buttonBorderGreen}
-            onClick={this.inputValidator}
-          >
-            {loading ? <Loading /> : i18n.t("PAYMENT_PAY_NOW")}
-          </button>
+            <button
+              className={style.buttonBorderGreen}
+              onClick={this.inputValidator}
+            >
+              {loading ? <Loading /> : i18n.t("PAYMENT_PAY_NOW")}
+            </button>
         </Grid>
 
         <Grid

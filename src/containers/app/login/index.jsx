@@ -71,19 +71,19 @@ const imagePath = "/images/carousel/";
 const carouselSteps = [
   {
     label: i18n.t("LOGIN_SLIDE_DESCRIPTION_1"),
-    imgPath: imagePath + "slider-boleto.png"
+    imgPath: imagePath + "Slider-Boleto.png"
   },
   {
     label: i18n.t("LOGIN_SLIDE_DESCRIPTION_2"),
-    imgPath: imagePath + "slider-ted.png"
+    imgPath: imagePath + "/Slider-TED.png"
   },
   {
     label: i18n.t("LOGIN_SLIDE_DESCRIPTION_3"),
-    imgPath: imagePath + "slider-recarga.png"
+    imgPath: imagePath + "/Slider-Recarga.png"
   },
   {
     label: i18n.t("LOGIN_SLIDE_DESCRIPTION_4"),
-    imgPath: imagePath + "slider-wallet.png"
+    imgPath: imagePath + "/Slider-Wallet.png"
   }
 ];
 

@@ -20,10 +20,10 @@ const tabStyles = theme => ({
   root: {
     flexGrow: 1,
     maxWidth: "98%",
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
   },
   tabsRoot: {
-    margin: "-5px"
+    margin: "-5px",
   },
   tabsIndicator: {
     backgroundColor: colors.green.dark,
@@ -35,7 +35,7 @@ const tabStyles = theme => ({
     opacity: 1,
     borderRadius: "5px 5px 0 0",
     textTransform: "none",
-    backgroundColor: colors.purple.default
+    backgroundColor: colors.purple.default,
   },
   tabSelected: {}
 });

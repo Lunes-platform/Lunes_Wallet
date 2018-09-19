@@ -27,10 +27,11 @@ class Select extends React.Component {
   }
 
   renderItems = () => {
-    const {list, width} = this.props;
+    const {list} = this.props;
 
     const listStyle = {
-      width: width ? `calc(${width} + 20px)` : '200px'
+      minWidth: '98%',
+      boxShadow : "0 8px 20px 0 rgba(0, 0, 0, 0.09)",
     }
 
     return (
@@ -71,12 +72,12 @@ class Select extends React.Component {
   }
 
   render() {
-    const{width, title, titleImg, error} = this.props;
+    const{ title, titleImg, error} = this.props;
     const{listOpen} = this.state
 
     const wrapperStyle = {
-      width: width ? width : '180px',
-      borderBottom: `1px solid ${error ? '#f44336' : '#42227d'}`,
+      maxWidth: '88.5%',
+      borderBottom: `1px solid ${error ? '#f44336' : '#3b1878'}`,
     }
 
     return(

@@ -86,6 +86,12 @@ let payment = Loadable({
   serverSideRequirePath: path.resolve(__dirname, "../../payment")
 });
 
+let ted = Loadable({
+  loader: () => fakeDelay(0).then(() => import("../../ted")),
+  loading: loading,
+  serverSideRequirePath: path.resolve(__dirname, "../../ted")
+});
+
 let recharge = Loadable({
   loader: () => fakeDelay(400).then(() => import("../../recharge")),
   loading: loading,
@@ -139,6 +145,7 @@ class App extends Component {
               <Route path="/payment" component={payment} />
               <Route path="/recharge" component={recharge} />
               <Route path="/assets" component={assets} />
+              <Route path="/ted" component={ted} />
 
               {/* ERRORS PAGE */}
               <Route path="/404" component={errorNotFound} />

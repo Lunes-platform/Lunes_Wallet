@@ -6,6 +6,7 @@
 
 :local .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -37,4 +38,16 @@
   max-height: 25px;
   position: relative;
   top: -2px;
+}
+
+@media only screen and (max-width:599px) {
+:local(.wrapper) {
+  font-size: 1.2vh;
+  padding: 0;
+}
+}
+@media only screen and (min-width:600px) {
+  :local(.wrapper) {
+    font-size: 1.2vh;
+  }
 }

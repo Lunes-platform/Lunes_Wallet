@@ -1,0 +1,167 @@
+/*
+1. BASES
+
+2. TEXTS
+
+*/
+
+/* ------------------------------------------------------------------------- */
+/* 1. BASE */
+
+/* 1. BASE */
+:local .box {
+  composes: bgPurpleDefault from "../../components/bases/colorBase.css";
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0px 0px 10px 0px rgba(51, 51, 51, 0.1);
+}
+
+@media screen and (min-width: 600px) {
+  :local .box {
+    max-width: 60vw !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  :local .box {
+    max-width: 40vw !important;
+  }
+}
+
+:local .transparentBox {
+  composes: box;
+  background-color: transparent;
+  padding: 0;
+}
+
+:local(.row) {
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* 2. TEXT */
+:local .defaultText {
+  composes: inputTextDefault from "../../components/bases/textBase.css";
+  font-size: 12px;
+  font-weight: normal;
+}
+/* 3. BUTTONS */
+:local .buttonBorderGreen {
+  composes: buttonBorderGreen from "../../components/bases/buttonBase.css";
+  background-color: transparent;
+}
+
+/* 4. SCROLLBAR */
+::-webkit-scrollbar {
+  background-color: transparent;
+  height: 5px;
+  width: 5px;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #654fa4;
+  border-radius: 6px;
+}
+
+/* 2. TEXTS */
+:local(.infoHistoryDetails) {
+  display: flex;
+}
+
+:local(.infoHistoryDetails_FontLess) {
+  font-weight: bold;
+  font-size: 9px;
+}
+:local(.infoHistoryDetails_status) {
+  composes: infoHistoryDetails_FontLess;
+  color: #68f285;
+}
+
+:local(.infoHistoryDetails_coin) {
+  font-size: 12px;
+}
+/**/
+:local(.infoHistory) {
+  display: flex;
+  align-items: center;
+}
+
+:local(.infoHistoryDetails_FontMiddle) {
+  font-size: 12px;
+}
+/**/
+:local(.infoHistory_NameUser) {
+  composes: clGreenDefault from "../../components/bases/colorBase.css";
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 599px) {
+  :local(.infoHistoryDetails_FontLess) {
+    font-size: 6.5px;
+  }
+  :local(.infoHistoryDetails_FontMiddle) {
+    font-size: 8.6px;
+  }
+  :local(.infoHistory_NameUser) {
+    font-size: 11.5px;
+  }
+}
+
+:local(.boxHistoryTED) {
+  composes: box;
+  max-height: 38vh;
+  overflow: auto;
+}
+
+:local(.boxHistoryTED p) {
+  margin: 0;
+  padding-left: 5px;
+}
+
+:local(.boxHistoryTED::-webkit-scrollbar) {
+  background-color: #654ea6;
+}
+
+:local(.boxHistoryTED::-webkit-scrollbar-thumb) {
+  background-color: #68f285;
+}
+
+:local(.containerTED) {
+  display: flex;
+  justify-content: center;
+}
+
+:local(.containerTED h3) {
+  font-size: 19px;
+}
+
+:local(.containerTED h4) {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+:local(.containerTED text) {
+  font-size: 12px;
+  font-weight: normal;
+  padding-left: 1.5vh;
+}
+
+@media screen and (max-width: 599px) {
+  :local(.containerTED h3) {
+    font-size: 13.7px;
+  }
+  :local(.containerTED h4) {
+    font-size: 8.6px;
+  }
+  :local(.containerTED text) {
+    font-size: 8.6px;
+  }
+}
+
+:local(.contentBoxHistory) {
+  border-bottom: 1px solid #3b1878;
+  padding-bottom: 20px;
+}
