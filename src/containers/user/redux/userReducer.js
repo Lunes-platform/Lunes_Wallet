@@ -199,6 +199,17 @@ const user = (state = initialState, action) => {
         errors: []
       };
 
+    case "UPDATE_USER_PASSWORD_REDUCER":
+      return {
+        ...state,
+        loading: false,
+        pages: {
+          login: 0,
+          create: 0,
+          reset: 0
+        }
+      };
+
     default: {
       return {
         ...state

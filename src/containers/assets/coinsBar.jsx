@@ -7,13 +7,13 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
   setSelectedCoin,
-  getWalletCoinHistory,
-  setWalletCoinHistoryLoading
+  getAssetCoinHistory,
+  setAssetCoinHistoryLoading
 } from "./redux/assetsAction";
 import { clearMessage, errorInput } from "../errors/redux/errorAction";
 
 // UTILS
-import { getFavoritesCrypto, getDefaultFiat } from "../../utils/localStorage";
+import { getFavoritesCrypto } from "../../utils/localStorage";
 
 // MATERIAL UI
 import Grid from "@material-ui/core/Grid";
@@ -25,7 +25,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
-import Close from "@material-ui/icons/Close";
+// import Close from "@material-ui/icons/Close";
 
 // UTILS
 import i18n from "../../utils/i18n";
@@ -50,11 +50,11 @@ class CoinsBar extends React.Component {
   setCoin = (coin, address) => {
     let {
       setSelectedCoin,
-      getWalletCoinHistory,
-      setWalletCoinHistoryLoading
+      getAssetCoinHistory,
+      setAssetCoinHistoryLoading
     } = this.props;
-    setWalletCoinHistoryLoading(true);
-    getWalletCoinHistory(coin, address);
+    setAssetCoinHistoryLoading(true);
+    getAssetCoinHistory(coin, address);
     setSelectedCoin(coin);
   };
 
@@ -69,7 +69,6 @@ class CoinsBar extends React.Component {
   renderCoins = () => {
     let { wallet } = this.props;
     let { coins } = this.props.skeleton;
-    let defaultFiat = getDefaultFiat();
     let favoritesCoins = getFavoritesCrypto();
     favoritesCoins = favoritesCoins ? favoritesCoins : ["lunes"];
 
@@ -81,10 +80,6 @@ class CoinsBar extends React.Component {
         coin.status === "active" && coinBalanceStatus && coinAddressStatus
           ? true
           : false;
-      let coinBalance = coinStatus ? coin.balance.available : 0;
-      let coinFiatBalance = coinStatus
-        ? (coinBalance * coin.price[defaultFiat].price).toFixed(2)
-        : 0;
       let coinPercent = coinStatus ? coin.price.percent : 0;
 
       return (
@@ -111,29 +106,15 @@ class CoinsBar extends React.Component {
               />
             </div>
             <Hidden smDown>
-              {coinStatus ? (
-                <div className={style.boxLabelCoin}>
-                  {coin.price[defaultFiat].symbol + coinFiatBalance} <br />
-                  <div className={style.labelPercent}>
-                    {this.renderArrowPercent(coinPercent)}
-                    {coinPercent}
-                  </div>
-                </div>
-              ) : (
-                <div className={style.boxLabelCoinDisabled}>
-                  {i18n.t("TEXT_UNAVAILABLE")}
-                </div>
-              )}
-            </Hidden>
-            <Hidden mdUp>
-              <div className={style.boxArrowPercent}>
-                {coinStatus ? (
-                  this.renderArrowPercent(coinPercent)
-                ) : (
-                  <Close className={style.arrowPercentDisabled} />
-                )}
+              <div className={style.boxHiddenContent}>
+                { coin.abbreviation ? coin.abbreviation.toUpperCase() : i18n.t("UNKNOWN") }
               </div>
             </Hidden>
+            {/* <Hidden mdUp>
+              <div className={style.boxHiddenContentMobile}>
+                { coin.abbreviation ? coin.abbreviation.toUpperCase() : i18n.t("UNKNOWN") }
+              </div>
+            </Hidden> */}
           </div>
         </div>
       );
@@ -213,8 +194,8 @@ CoinsBar.propTypes = {
   wallet: PropTypes.object,
   skeleton: PropTypes.object,
   setSelectedCoin: PropTypes.func,
-  getWalletCoinHistory: PropTypes.func,
-  setWalletCoinHistoryLoading: PropTypes.func
+  getAssetCoinHistory: PropTypes.func,
+  setAssetCoinHistoryLoading: PropTypes.func
 };
 
 const mapSateToProps = store => ({
@@ -225,8 +206,8 @@ const mapSateToProps = store => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setWalletCoinHistoryLoading,
-      getWalletCoinHistory,
+      setAssetCoinHistoryLoading,
+      getAssetCoinHistory,
       setSelectedCoin,
       clearMessage,
       errorInput

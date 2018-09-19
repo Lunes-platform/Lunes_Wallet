@@ -21,20 +21,27 @@ class Leasing extends React.Component {
   }
 
   componentDidMount() {
-    let { getLeasingInfo, coins, setLeasingLoading } = this.props;
+    let { getLeasingInfo, coins, setLeasingLoading, user } = this.props;
     setLeasingLoading(true);
     setTimeout(() => {
       getLeasingInfo(
         coins.lunes.abbreviation,
         coins.lunes.address,
-        coins.lunes.decimalPoint
+        coins.lunes.decimalPoint,
+        user.password
       );
     }, 4000);
   }
 
   handleModalLeasing = () => {
     let { isOpen } = this.state;
-    let { getLeasingInfo, coins, setLeasingLoading, leasing } = this.props;
+    let {
+      getLeasingInfo,
+      coins,
+      setLeasingLoading,
+      leasing,
+      user
+    } = this.props;
 
     if (isOpen && leasing.reload) {
       setLeasingLoading(true);
@@ -42,7 +49,8 @@ class Leasing extends React.Component {
         getLeasingInfo(
           coins.lunes.abbreviation,
           coins.lunes.address,
-          coins.lunes.decimalPoint
+          coins.lunes.decimalPoint,
+          user.password
         );
       }, 4000);
     }
@@ -81,13 +89,15 @@ Leasing.propTypes = {
   leasing: PropTypes.object,
   getLeasingInfo: PropTypes.func,
   setLeasingLoading: PropTypes.func,
-  coins: PropTypes.array.isRequired
+  coins: PropTypes.array.isRequired,
+  user: PropTypes.object
 };
 
 const mapStateToProps = store => ({
   balance: store.skeleton.coins.lunes.balance.available,
   leasing: store.leasing,
-  coins: store.skeleton.coins
+  coins: store.skeleton.coins,
+  user: store.user.user
 });
 
 const mapDispatchToProps = dispatch =>

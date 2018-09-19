@@ -129,7 +129,7 @@ class Invoice extends React.Component {
       }
     });
 
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleValor = (value, title) => {
@@ -144,7 +144,7 @@ class Invoice extends React.Component {
       }
     });
 
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleField = name => event => {
@@ -323,7 +323,7 @@ const mapStateToProps = store => ({
   coinsRedux: store.payment.coins,
   loading: store.recharge.loading
 });
-      
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
@@ -333,9 +333,8 @@ const mapDispatchToProps = dispatch =>
     },
     dispatch
   );
-    
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withStyles(customStyle)(Invoice));
-                                          

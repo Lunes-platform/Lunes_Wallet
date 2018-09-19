@@ -101,6 +101,15 @@
   position: absolute;
 }
 
+:local .addFavorites {
+  width: 100%;
+  margin-left: 20px;
+  height: 77px;
+  align-items: center;
+  display: flex !important;
+  color: #f05252;
+}
+
 @media only screen and (max-width: 812px) {
   :local .boxIconCoin {
     background-color: transparent;

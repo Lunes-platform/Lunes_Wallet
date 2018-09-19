@@ -57,9 +57,11 @@ export const inputValidator = inputs => {
         }
       } else if (inputs[input].type === "date") {
         // Check if is a valid date in format dd/mm/yyyy
-        let regex = new RegExp(/(0[1-9]|[1-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])(\/|-)(19|20)([0-9]{2})/g);
+        let regex = new RegExp(
+          /(0[1-9]|[1-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])(\/|-)(19|20)([0-9]{2})/g
+        );
 
-        const {name, placeholder,value} = inputs[input];
+        const { name, placeholder, value } = inputs[input];
 
         if (!regex.test(trim(value.toString()))) {
           inputName.push(placeholder);
@@ -175,7 +177,11 @@ export const inputValidator = inputs => {
         }
 
         if (name === "seed") {
-          let isSeed = validateMnemonic(value.toString());
+          let isSeed =
+            value.trim().split(/\s+/g).length === 18
+              ? true
+              : validateMnemonic(value.toString());
+
           if (
             (value.trim().split(/\s+/g).length != 12 &&
               value.trim().split(/\s+/g).length != 18) ||

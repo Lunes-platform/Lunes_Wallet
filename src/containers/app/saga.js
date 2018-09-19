@@ -1,4 +1,4 @@
-import { takeLatest } from "redux-saga";
+import { takeLatest, takeEvery } from "redux-saga";
 import { fork } from "redux-saga/effects";
 import {
   authenticateUser,
@@ -9,7 +9,8 @@ import {
   hasTwoFactorAuth,
   setUserSeed,
   updateUserConsentsSaga,
-  editUserData
+  editUserData,
+  updateUserPasswordSaga
 } from "../user/redux/userSaga";
 
 import {
@@ -25,9 +26,10 @@ import {
   shareCoinAddress,
   getWalletSendModalFee,
   getCoinFee,
-  setWalletTransaction
+  setWalletTransaction,
+  setUtxos
 } from "../wallet/redux/walletSaga";
-import { getVoucher } from "../coupons/redux/couponsSaga";
+import { getVoucher, verifyCoupon } from "../coupons/redux/couponsSaga";
 import {
   getTwoFactorAuth,
   verifyTwoFactorAuthSettings
@@ -73,6 +75,7 @@ export default function* rootSaga() {
     fork(takeLatest, "SET_USER_SEED_API", setUserSeed),
     fork(takeLatest, "UPDATE_USER_CONSENTS_API", updateUserConsentsSaga),
     fork(takeLatest, "EDIT_USER_DATA_API", editUserData),
+    fork(takeLatest, "UPDATE_USER_PASSWORD_API", updateUserPasswordSaga),
 
     // Skeleton-Saga
     fork(takeLatest, "GET_GENERAL_INFO_API", loadGeneralInfo),
@@ -87,6 +90,7 @@ export default function* rootSaga() {
     fork(takeLatest, "GET_WALLET_MODAL_SEND_FEE_API", getWalletSendModalFee),
     fork(takeLatest, "SHARE_COIN_ADRESS_API", shareCoinAddress),
     fork(takeLatest, "SET_WALLET_TRANSACTION_API", setWalletTransaction),
+    fork(takeEvery, "SET_WALLET_UTXOS_API", setUtxos),
 
     // Leasing
     fork(takeLatest, "GET_PROFESSIONAL_NODE_API", getProfessionalNode),
@@ -94,6 +98,7 @@ export default function* rootSaga() {
 
     // Coupons
     fork(takeLatest, "GET_VOUCHER_API", getVoucher),
+    fork(takeLatest, "VERIFY_COUPON_API", verifyCoupon),
 
     // Settings
     fork(takeLatest, "POST_SETTINGS_CREATE_2FA_API", getTwoFactorAuth),

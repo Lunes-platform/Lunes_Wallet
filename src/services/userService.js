@@ -34,7 +34,7 @@ class UserService {
       if (error.response.data.code === 500) {
         return badRequest("You are already registered");
       }
-      //return internalServerError();
+
       internalServerError();
       return;
     }
@@ -76,9 +76,9 @@ class UserService {
   async getUserPicture(email) {
     const defaultImg = "images/lunio/lunio-user@300x300.jpg";
     try {
-      let crypto = encryptMd5(email);
+      let emailEncrypt = encryptMd5(email);
       let response = await axios.get(
-        "https://en.gravatar.com/" + crypto + ".json",
+        "https://en.gravatar.com/" + emailEncrypt + ".json",
         HEADER_REQUEST
       );
 
@@ -89,7 +89,6 @@ class UserService {
   }
 
   async editUser(token, data) {
-
     let userData = {
       name: data.name,
       surname: data.surname,
@@ -105,6 +104,23 @@ class UserService {
     setAuthToken(response.headers[HEADER_RESPONSE]);
 
     return response;
+  }
+
+  async resetUserPassword(token, newPassword, oldPassword) {
+    try {
+      const user = {
+        newPassword: encryptMd5(newPassword),
+        oldPassword: encryptMd5(oldPassword)
+      }
+
+      API_HEADER.headers.Authorization = token;
+      const response = await axios.patch(`${BASE_URL}/user`, user, API_HEADER);
+      setAuthToken(response.headers[HEADER_RESPONSE]);
+
+      return response;
+    } catch (error) {
+      return internalServerError();
+    }
   }
 }
 

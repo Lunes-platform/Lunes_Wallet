@@ -28,7 +28,7 @@ class TransactionService {
     try {
       API_HEADER.headers.Authorization = token;
       let response = await axios.post(
-        `${BASE_URL}/coin/${coin}/transaction/utxo`,
+        BASE_URL + "/coin/" + coin + "/transaction/utxo",
         { fromAddress: address },
         API_HEADER
       );
@@ -70,7 +70,6 @@ class TransactionService {
 
   async transaction(serviceId, transaction, lunesWallet, seed, token) {
     try {
-      console.warn(transaction);
       let network = undefined;
       let coinService = new CoinService();
       let {
@@ -243,7 +242,6 @@ class TransactionService {
 
       return response;
     } catch (error) {
-      console.warn(error);
       return error;
     }
   }
@@ -269,7 +267,6 @@ class TransactionService {
 
       return coin ? coins[coin] : coins;
     } catch (error) {
-      console.warn(error);
       internalServerError();
       return error;
     }

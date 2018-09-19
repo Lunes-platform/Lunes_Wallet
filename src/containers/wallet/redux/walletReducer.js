@@ -1,5 +1,8 @@
 import { getDefaultCrypto } from "../../../utils/localStorage";
 
+//UTILS
+import i18n from "../../../utils/i18n";
+
 const initialState = {
   selectedCoin: getDefaultCrypto(),
   coinHistory: {
@@ -38,12 +41,27 @@ const initialState = {
   modalReceive: {
     open: false
   },
+  utxos: {
+    status: 'loading',
+    message: i18n.t("BTN_SEND_LOADING"),
+    data: []
+  },
   loading: false,
   errors: false
 };
 
 const wallet = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_WALLET_UTXOS":
+      return {
+        ...state,
+        utxos: {
+          ...state.utxos,
+          status: action.status,
+          data: action.data,
+          message: action.message
+        }
+      };
     case "SET_SELECTED_COIN":
       return {
         ...state,

@@ -5,7 +5,12 @@ import PropTypes from "prop-types";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getCoinsEnabled, setPayment, getInvoice, setClearPayment } from "./redux/paymentAction";
+import {
+  getCoinsEnabled,
+  setPayment,
+  getInvoice,
+  setClearPayment
+} from "./redux/paymentAction";
 
 // COMPONENTS
 import Select from "../../components/select";
@@ -102,7 +107,7 @@ class Invoice extends React.Component {
   }
 
   coinSelected = (value, title, img = undefined) => {
-    const {invoice} = this.state;
+    const { invoice } = this.state;
 
     this.setState({
       ...this.state,
@@ -131,7 +136,7 @@ class Invoice extends React.Component {
         abbreviation: "",
         address: ""
       }
-    }
+    };
 
     this.setState({
       ...this.state,
@@ -141,8 +146,8 @@ class Invoice extends React.Component {
         value: undefined,
         img: undefined
       }
-    })
-  }
+    });
+  };
 
   handleInvoiceNumberChange = event => {
     const { getInvoice, setClearPayment } = this.props;
