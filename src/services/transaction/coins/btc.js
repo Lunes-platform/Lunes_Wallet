@@ -27,10 +27,10 @@ class BtcTransaction {
       console.warn(data, utxos);
 
       const targets = [
-        {
-          address: data.lunesWallet.address,
-          value: data.feeLunes
-        },
+        // {
+        //   address: data.lunesWallet.address,
+        //   value: data.feeLunes
+        // },
         {
           address: data.toAddress,
           value: data.amount
@@ -58,6 +58,7 @@ class BtcTransaction {
       tx = this.sign(tx, keyPair);
 
       const txHex = tx.build().toHex();
+      console.warn(txHex);
       // return;
       const broadcastResult = await transService.broadcast(
         txHex,

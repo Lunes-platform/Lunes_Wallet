@@ -38,7 +38,10 @@ class Seed extends React.Component {
       ...this.state,
       inputs: { [name]: value ? input : undefined },
       errors: undefined,
-      buttonEnable: value.split(" ").length === 12 ? true : false
+      buttonEnable:
+        value.split(" ").length === 12 || value.split(" ").length === 18
+          ? true
+          : false
     });
   };
 
@@ -48,7 +51,7 @@ class Seed extends React.Component {
       type: "text",
       name: "seed",
       value: seed == undefined ? "" : seed.value,
-      placeholder:i18n.t("PLACEHOLDER_SEED"),
+      placeholder: i18n.t("PLACEHOLDER_SEED"),
       required: true
     };
 
@@ -74,7 +77,7 @@ class Seed extends React.Component {
       type: "text",
       name: "seed",
       value: generateMnemonic(),
-      placeholder:i18n.t("PLACEHOLDER_SEED"),
+      placeholder: i18n.t("PLACEHOLDER_SEED"),
       required: true
     };
 
@@ -87,11 +90,11 @@ class Seed extends React.Component {
     });
   };
 
-  handleKeyPress = (target) => {
+  handleKeyPress = target => {
     if (target.charCode == 13) {
-      this.inputValidator()
+      this.inputValidator();
     }
-  }
+  };
 
   render() {
     let { loading } = this.props.user;

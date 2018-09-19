@@ -33,7 +33,7 @@ class ConfirmPayment extends React.Component {
         <div>{i18n.t("PAYMENT_CONFIRM_1")}</div>
         <div>
           <span>{i18n.t("PAYMENT_CONFIRM_2")}</span>
-          <span className={style.totalConfirmBlock}>{payment.amount + payment.fee} {payment.coin.abbreviation}</span>
+          <span className={style.totalConfirmBlock}>{payment.amount + payment.fee.fee.fee} {payment.coin.abbreviation}</span>
         </div>
 
         <div className={style.smallDescription}>

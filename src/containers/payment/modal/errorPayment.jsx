@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 // REDUX
 import {connect} from "react-redux";
+import { bindActionCreators } from "redux";
 
 // UTILS
 import i18n from "../../../utils/i18n";
@@ -13,7 +14,7 @@ import Loading from "../../../components/loading";
 // STYLES
 import style from "./style.css";
 
-class DonePayment extends React.Component {
+class ErrorPayment extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -30,16 +31,11 @@ class DonePayment extends React.Component {
       return (
         <div className={style.modalBox}>
           <img
-            src="/images/icons/confirm/confirm.png"
+            src="/images/icons/error/error.png"
             className={style.imageResult}
           />
           <div>
-            {i18n.t("PAYMENT_SUCCESS_1")}
-            {i18n.t("PAYMENT_SUCCESS_2")}
-          </div>
-
-          <div className={style.smallDescription}>
-            {i18n.t("PAYMENT_TEXT_HISTORY")}
+            {i18n.t("MODAL_SEND_INFO_ERROR")}
           </div>
         </div>
       );
@@ -47,14 +43,14 @@ class DonePayment extends React.Component {
   }
 }
 
-DonePayment.propTypes = {
+ErrorPayment.propTypes = {
   loading: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = store => ({
-  loading: store.payment.loading,
+  loading: store.payment.loading
 });
 
 export default connect(
   mapStateToProps
-)(DonePayment);
+)(ErrorPayment);

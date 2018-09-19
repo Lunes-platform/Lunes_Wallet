@@ -1,15 +1,18 @@
-import { put, call } from "redux-saga/effects";
-import { internalServerError } from "../../../containers/errors/statusCodeMessage";
-
-// UTILS
+import {
+  put,
+  call
+} from "redux-saga/effects";
+import {
+  internalServerError
+} from "../../../containers/errors/statusCodeMessage";
 import {
   setAuthToken,
   getAuthToken,
   getUserSeedWords
 } from "../../../utils/localStorage";
-import { decryptAes } from "../../../utils/cryptography";
-
-// Services
+import {
+  decryptAes
+} from "../../../utils/cryptography";
 import CoinService from "../../../services/coinService";
 import UserService from "../../../services/userService";
 const coinService = new CoinService();
@@ -65,7 +68,10 @@ export function* loadGeneralInfo(action) {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -101,7 +107,10 @@ export function* loadWalletInfo(action) {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -118,7 +127,10 @@ export function* availableCoins() {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -133,7 +145,10 @@ export function* balanceCoins() {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -148,7 +163,10 @@ export function* createCoinsAddress() {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }

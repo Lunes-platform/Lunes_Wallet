@@ -12,6 +12,7 @@ import FeePayment from "./feePayment";
 import ConfirmPayment from "./confirmPayment";
 import SecurePayment from "./securePayment";
 import DonePayment from "./donePayment";
+import ErrorPayment from "./errorPayment";
 
 class PaymentTitleModal extends React.Component {
   constructor(props) {
@@ -32,6 +33,8 @@ class PaymentTitleModal extends React.Component {
         return <SecurePayment />;
       case 5:
         return <DonePayment />;
+      case 6:
+        return <ErrorPayment />;
     }
   }
 }

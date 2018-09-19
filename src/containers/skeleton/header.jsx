@@ -125,7 +125,6 @@ class Header extends React.Component {
             {!TESTNET || <span className={style.textGreen}>Testnet</span>}
           </div>
           {this.renderBalance()}
-          {/* <Hidden xsDown>{this.renderNotifications()}</Hidden> */}
 
           <Hidden mdDown>
             <UserControl actionLogout={actionLogout} />

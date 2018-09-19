@@ -1,0 +1,236 @@
+{
+    "header": {
+        "theCoin": "About the Coin",
+        "products": "Products",
+        "services": "Services",
+        "blog": "Blog",
+        "contact": "Contact"
+    },
+    "footer": {
+        "rightsReserved": "Lunes Platform - All rights reserved",
+        "termsOfUse": "Terms of Use - Privacy Policy - Cookies Policy",
+        "whoWeAre": "ABOUT US",
+        "history": "History",
+        "mission": "Mission",
+        "view": "Vision",
+        "values": "Values",
+        "communities": "COMMUNITIES",
+        "social": {
+            "telegram": "Telegram",
+            "whatsapp": "WhatsApp",
+            "facebook": "Facebook",
+            "twitter": "Twitter",
+            "instagram": "Instagram"
+        },
+        "contacts": "CONTACTS",
+        "support": "Support",
+        "press": "Press",
+        "commercial": "Commercial",
+        "marketing": "Marketing",
+        "workWithUs": "Work with us",
+        "rates": "Fees",
+        "security": "Security",
+        "partners": "Partners",
+        "signUpOurNewlestter": "SIGN UP OUR NEWSLETTER",
+        "placeholderName": "Your name",
+        "placeholderEmail": "Your e-mail",
+        "sign": "Sign it",
+        "appStores": "APP STORES"
+    },
+    "homePage": {
+        "title": {
+            "principal": "The future in the present",
+            "subtitle": "It is not a bank. It is not an exchange.",
+            "subtitleLunes": "It is the Lunes",
+            "subtitleOwnerMoney": "Be the owner of your own Money."
+        },
+        "openYourAccount": "Open your account"
+    },
+    "coinPage": {
+        "coin": {
+            "title": "The Coin",
+            "aboutCoin": {
+                "paragraph1": "Lunes is the biggest crypto-currency in Latin America. It was developed by the core team of Lunes Platform, using innovative solutions, in a decentralized way and with total transparency, seeking solidity, massive adhesion and fast and cheap transactions. Lunes has a proprietary, open-source and collaborative blockchain. The blockchain of Lunes is prepared to store and guarantee the security of any type of information, not only of financial transactions. This enables us to use our blockchain to perform various processes in a decentralized way, such as document authenticity records, digital asset issuance and execution of smart contracts.",
+                "paragraph2": "The validation of transactions on the Lunes network occurs through the Proof-of-Stake system, considered the safest validation scheme for blockchain. In Proof-of-Stake, any network participant with more than 5000 Lunes can become a network validator node, contributing to the security of transactions and gaining network transaction fees as a reward. In addition, with the leasing system anyone can join the network as a validator, lending the power of their Lunes to another node of the network.",
+                "paragraph3": "Through our microblocks technology, the blockchain of Lunes is able to process a much larger volume of transactions when compared to the cryptomedas with greater market value. With smaller and faster blocks, transactions are validated cheaply and quickly, allowing Lunes to scale to achieve its primary goal",
+                "paragraph4": "Through our microblocks technology, the blockchain of Lunes is able to process a much larger volume of transactions when compared to the cryptomedas with greater market value. With smaller and faster blocks, transactions are validated cheaply and quickly, allowing Lunes to scale to achieve its primary goal."
+            }
+        },
+        "characteristics": {
+            "title": "Characteristics",
+            "properties": {
+                "name": "Name",
+                "ticker": "Ticker",
+                "smallerUnit": "Smaller Unit",
+                "marketCap": "Market Cap",
+                "volume": "Volume",
+                "circulatingSupply": "Circulating Supply",
+                "maxSuply": "Max Supply",
+                "protocol": "Protocol",
+                "minerable": "Mineable",
+                "openSource": "Open Source",
+                "capacityTransactions": "Number of Transactions"
+            },
+            "propertyValues": {
+                "name": "Lunes",
+                "ticker": "LUNES",
+                "smallerUnit": "Unis",
+                "marketCap": "Max supply *price",
+                "volume": "Add the exchanges volume",
+                "circulatingSupply": "112027266.65534275 LUNES",
+                "maxSuply": "150.728.537,6150080000 LUNES",
+                "protocol": "Leased proof of stake",
+                "minerable": "No",
+                "openSource": "Yes",
+                "capacityTransactions": "65500 per second / 1092 per segundo"
+            }
+        },
+        "quotation": {
+            "title": "Price",
+            "exchangeLabels": {
+                "extrates": "Extrates - buy and sell",
+                "newCash": "NewCash - buy and sell",
+                "getBtc": "GetBTC - buy and sel"
+            },
+            "exchanges": {
+                "extrates": "Extrates",
+                "newCash": "NewCash",
+                "getBtc": "GetBTC"
+            }
+        },
+        "blockExplorer": {
+            "title": "Block explorer",
+            "description": "The block explorer is the portal where anyone can access and visualize, in a transparent and practical way, all the information stored in the blockchain of Lunes. In it can be visualized the issued blocks, transactions validated in the network, the list of validating nodes of the network, tokens issued within the Lunes blockchain plus key statistics on it.",
+            "access": "access "
+        },
+        "roadMap": {
+            "title": "Roadmap",
+            "description": {
+                "text1": "New version of the Web Wallet",
+                "text2": "New version of Mobile Wallet",
+                "text3": "Sale of cypto and P2P",
+                "text4": "P2P",
+                "text5": "Decentralized Exchange",
+                "text6": "Roadmap 2019"
+            }
+        },
+        "whitepaper": {
+            "title": "Whitepaper",
+            "lang": {
+                "portugues": "Português",
+                "english": "English",
+                "spanish": "Español",
+                "francais": "Français",
+                "pyссknn": "Pусский",
+                "italian": "Italian",
+                "deutsch": "Deutsch",
+                "bahasaIndonesia": "Bahasa Indonesia",
+                "hindi": "हिन्दी",
+                "corean": "한국",
+                "filipino": "Filipino"
+            }
+        }
+    },
+    "contactPage": {
+        "title": "Join Us",
+        "description": "Follow closely all the News we prepared for you in our communities.",
+        "social": {
+            "blog": "Blog",
+            "telegram": {
+                "portuguese": "Telegram Portuguese",
+                "english": "English Telegram",
+                "spanish": "Telegram en español",
+                "francais": "Telegram en français",
+                "pусскии": "Pусский Telegram"
+            },
+            "facebook": "Facebook",
+            "twitter": "Twitter",
+            "instagram": "Instagram",
+            "whatsapp": "WhatsApp"
+        },
+        "email": {
+            "title": "Send us an e-mail.",
+            "description": "If you need to speak to a specific department on Lunes, contact one of our emails:"
+        },
+        "contact": {
+            "description": "Not sure which department to handle",
+            "contactEmail": "contato@lunes.io"
+        },
+        "marketing": {
+            "description": "Do you want to talk about advertising or marketing :",
+            "marketingEmail": "marketing@lunes.io"
+        },
+        "support": {
+            "description": "Do you need help with any of our products?",
+            "sopportEmail": "suporte@lunes.io"
+        },
+        "commercial": {
+            "description": "If your subject is commercial in nature, so please send to:",
+            "commercialEmail": "comercial@lunes.io"
+        },
+        "press": {
+            "title": "Welcome to our Press Room:",
+            "description": "Our excellent press team is always ready to meet your demand.",
+            "contact": "You can speak with Nathália Sanches, Sergio Sanches or with Débora Folego by the email :",
+            "email": "imprensa@lunes.io"
+        }
+    },
+    "productPage": {
+        "wallet": {
+            "title": "You in total control of your money",
+            "subTitle": "The practicality of an internet banking, with the freedom of cryptocurrency and blockchain security.",
+            "description": "In the Lunes Wallet you can use your cryptocurrencies in the many services available on the platform, giving them real usefulness"
+        },
+        "multicoin": {
+            "title": "Store many cryptocurrencies",
+            "subTitle": "The practicality of an internet banking, with the freedom of cryptocurrency and blockchain security.",
+            "description": "Designed to provide a variety of solutions in one place, the Lunes Wallet accepts multiple cryptocurrencies, from the already consolidated to the new projects that are on the rise.",
+            "knowCoin": "The coins listed"
+        },
+        "leasing": {
+            "title": "Lease your coins and earn rewards",
+            "subTitle": "Leasing is the way you rent your Lunes to a computer that validates transactions that occur throughout the Lunes network. Your coins will still be in your possession and will generate more coins for you."
+        },
+        "recharge": {
+            "title": "Recharge your mobile phone with Lunes and Bitcoin",
+            "subTitle": "The practical use of your cryptocurrencies in your day to day life is now a reality, with the credits recharges. Quickly and practically, you can recharge your mobile phone using any digital cryptocurrency in your Lunes Wallet",
+            "doeRecharge": "Recharge your mobile phone "
+        },
+        "ticket": {
+            "title": "Pay your bills with the cryptocurrencies",
+            "subtitle": "Your cryptocurrencies can now be used to pay for water, energy and telephone bills or your shopping on the internet, in an easy and intuitive system.",
+            "observation": "Bank data provided by the Central Bank of Brazil"
+        },
+        "ted": {
+            "title": "Send money through the wallet",
+            "subtitle": "Your wallet allows you to send your cryptocurrencies into your private bank accounts or owned by someone else, turning cryptocurrencies into traditional money.",
+            "observation": "It is the speed of TED payment method (exclusive for Brazil) transfer found in the traditional banking system, using the cryptocurrencies in your wallet"
+        }
+    },
+    "aboutPage": {
+        "title": "Lunes",
+        "history": {
+            "title": "History",
+            "text1": "We emerged at the end of 2016 as a concept of a currency for gamification in a content streaming platform of Produtora Nebulosa. After three months of study of the blockchain by Lucas Magno, the concept evolved and technology was inserted into the idea. It was born there what would become the Lunes Platform.",
+            "text2": "Over the next few months, product and service ideas were emerging, design, development, marketing, and commercial professionals entered the project and what was just an idea on paper began to materialize with the creation of our own blockchain based on Waves.",
+            "text3": "On February 27, 2018, the company's pre-ICO capitalization phase began with the sale of tokens, which ended with ICO on May 30, with more than 102 million tokens sold. Successful capitalization has enabled us to begin developing the ideal products and services."
+        },
+        "mission": {
+            "title": "Mission",
+            "text1": "We are a Brazilian company of technology that generates disruptive solutions based on blockchain, with products for companies, but focusing on the result for the final consumer. Our services and products revolutionize the market for digital currency exchange, fundraising, means of payment and commercial automation through digital currencies and blockchain, to generate greater financial democratization and banking decentralization",
+            "text2": "Over the next few months, product and service ideas were emerging, design, development, marketing, and commercial professionals entered the project and what was just an idea on paper began to materialize with the creation of our own blockchain based on Waves.",
+            "text3": "Our services and products revolutionize the market for digital currency exchange, fundraising, means of payment and commercial automation through digital currencies and blockchain, to generate greater financial democratization and banking decentralization."
+        },
+        "vision": {
+            "title": "Vision",
+            "text1": "We aim to become a reference in the development of applications that use blockchain as a basis to solve everyday problems of people and companies, always respecting the good quality in the care of our clients, be they companies or people.\n",
+            "text2": "Our services and products revolutionize the market for digital currency exchange, fundraising, means of payment and commercial automation through digital currencies and blockchain, to generate greater financial democratization and banking decentralization"
+        },
+        "values": {
+            "title": "Values",
+            "text1": "Respect",
+            "text2": "Entrepreneurship",
+            "text3": "Ethics and transparency"
+        }
+    }
+}

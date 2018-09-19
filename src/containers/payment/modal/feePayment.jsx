@@ -43,11 +43,40 @@ class FeePayment extends React.Component {
     }, 4100);
   }
 
-  calcFee(value) {
-    this.setState({feeSelect:value});
+  calcFee(set) {
+    const {setFeePayment, fee} = this.props;
 
-    const {setFeePayment} = this.props;
-    setFeePayment(value);
+    let feeValue = 0;
+    let feePerByte = 0;
+    let feeLunes = 0;
+
+    switch(set){
+      case "low":
+        feeValue = fee.fee.low;
+        feePerByte = fee.feePerByte.low;
+        feeLunes = fee.feeLunes.low;
+        break;
+      case "medium":
+        feeValue = fee.fee.medium;
+        feePerByte = fee.feePerByte.medium;
+        feeLunes = fee.feeLunes.medium;
+        break;
+      case "high":
+        feeValue = fee.fee.high;
+        feePerByte = fee.feePerByte.high;
+        feeLunes = fee.feeLunes.high;
+        break;
+    }
+
+    this.setState({feeSelect:feeValue});
+
+    const payload = {
+      fee: feeValue,
+      feePerByte: feePerByte, 
+      feeLunes: feeLunes
+    }
+    
+    setFeePayment(payload);
   }
 
   validateForm = () => {
@@ -75,7 +104,7 @@ class FeePayment extends React.Component {
   render() {
     const { loading, payment, fee } = this.props;
     const { feeSelect, error, errorMsg } = this.state;
-
+    
     if(loading){
       return (
         <div className={style.modalBox}>
@@ -111,21 +140,21 @@ class FeePayment extends React.Component {
           <div className={style.boxFee}>
             <span
               className={style.greenLabelFee}
-              onClick={() => this.calcFee(fee.low)}
+              onClick={() => this.calcFee("low")}
             >
-              {i18n.t("FEE_LOW")} {fee.low}
+              {i18n.t("FEE_LOW")} {fee.fee.low}
             </span>
             <span
               className={style.yellowLabelFee}
-              onClick={() => this.calcFee(fee.medium)}
+              onClick={() => this.calcFee("medium")}
             >
-              {i18n.t("FEE_MEDIUM")} {fee.medium}
+              {i18n.t("FEE_MEDIUM")} {fee.fee.medium}
             </span>
             <span
               className={style.redLabelFee}
-              onClick={() => this.calcFee(fee.high)}
+              onClick={() => this.calcFee("high")}
             >
-              {i18n.t("FEE_HIGHT")} {fee.high}
+              {i18n.t("FEE_HIGHT")} {fee.fee.high}
             </span>
           </div>
 
@@ -151,7 +180,7 @@ FeePayment.propTypes = {
 }
 
 const mapStateToProps = store => ({
-  fee:        store.payment.fee.fee,
+  fee:        store.payment.fee,
   payment:    store.payment.payment,
   loading:    store.payment.loading, 
   wallet:     store.skeleton

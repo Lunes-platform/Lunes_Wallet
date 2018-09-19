@@ -1,0 +1,570 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: 2018-09-10T23:36:34.054Z\n"
+"PO-Revision-Date: 2018-09-10 22:23-0300\n"
+"Language: en_US\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.1.1\n"
+
+msgid "header##theCoin"
+msgstr "About the Coin"
+
+msgid "header##products"
+msgstr "Products"
+
+msgid "header##services"
+msgstr "Services"
+
+msgid "header##blog"
+msgstr "Blog"
+
+msgid "header##contact"
+msgstr "Contact"
+
+msgid "footer##rightsReserved"
+msgstr "Lunes Platform - All rights reserved"
+
+msgid "footer##termsOfUse"
+msgstr "Terms of Use - Privacy Policy - Cookies Policy"
+
+msgid "footer##whoWeAre"
+msgstr "ABOUT US"
+
+msgid "footer##history"
+msgstr "History"
+
+msgid "footer##mission"
+msgstr "Mission"
+
+msgid "footer##view"
+msgstr "Vision"
+
+msgid "footer##values"
+msgstr "Values"
+
+msgid "footer##communities"
+msgstr "COMMUNITIES"
+
+msgid "footer##social##telegram"
+msgstr "Telegram"
+
+msgid "footer##social##whatsapp"
+msgstr "WhatsApp"
+
+msgid "footer##social##facebook"
+msgstr "Facebook"
+
+msgid "footer##social##twitter"
+msgstr "Twitter"
+
+msgid "footer##social##instagram"
+msgstr "Instagram"
+
+msgid "footer##contacts"
+msgstr "CONTACTS"
+
+msgid "footer##support"
+msgstr "Support"
+
+msgid "footer##press"
+msgstr "Press"
+
+msgid "footer##commercial"
+msgstr "Commercial"
+
+msgid "footer##marketing"
+msgstr "Marketing"
+
+msgid "footer##workWithUs"
+msgstr "Work with us"
+
+msgid "footer##rates"
+msgstr "Fees"
+
+msgid "footer##security"
+msgstr "Security"
+
+msgid "footer##partners"
+msgstr "Partners"
+
+msgid "footer##signUpOurNewlestter"
+msgstr "SIGN UP OUR NEWSLETTER"
+
+msgid "footer##placeholderName"
+msgstr "Your name"
+
+msgid "footer##placeholderEmail"
+msgstr "Your e-mail"
+
+msgid "footer##sign"
+msgstr "Sign it"
+
+msgid "footer##appStores"
+msgstr "APP STORES"
+
+msgid "homePage##title##principal"
+msgstr "The future in the present"
+
+msgid "homePage##title##subtitle"
+msgstr "It is not a bank. It is not an exchange."
+
+msgid "homePage##title##subtitleLunes"
+msgstr "It is the Lunes"
+
+msgid "homePage##title##subtitleOwnerMoney"
+msgstr "Be the owner of your own Money."
+
+msgid "homePage##openYourAccount"
+msgstr "Open your account"
+
+msgid "coinPage##coin##title"
+msgstr "The Coin"
+
+msgid "coinPage##coin##aboutCoin##paragraph1"
+msgstr ""
+"Lunes is the biggest crypto-currency in Latin America. It was developed by "
+"the core team of Lunes Platform, using innovative solutions, in a "
+"decentralized way and with total transparency, seeking solidity, massive "
+"adhesion and fast and cheap transactions. Lunes has a proprietary, open-"
+"source and collaborative blockchain. The blockchain of Lunes is prepared to "
+"store and guarantee the security of any type of information, not only of "
+"financial transactions. This enables us to use our blockchain to perform "
+"various processes in a decentralized way, such as document authenticity "
+"records, digital asset issuance and execution of smart contracts."
+
+msgid "coinPage##coin##aboutCoin##paragraph2"
+msgstr ""
+"The validation of transactions on the Lunes network occurs through the "
+"Proof-of-Stake system, considered the safest validation scheme for "
+"blockchain. In Proof-of-Stake, any network participant with more than 5000 "
+"Lunes can become a network validator node, contributing to the security of "
+"transactions and gaining network transaction fees as a reward. In addition, "
+"with the leasing system anyone can join the network as a validator, lending "
+"the power of their Lunes to another node of the network."
+
+msgid "coinPage##coin##aboutCoin##paragraph3"
+msgstr ""
+"Through our microblocks technology, the blockchain of Lunes is able to "
+"process a much larger volume of transactions when compared to the "
+"cryptomedas with greater market value. With smaller and faster blocks, "
+"transactions are validated cheaply and quickly, allowing Lunes to scale to "
+"achieve its primary goal"
+
+msgid "coinPage##coin##aboutCoin##paragraph4"
+msgstr ""
+"Through our microblocks technology, the blockchain of Lunes is able to "
+"process a much larger volume of transactions when compared to the "
+"cryptomedas with greater market value. With smaller and faster blocks, "
+"transactions are validated cheaply and quickly, allowing Lunes to scale to "
+"achieve its primary goal."
+
+msgid "coinPage##characteristics##title"
+msgstr "Characteristics"
+
+msgid "coinPage##characteristics##properties##name"
+msgstr "Name"
+
+msgid "coinPage##characteristics##properties##ticker"
+msgstr "Ticker"
+
+msgid "coinPage##characteristics##properties##smallerUnit"
+msgstr "Smaller Unit"
+
+msgid "coinPage##characteristics##properties##marketCap"
+msgstr "Market Cap"
+
+msgid "coinPage##characteristics##properties##volume"
+msgstr "Volume"
+
+msgid "coinPage##characteristics##properties##circulatingSupply"
+msgstr "Circulating Supply"
+
+msgid "coinPage##characteristics##properties##maxSuply"
+msgstr "Max Supply"
+
+msgid "coinPage##characteristics##properties##protocol"
+msgstr "Protocol"
+
+msgid "coinPage##characteristics##properties##minerable"
+msgstr "Mineable"
+
+msgid "coinPage##characteristics##properties##openSource"
+msgstr "Open Source"
+
+msgid "coinPage##characteristics##properties##capacityTransactions"
+msgstr "Number of Transactions"
+
+msgid "coinPage##characteristics##propertyValues##name"
+msgstr "Lunes"
+
+msgid "coinPage##characteristics##propertyValues##ticker"
+msgstr "LUNES"
+
+msgid "coinPage##characteristics##propertyValues##smallerUnit"
+msgstr "Unis"
+
+msgid "coinPage##characteristics##propertyValues##marketCap"
+msgstr "Max supply *price"
+
+msgid "coinPage##characteristics##propertyValues##volume"
+msgstr "Add the exchanges volume"
+
+msgid "coinPage##characteristics##propertyValues##circulatingSupply"
+msgstr "112027266.65534275 LUNES"
+
+msgid "coinPage##characteristics##propertyValues##maxSuply"
+msgstr "150.728.537,6150080000 LUNES"
+
+msgid "coinPage##characteristics##propertyValues##protocol"
+msgstr "Leased proof of stake"
+
+msgid "coinPage##characteristics##propertyValues##minerable"
+msgstr "No"
+
+msgid "coinPage##characteristics##propertyValues##openSource"
+msgstr "Yes"
+
+msgid "coinPage##characteristics##propertyValues##capacityTransactions"
+msgstr "65500 per second / 1092 per segundo"
+
+msgid "coinPage##quotation##title"
+msgstr "Price"
+
+msgid "coinPage##quotation##exchangeLabels##extrates"
+msgstr "Extrates - buy and sell"
+
+msgid "coinPage##quotation##exchangeLabels##newCash"
+msgstr "NewCash - buy and sell"
+
+msgid "coinPage##quotation##exchangeLabels##getBtc"
+msgstr "GetBTC - buy and sel"
+
+msgid "coinPage##quotation##exchanges##extrates"
+msgstr "Extrates"
+
+msgid "coinPage##quotation##exchanges##newCash"
+msgstr "NewCash"
+
+msgid "coinPage##quotation##exchanges##getBtc"
+msgstr "GetBTC"
+
+msgid "coinPage##blockExplorer##title"
+msgstr "Block explorer"
+
+msgid "coinPage##blockExplorer##description"
+msgstr ""
+"The block explorer is the portal where anyone can access and visualize, in "
+"a transparent and practical way, all the information stored in the "
+"blockchain of Lunes. In it can be visualized the issued blocks, "
+"transactions validated in the network, the list of validating nodes of the "
+"network, tokens issued within the Lunes blockchain plus key statistics on "
+"it."
+
+msgid "coinPage##blockExplorer##access"
+msgstr "access "
+
+msgid "coinPage##roadMap##title"
+msgstr "Roadmap"
+
+msgid "coinPage##roadMap##description##text1"
+msgstr "New version of the Web Wallet"
+
+msgid "coinPage##roadMap##description##text2"
+msgstr "New version of Mobile Wallet"
+
+msgid "coinPage##roadMap##description##text3"
+msgstr "Sale of cypto and P2P"
+
+msgid "coinPage##roadMap##description##text4"
+msgstr "P2P"
+
+msgid "coinPage##roadMap##description##text5"
+msgstr "Decentralized Exchange"
+
+msgid "coinPage##roadMap##description##text6"
+msgstr "Roadmap 2019"
+
+msgid "coinPage##whitepaper##title"
+msgstr "Whitepaper"
+
+msgid "coinPage##whitepaper##lang##portugues"
+msgstr "Português"
+
+msgid "coinPage##whitepaper##lang##english"
+msgstr "English"
+
+msgid "coinPage##whitepaper##lang##spanish"
+msgstr "Español"
+
+msgid "coinPage##whitepaper##lang##francais"
+msgstr "Français"
+
+msgid "coinPage##whitepaper##lang##pyссknn"
+msgstr "Pусский"
+
+msgid "coinPage##whitepaper##lang##italian"
+msgstr "Italian"
+
+msgid "coinPage##whitepaper##lang##deutsch"
+msgstr "Deutsch"
+
+msgid "coinPage##whitepaper##lang##bahasaIndonesia"
+msgstr "Bahasa Indonesia"
+
+msgid "coinPage##whitepaper##lang##hindi"
+msgstr "हिन्दी"
+
+msgid "coinPage##whitepaper##lang##corean"
+msgstr "한국"
+
+msgid "coinPage##whitepaper##lang##filipino"
+msgstr "Filipino"
+
+msgid "contactPage##title"
+msgstr "Join Us"
+
+msgid "contactPage##description"
+msgstr "Follow closely all the News we prepared for you in our communities."
+
+msgid "contactPage##social##blog"
+msgstr "Blog"
+
+msgid "contactPage##social##telegram##portuguese"
+msgstr "Telegram Portuguese"
+
+msgid "contactPage##social##telegram##english"
+msgstr "English Telegram"
+
+msgid "contactPage##social##telegram##spanish"
+msgstr "Telegram en español"
+
+msgid "contactPage##social##telegram##francais"
+msgstr "Telegram en français"
+
+msgid "contactPage##social##telegram##pусскии"
+msgstr "Pусский Telegram"
+
+msgid "contactPage##social##facebook"
+msgstr "Facebook"
+
+msgid "contactPage##social##twitter"
+msgstr "Twitter"
+
+msgid "contactPage##social##instagram"
+msgstr "Instagram"
+
+msgid "contactPage##social##whatsapp"
+msgstr "WhatsApp"
+
+msgid "contactPage##email##title"
+msgstr "Send us an e-mail."
+
+msgid "contactPage##email##description"
+msgstr ""
+"If you need to speak to a specific department on Lunes, contact one of our "
+"emails:"
+
+msgid "contactPage##contact##description"
+msgstr "Not sure which department to handle"
+
+msgid "contactPage##contact##contactEmail"
+msgstr "contato@lunes.io"
+
+msgid "contactPage##marketing##description"
+msgstr "Do you want to talk about advertising or marketing :"
+
+msgid "contactPage##marketing##marketingEmail"
+msgstr "marketing@lunes.io"
+
+msgid "contactPage##support##description"
+msgstr "Do you need help with any of our products?"
+
+msgid "contactPage##support##sopportEmail"
+msgstr "suporte@lunes.io"
+
+msgid "contactPage##commercial##description"
+msgstr "If your subject is commercial in nature, so please send to:"
+
+msgid "contactPage##commercial##commercialEmail"
+msgstr "comercial@lunes.io"
+
+msgid "contactPage##press##title"
+msgstr "Welcome to our Press Room:"
+
+msgid "contactPage##press##description"
+msgstr "Our excellent press team is always ready to meet your demand."
+
+msgid "contactPage##press##contact"
+msgstr ""
+"You can speak with Nathália Sanches, Sergio Sanches or with Débora Folego "
+"by the email :"
+
+msgid "contactPage##press##email"
+msgstr "imprensa@lunes.io"
+
+msgid "productPage##wallet##title"
+msgstr "You in total control of your money"
+
+msgid "productPage##wallet##subTitle"
+msgstr ""
+"The practicality of an internet banking, with the freedom of cryptocurrency "
+"and blockchain security."
+
+msgid "productPage##wallet##description"
+msgstr ""
+"In the Lunes Wallet you can use your cryptocurrencies in the many services "
+"available on the platform, giving them real usefulness"
+
+msgid "productPage##multicoin##title"
+msgstr "Store many cryptocurrencies"
+
+msgid "productPage##multicoin##subTitle"
+msgstr ""
+"The practicality of an internet banking, with the freedom of cryptocurrency "
+"and blockchain security."
+
+msgid "productPage##multicoin##description"
+msgstr ""
+"Designed to provide a variety of solutions in one place, the Lunes Wallet "
+"accepts multiple cryptocurrencies, from the already consolidated to the new "
+"projects that are on the rise."
+
+msgid "productPage##multicoin##knowCoin"
+msgstr "The coins listed"
+
+msgid "productPage##leasing##title"
+msgstr "Lease your coins and earn rewards"
+
+msgid "productPage##leasing##subTitle"
+msgstr ""
+"Leasing is the way you rent your Lunes to a computer that validates "
+"transactions that occur throughout the Lunes network. Your coins will still "
+"be in your possession and will generate more coins for you."
+
+msgid "productPage##recharge##title"
+msgstr "Recharge your mobile phone with Lunes and Bitcoin"
+
+msgid "productPage##recharge##subTitle"
+msgstr ""
+"The practical use of your cryptocurrencies in your day to day life is now a "
+"reality, with the credits recharges. Quickly and practically, you can "
+"recharge your mobile phone using any digital cryptocurrency in your Lunes "
+"Wallet"
+
+msgid "productPage##recharge##doeRecharge"
+msgstr "Recharge your mobile phone "
+
+msgid "productPage##ticket##title"
+msgstr "Pay your bills with the cryptocurrencies"
+
+msgid "productPage##ticket##subtitle"
+msgstr ""
+"Your cryptocurrencies can now be used to pay for water, energy and "
+"telephone bills or your shopping on the internet, in an easy and intuitive "
+"system."
+
+msgid "productPage##ticket##observation"
+msgstr "Bank data provided by the Central Bank of Brazil"
+
+msgid "productPage##ted##title"
+msgstr "Send money through the wallet"
+
+msgid "productPage##ted##subtitle"
+msgstr ""
+"Your wallet allows you to send your cryptocurrencies into your private bank "
+"accounts or owned by someone else, turning cryptocurrencies into "
+"traditional money."
+
+msgid "productPage##ted##observation"
+msgstr ""
+"It is the speed of TED payment method (exclusive for Brazil) transfer found "
+"in the traditional banking system, using the cryptocurrencies in your wallet"
+
+msgid "aboutPage##title"
+msgstr "Lunes"
+
+msgid "aboutPage##history##title"
+msgstr "History"
+
+msgid "aboutPage##history##text1"
+msgstr ""
+"We emerged at the end of 2016 as a concept of a currency for gamification "
+"in a content streaming platform of Produtora Nebulosa. After three months "
+"of study of the blockchain by Lucas Magno, the concept evolved and "
+"technology was inserted into the idea. It was born there what would become "
+"the Lunes Platform."
+
+msgid "aboutPage##history##text2"
+msgstr ""
+"Over the next few months, product and service ideas were emerging, design, "
+"development, marketing, and commercial professionals entered the project "
+"and what was just an idea on paper began to materialize with the creation "
+"of our own blockchain based on Waves."
+
+msgid "aboutPage##history##text3"
+msgstr ""
+"On February 27, 2018, the company's pre-ICO capitalization phase began with "
+"the sale of tokens, which ended with ICO on May 30, with more than 102 "
+"million tokens sold. Successful capitalization has enabled us to begin "
+"developing the ideal products and services."
+
+msgid "aboutPage##mission##title"
+msgstr "Mission"
+
+msgid "aboutPage##mission##text1"
+msgstr ""
+"We are a Brazilian company of technology that generates disruptive "
+"solutions based on blockchain, with products for companies, but focusing on "
+"the result for the final consumer. Our services and products revolutionize "
+"the market for digital currency exchange, fundraising, means of payment and "
+"commercial automation through digital currencies and blockchain, to "
+"generate greater financial democratization and banking decentralization"
+
+msgid "aboutPage##mission##text2"
+msgstr ""
+"Over the next few months, product and service ideas were emerging, design, "
+"development, marketing, and commercial professionals entered the project "
+"and what was just an idea on paper began to materialize with the creation "
+"of our own blockchain based on Waves."
+
+msgid "aboutPage##mission##text3"
+msgstr ""
+"Our services and products revolutionize the market for digital currency "
+"exchange, fundraising, means of payment and commercial automation through "
+"digital currencies and blockchain, to generate greater financial "
+"democratization and banking decentralization."
+
+msgid "aboutPage##vision##title"
+msgstr "Vision"
+
+msgid "aboutPage##vision##text1"
+msgstr ""
+"We aim to become a reference in the development of applications that use "
+"blockchain as a basis to solve everyday problems of people and companies, "
+"always respecting the good quality in the care of our clients, be they "
+"companies or people.\n"
+
+msgid "aboutPage##vision##text2"
+msgstr ""
+"Our services and products revolutionize the market for digital currency "
+"exchange, fundraising, means of payment and commercial automation through "
+"digital currencies and blockchain, to generate greater financial "
+"democratization and banking decentralization"
+
+msgid "aboutPage##values##title"
+msgstr "Values"
+
+msgid "aboutPage##values##text1"
+msgstr "Respect"
+
+msgid "aboutPage##values##text2"
+msgstr "Entrepreneurship"
+
+msgid "aboutPage##values##text3"
+msgstr "Ethics and transparency"

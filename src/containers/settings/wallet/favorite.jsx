@@ -21,9 +21,6 @@ class FavoritePage extends React.Component {
     let { coins } = this.props;
     return Object.keys(coins).map((val, key) => {
       let coin = coins[val];
-      if (coin.status !== "active") {
-        return;
-      }
 
       return (
         <div key={key}>

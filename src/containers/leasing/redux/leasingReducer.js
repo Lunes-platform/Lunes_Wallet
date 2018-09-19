@@ -1,7 +1,7 @@
 const initialState = {
   professionalNode: [],
   history: [],
-  balance: undefined,
+  leasingBalance: undefined,
   addressIsValid: false,
   isLoading: false,
   modalLoading: false,
@@ -27,7 +27,7 @@ const leasing = (state = initialState, action) => {
         ...state,
         history: action.leasingHistory,
         professionalNode: action.professionalNodes,
-        balance: action.leasingBalance,
+        leasingBalance: action.leasingBalance,
         modalLoading: false,
         isLoading: false,
         reload: false

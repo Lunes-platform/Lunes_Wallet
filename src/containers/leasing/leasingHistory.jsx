@@ -11,14 +11,8 @@ import {
 } from "../leasing/redux/leasingAction";
 import Grid from "@material-ui/core/Grid";
 import { formatDate } from "../../utils/numbers";
-
-// STYLES
 import style from "./style.css";
-
-// UTILS
 import i18n from "../../utils/i18n";
-
-const blockexplorer = "https://blockexplorer.lunes.io/tx/";
 
 class LeasingHistory extends React.Component {
   constructor(props) {
@@ -72,7 +66,8 @@ class LeasingHistory extends React.Component {
       getLeasingInfo(
         coins.lunes.abbreviation,
         coins.lunes.address,
-        coins.lunes.decimalPoint
+        coins.lunes.decimalPoint,
+        user.password
       );
     }, 5000);
 
@@ -143,7 +138,10 @@ class LeasingHistory extends React.Component {
               <Grid item xs={12} className={style.itemDataHistorico}>
                 <Grid item xs={12} className={style.descriptionHistory}>
                   <div>{i18n.t("LEASING_TITLE_EXPLORER")}</div>
-                  <a href={blockexplorer + value.txID} target="blank">
+                  <a
+                    href={"https://blockexplorer.lunes.io/tx/" + value.txID}
+                    target="blank"
+                  >
                     {value.txID}
                   </a>
                 </Grid>
@@ -236,7 +234,7 @@ const mapStateToProps = store => ({
   coins: store.skeleton.coins,
   balance: store.skeleton.coins.lunes.balance.available,
   history: store.leasing.history.data,
-  leasingBalance: store.leasing.balance,
+  leasingBalance: store.leasing.leasingBalance,
   coinFee: store.leasing.coinFee.low,
   decimalPoint: store.skeleton.coins.lunes.decimalPoint,
   user: store.user.user

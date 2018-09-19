@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 1280px) {
   :local(.tabContents) {
-    margin: 0 15%;
+    margin: 0 2%;
   }
 }
 
