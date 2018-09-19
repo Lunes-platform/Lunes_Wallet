@@ -92,7 +92,7 @@ class Security extends React.Component {
               <Grid item xs={12} className={style.containerItems}>
                 <Hidden smUp>
                   <Grid item xs={6} className={style.columItemsMobile}>
-                    <img src="images/settings/QRCode.png" />
+                    <img src="images/settings/qrcode.png" />
                   </Grid>
                 </Hidden>
 
