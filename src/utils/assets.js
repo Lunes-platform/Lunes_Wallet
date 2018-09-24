@@ -20,7 +20,7 @@ const ASSETS = {
     abbreviation: "OPN",
   },
   //_thelordofnodes
-  // "": {name:"Not found"},
+  // "": {name:"Not found" },
   //_lunes.in
   // "9rwhz45pXYRdbHTek28HK87RHCEG1BKP4Eu2FnpAVsC8": {
   // name:"ZEN Token"},
