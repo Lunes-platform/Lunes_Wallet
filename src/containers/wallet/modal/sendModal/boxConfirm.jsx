@@ -61,7 +61,7 @@ class BoxConfirm extends React.Component {
           <span className={style.totalConfirm}>
             {modal.finalAmount + " " + coin.toUpperCase()}
           </span>
-          <span>  {i18n.t("MODAL_SEND_TO_ADDRESS")}</span>
+          <span>  {i18n.t("MODAL_SEND_TO_ADDRESS")}{' '}</span>
           <span className={style.addressConfirm}>{modal.address}</span>
         </div>
 

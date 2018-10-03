@@ -30,6 +30,7 @@ export const compareUserSeedWords = seed => {
 
 export const getUsername = () => {
   let userData = getUserData();
+  if (!userData) return;
   return userData ? userData.username : undefined;
 };
 

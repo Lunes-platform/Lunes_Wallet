@@ -1,6 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
+// REDUX
+import { connect } from "react-redux";
 
 // MATERIAL UI
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";

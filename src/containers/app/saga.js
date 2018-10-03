@@ -1,5 +1,10 @@
-import { takeLatest } from "redux-saga";
-import { fork } from "redux-saga/effects";
+import {
+  takeLatest,
+  takeEvery
+} from "redux-saga";
+import {
+  fork
+} from "redux-saga/effects";
 import {
   authenticateUser,
   createTwoFactorAuth,
@@ -9,7 +14,8 @@ import {
   hasTwoFactorAuth,
   setUserSeed,
   updateUserConsentsSaga,
-  editUserData
+  editUserData,
+  updateUserPasswordSaga
 } from "../user/redux/userSaga";
 
 import {
@@ -25,12 +31,15 @@ import {
   shareCoinAddress,
   getWalletSendModalFee,
   getCoinFee,
-  setWalletTransaction
+  setWalletTransaction,
+  setUtxos
 } from "../wallet/redux/walletSaga";
-import { getVoucher } from "../coupons/redux/couponsSaga";
+import { getVoucher, verifyCoupon } from "../coupons/redux/couponsSaga";
 import {
   getTwoFactorAuth,
-  verifyTwoFactorAuthSettings
+  verifyTwoFactorAuthSettings,
+  getAliases,
+  createAlias
 } from "../settings/redux/settingsSaga";
 import {
   getProfessionalNode,
@@ -51,14 +60,20 @@ import {
   setModalStepSaga
 } from "../payment/redux/paymentSaga";
 import {
-  getAssetCoinHistory,
-  getAssetSendModalFee,
-  setAssetTransaction,
-  validateAddress as validateAssetAddress,
-  shareCoinAddress as shareAssetAddress
+  getAssetGeneralInfo,
+  getAssetHistory,
+  reloadAsset
 } from "../assets/redux/assetsSaga";
 import {
-  setModalStepSaga as setModalStepRechargeSaga
+  setModalStepSaga as setModalStepRechargeSaga,
+  getOperatorsSaga,
+  getValuesCreditSaga,
+  setRechargeSaga,
+  getFeeRechargeSaga,
+  setFeeRechargeSaga,
+  confirmRechargeSaga,
+  getHistoryRechargeSaga,
+  getRechargeCoinsEnabledSaga
 } from "../recharge/redux/rechargeSaga";
 
 export default function* rootSaga() {
@@ -73,6 +88,7 @@ export default function* rootSaga() {
     fork(takeLatest, "SET_USER_SEED_API", setUserSeed),
     fork(takeLatest, "UPDATE_USER_CONSENTS_API", updateUserConsentsSaga),
     fork(takeLatest, "EDIT_USER_DATA_API", editUserData),
+    fork(takeLatest, "UPDATE_USER_PASSWORD_API", updateUserPasswordSaga),
 
     // Skeleton-Saga
     fork(takeLatest, "GET_GENERAL_INFO_API", loadGeneralInfo),
@@ -87,6 +103,7 @@ export default function* rootSaga() {
     fork(takeLatest, "GET_WALLET_MODAL_SEND_FEE_API", getWalletSendModalFee),
     fork(takeLatest, "SHARE_COIN_ADRESS_API", shareCoinAddress),
     fork(takeLatest, "SET_WALLET_TRANSACTION_API", setWalletTransaction),
+    fork(takeEvery, "SET_WALLET_UTXOS_API", setUtxos),
 
     // Leasing
     fork(takeLatest, "GET_PROFESSIONAL_NODE_API", getProfessionalNode),
@@ -94,6 +111,7 @@ export default function* rootSaga() {
 
     // Coupons
     fork(takeLatest, "GET_VOUCHER_API", getVoucher),
+    fork(takeLatest, "VERIFY_COUPON_API", verifyCoupon),
 
     // Settings
     fork(takeLatest, "POST_SETTINGS_CREATE_2FA_API", getTwoFactorAuth),
@@ -110,17 +128,26 @@ export default function* rootSaga() {
     fork(takeLatest, "SET_FEE_PAYMENT", setFeePaymentSaga),
     fork(takeLatest, "GET_INVOICE", getInvoiceSaga),
     fork(takeLatest, "GET_HISTORY_PAY", getHistoryPaySaga),
+    fork(takeLatest, "CREATE_ALIAS_ADDRESS_API", createAlias),
+    fork(takeLatest, "GET_ALIAS_ADDRESS_API", getAliases),
 
     // recharge-saga
     fork(takeLatest, "SET_MODAL_RECHARGE_STEP", setModalStepRechargeSaga),
+    fork(takeLatest, "GET_OPERADORAS", getOperatorsSaga),
+    fork(takeLatest, "GET_VALORES_RECARGA", getValuesCreditSaga),
+    fork(takeLatest, "SET_RECHARGE", setRechargeSaga),
+    fork(takeLatest, "GET_FEE_RECHARGE", getFeeRechargeSaga),
+    fork(takeLatest, "SET_FEE_RECHARGE", setFeeRechargeSaga),
+    fork(takeLatest, "CONFIRM_RECHARGE", confirmRechargeSaga),
+    fork(takeLatest, "GET_HISTORY_RECHARGE", getHistoryRechargeSaga),
+    fork(takeLatest, "GET_RECHARGE_COINS_ENABLED", getRechargeCoinsEnabledSaga),
 
     //assets
-    fork(takeLatest, "GET_ASSET_VALIDATE_ADDRESS_API", validateAssetAddress),
-    fork(takeLatest, "GET_ASSET_COIN_HISTORY_API", getAssetCoinHistory),
-    fork(takeLatest, "GET_ASSET_MODAL_SEND_FEE_API", getAssetSendModalFee),
-    fork(takeLatest, "SHARE_COIN_ADRESS_API", shareAssetAddress),
-    fork(takeLatest, "SET_ASSET_TRANSACTION_API", setAssetTransaction),
     fork(takeLatest, "CONFIRM_PAY", confirmPaySaga),
-    fork(takeLatest, "SET_MODAL_PAY_STEP", setModalStepSaga)
+    fork(takeLatest, "SET_MODAL_PAY_STEP", setModalStepSaga),
+    fork(takeLatest, "GET_ASSET_GENERAL_INFO_API", getAssetGeneralInfo),
+    fork(takeLatest, "GET_ASSET_HISTORY_API", getAssetHistory),
+    fork(takeLatest, "RELOAD_ASSET_API", reloadAsset),
+    fork(takeLatest, "SET_MODAL_PAY_STEP", setModalStepSaga),
   ];
 }

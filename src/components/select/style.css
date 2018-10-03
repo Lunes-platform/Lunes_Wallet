@@ -1,6 +1,6 @@
 :local .wrapper {
   cursor: pointer;
-  padding: 10px 10px 5px 10px;
+  padding: 10px 10px 0px 10px;
   position: relative;
 }
 
@@ -18,7 +18,7 @@
   display: block;
   list-style: none;
   margin-left: -10px;
-  margin-top: 12px;
+  margin-top: 8px;
   max-height: 150px;
   padding: 5px;
   overflow-y: auto;
@@ -37,4 +37,8 @@
   max-height: 25px;
   position: relative;
   top: -2px;
+}
+
+:local .icon img {
+  margin: 0;
 }

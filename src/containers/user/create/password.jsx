@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { loading, getCreateUserInfoPassword, backUserInfo } from "../redux/userAction";
+import {
+  loading,
+  getCreateUserInfoPassword,
+  backUserInfo
+} from "../redux/userAction";
 import { clearMessage, errorInput } from "../../errors/redux/errorAction";
 
 // UTILS
@@ -133,22 +137,21 @@ class Password extends React.Component {
 
   backLink = () => {
     let { backUserInfo } = this.props;
-    backUserInfo();    
-  }
+    backUserInfo();
+  };
 
-  handleKeyPress = (target) => {
+  handleKeyPress = target => {
     if (target.charCode == 13) {
-      this.inputValidator()
+      this.inputValidator();
     }
-  }
-  
+  };
+
   render() {
     let { inputs, passwordHint, errors } = this.state;
     let { password } = this.props.user.user;
 
     return (
       <div className={style.formLogin} onKeyPress={this.handleKeyPress}>
-
         <Link to="#" onClick={() => this.backLink()}>
           <img
             src="../../images/icons/arrow/arrow-white-left@2x.png"

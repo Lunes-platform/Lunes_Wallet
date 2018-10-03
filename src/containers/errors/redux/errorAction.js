@@ -7,8 +7,9 @@ export const errorInput = value => ({
   message: value
 });
 
-export const errorRequest = () => ({
+export const errorRequest = value => ({
   type: "REQUEST_FAILED",
+  message: value
 });
 
 export const successRequest = value => ({

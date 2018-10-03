@@ -15,6 +15,7 @@ export const formatCpfCnpj = (value) => {
  * @param {string} value ISO Date
  * @param {string} locale locale identification, like pt-BR, en-US, etc..
  */
+
 export const convertToLocaleDate = (value, locale = 'pt-BR') => {
   try {
     if (!value) {

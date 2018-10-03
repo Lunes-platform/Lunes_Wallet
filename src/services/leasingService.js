@@ -1,6 +1,12 @@
 import axios from "axios";
-import { internalServerError } from "../containers/errors/statusCodeMessage";
+
+// CONSTANTS
 import { API_HEADER, BASE_URL, HEADER_RESPONSE } from "../constants/apiBaseUrl";
+
+// ERROR
+import { internalServerError } from "../containers/errors/statusCodeMessage";
+
+// UTILS
 import { setAuthToken } from "../utils/localStorage";
 class LeasingService {
   async getProfessionalNodes() {

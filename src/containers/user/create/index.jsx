@@ -8,7 +8,7 @@ import Footer from "../footer";
 import CreateUser from "./createUser";
 import Password from "./password";
 import Terms from "./terms";
-import Email from "./emailMessage";
+import EmailMessage from "./emailMessage";
 
 // STYLE
 import style from "../style.css";
@@ -16,11 +16,10 @@ import style from "../style.css";
 class Create extends React.Component {
   renderContent = () => {
     let { create } = this.props.user.pages;
-
     if (create === 0) return <CreateUser />;
     if (create === 1) return <Password />;
     if (create === 2) return <Terms />;
-    if (create === 3) return <Email />;
+    if (create === 3) return <EmailMessage />;
   };
 
   render() {

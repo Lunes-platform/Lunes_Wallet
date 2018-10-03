@@ -57,6 +57,11 @@ class BoxAmount extends React.Component {
       setWalletSendModalAmount
     } = this.props;
     let coinBalance = coins[coin].balance.available;
+
+    if (coin !== "lunes" && coin !== "eth" && amount < 0.00002000) {
+      return errorInput(i18n.t("MODAL_SEND_MIN_AMOUNT"));
+    }
+
     if (parseFloat(amount) <= coinBalance) {
       setWalletSendModalLoading();
       setWalletSendModalAmount(parseFloat(amount));
@@ -83,7 +88,7 @@ class BoxAmount extends React.Component {
           src={"/images/icons/coins/" + coin + ".png"}
           className={style.modalIconCoin}
         />
-        <div>{i18n.t("MODAL_SEND_QR_CODE_ADDRESS")}</div>
+        <div>{i18n.t("MODAL_SEND_AMOUNT")}</div>
         <input
           className={style.txtamount}
           type="text"

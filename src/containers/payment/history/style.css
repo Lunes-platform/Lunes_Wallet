@@ -30,19 +30,21 @@
 }
 
 :local(.row) {
-  margin: 0.5rem 0 1rem 0;
+  margin: 0.2rem 0 0.1rem 0;
   display: flex;
   justify-content: space-between;
 }
 
 :local .row p {
-  min-height: 2rem;
-  align-content: center;
+  margin: 0.2rem 0 0.1rem 0;
+  min-height: 0.4rem;
+  align-content: justify; 
+  
 }
 
 :local .line {
   border-bottom: 2px solid #42227d;
-  margin: 0.5rem 0;
+  margin: 0.1rem 0;
   width: 100%;
 }
 

@@ -1,13 +1,25 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
+// REDUX
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { editUserData, loading } from "../../user/redux/userAction";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import {
+  editUserData,
+  loading,
+  updateUserPassword
+} from "../../user/redux/userAction";
+
+// UTILS
 import i18n from "../../../utils/i18n";
 import compose from "recompose/compose";
+
+// STYLE
 import colors from "../../../components/bases/colors";
 import style from "./style.css";
+
+// COMPONENTS
 import Loading from "../../../components/loading";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -17,6 +29,8 @@ import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
 import { Done, Close } from "@material-ui/icons";
 
+
+// STYLE DO MATERIAL UI (Permitido)
 const customStyle = {
   img: {
     width: "60%",
@@ -36,6 +50,7 @@ const customStyle = {
   focused: {}
 };
 
+// STYLE DO MATERIAL UI (Permitido)
 const MenuProps = {
   PaperProps: {
     style: {
@@ -63,7 +78,10 @@ class User extends React.Component {
       address: "",
       city: "",
       zipcode: "",
-      state: ""
+      state: "",
+      password: "",
+      newPassword: "",
+      confirmNewPassword: ""
     };
   }
 
@@ -132,6 +150,10 @@ class User extends React.Component {
   handleStateChange = state =>
     this.handleSelectChange("state", state.replace(/([\d\\/])/g, ""));
 
+  handlePasswordChange = property => event => {
+    this.handleSelectChange(property, event.target.value.replace(/\s/, ""));
+  };
+
   updateData = () => {
     let { editUserData, loading } = this.props;
     let {
@@ -161,6 +183,18 @@ class User extends React.Component {
 
     loading();
     editUserData(userData);
+  };
+
+  changeUserPassword = () => {
+    const { updateUserPassword, user } = this.props;
+    const { password, newPassword, confirmNewPassword } = this.state;
+    console(user);
+    updateUserPassword(
+      user.password,
+      password,
+      newPassword,
+      confirmNewPassword
+    );
   };
 
   loadDays = () => {
@@ -231,8 +265,7 @@ class User extends React.Component {
   };
 
   render() {
-    const { classes, user, isLoading } = this.props;
-    const { twoFactor } = user;
+    const { classes, user, isLoading, twoFactor } = this.props;
     const {
       emailVerified,
       birthDay,
@@ -245,7 +278,10 @@ class User extends React.Component {
       phone,
       address,
       zipcode,
-      state
+      state,
+      password,
+      newPassword,
+      confirmNewPassword
     } = this.state;
 
     return (
@@ -365,25 +401,35 @@ class User extends React.Component {
                   className={style.inputTextDefault}
                   type="password"
                   placeholder={i18n.t("SETTINGS_USER_CURRENT_PASSWORD")}
+                  value={password}
+                  onChange={this.handlePasswordChange("password")}
                 />
                 <input
                   className={style.inputTextDefault}
                   type="password"
                   placeholder={i18n.t("SETTINGS_USER_NEW_PASSWORD")}
+                  value={newPassword}
+                  onChange={this.handlePasswordChange("newPassword")}
                 />
                 <input
                   className={style.inputTextDefault}
                   type="password"
-                  placeholder={i18n.t("SETTINGS_USER_NEW_PASSWORD")}
+                  placeholder={i18n.t("SETTINGS_USER_CONFIRM_NEW_PASSWORD")}
+                  value={confirmNewPassword}
+                  onChange={this.handlePasswordChange("confirmNewPassword")}
                 />
               </div>
             </Grid>
             <Grid item xs={12} className={style.buttonContainer}>
               <button
                 className={style.buttonEnable}
-                onClick={() => alert("Password changed!")}
+                onClick={this.changeUserPassword}
               >
-                {i18n.t("SETTINGS_USER_CHANGE_PASSWORD")}
+                {isLoading ? (
+                  <Loading />
+                ) : (
+                  i18n.t("SETTINGS_USER_CHANGE_PASSWORD")
+                )}
               </button>
             </Grid>
           </Grid>
@@ -670,6 +716,7 @@ class User extends React.Component {
 User.propTypes = {
   classes: PropTypes.object,
   user: PropTypes.object,
+  twoFactor: PropTypes.bool,
   editUserData: PropTypes.func,
   loading: PropTypes.func,
   isLoading: PropTypes.bool
@@ -679,13 +726,15 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       editUserData,
-      loading
+      loading,
+      updateUserPassword
     },
     dispatch
   );
 
 const mapStateToProps = store => ({
   user: store.user.user,
+  twoFactor: store.user.twoFactor,
   isLoading: store.user.loading
 });
 

@@ -33,6 +33,7 @@ class HistoryItem extends React.Component {
               <img
                 src={`/images/icons/coins/${item.coin}.png`}
                 alt={item.coin}
+                style={{width:"14px",height:"14px"}}
               />{" "}
               {item.coin}
             </p>

@@ -1,17 +1,26 @@
-import { put, call } from "redux-saga/effects";
+import {
+  put,
+  call
+} from "redux-saga/effects";
 import {
   internalServerError,
   modalError
 } from "../../errors/statusCodeMessage";
-import { successRequest, errorInput } from "../../errors/redux/errorAction";
-
-// UTILS
-import { convertBiggestCoinUnit } from "../../../utils/numbers";
+import {
+  successRequest,
+  errorInput
+} from "../../errors/redux/errorAction";
+import {
+  convertBiggestCoinUnit
+} from "../../../utils/numbers";
 import i18n from "../../../utils/i18n";
-import { decryptAes } from "../../../utils/cryptography";
-import { getAuthToken, getUserSeedWords } from "../../../utils/localStorage";
-
-//SERVICES
+import {
+  decryptAes
+} from "../../../utils/cryptography";
+import {
+  getAuthToken,
+  getUserSeedWords
+} from "../../../utils/localStorage";
 import TransactionService from "../../../services/transaction/transactionService";
 import LeasingService from "../../../services/leasingService";
 import CoinService from "../../../services/coinService";
@@ -108,7 +117,6 @@ export function* createLeasing(action) {
 
     return;
   } catch (error) {
-    console.warn(error);
     yield put(internalServerError());
   }
 }
@@ -135,7 +143,6 @@ export function* cancelLeasing(action) {
 
     return;
   } catch (error) {
-    console.warn(error);
     if (error.data.error) {
       yield put(errorInput(i18n.t("MODAL_LEASING_CANCEL_FAILURE")));
       return;
@@ -148,6 +155,12 @@ export function* getLeasingInfo(action) {
   try {
     let token = yield call(getAuthToken);
     let professionalNodes = yield call(leasingService.getProfessionalNodes);
+    let seed = yield call(getUserSeedWords);
+    let responseCoins = yield call(
+      coinService.getGeneralInfo,
+      token,
+      decryptAes(seed, action.password)
+    );
 
     yield put({
       type: "SET_LEASING_RELOAD"
@@ -195,6 +208,11 @@ export function* getLeasingInfo(action) {
         action.decimalPoint
       ),
       professionalNodes
+    });
+
+    yield put({
+      type: "GET_GENERAL_INFO",
+      coins: responseCoins
     });
 
     return;

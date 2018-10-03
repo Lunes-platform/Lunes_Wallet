@@ -77,18 +77,6 @@ export const networks = {
           host: "testnet1.bauerj.eu",
           port: 50002
         }
-        // {
-        //   host: 'testnet.hsmiths.com',
-        //   port: 53012
-        // }
-        // {
-        //   host: 'electrum.akinbo.org',
-        //   port: 51002
-        // }
-        // {
-        //   host: 'testnetnode.arihanc.com',
-        //   port: 51001
-        // }
       ]
     },
     insight: "https://test-insight.bitpay.com/api/"
@@ -180,7 +168,8 @@ export const networks = {
       },
       pubKeyHash: 0x4c,
       scriptHash: 0x10,
-      wif: 0xcc
+      wif: 0xcc,
+      dustThreshold: 5460
     },
     electrumx: {
       networkName: "Dash",
@@ -320,5 +309,65 @@ export const networks = {
       ]
     },
     insight: null
+  },
+  ETH: {
+    coinSymbol: "ETH",
+    coinName: "Ethereum",
+    testnet: false,
+    derivePath: "m/44'/60'/0'/0/0",
+    gasPrice: 10000000000,
+    gasLimit: 21000,
+    chainID: 1,
+    apiUrl: "https://api.myetherwallet.com/eth"
+  },
+  ROPSTEN: {
+    coinSymbol: "ETH",
+    coinName: "Ethereum Testnet",
+    testnet: true,
+    derivePath: "m/44'/60'/0'/0/0",
+    gasPrice: 10000000000,
+    gasLimit: 21000,
+    chainID: 3,
+    apiUrl: "https://api.myetherwallet.com/rop"
+  },
+  USDT: {
+    coinSymbol: 'USDT',
+    coinName: 'Tether MainNet',
+    testnet: false,
+    derivePath: 'm/44\'/1\'/0\'/0',
+    maxFee: 1000000,
+    defaultFee: 1000,
+    insight: 'https://test-insight.bitpay.com/api/',
+    bitcoinjsNetwork: {
+      messagePrefix: '\x18Tether Signed Message:\n',
+      bech32: 'bc',
+      bip32: {
+        public: 0x0488b21e,
+        private: 0x0488ade4
+      },
+      pubKeyHash: 0x00,
+      scriptHash: 0x05,
+      wif: 0x80
+    }
+  },
+  USDTTESTNET: {
+    coinSymbol: 'USDTTESTNET',
+    coinName: 'Tether Testnet',
+    testnet: true,
+    derivePath: 'm/44\'/1\'/0\'/0',
+    maxFee: 1000000,
+    defaultFee: 1000,
+    insight: 'https://test-insight.bitpay.com/api/',
+    bitcoinjsNetwork: {
+      messagePrefix: '\x18Tether Signed Message:\n',
+      bech32: 'tb',
+      bip32: {
+        public: 0x043587cf,
+        private: 0x04358394
+      },
+      pubKeyHash: 0x6f,
+      scriptHash: 0xc4,
+      wif: 0xef
+    },
   }
 };

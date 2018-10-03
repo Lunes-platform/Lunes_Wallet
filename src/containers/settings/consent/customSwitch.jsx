@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-
 // MATERIAL
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
-
 
 // STYLES
 import style from "./style.css";

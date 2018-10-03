@@ -1,8 +1,12 @@
 import React from "react";
+
+// COMPONENTS
+import Cupom from "./cupom";
+// import LunesGift from './lunesGift';
 import Tabs from "../../components/tabs";
 import Voucher from "./voucher";
-// import LunesGift from './lunesGift';
-import Cupom from "./cupom";
+
+// UTILS
 import i18n from "../../utils/i18n";
 
 const titles = [

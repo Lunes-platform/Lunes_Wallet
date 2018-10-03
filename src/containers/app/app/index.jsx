@@ -80,7 +80,7 @@ let consent = Loadable({
   serverSideRequirePath: path.resolve(__dirname, "../../settings/consent")
 });
 
-let payment = Loadable({
+let invoices = Loadable({
   loader: () => fakeDelay(400).then(() => import("../../payment")),
   loading: loading,
   serverSideRequirePath: path.resolve(__dirname, "../../payment")
@@ -136,7 +136,7 @@ class App extends Component {
               <Route path="/wallet-settings" component={walletSettings} />
               <Route path="/definitions" component={definitions} />
               <Route path="/consent" component={consent} />
-              <Route path="/payment" component={payment} />
+              <Route path="/invoices" component={invoices} />
               <Route path="/recharge" component={recharge} />
               <Route path="/assets" component={assets} />
 

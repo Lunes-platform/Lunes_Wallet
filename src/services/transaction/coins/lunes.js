@@ -1,5 +1,9 @@
-import { internalServerError } from "../../../containers/errors/statusCodeMessage";
-import { create } from "lunes-js-api";
+import {
+  internalServerError
+} from "../../../containers/errors/statusCodeMessage";
+import {
+  create
+} from "lunes-js-api";
 
 class LunesTransaction {
   async createLunesTransaction(data) {
@@ -7,8 +11,7 @@ class LunesTransaction {
       const Lunes = await create(data.network.APICONFIG);
       const seed = await Lunes.Seed.fromExistingPhrase(data.seed);
       const transaction = await Lunes.API.Node.v1.assets
-        .transfer(
-          {
+        .transfer({
             recipient: data.toAddress,
             assetId: "WAVES",
             amount: data.amount,
@@ -59,6 +62,32 @@ class LunesTransaction {
       seed.keyPair
     );
 
+    return transaction;
+  }
+
+  async createAlias(value) {
+    let lunes = await create(value.network.APICONFIG);
+    let seed = await lunes.Seed.fromExistingPhrase(value.seed);
+    let data = {
+      fee: value.fee,
+      alias: value.alias,
+      timestamp: Date.now()
+    };
+
+    let transaction = lunes.API.Node.v1.aliases.createAlias(data, seed.keyPair);
+
+    return transaction;
+  }
+
+  async getAliases(value) {
+    let lunes = await create(value.network.APICONFIG);
+    let transaction = lunes.API.Node.v1.aliases.byAddress(value.address);
+    return transaction;
+  }
+
+  async getAddressByAlias(value) {
+    let lunes = await create(value.network.APICONFIG);
+    let transaction = lunes.API.Node.v1.aliases.byAlias(value.alias);
     return transaction;
   }
 }

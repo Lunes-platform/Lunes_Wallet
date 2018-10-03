@@ -1,6 +1,7 @@
 const initialState = {
   coins: [],
   payment: {
+    error: false,
     fee: "",
     number: "",
     coin: {
@@ -107,6 +108,15 @@ const payment = (state = initialState, action) => {
         loading: false,
         modalStep: 1
       };
+
+    case "SET_PAYMENT_INVOICE_ERROR":
+      return {
+        ...state,
+        payment: {
+          ...state.payment,
+          error: true
+        }
+      }
 
     default: {
       return {

@@ -4,8 +4,11 @@ import PropTypes from "prop-types";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setAssetLoading, getAssetCoinHistory } from "./redux/assetsAction";
-import { loadWalletInfo } from "../skeleton/redux/skeletonAction";
+import {
+  getAssetHistory,
+  getAssetGeneralInfo,
+  reloadAsset
+} from "./redux/assetsAction";
 
 // STYLE
 import style from "./style.css";
@@ -18,14 +21,8 @@ import Loading from "../../components/loading";
 
 // UTILS
 import i18n from "../../utils/i18n";
-import { getDefaultFiat, getDefaultCrypto } from "../../utils/localStorage";
 import { formatDate } from "../../utils/numbers";
 import { convertBiggestCoinUnit } from "../../utils/numbers";
-
-const blockexplorer = {
-  lunes: "https://blockexplorer.lunes.io/tx/",
-  btc: "https://live.blockcypher.com/btc/tx/"
-};
 
 class TransactionHistory extends React.Component {
   constructor() {
@@ -35,11 +32,7 @@ class TransactionHistory extends React.Component {
     };
   }
 
-  componentDidMount() {
-    let { wallet, coins, getAssetCoinHistory } = this.props;
-    let address = coins[(wallet.selectedCoin = wallet.selectedCoin)].address;
-    getAssetCoinHistory(wallet.selectedCoin, address);
-  }
+  componentDidMount() {}
 
   stateDataHistory = key => {
     let { toggleHistory } = this.state;
@@ -48,29 +41,36 @@ class TransactionHistory extends React.Component {
     });
   };
 
-  reloadWallet = () => {
-    let { setAssetLoading, loadWalletInfo, user } = this.props;
-    setAssetLoading(true);
-    loadWalletInfo(user.password);
+  reloadAsset = () => {
+    let { skeleton, assets, reloadAsset } = this.props;
+    let { selectedCoin } = assets;
+    let address = skeleton.coins.lunes.address;
+
+    reloadAsset(assets.assets[selectedCoin].assetId, address)
   };
+
+  renderEmpty = () => {
+    return <div className={style.notFound}>{i18n.t("MESSAGE_NOTHING_FOUND")}</div>
+  }
 
   renderHistory = () => {
     let { toggleHistory } = this.state;
-    let { skeleton, wallet, coins } = this.props;
-    let defaultFiat = getDefaultFiat();
-    let defaultCoin = getDefaultCrypto();
-    let selectedCoin = wallet.selectedCoin;
-    let decimalPoint = skeleton.coins[selectedCoin].decimalPoint;
-    let history = wallet.coinHistory.history.txs;
+    let { assets: assetsRoute, skeleton } = this.props;
+    let { history } = assetsRoute;
 
-    if (!history || wallet.coinHistory.history <= 0) {
-      return (
-        <div className={style.notFound}>{i18n.t("MESSAGE_NOTHING_FOUND")}</div>
-      );
-    }
+    if (!history.assets) return this.renderEmpty();
 
-    return Object.keys(history).map((val, index) => {
-      let transaction = history[index];
+    if (history.assets && history.assets.constructor.name !== 'Array')
+      return this.renderEmpty();
+
+    if (history.assets.length < 1) return this.renderEmpty();
+
+    let lunesAddress = skeleton.coins.lunes.address;
+
+    return history.assets.map((val, index) => {
+      let transaction = history.assets[index];
+      let type = lunesAddress === transaction.toAddress ? "SENT" : "RECEIVED";
+      let decimalPoint = 8;
       return (
         <div key={index}>
           <div>
@@ -88,8 +88,8 @@ class TransactionHistory extends React.Component {
                 <div>
                   <img
                     src={
-                      "./images/icons/walletHistory/" +
-                      transaction.type.toLowerCase() +
+                      "./images/wallet/" +
+                      type.toLowerCase() +
                       ".png"
                     }
                   />
@@ -104,20 +104,16 @@ class TransactionHistory extends React.Component {
               <Grid item xs={4} className={style.valueHistory}>
                 <div
                   className={
-                    transaction.type === "RECEIVED"
+                    type === "RECEIVED"
                       ? style.receivedHistory
                       : style.sentHistory
                   }
                 >
-                  {transaction.type === "RECEIVED" || "-"}
+                  {type === "RECEIVED" || "-"}
                   {convertBiggestCoinUnit(
                     transaction.amount,
                     decimalPoint
                   ).toFixed(decimalPoint)}{" "}
-                </div>
-                <div>
-                  {(coins[defaultCoin].price[defaultFiat].symbol || "$") +
-                    transaction.price[defaultFiat]}
                 </div>
               </Grid>
             </Grid>
@@ -129,43 +125,25 @@ class TransactionHistory extends React.Component {
                 className={toggleHistory !== index ? style.toggleHistory : null}
               >
                 <Grid item xs={12} className={style.itemDataHistorico}>
-                  <Grid item xs={2}>
-                    {" "}
+                  <Grid item xs={2} className={style.typeItems}>
+                    <p> {i18n.t("ASSETS_HISTORY_TX_TIME")} </p>
                   </Grid>
-                  <Grid item xs={6} sm={7}>
-                    <div className={style.titleBlockExplorer}>
-                      {i18n.t("TEXT_BLOCKEXPLORER")}
-                    </div>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={4}
-                    sm={3}
-                    className={style.alignTimeInValueHistory}
-                  >
-                    <div className={style.timeInValueHistory}>
+                  <Grid item xs={10} className={style.descriptionHistory}>
+                    <p className={style.idTransactionHistory}>
                       {formatDate(transaction.date, "HMS")}
-                    </div>
+                    </p>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={12}>
                   <Grid item xs={12} className={style.itemDataHistorico}>
                     <Grid item xs={2} className={style.typeItems}>
-                      <div> {i18n.t("TEXT_ID")} </div>
+                      <p> {i18n.t("TEXT_ID")} </p>
                     </Grid>
                     <Grid item xs={10} className={style.descriptionHistory}>
-                      <a
-                        className={style.idTransactionHistory}
-                        target="blanck"
-                        href={
-                          blockexplorer[selectedCoin]
-                            ? blockexplorer[selectedCoin] + transaction.txID
-                            : ""
-                        }
-                      >
+                      <p className={style.idTransactionHistory}>
                         {transaction.txID.substring(0, 33) + "..." || "-"}
-                      </a>
+                      </p>
                     </Grid>
                   </Grid>
 
@@ -219,7 +197,11 @@ class TransactionHistory extends React.Component {
   };
 
   render() {
-    let { loading } = this.props.wallet.coinHistory;
+    let { isTxHistoryLoading } = this.props.assets;
+    let { selectedCoin } = this.props.assets;
+
+    if (selectedCoin === undefined)
+      return null;
 
     return (
       <div>
@@ -228,7 +210,7 @@ class TransactionHistory extends React.Component {
             <div className={style.alignItemsHeaderHistory}>
               <div
                 className={style.refleshIcon}
-                onClick={() => this.reloadWallet()}
+                onClick={() => this.reloadAsset()}
               >
                 <img
                   width="15px"
@@ -241,7 +223,7 @@ class TransactionHistory extends React.Component {
               </div>
             </div>
             <div className={style.contentTransactions}>
-              {loading ? (
+              {isTxHistoryLoading ? (
                 <Loading margin={"5% 0 0 0"} color="lunes" />
               ) : (
                 this.renderHistory()
@@ -256,27 +238,25 @@ class TransactionHistory extends React.Component {
 
 TransactionHistory.propTypes = {
   user: PropTypes.object.isRequired,
-  wallet: PropTypes.object.isRequired,
-  coins: PropTypes.array.isRequired,
   skeleton: PropTypes.object.isRequired,
-  loadWalletInfo: PropTypes.func.isRequired,
-  setAssetLoading: PropTypes.func.isRequired,
-  getAssetCoinHistory: PropTypes.func.isRequired
+  assets: PropTypes.object.isRequired,
+  getAssetHistory: PropTypes.func.isRequired,
+  getAssetGeneralInfo: PropTypes.func.isRequired,
+  reloadAsset: PropTypes.func.isRequired
 };
 
 const mapSateToProps = store => ({
   user: store.user.user,
-  wallet: store.wallet,
-  coins: store.skeleton.coins,
-  skeleton: store.skeleton
+  skeleton: store.skeleton,
+  assets: store.assets,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      loadWalletInfo,
-      setAssetLoading,
-      getAssetCoinHistory
+      getAssetHistory,
+      getAssetGeneralInfo,
+      reloadAsset
     },
     dispatch
   );

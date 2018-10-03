@@ -1,19 +1,25 @@
-import { put, call } from "redux-saga/effects";
-import { internalServerError } from "../../../containers/errors/statusCodeMessage";
-
-// UTILS
+import {
+  put,
+  call
+} from "redux-saga/effects";
+import {
+  internalServerError
+} from "../../../containers/errors/statusCodeMessage";
 import {
   setAuthToken,
   getAuthToken,
   getUserSeedWords
 } from "../../../utils/localStorage";
-import { decryptAes } from "../../../utils/cryptography";
-
-// Services
+import {
+  decryptAes
+} from "../../../utils/cryptography";
 import CoinService from "../../../services/coinService";
 import UserService from "../../../services/userService";
+import TransactionService from "../../../services/transaction/transactionService";
+
 const coinService = new CoinService();
 const userService = new UserService();
+const transactionService = new TransactionService();
 
 export function* loadGeneralInfo(action) {
   try {
@@ -34,6 +40,18 @@ export function* loadGeneralInfo(action) {
 
     setAuthToken(responseCoins.token);
     delete responseCoins.token;
+
+    let responseAlias = yield call(transactionService.getAliases,
+      responseCoins.lunes.address);
+
+    if (responseAlias.length > 0) {
+      let firstAlias = responseAlias[0].split(":")[2];
+
+      yield put({
+        type: "SET_SKELETON_ALIAS_ADDRESS",
+        alias: firstAlias
+      })
+    }
 
     yield put({
       type: "SET_USER_INFO",
@@ -65,7 +83,10 @@ export function* loadGeneralInfo(action) {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -101,7 +122,10 @@ export function* loadWalletInfo(action) {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -109,7 +133,7 @@ export function* loadWalletInfo(action) {
 export function* availableCoins() {
   try {
     let token = yield call(getAuthToken);
-    let response = yield call(coinService.getAvaliableCoins, token);
+    let response = yield call(coinService.getAvailableCoins, token);
 
     yield put({
       type: "GET_AVAILABLE_COINS",
@@ -118,7 +142,10 @@ export function* availableCoins() {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -133,7 +160,10 @@ export function* balanceCoins() {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }
@@ -148,7 +178,10 @@ export function* createCoinsAddress() {
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_SKELETON_ERROR_STATE", state: true });
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     yield put(internalServerError());
   }
 }

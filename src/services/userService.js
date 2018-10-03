@@ -15,6 +15,7 @@ import {
 import {
   encryptMd5
 } from "../utils/cryptography";
+import i18n from "../utils/i18n";
 
 class UserService {
   async createUser(userInfo) {
@@ -32,9 +33,9 @@ class UserService {
       return response;
     } catch (error) {
       if (error.response.data.code === 500) {
-        return badRequest("You are already registered");
+        return badRequest(i18n.t("NOTIFICATION_SERVICE_ALREADY_REGISTRED"));
       }
-      //return internalServerError();
+
       internalServerError();
       return;
     }
@@ -57,13 +58,11 @@ class UserService {
     try {
       API_HEADER.headers.Authorization = token;
 
-      const response = await axios.patch(
-        BASE_URL + "/user",
-        userInfo,
-        API_HEADER
-      ).catch(error => {
-        return error.response;
-      });
+      const response = await axios
+        .patch(BASE_URL + "/user", userInfo, API_HEADER)
+        .catch(error => {
+          return error.response;
+        });
 
       setAuthToken(response.headers[HEADER_RESPONSE]);
 
@@ -76,9 +75,9 @@ class UserService {
   async getUserPicture(email) {
     const defaultImg = "images/lunio/lunio-user@300x300.jpg";
     try {
-      let crypto = encryptMd5(email);
+      let emailEncrypt = encryptMd5(email);
       let response = await axios.get(
-        "https://en.gravatar.com/" + crypto + ".json",
+        "https://en.gravatar.com/" + emailEncrypt + ".json",
         HEADER_REQUEST
       );
 
@@ -89,7 +88,6 @@ class UserService {
   }
 
   async editUser(token, data) {
-
     let userData = {
       name: data.name,
       surname: data.surname,
@@ -99,12 +97,46 @@ class UserService {
       city: data.city,
       state: data.state,
       zipcode: data.zipcode
-    }
+    };
     API_HEADER.headers.Authorization = token;
     let response = await axios.patch(BASE_URL + "/user", userData, API_HEADER);
     setAuthToken(response.headers[HEADER_RESPONSE]);
 
     return response;
+  }
+
+  async resetUserPassword(token, newPassword, oldPassword) {
+    try {
+      const user = {
+        newPassword: encryptMd5(newPassword),
+        oldPassword: encryptMd5(oldPassword)
+      };
+
+      API_HEADER.headers.Authorization = token;
+      const response = await axios.patch(BASE_URL + "/user", user, API_HEADER);
+
+      return response;
+    } catch (error) {
+      return internalServerError();
+    }
+  }
+
+  async resetPass(data) {
+    try {
+      const response = await axios
+        .post(
+          BASE_URL + "/user/forgotPassword",
+          data,
+          API_HEADER
+        )
+        .catch(error => {
+          return error.response;
+        });
+
+      return response;
+    } catch (error) {
+      return internalServerError();
+    }
   }
 }
 

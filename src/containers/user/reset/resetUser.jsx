@@ -12,6 +12,9 @@ import { clearMessage, errorInput } from "../../errors/redux/errorAction";
 import i18n from "../../../utils/i18n";
 import { inputValidator } from "../../../utils/inputValidator";
 
+// COMPONENTS
+import Loading from "../../../components/loading";
+
 // STYLE
 import style from "../style.css";
 
@@ -34,6 +37,8 @@ class ResetUser extends React.Component {
       inputs: { ...this.state.inputs, [name]: value ? input : undefined },
       errors: undefined
     });
+
+    return;
   };
 
   inputValidator = () => {
@@ -49,18 +54,23 @@ class ResetUser extends React.Component {
       });
     } else {
       clearMessage();
-      resetUser();
+      resetUser(this.state.inputs.emailUsername.value);
     }
+
+    return;
   };
 
-  handleKeyPress = (target) => {
+  handleKeyPress = target => {
     if (target.charCode == 13) {
-      this.inputValidator()
+      this.inputValidator();
     }
-  }
+
+    return;
+  };
 
   render() {
     let { inputs, errors } = this.state;
+    const { loading } = this.props;
 
     return (
       <div onKeyPress={this.handleKeyPress}>
@@ -107,7 +117,7 @@ class ResetUser extends React.Component {
           }
           onClick={() => this.inputValidator()}
         >
-          {i18n.t("BTN_RESET")}
+          {loading ? <Loading /> : i18n.t("BTN_RESET")}
         </button>
       </div>
     );
@@ -117,8 +127,14 @@ class ResetUser extends React.Component {
 ResetUser.propTypes = {
   resetUser: PropTypes.func,
   clearMessage: PropTypes.func,
-  errorInput: PropTypes.func
+  errorInput: PropTypes.func,
+  user: PropTypes.object,
+  loading: PropTypes.bool
 };
+
+const mapSateToProps = store => ({
+  loading: store.user.loading
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -131,6 +147,6 @@ const mapDispatchToProps = dispatch =>
   );
 
 export default connect(
-  null,
+  mapSateToProps,
   mapDispatchToProps
 )(ResetUser);

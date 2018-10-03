@@ -7,10 +7,11 @@ import { bindActionCreators } from "redux";
 import { setModalStep } from "../redux/rechargeAction";
 
 //COMPONENTS
-import ButtonContinue from "./component/buttonContinue";
+import ButtonContinue from "../../../components/buttonContinue";
 
 // UTILS
 import i18n from "../../../utils/i18n";
+import { errorInput } from "../../errors/redux/errorAction";
 
 // STYLES
 import style from "./style.css";
@@ -21,28 +22,39 @@ class ConfirmRecharge extends React.Component {
   }
 
   confirmPay = () => {
-    const { setModalStep } = this.props;
+    const { setModalStep, coins, recharge, errorInput } = this.props;
 
-    setModalStep(4);
-  };
+    const coinBalance = coins[recharge.coin.abbreviation].balance.available;
+    const amount = recharge.amount + recharge.fee.fee.fee;
+
+    if (coinBalance > parseFloat(amount)) {
+      setModalStep(4);
+    } else {
+      errorInput(i18n.t("RECHARGE_AMOUNT_ERROR"));
+      return;
+    }
+  }
 
   render() {
-    const { loading } = this.props;
+    const { loading, recharge } = this.props;
     return (
       <div className={style.modalBox}>
-        <div>{i18n.t("PAYMENT_CONFIRM_1")}</div>
+        <div>{i18n.t("RECHARGE_CONFIRM_1")}</div>
         <div>
-          <span>{i18n.t("PAYMENT_CONFIRM_2")}</span>
-          <span className={style.totalConfirmBlock}>5000.001 LUNES</span>
+          <span>{i18n.t("RECHARGE_CONFIRM_2")}</span>
+          <span className={style.totalConfirmBlock}>{recharge.amount + recharge.fee.fee.fee} {recharge.coin.abbreviation.toUpperCase()}</span>
         </div>
 
-        <div className={style.smallDescription}>{i18n.t("RECHARGE_TITLE")}</div>
+        <div className={style.smallDescription}>
+          {i18n.t("RECHARGE_CONFIRM_3")}
+        </div>
 
         <ButtonContinue
           label={i18n.t("PAYMENT_BTN_PAY")}
           action={() => this.confirmPay()}
           loading={loading}
         />
+
       </div>
     );
   }
@@ -50,15 +62,22 @@ class ConfirmRecharge extends React.Component {
 
 ConfirmRecharge.propTypes = {
   setModalStep: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired
-};
+  recharge: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  coins: PropTypes.array.isRequired,
+  errorInput: PropTypes.func.isRequired,
+}
 
 const mapStateToProps = store => ({
-  loading: store.recharge.loading
+  recharge: store.recharge.recharge,
+  loading: store.recharge.loading,
+  coins: store.skeleton.coins
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setModalStep }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { setModalStep, errorInput },
+  dispatch
+);
 
 export default connect(
   mapStateToProps,

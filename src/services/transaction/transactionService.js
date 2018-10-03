@@ -5,31 +5,45 @@ import {
   BASE_URL,
   API_HEADER,
   TESTNET,
-  HEADER_RESPONSE
+  HEADER_RESPONSE,
+  HEADER_REQUEST_FORM, 
+  TETHER_URL
 } from "../../constants/apiBaseUrl";
-import { networks } from "../../constants/network";
+import {
+  networks
+} from "../../constants/network";
 
+// ERROR
 import {
   internalServerError,
   modalError
 } from "../../containers/errors/statusCodeMessage";
 
 // COINS
-import { BtcTransaction, LunesTransaction } from "./coins";
+import {
+  BtcTransaction,
+  LunesTransaction,
+  EthTransaction
+} from "./coins";
 import CoinService from "../../services/coinService";
 
 // UTILS
 import i18n from "../../utils/i18n";
-import { setAuthToken } from "../../utils/localStorage";
-import { convertSmallerCoinUnit } from "../../utils/numbers";
+import {
+  setAuthToken
+} from "../../utils/localStorage";
+import {
+  convertSmallerCoinUnit
+} from "../../utils/numbers";
 
 class TransactionService {
   async utxo(address, coin, token) {
     try {
       API_HEADER.headers.Authorization = token;
       let response = await axios.post(
-        `${BASE_URL}/coin/${coin}/transaction/utxo`,
-        { fromAddress: address },
+        BASE_URL + "/coin/" + coin + "/transaction/utxo", {
+          fromAddress: address
+        },
         API_HEADER
       );
       const utxos = [];
@@ -55,8 +69,9 @@ class TransactionService {
     try {
       API_HEADER.headers.Authorization = token;
       let response = await axios.post(
-        BASE_URL + "/coin/" + coin + "/transaction/broadcast",
-        { txHex: txhex },
+        BASE_URL + "/coin/" + coin + "/transaction/broadcast", {
+          txHex: txhex
+        },
         API_HEADER
       );
       setAuthToken(response.headers[HEADER_RESPONSE]);
@@ -68,9 +83,24 @@ class TransactionService {
     }
   }
 
+  async getUnsigned(params) {
+    try {
+      let response = await axios.post(
+        TETHER_URL + "/v1/transaction/getunsigned/0",
+        params,
+        HEADER_REQUEST_FORM
+      );
+      setAuthToken(response.headers[HEADER_RESPONSE]);
+
+      return response.data;
+    } catch (error) {
+      internalServerError();
+      return;
+    }
+  }
+
   async transaction(serviceId, transaction, lunesWallet, seed, token) {
     try {
-      console.warn(transaction);
       let network = undefined;
       let coinService = new CoinService();
       let {
@@ -114,7 +144,19 @@ class TransactionService {
       if (coin === "lunes")
         network = TESTNET ? networks.LUNESTESTNET : networks.LUNES;
 
-      if (coin === "btc" || coin === "ltc" || coin === "bch") {
+      if (coin === "dash") network = TESTNET ? undefined : networks.DASH;
+
+      if (coin === "eth") network = TESTNET ? networks.ROPSTEN : networks.ETH;
+
+      if (coin === "usdt") network = TESTNET ? networks.USDTTESTNET : networks.USDT;
+
+      if (
+        coin === "btc" ||
+        coin === "ltc" ||
+        coin === "bch" ||
+        coin === "dash" ||
+        coin === "usdt"
+      ) {
         let transactionBtc = new BtcTransaction();
         let responseBtc = await transactionBtc.createTransaction({
           fromAddress: fromAddress,
@@ -130,12 +172,13 @@ class TransactionService {
           network: network
         });
 
-        if (responseBtc === "error") {
+        if (responseBtc === "error" || !responseBtc) {
           return;
         }
 
         let responseSaveBtc = await coinService.saveTransaction(
-          {
+          serviceId,
+          feeLunes, {
             id: responseBtc,
             sender: fromAddress,
             recipient: toAddress,
@@ -148,6 +191,41 @@ class TransactionService {
           token
         );
         return responseSaveBtc;
+      } else if (coin === "eth") {
+        let transactionEth = new EthTransaction();
+        let responseEth = await transactionEth.createTransaction({
+          fromAddress: fromAddress,
+          toAddress: toAddress,
+          seed: seed,
+          lunesWallet: lunesWallet,
+          fee: convertSmallerCoinUnit(fee, decimalPoint),
+          feePerByte: feePerByte,
+          feeLunes: feeLunes,
+          amount: convertSmallerCoinUnit(amount, decimalPoint),
+          coin: coin,
+          token: token,
+          network: network
+        });
+
+        if (responseEth === "error" || !responseEth) {
+          return;
+        }
+
+        let responseSaveEth = await coinService.saveTransaction(
+          serviceId,
+          feeLunes, {
+            id: responseEth,
+            sender: fromAddress,
+            recipient: toAddress,
+            amount: convertSmallerCoinUnit(amount, decimalPoint),
+            fee: convertSmallerCoinUnit(fee, decimalPoint)
+          },
+          coin,
+          transaction.price,
+          "P2P",
+          token
+        );
+        return responseSaveEth;
       } else if (coin === "lunes") {
         let transactionLunes = new LunesTransaction();
         let respondeLunes = await transactionLunes.createLunesTransaction({
@@ -159,7 +237,7 @@ class TransactionService {
           fee: convertSmallerCoinUnit(fee, decimalPoint)
         });
 
-        if (respondeLunes === "error") {
+        if (respondeLunes === "error" || !respondeLunes) {
           return;
         }
 
@@ -196,8 +274,7 @@ class TransactionService {
 
     await coinService.saveTransaction(
       4,
-      0,
-      {
+      0, {
         id: response.id,
         sender: response.sender,
         recipient: response.recipient,
@@ -227,8 +304,7 @@ class TransactionService {
 
       await coinService.saveTransaction(
         4,
-        0,
-        {
+        0, {
           id: txId,
           sender: response.sender,
           recipient: response.recipient,
@@ -243,7 +319,6 @@ class TransactionService {
 
       return response;
     } catch (error) {
-      console.warn(error);
       return error;
     }
   }
@@ -269,8 +344,51 @@ class TransactionService {
 
       return coin ? coins[coin] : coins;
     } catch (error) {
-      console.warn(error);
       internalServerError();
+      return error;
+    }
+  }
+
+  async createAlias(alias, fee, seed) {
+    try {
+      let transaction = new LunesTransaction();
+      let response = await transaction.createAlias({
+        alias,
+        fee,
+        seed,
+        network: TESTNET ? networks.LUNESTESTNET : networks.LUNES
+      });
+
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getAliases(address) {
+    try {
+      let transaction = new LunesTransaction();
+      let response = await transaction.getAliases({
+        address,
+        network: TESTNET ? networks.LUNESTESTNET : networks.LUNES
+      });
+
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getAddressByAlias(alias) {
+    try {
+      let transaction = new LunesTransaction();
+      let response = await transaction.getAddressByAlias({
+        alias,
+        network: TESTNET ? networks.LUNESTESTNET : networks.LUNES
+      });
+
+      return response;
+    } catch (error) {
       return error;
     }
   }

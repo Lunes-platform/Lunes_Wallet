@@ -52,26 +52,21 @@ class DetailsPayment extends React.Component {
   };
 
   validateForm = () => {
-    const { setModalStep, payment } = this.props;
+    const { setModalStep } = this.props;
     const { user } = this.state;
 
-    if (user.terms === 'unread') {
+    if (user.terms === "unread") {
       this.openError(i18n.t("PAYMENT_TERMS_ERROR"));
       return;
     }
 
-    if (!payment.amount || parseFloat(payment.amount) > payment.balance) {
-      this.openError(i18n.t("PAYMENT_AMOUNT_ERROR"));
-      return;
-    }
-
     setModalStep(2);
-  }
+  };
 
   toogleSwitch = () => {
-    const {user} = this.state;
-    const {updateUserConsents} = this.props;
-    const newStatus = user.terms === 'read' ? 'unread' : 'read';
+    const { user } = this.state;
+    const { updateUserConsents } = this.props;
+    const newStatus = user.terms === "read" ? "unread" : "read";
 
     this.setState({
       ...this.state,
@@ -81,8 +76,8 @@ class DetailsPayment extends React.Component {
       }
     });
 
-    updateUserConsents({terms: newStatus});
-  }
+    updateUserConsents({ terms: newStatus });
+  };
 
   render() {
     const { loading, payment } = this.props;
@@ -103,7 +98,7 @@ class DetailsPayment extends React.Component {
           {i18n.t("PAYMENT_DETAILS_TEXT_1")}
           <div className={style.strongText} style={{ marginTop: 20 }}>
             <span className={style.textGreen}>
-              {payment.amount} {payment.coin.abbreviation}
+              {payment.amount} {payment.coin.abbreviation.toUpperCase()}
             </span>
             {i18n.t("PAYMENT_DETAILS_TEXT_2")}
             <span className={style.textGreen}>R$ {payment.value}</span>
@@ -152,7 +147,7 @@ class DetailsPayment extends React.Component {
             title={i18n.t("PAYMENT_TERMS_TITLE")}
             description={i18n.t("PAYMENT_TERMS_DESC")}
             action={this.toogleSwitch}
-            checked={user.terms === 'read'}
+            checked={user.terms === "read"}
             value="termsSwitch"
           />
 
@@ -185,7 +180,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       updateUserConsents,
-      setModalStep,
+      setModalStep
     },
     dispatch
   );

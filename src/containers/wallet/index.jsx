@@ -5,13 +5,16 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { loadWalletInfo } from "../skeleton/redux/skeletonAction";
-import { setWalletLoading } from "./redux/walletAction";
+import { setWalletLoading, setSelectedCoin } from "./redux/walletAction";
 
 // COMPONENTS
 import CoinsBar from "./coinsBar";
 import CoinsInfo from "./coinsInfo";
 import TransactionHistory from "./transactionHistory";
 import Loading from "../../components/loading";
+
+// UTILS
+import { getDefaultCrypto } from "../../utils/localStorage.js";
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -42,6 +45,11 @@ class Wallet extends React.Component {
   };
 
   render() {
+    let { wallet } = this.props;
+    if (!wallet.selectedCoin) {
+      setSelectedCoin(getDefaultCrypto());
+      return null;
+    }
     return this.renderContent();
   }
 }

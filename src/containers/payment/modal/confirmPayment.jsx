@@ -11,6 +11,7 @@ import ButtonContinue from "./component/buttonContinue";
 
 // UTILS
 import i18n from "../../../utils/i18n";
+import { errorInput } from "../../errors/redux/errorAction";
 
 // STYLES
 import style from "./style.css";
@@ -21,9 +22,17 @@ class ConfirmPayment extends React.Component {
   }
 
   confirmPay = () => {
-    const {setModalStep} = this.props;
+    const {setModalStep, coins, payment, errorInput} = this.props;
 
-    setModalStep(4);
+    let coinBalance = coins[payment.coin.abbreviation].balance.available;
+    let amount = payment.amount + payment.fee.fee.fee;
+
+    if (parseFloat(amount) <= coinBalance) {
+      setModalStep(4);
+    }else{
+      errorInput(i18n.t("PAYMENT_AMOUNT_ERROR"));
+      return;
+    }
   }
 
   render() {
@@ -33,7 +42,7 @@ class ConfirmPayment extends React.Component {
         <div>{i18n.t("PAYMENT_CONFIRM_1")}</div>
         <div>
           <span>{i18n.t("PAYMENT_CONFIRM_2")}</span>
-          <span className={style.totalConfirmBlock}>{payment.amount + payment.fee} {payment.coin.abbreviation}</span>
+          <span className={style.totalConfirmBlock}>{payment.amount + payment.fee.fee.fee} {payment.coin.abbreviation}</span>
         </div>
 
         <div className={style.smallDescription}>
@@ -54,16 +63,19 @@ class ConfirmPayment extends React.Component {
 ConfirmPayment.propTypes = {
   setModalStep:     PropTypes.func.isRequired,
   payment:          PropTypes.object.isRequired,
-  loading:          PropTypes.bool.isRequired
+  loading:          PropTypes.bool.isRequired, 
+  coins:            PropTypes.array.isRequired,
+  errorInput:       PropTypes.func.isRequired,
 }
 
 const mapStateToProps = store => ({
   payment: store.payment.payment,
-  loading: store.payment.loading
+  loading: store.payment.loading, 
+  coins: store.skeleton.coins
 });
 
 const mapDispatchToProps = dispatch =>bindActionCreators(
-  {setModalStep},
+  {setModalStep,errorInput},
   dispatch
 );
 

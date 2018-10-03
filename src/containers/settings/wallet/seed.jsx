@@ -41,7 +41,10 @@ class SeedWordsPage extends React.Component {
       ...this.state,
       inputs: { [name]: value ? input : undefined },
       errors: undefined,
-      buttonEnable: value.split(" ").length === 12 ? true : false
+      buttonEnable:
+        value.split(" ").length === 12 || value.split(" ").length === 18
+          ? true
+          : false
     });
   };
 
@@ -92,7 +95,9 @@ class SeedWordsPage extends React.Component {
                 value={!seed ? undefined : seed.value}
                 required
                 onChange={event => this.getInput(event.target)}
-                className={errors ? style.inputTextAreaError : style.inputTextArea}
+                className={
+                  errors ? style.inputTextAreaError : style.inputTextArea
+                }
               />
             </div>
 

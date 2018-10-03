@@ -67,6 +67,9 @@
   background-color: transparent;
 }
 
+:local .buttonEnable {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+}
 
 /* 4. SCROLLBAR */
 ::-webkit-scrollbar              {

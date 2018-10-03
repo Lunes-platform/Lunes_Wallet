@@ -116,7 +116,23 @@ const user = (state = initialState, action) => {
           create: action.page,
           reset: 0
         },
-        user: action.user,
+        user: {
+          profilePicture: undefined,
+          birthday: undefined,
+          city: undefined,
+          country: undefined,
+          terms: undefined,
+          phone: undefined,
+          state: undefined,
+          street: undefined,
+          zipcode: undefined,
+          name: undefined,
+          surname: undefined,
+          username: undefined,
+          email: undefined,
+          password: undefined,
+          seed: undefined
+        },
         loading: false
       };
 
@@ -128,7 +144,23 @@ const user = (state = initialState, action) => {
           create: 0,
           reset: action.page
         },
-        user: action.user,
+        user: {
+          profilePicture: undefined,
+          birthday: undefined,
+          city: undefined,
+          country: undefined,
+          terms: undefined,
+          phone: undefined,
+          state: undefined,
+          street: undefined,
+          zipcode: undefined,
+          name: undefined,
+          surname: undefined,
+          username: undefined,
+          email: undefined,
+          password: undefined,
+          seed: undefined
+        },
         loading: false
       };
 
@@ -197,6 +229,17 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         errors: []
+      };
+
+    case "UPDATE_USER_PASSWORD_REDUCER":
+      return {
+        ...state,
+        loading: false,
+        pages: {
+          login: 0,
+          create: 0,
+          reset: 0
+        }
       };
 
     default: {

@@ -98,7 +98,7 @@ class BoxFee extends React.Component {
           </span>
         </div>
         <div>
-          <span>{i18n.t("MODAL_SEND_TO_ADDRESS")}</span>
+          <span>{i18n.t("MODAL_SEND_TO_ADDRESS")}{' '}</span>
           <span className={style.addressConfirm}>{modal.address}</span>
         </div>
 

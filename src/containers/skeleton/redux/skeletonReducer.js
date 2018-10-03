@@ -1,7 +1,10 @@
 const initialState = {
   coins: [],
   loading: false,
-  errors: false
+  errors: false,
+  lunesCoin: {
+    alias: undefined
+  }
 };
 
 const skeleton = (state = initialState, action) => {
@@ -42,11 +45,21 @@ const skeleton = (state = initialState, action) => {
         errors: action.state
       };
 
-    default: {
+    case "SET_SKELETON_ALIAS_ADDRESS":
       return {
-        ...state
+        ...state,
+        loading: false,
+        lunesCoin: {
+          alias: action.alias
+        }
       };
-    }
+
+    default:
+      {
+        return {
+          ...state
+        };
+      }
   }
 };
 

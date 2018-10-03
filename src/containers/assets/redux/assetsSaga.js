@@ -1,185 +1,92 @@
 import { put, call } from "redux-saga/effects";
-import { internalServerError } from "../../../containers/errors/statusCodeMessage";
 
 // UTILS
-import { getAuthToken, getUserSeedWords } from "../../../utils/localStorage";
-import { decryptAes } from "../../../utils/cryptography";
+import { getAuthToken } from "../../../utils/localStorage";
 
 // Services
-import CoinService from "../../../services/coinService";
-import TransactionService from "../../../services/transaction/transactionService";
-const coinService = new CoinService();
-const transactionService = new TransactionService();
+import AssetService from "../../../services/assetService";
+const assetService = new AssetService();
 
-export function* validateAddress(action) {
+
+export function* getAssetGeneralInfo(action) {
   try {
-    let response = yield call(
-      coinService.validateAddress,
-      action.coin,
-      action.address
-    );
-
-    if (!response.error) {
-      yield put({
-        type: "SET_ASSET_MODAL_ADDRESS",
-        address: action.address
-      });
-
-      yield put({
-        type: "SET_ASSET_MODAL_STEP",
-        step: 1
-      });
-
-      return;
-    }
-
-    yield put(response.error);
-
     yield put({
-      type: "SET_ASSET_MODAL_LOADING"
-    });
+      type: "SET_ASSET_DATA",
+      isBalanceLoading: true })
 
-    return;
-  } catch (error) {
-    yield put({ type: "CHANGE_ASSET_ERROR_STATE", state: true });
-    yield put(internalServerError());
-  }
-}
+    let token = getAuthToken();
+    let { lunesAddress } = action;
 
-export function* getAssetSendModalFee(action) {
-  try {
-    let response = yield call(
-      coinService.getFee,
-      action.coin,
-      action.fromAddress,
-      action.toAddress,
-      action.amount,
-      action.decimalPoint
-    );
+    let response = yield call([assetService, assetService.getBalances], lunesAddress, token);
 
-    if (response) {
-      yield put({
-        type: "GET_ASSET_MODAL_SEND_FEE",
-        fee: response
-      });
-
-      yield put({
-        type: "SET_ASSET_MODAL_STEP",
-        step: 2
-      });
-
+    if (response.type !== 'success') {
+      yield put({type: "REQUEST_FAILED", message: response.message})
+      yield put({type: "SET_ASSET_DATA", isBalanceLoading: false})
       return;
     }
-    yield put(internalServerError());
 
-    return;
+    let assets = response.data.balances;
+
+    yield put({ type: "SET_ASSET_DATA", assets: assets, isBalanceLoading: false })
+
   } catch (error) {
-    yield put(internalServerError());
+    yield put({type: "REQUEST_FAILED", message: error.message})
+    console.warn(error)
   }
 }
 
-export function* shareCoinAddress(action) {
+export function* getAssetHistory(action) {
   try {
-    yield call(coinService.shareCoinAddress, action.name, action.address);
-  } catch (error) {
-    yield put(internalServerError());
-  }
-}
+    yield put({
+      type: "SET_ASSET_HISTORY",
+      isTxHistoryLoading: true
+    })
 
-export function* getAssetCoinHistory(action) {
-  try {
     let token = yield call(getAuthToken);
+    let { assetId, lunesAddress } = action;
+
+
     let response = yield call(
-      coinService.getCoinHistory,
-      action.coin,
-      action.address,
+      [assetService, assetService.getTxHistory],
+      lunesAddress,
+      assetId,
       token
     );
 
-    if (!response.error) {
-      yield put({
-        type: "SET_ASSET_HISTORY",
-        history: response
-      });
-
-      yield put({
-        type: "SET_ASSET_HISTORY_LOADING"
-      });
-
+    if (response.type !== 'success') {
+      yield put({type: "REQUEST_FAILED", message: response.message})
+      yield put({type: "SET_ASSET_DATA", isTxHistoryLoading: false})
       return;
     }
 
+    let history = response.data;
+
     yield put({
-      type: "SET_ASSET_HISTORY_LOADING",
-      state: true
+      type: "SET_ASSET_HISTORY",
+      isTxHistoryLoading: false,
+      history: history
     });
 
     return;
   } catch (error) {
-    yield put({ type: "CHANGE_ASSET_ERROR_STATE", state: true });
-    yield put(internalServerError());
+    yield put({ type: "REQUEST_FAILED", message: error.message });
+    console.warn(error)
   }
 }
 
-export function* getCoinFee(action) {
+export function* reloadAsset(action) {
   try {
-    let response = yield call(coinService.getFee, action.coinType);
-    yield put({
-      type: "GET_COIN_FEE",
-      fee: response
-    });
-  } catch (error) {
-    yield put({ type: "CHANGE_ASSET_ERROR_STATE", state: true });
-    yield put(internalServerError());
-  }
-}
+    let { assetId, lunesAddress } = action;
 
-export function* setAssetTransaction(action) {
-  try {
-    let seed = yield call(getUserSeedWords);
-    let token = yield call(getAuthToken);
-
-    let lunesWallet = yield call(
-      transactionService.transactionService,
-      action.transaction.coin,
-      token
-    );
-
-    if (lunesWallet) {
-      let response = yield call(
-        transactionService.transaction,
-        action.transaction,
-        lunesWallet,
-        decryptAes(seed, action.password),
-        token
-      );
-
-      if (response) {
-        yield put({
-          type: "SET_ASSET_MODAL_STEP",
-          step: 5
-        });
-
-        yield put({
-          type: "SET_ASSET_TRANSACTION",
-          response: response
-        });
-
-        return;
-      }
-    }
+    yield put({ type: "GET_ASSET_GENERAL_INFO_API", lunesAddress })
 
     yield put({
-      type: "SET_ASSET_MODAL_STEP",
-      step: 6
-    });
-
-    yield put({ type: "CHANGE_ASSET_ERROR_STATE", state: true });
-    yield put(internalServerError());
-
-    return;
-  } catch (error) {
-    yield put({ type: "CHANGE_ASSET_ERROR_STATE", state: true });
-    yield put(internalServerError());
+      type: "GET_ASSET_HISTORY_API",
+      assetId,
+      lunesAddress
+    })
+  } catch(error) {
+    yield put({type:"REQUEST_FAILED", message: error.message})
+    console.warn(error)
   }
 }

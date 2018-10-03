@@ -74,7 +74,7 @@ CustomSelect.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
-  ]), // add .isRequired in future
+  ]),
   fullWidth: PropTypes.bool,
 }
 

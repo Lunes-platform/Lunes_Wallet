@@ -1,11 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
+// REDUX
+import { connect } from "react-redux";
 
 // MATERIAL
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUp from "@material-ui/icons/KeyboardArrowUp";
+
+// STYLE
 import style from "./style.css";
+
+// UTILS
 import { getDefaultFiat, getDefaultCrypto } from "../../../utils/localStorage";
 
 class CustomSelectImage extends React.Component {

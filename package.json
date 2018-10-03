@@ -1,6 +1,6 @@
 {
   "name": "project-viserion",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Wallet Web",
   "main": "index.js",
   "scripts": {
@@ -67,10 +67,13 @@
     "typescript": "^3.0.1",
     "uglify-js": "^3.4.6",
     "uglifyify": "^5.0.1",
+    "uglifyjs-webpack-plugin": "^1.3.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
+    "@fnando/cnpj": "^0.1.0",
+    "@fnando/cpf": "^0.1.0",
     "@material-ui/core": "^1.3.1",
     "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
@@ -79,12 +82,15 @@
     "bip39": "^2.5.0",
     "bitcoinjs-lib": "^3.3.2",
     "coinselect": "^3.1.11",
-    "crypto-address-validator": "^0.1.0",
     "crypto-js": "^3.1.9-1",
+    "cryptocurrency-address-validator": "^0.1.3",
+    "ethereumjs-tx": "^1.3.7",
+    "ethereumjs-util": "^5.2.0",
+    "ethereumjs-wallet": "^0.6.2",
     "i18next": "^11.3.3",
     "i18next-browser-languagedetector": "^2.2.0",
     "lodash": "^4.17.4",
-    "lunes-js-api": "0.31.2",
+    "lunes-js-api": "^0.31.8",
     "prop-types": "^15.6.2",
     "qrcode.react": "^0.8.0",
     "react": "^16.4.1",
@@ -105,6 +111,8 @@
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "slick-carousel": "^1.8.1",
-    "validator": "^10.4.0"
+    "validator": "^10.4.0",
+    "web3": "^1.0.0-beta.34",
+    "web3-provider-engine": "^13.6.5"
   }
 }

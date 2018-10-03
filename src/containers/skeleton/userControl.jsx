@@ -1,7 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+// REDUX
+import { connect } from "react-redux";
 
 //MATERIAL UI
 import Avatar from "@material-ui/core/Avatar";

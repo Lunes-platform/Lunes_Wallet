@@ -54,7 +54,9 @@ class BoxAddress extends React.Component {
       return (
         <div className={style.boxQr}>
           <div className={style.qrCode}>
-            <BoxQrReader coin={coin} />
+            <div style={{ width: "50vh" }}>
+              <BoxQrReader coin={coin} />
+            </div>
           </div>
           <ButtonContinue
             label={i18n.t("BTN_BACK")}
@@ -66,7 +68,7 @@ class BoxAddress extends React.Component {
     }
 
     return (
-      <div >
+      <div>
         <Hidden lgUp>
           <div className={style.boxQr} onClick={() => this.showQrCodeReader()}>
             <div className={style.boxDecription}>
@@ -82,14 +84,14 @@ class BoxAddress extends React.Component {
           </div>
         </Hidden>
 
-        <div className={style.modalBox} >
+        <div className={style.modalBox}>
           <div className={style.boxDecription}>
             <img
               src="/images/icons/modal-wallet/carteira.png"
               className={style.icon}
             />
             <div>
-              {i18n.t("MODAL_SEND_QR_CODE_ADDRESS")} {coin.toUpperCase()}
+              {i18n.t("MODAL_SEND_ADDRESS")} {coin.toUpperCase()}
             </div>
           </div>
 
@@ -108,7 +110,6 @@ class BoxAddress extends React.Component {
           loading={modal.loading}
         />
       </div>
-
     );
   };
 

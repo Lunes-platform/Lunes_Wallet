@@ -94,6 +94,12 @@
   font-weight: bolx;
 }
 
+:local .coinName {
+  display: inline-block;
+  position: relative;
+  bottom: 7px;
+}
+
 /* IMAGE */
 :local .icon {
   margin-right: 0.5rem;

@@ -85,6 +85,10 @@
   background-color: transparent;
 }
 
+:local .buttonEnable {
+  composes: buttonEnable from "../../components/bases/buttonBase.css";
+}
+
 :local .buttonPurple {
   composes: buttonPurpleClear from "../../components/bases/buttonBase.css";
 }

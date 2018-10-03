@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { loading, createUser, backUserInfo } from "../redux/userAction";
+import { loading, createUser } from "../redux/userAction";
 import { clearMessage, errorInput } from "../../errors/redux/errorAction";
 
 // UTILS
@@ -27,7 +27,6 @@ class CreateUserTerms extends React.Component {
         checkboxTerms: undefined,
         checkboxAge: undefined
       },
-      checkDownload: false,
       errors: undefined
     };
   }
@@ -43,18 +42,13 @@ class CreateUserTerms extends React.Component {
       },
       errors: undefined
     });
+
+    return;
   };
 
-  checkDownload = () => {
-    this.setState({
-      ...this.state,
-      checkDownload: true
-    });
-  };
-
-  inputValidator = () => {
+  validateInput = () => {
     let { loading, createUser, clearMessage, errorInput, user } = this.props;
-    let { inputs, checkDownload } = this.state;
+    let { inputs } = this.state;
     let { messageError, errors } = inputValidator(inputs);
 
     if (
@@ -62,8 +56,7 @@ class CreateUserTerms extends React.Component {
       !user.user.name ||
       !user.user.surname ||
       !user.user.email ||
-      !user.user.password ||
-      !checkDownload
+      !user.user.password
     ) {
       errorInput(messageError ? messageError : i18n.t("MESSAGE_TERMS"));
       this.setState({
@@ -80,32 +73,27 @@ class CreateUserTerms extends React.Component {
         user.user.password
       );
     }
-  };
-
-  backLink = () => {
-    let { backUserInfo } = this.props;
-    backUserInfo();
+    return;
   };
 
   render() {
     let { user } = this.props;
-    let { inputs, checkDownload } = this.state;
+    let { inputs } = this.state;
 
     return (
       <div>
         <div className={style.alignInfoDownloadTerms}>
-          <img src="../../images/login/terms-compliant@1x.png" />
+          <Link
+            className={style.linkDownloadTerms}
+            to="documents/termos-pt_BR.pdf"
+            target="_blank"
+          >
+            <img src="/images/login/gdpr-compliant@1x.png" />
 
-          <div className={style.infoDownloadTerms}>
-            <Link
-              className={style.linkDownloadTerms}
-              to="documents/termos-pt_BR.pdf"
-              target="_blank"
-              onClick={() => this.checkDownload()}
-            >
+            <div className={style.infoDownloadTerms}>
               {i18n.t("NEW_ACCOUNT_TERMS_DOWNLOAD")}
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
 
         <div className={style.alignInfoTermsOfServices}>
@@ -142,11 +130,11 @@ class CreateUserTerms extends React.Component {
 
         <button
           className={
-            inputs.checkboxTerms && inputs.checkboxAge && checkDownload
+            inputs.checkboxTerms && inputs.checkboxAge
               ? style.buttonEnable
               : style.buttonBorderGreen
           }
-          onClick={() => this.inputValidator()}
+          onClick={() => this.validateInput()}
         >
           {user.loading ? <Loading /> : i18n.t("BTN_CREATE")}
         </button>
@@ -160,8 +148,7 @@ CreateUserTerms.propTypes = {
   createUser: PropTypes.func,
   clearMessage: PropTypes.func,
   errorInput: PropTypes.func,
-  user: PropTypes.object,
-  backUserInfo: PropTypes.function
+  user: PropTypes.object
 };
 
 const mapSateToProps = store => ({
@@ -174,8 +161,7 @@ const mapDispatchToProps = dispatch =>
       loading,
       createUser,
       clearMessage,
-      errorInput,
-      backUserInfo
+      errorInput
     },
     dispatch
   );

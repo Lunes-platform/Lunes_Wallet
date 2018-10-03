@@ -9,7 +9,7 @@ class Code extends React.Component {
   }
 
   handleChange = (id) => event => {
-    this.props.onHandleChange(id, event.target.value);
+    this.props.onHandleChange(id, event);
   }
 
   renderCodeInputs = () => {
@@ -21,9 +21,10 @@ class Code extends React.Component {
           <Grid key={id} item xs={6} sm={3}>
             <input key={id}
               className={style.inputTextDefault+' '+dic[id]}
-              value={values[id]}
               placeholder="1234"
+              value={values[id]}
               maxLength={4}
+              onKeyDown={this.handleChange(id)}
               onChange={this.handleChange(id)}
               required
             />

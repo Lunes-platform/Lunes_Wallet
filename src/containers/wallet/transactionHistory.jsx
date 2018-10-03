@@ -24,7 +24,11 @@ import { convertBiggestCoinUnit } from "../../utils/numbers";
 
 const blockexplorer = {
   lunes: "https://blockexplorer.lunes.io/tx/",
-  btc: "https://live.blockcypher.com/btc/tx/"
+  btc: "https://live.blockcypher.com/btc/tx/",
+  ltc: "https://live.blockcypher.com/ltc/tx/",
+  bch: "https://live.blockcypher.com/bch/tx/",
+  dash: "https://explorer.bitcoin.com/bch/tx/",
+  eth: "https://etherscan.io/tx/"
 };
 
 class TransactionHistory extends React.Component {
@@ -54,8 +58,8 @@ class TransactionHistory extends React.Component {
     loadWalletInfo(user.password);
   };
 
-  hasDefaultPrice = price => {
-    return price ? price.toFixed(3) : "";
+  hasDefaultPrice = (price, amount) => {
+    return price ? (price * amount).toFixed(3) : "";
   };
 
   defineSymbol = (symbol, price) => {
@@ -129,7 +133,13 @@ class TransactionHistory extends React.Component {
                     coins[defaultCoin].price[defaultFiat].symbol || "$",
                     transaction.price[defaultFiat]
                   )}
-                  {this.hasDefaultPrice(transaction.price[defaultFiat])}
+                  {this.hasDefaultPrice(
+                    transaction.price[defaultFiat],
+                    convertBiggestCoinUnit(
+                      transaction.amount,
+                      decimalPoint
+                    ).toFixed(decimalPoint)
+                  )}
                 </div>
               </Grid>
             </Grid>
@@ -207,7 +217,7 @@ class TransactionHistory extends React.Component {
                     </Grid>
                   </Grid>
 
-                  {transaction.promoCode ? (
+                  {transaction.promoCode && transaction.from === address ? (
                     <Grid item xs={12} className={style.itemDataHistorico}>
                       <Grid item xs={2} className={style.typeItems}>
                         <div className={style.forTransactionHistory}>

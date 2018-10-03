@@ -1,12 +1,17 @@
 import React from "react"
-import i18n from "../../utils/i18n";
 
+// MATERIAL UI
 import { Grid } from "@material-ui/core";
-import style from "./style.css";
 
+// COMPONENTS
 import Code from './code';
 import Instructions from "./instructions";
 
+// STYLES
+import style from "./style.css";
+
+// UTILS
+import i18n from "../../utils/i18n";
 import { inputValidator } from "../../utils/inputValidator";
 
 class LunesGift extends React.Component {

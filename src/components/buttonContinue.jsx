@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // UTILS
-import i18n from "../../../../utils/i18n";
+import i18n from "../utils/i18n";
 
 // STYLE
 import style from "./style.css";
 
 // COMPONENTS
-import Loading from "../../../../components/loading";
+import Loading from "./loading";
 
 class ButtonContinue extends React.Component {
   render() {

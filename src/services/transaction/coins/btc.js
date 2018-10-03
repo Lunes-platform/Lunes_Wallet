@@ -17,30 +17,34 @@ class BtcTransaction {
 
   async createTransaction(data) {
     try {
+      console.warn(data)
       const transService = new TransactionService();
       const utxos = await transService.utxo(
-        data.toAddress,
+        data.fromAddress,
         data.coin,
         data.token
       );
 
-      console.warn(data, utxos);
-
       const targets = [
-        {
-          address: data.lunesWallet.address,
-          value: data.feeLunes
-        },
         {
           address: data.toAddress,
           value: data.amount
         }
       ];
 
+      if (data.lunesWallet.address && data.feeLunes) {
+        targets.push({
+          address: data.lunesWallet.address,
+          value: data.feeLunes
+        });
+      }
+
       let { inputs, outputs } = coinSelect(utxos, targets, data.feePerByte);
 
-      let tx = new bitcoin.TransactionBuilder(data.network.bitcoinjsNetwork);
-      console.warn("inputs, outputs", inputs, outputs);
+      let keyPair = this.getKeyPair(data.seed, data.network);
+
+      let tx = new bitcoin.TransactionBuilder(data.coin === "usdt" ? this.usdtTransaction(data, keyPair) : data.network.bitcoinjsNetwork);
+
       outputs.forEach(output => {
         if (!output.address) {
           output.address = data.fromAddress;
@@ -53,19 +57,15 @@ class BtcTransaction {
         tx.addInput(input.txId, input.vout);
       });
 
-      let keyPair = this.getKeyPair(data.seed, data.network);
-
       tx = this.sign(tx, keyPair);
 
       const txHex = tx.build().toHex();
-      // return;
+      
       const broadcastResult = await transService.broadcast(
         txHex,
         data.coin,
         data.token
       );
-
-      console.warn("broadcastResult", broadcastResult);
 
       return broadcastResult.data.data.txId;
     } catch (error) {
@@ -76,6 +76,24 @@ class BtcTransaction {
 
   sign(tx, keyPair) {
     _.times(tx.inputs.length, i => tx.sign(i, keyPair));
+    return tx;
+  }
+
+  usdtTransaction(data, keyPair) {
+    let transService = new TransactionService();
+    let pubKey   = keyPair.getPublicKeyBuffer().toString('hex')
+    let response = transService.getUnsigned({
+      "transaction_version": 1,
+      "currency_identifier": 31,
+      "fee": data.fee,
+      "testnet": data.network.testnet,
+      "pubkey": pubKey,
+      "amount_to_transfer": data.amount,
+      "transaction_from": data.fromAddress,
+      "transaction_to": data.toAddress
+    });
+
+    let tx = bitcoin.Transaction.fromHex(response);
     return tx;
   }
 }

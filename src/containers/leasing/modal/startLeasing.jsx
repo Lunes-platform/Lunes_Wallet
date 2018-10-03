@@ -8,8 +8,7 @@ import {
   validateLeasingAddress,
   clearState,
   startNewLeasing,
-  setLeasingModalLoading,
-  getLeasingInfo
+  setLeasingModalLoading
 } from "../redux/leasingAction";
 import { errorInput } from "../../errors/redux/errorAction";
 
@@ -212,7 +211,6 @@ StartLeasing.propTypes = {
   user: PropTypes.object,
   coinAddress: PropTypes.string,
   close: PropTypes.func,
-  getLeasingInfo: PropTypes.func,
   setLeasingModalLoading: PropTypes.func
 };
 
@@ -232,7 +230,6 @@ const mapDispatchToProps = dispatch =>
       errorInput,
       clearState,
       startNewLeasing,
-      getLeasingInfo,
       setLeasingModalLoading
     },
     dispatch

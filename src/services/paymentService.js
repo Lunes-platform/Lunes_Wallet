@@ -1,7 +1,14 @@
 import axios from "axios";
+
+//CONSTANTS
 import { BASE_URL, API_HEADER, HEADER_RESPONSE } from "../constants/apiBaseUrl";
-import { internalServerError } from "../containers/errors/statusCodeMessage";
+
+// ERROR
+import { internalServerError, forbidden } from "../containers/errors/statusCodeMessage";
+
+// UTILS
 import { setAuthToken } from "../utils/localStorage";
+import i18n from "../utils/i18n";
 
 class PaymentService {
   async getCoins(token) {
@@ -9,7 +16,7 @@ class PaymentService {
       API_HEADER.headers.Authorization = token;
 
       let response = await axios.get(
-        `${BASE_URL}/service/pagamento`,
+        BASE_URL + "/service/pagamento",
         API_HEADER
       );
       setAuthToken(response.headers[HEADER_RESPONSE]);
@@ -25,21 +32,23 @@ class PaymentService {
       API_HEADER.headers.Authorization = token;
 
       const response = await axios.get(
-        `${BASE_URL}/bill/${number}`,
+        BASE_URL + "/bill/" + number,
         API_HEADER
       );
-      // TODO: enable setAuthToken when the header is in the api response
+
+      if (response.data.code === 500) {
+        return forbidden(i18n.t("PAYMENT_UNAUTHORIZED"));
+      }
+
       setAuthToken(response.headers[HEADER_RESPONSE]);
 
-      const data = {
-        number,
-        value: response.data.data.value,
-        assignor: response.data.data.assignor || "",
-        dueDate: response.data.data.dueDate || ""
-      };
-
-      return data;
+      return response.data;
     } catch (error) {
+      // If the http status = 500
+      if (error.response.data.code === 500) {
+        return forbidden(i18n.t("PAYMENT_UNAUTHORIZED"));
+      }
+
       return internalServerError();
     }
   }
@@ -54,7 +63,7 @@ class PaymentService {
       setAuthToken(response.headers[HEADER_RESPONSE]);
 
       return response;
-    } catch(error) {
+    } catch (error) {
       return internalServerError();
     }
   }
@@ -66,9 +75,37 @@ class PaymentService {
       let response = await axios.get(`${BASE_URL}/bill/history`, API_HEADER);
       setAuthToken(response.headers[HEADER_RESPONSE]);
 
+      if (response.data.code === 404) {
+        return {
+          payments: []
+        };
+      }
+
+      if (response.data.code !== 200 ) {
+        return 'ERRO';
+      }
+
       return response.data.data;
     } catch (error) {
       return internalServerError();
+    }
+  }
+
+  async sendPay(token, payload) {
+    try {
+      API_HEADER.headers.Authorization = token;
+
+      const response = await axios.post(
+        `${BASE_URL}/bill/pay/${payload.barCode}`,
+        payload,
+        API_HEADER
+      );
+      setAuthToken(response.headers[HEADER_RESPONSE]);
+
+      return response;
+    } catch (error) {
+      internalServerError();
+      return;
     }
   }
 }

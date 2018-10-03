@@ -76,7 +76,7 @@ class Header extends React.Component {
       ? coins[coinSelected].abbreviation.toUpperCase()
       : "UNDEFINED";
 
-    let coinBalance = coins[coinSelected]
+    let coinBalance = coins[coinSelected] && coins[coinSelected].balance
       ? coins[coinSelected].balance.available
       : 0;
 
@@ -125,7 +125,6 @@ class Header extends React.Component {
             {!TESTNET || <span className={style.textGreen}>Testnet</span>}
           </div>
           {this.renderBalance()}
-          {/* <Hidden xsDown>{this.renderNotifications()}</Hidden> */}
 
           <Hidden mdDown>
             <UserControl actionLogout={actionLogout} />

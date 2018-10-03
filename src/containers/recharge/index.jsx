@@ -15,13 +15,6 @@ import RechargeModal from "./modal/rechargeModal";
 import Tabs from "../../components/tabs";
 import Invoice from "./invoice";
 import History from "./history";
-import Favorite from "./favorite";
-
-import Select from "../../components/select";
-
-// MATERIAL
-import { Grid, Input, InputAdornment } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
 
 // STYLE
 import style from "./style.css";
@@ -46,7 +39,7 @@ class Recharge extends React.Component {
 
     const {modalStep, setModalStep} = this.props;
 
-    const titles = ["Nova recarga", "Histórico"];
+    const titles = [i18n.t("RECHARGE_TAB_TITLE_RECHARGE"), i18n.t("RECHARGE_TAB_TITLE_HISTORY")];
     const contents = [<Invoice openModal={this.handleModal} key={1} />, <History key={2} />]
 
     return (
@@ -63,7 +56,7 @@ class Recharge extends React.Component {
           content={<RechargeModal />}
           show={isOpen}
           close={
-            modalStep === 5 || modalStep === 1 ? ()=>this.closeModal() : null
+            modalStep === 5 || modalStep === 1 || modalStep === 6 ? ()=>this.closeModal() : null
           }
           back={
             modalStep === 2 || modalStep === 3 || modalStep === 4 ? () => setModalStep(modalStep-1) : null

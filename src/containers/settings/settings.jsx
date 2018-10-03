@@ -1,13 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-
-// STYLE
 import style from "./style.css";
-
-// MATERIAL UI
 import Grid from "@material-ui/core/Grid";
-
-// UTILS
 import i18n from "../../utils/i18n";
 
 class Settings extends React.Component {

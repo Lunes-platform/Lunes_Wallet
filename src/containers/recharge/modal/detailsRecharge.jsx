@@ -4,11 +4,9 @@ import PropTypes from "prop-types";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {
-  getUserGdpr,
-  setUserGdpr,
-  setModalStep
-} from "../redux/rechargeAction";
+import { setModalStep } from "../redux/rechargeAction";
+import { updateUserConsents } from "../../user/redux/userAction";
+import { errorInput } from "../../errors/redux/errorAction";
 
 // UTILS
 import i18n from "../../../utils/i18n";
@@ -17,8 +15,8 @@ import i18n from "../../../utils/i18n";
 import style from "./style.css";
 
 // COMPONENTS
-import CustomSwitch from "./component/customSwitch";
-import ButtonContinue from "./component/buttonContinue";
+import CustomSwitch from "../../../components/customSwitch";
+import ButtonContinue from "../../../components/buttonContinue";
 import ModalBar from "../../../components/modalBar";
 import Loading from "../../../components/loading";
 
@@ -31,35 +29,51 @@ class DetailsRecharge extends React.Component {
       errorMsg: "",
       user: props.user
     };
+
+    this.renderNumber = this.renderNumber.bind(this);
   }
 
-  openError = message => {
-    this.setState({
-      ...this.state,
-      error: true,
-      errorMsg: message
-    });
-
-    setTimeout(() => {
-      this.setState({
-        ...this.state,
-        error: false,
-        errorMsg: ""
-      });
-    }, 4100);
-  };
-
   validateForm = () => {
-    const { setModalStep } = this.props;
+    const { setModalStep, errorInput, clearMessage } = this.props;
+    const { user } = this.state;
+
+    if (user.terms === "unread") {
+      errorInput(i18n.t("PAYMENT_TERMS_ERROR"));
+      return;
+    }
+
     setModalStep(2);
+    clearMessage();
   };
 
   toogleSwitch = () => {
-    //TODO
+    const { user } = this.state;
+    const { updateUserConsents } = this.props;
+    const newStatus = user.terms === "read" ? "unread" : "read";
+
+    this.setState({
+      ...this.state,
+      user: {
+        ...user,
+        terms: newStatus
+      }
+    });
+
+    updateUserConsents({ terms: newStatus });
   };
 
+  renderNumber() {
+    const { recharge } = this.props;
+
+    const ddd = recharge.number.substring(0, 2);
+    const totalnumero = recharge.number.length;
+    const numero = recharge.number.substring(2, totalnumero);
+
+    return `(${ddd}) ${numero}`;
+  }
+
   render() {
-    const { loading } = this.props;
+    const { loading, recharge } = this.props;
     const { user, error, errorMsg } = this.state;
 
     if (loading) {
@@ -76,9 +90,11 @@ class DetailsRecharge extends React.Component {
           </div>
           {i18n.t("RECHARGE_DETAILS_1")}
           <div className={style.strongText} style={{ marginTop: 20 }}>
-            <span className={style.textGreen}>5000 LUNES</span>
+            <span className={style.textGreen}>
+              {recharge.amount} {recharge.coin.abbreviation.toUpperCase()}
+            </span>
             {i18n.t("RECHARGE_DETAILS_2")}
-            <span className={style.textGreen}>R$ 30,00</span>
+            <span className={style.textGreen}>R$ {recharge.value}</span>
 
             {i18n.t("RECHARGE_DETAILS_3")}
           </div>
@@ -91,15 +107,15 @@ class DetailsRecharge extends React.Component {
               marginBottom: 30
             }}
           >
-            (19) 99990-9999
+            {this.renderNumber()}
           </div>
 
           <CustomSwitch
-            title={i18n.t("GDPR_TITLE")}
-            description={i18n.t("GDPR_DESC")}
+            title={i18n.t("PAYMENT_TERMS_TITLE")}
+            description={i18n.t("PAYMENT_TERMS_DESC")}
             action={this.toogleSwitch}
-            checked={user.gdpr === "read"}
-            value="gdprSwitch"
+            checked={user.terms === "read"}
+            value="termsSwitch"
           />
 
           <ButtonContinue
@@ -115,22 +131,27 @@ class DetailsRecharge extends React.Component {
 
 DetailsRecharge.propTypes = {
   loading: PropTypes.bool,
+  user: PropTypes.object.isRequired,
   setModalStep: PropTypes.func,
-  getUserGdpr: PropTypes.func,
-  setUserGdpr: PropTypes.func
+  recharge: PropTypes.object.isRequired,
+  updateUserConsents: PropTypes.func.isRequired,
+  clearMessage: PropTypes.func,
+  errorInput: PropTypes.func
 };
 
 const mapStateToProps = store => ({
   loading: store.recharge.loading,
-  user: store.user.user
+  user: store.user.user,
+  recharge: store.recharge.recharge
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       setModalStep,
-      getUserGdpr,
-      setUserGdpr
+      updateUserConsents,
+      clearMessage,
+      errorInput
     },
     dispatch
   );

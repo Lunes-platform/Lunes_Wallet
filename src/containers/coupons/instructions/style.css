@@ -19,7 +19,6 @@
 
 /* MODAL*/
 :local(.alignInstructions, ol) {
-  /* background-color: violet; */
   list-style-type: decimal;
   display: grid;
   font-size: 19.2px;
@@ -36,10 +35,7 @@
   font-weight: normal;
 }
 
-@media only screen and (max-width: 425px) {
-  :local(.alignInstructions) {
-      height: 75vh;
-  }
+@media only screen and (max-width: 499px) { 
   :local(.alignInstructions, ol li) {
       padding-bottom: 10vh;
       font-size: 11px;

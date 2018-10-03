@@ -189,8 +189,8 @@
 }
 
 :local(.alignLaunchMobile img) {
-  height: 80%;
-  width: 95%;
+  height: 95%;
+  width: 90%;
 }
 
 /* 2.4 INPUTS */

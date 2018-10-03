@@ -1,10 +1,14 @@
 import React from "react";
-import Settings from "./settings";
+import PropTypes from "prop-types";
+
+// REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getTwoFactorAuth } from "./redux/settingsAction";
 import { errorInput } from "../errors/redux/errorAction";
-import PropTypes from "prop-types";
+
+// COMPONENTS
+import Settings from "./settings";
 
 class Configuration extends React.Component {
   componentDidMount() {
@@ -12,6 +16,7 @@ class Configuration extends React.Component {
     if (!twoFactor)
       getTwoFactorAuth();
   }
+
   render() {
     let { settings } = this.props;
     return (
@@ -25,6 +30,7 @@ class Configuration extends React.Component {
     );
   }
 }
+
 Configuration.propTypes = {
   getTwoFactorAuth: PropTypes.func,
   settings: PropTypes.object,

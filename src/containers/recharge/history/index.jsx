@@ -1,19 +1,26 @@
 import React from "react";
-import i18n from "../../../utils/i18n";
 import PropTypes from "prop-types";
 
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-//import {getHistoryPay} from "../redux/paymentAction";
+import { getHistoryRecharge } from "../redux/rechargeAction";
 
-import { Grid, Input, InputAdornment, IconButton } from "@material-ui/core";
+// MATERIAL UI
 import Search from "@material-ui/icons/Search";
 import { withStyles } from "@material-ui/core/styles";
-import colors from "../../../components/bases/colors";
-import style from "./style.css";
+import { Grid, Input, InputAdornment, IconButton } from "@material-ui/core";
 
+// COMPONENTS
 import HistoryItem from "./historyItem";
+import Loading from "../../../components/loading";
+
+// STYLES
+import style from "./style.css";
+import colors from "../../../components/bases/colors";
+
+// UTILS
+import i18n from "../../../utils/i18n";
 
 const customStyle = {
   inputRoot: {
@@ -52,6 +59,11 @@ class History extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
+  componentDidMount = () => {
+    const { getHistoryRecharge } = this.props;
+    getHistoryRecharge();
+  };
+
   handleSearchChange = event => {
     this.setState({
       ...this.state,
@@ -61,7 +73,7 @@ class History extends React.Component {
 
   renderItem = (val, key) => {
     const { search } = this.state;
-    if (val.name.toLowerCase().indexOf(search.toLowerCase()) != -1) {
+    if (val.phone.toString().indexOf(search.toLowerCase()) != -1) {
       return <HistoryItem key={key} item={val} />;
     }
   };
@@ -71,7 +83,7 @@ class History extends React.Component {
   };
 
   render() {
-    const { classes, history } = this.props;
+    const { classes, history, loading } = this.props;
     const { search } = this.state;
 
     return (
@@ -86,7 +98,7 @@ class History extends React.Component {
                 <div className={style.invoiceInfo}>
                   {history.length}
                   <br />
-                  {i18n.t("PAYMENT_TITLE")}
+                  {i18n.t("RECHARGE_TAB_TITLE_HISTORY")}
                 </div>
               </div>
             </Grid>
@@ -100,7 +112,7 @@ class History extends React.Component {
                     underline: classes.inputCssUnderlineDisabled,
                     input: classes.inputCss
                   }}
-                  placeholder={i18n.t("PAYMENT_FIND_NAME")}
+                  placeholder={i18n.t("RECHARGE_FIND")}
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -119,9 +131,13 @@ class History extends React.Component {
         </Grid>
 
         <Grid item xs={12} className={style.box}>
-          <div className={style.historyItems}>
-            {history.map((val, key) => this.renderItem(val, key))}
-          </div>
+          {loading ? (
+            <Loading color="lunes" />
+          ) : (
+            <div className={style.historyItems}>
+              {history.map((val, key) => this.renderItem(val, key))}
+            </div>
+          )}
         </Grid>
       </Grid>
     );
@@ -129,14 +145,26 @@ class History extends React.Component {
 }
 
 History.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  history: PropTypes.array.isRequired,
+  getHistoryRecharge: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = store => ({
-  history: store.recharge.history
+  history: store.recharge.history,
+  loading: store.recharge.loading
 });
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getHistoryRecharge
+    },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withStyles(customStyle)(History));

@@ -1,0 +1,35 @@
+/* BASE */
+:local(.instructions) {
+  composes: textDefault from "../../../components/bases/textBase.css";
+  display: block;
+  text-align: center;
+}
+
+:local(.instructions a) {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+:local(.instructions img) {
+  position: relative;
+  left: 10px;
+  top: 5px;
+}
+
+/* MODAL*/
+:local(.infoModal) {
+  width: 40vh;
+  font-size: 16px;
+  color: white;
+}
+
+:local(.infoModal p) {
+    margin: 50px 0;
+}
+
+@media only screen and (max-width: 499px) {
+  :local(.infoModal) {
+    font-size: 11px;
+    width: 40vh;
+  }
+}

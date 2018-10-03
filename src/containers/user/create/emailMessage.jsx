@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
 
 //REDUX
 import { connect } from "react-redux";
@@ -15,14 +14,17 @@ import style from "../style.css";
 
 class EmailMessage extends React.Component {
   render() {
+    setTimeout(function() {
+      window.location = "https://luneswallet.app/";
+    }, 6000);
     return (
       <div className={style.contNewAccount}>
         <img src="../../images/logo.svg" className={style.logo} />
         <div>
-          {/* <img
+          <img
             src="../../../../images/icons/email/email@2x.png"
             className={style.iconEmailCreateAccount}
-          /> */}
+          />
 
           <div className={style.messageConfirmationRegister}>
             {i18n.t("NEW_ACCOUNT_MESSAGE_SENDED")}

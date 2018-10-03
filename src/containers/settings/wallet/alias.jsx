@@ -1,41 +1,118 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-// REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { errorInput } from "../../errors/redux/errorAction";
-
-// UTILS
+import { createAlias } from "../redux/settingsAction";
+import { loading } from "../../user/redux/userAction";
 import i18n from "../../../utils/i18n";
-
-// MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
-
-// STYLES
 import style from "./style.css";
+import { convertSmallerCoinUnit } from "../../../utils/numbers";
+import Loading from "../../../components/loading";
 
 class AliasPage extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      fieldAlias: "",
+      isEnable: true
+    };
+  }
+
+  handleAliasValue = value => {
+    this.setState({ fieldAlias: value });
+  };
+
+  componentDidMount() {
+    let { aliasCreated, getAliases } = this.props;
+    aliasCreated
+      ? this.setState({ fieldAlias: aliasCreated })
+      : this.setState({ fieldAlias: "" });
+  }
+
+  createNewAlias = () => {
+    let { createAlias, coins, settings, user, loading } = this.props;
+    let { fieldAlias } = this.state;
+
+    let coinName = coins.lunes.abbreviation;
+    let coinAddress = coins.lunes.address;
+    let decimalPoint = coins.lunes.decimalPoint;
+    let fee = convertSmallerCoinUnit(settings.coinFee.low, decimalPoint);
+    let password = user.password;
+    loading();
+    createAlias(coinName, coinAddress, fieldAlias, fee, password);
+  };
+
+  renderAliases = () => {
+    let { aliasCreated, isLoading } = this.props;
+    let { fieldAlias } = this.state;
+
+    if (aliasCreated) {
+      return (
+        <Grid container className={style.aliasNameRow}>
+          <Grid item xs={12} md={8}>
+            <input
+              type="text"
+              maxLength={"30"}
+              disabled
+              className={style.inputClear}
+              onChange={event => this.handleAliasValue(event.target.value)}
+              value={fieldAlias}
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <button
+              disabled
+              className={style.buttonGreen}
+              onClick={() => this.createNewAlias()}
+            >
+              {i18n.t("SET_ALIAS_SAVE_NAME")}
+            </button>
+          </Grid>
+        </Grid>
+      );
+    }
+
+    return (
+      <Grid container className={style.aliasNameRow}>
+        <Grid item xs={12} md={8}>
+          <input
+            type="text"
+            maxLength={"30"}
+            className={style.inputClear}
+            onChange={event => this.handleAliasValue(event.target.value)}
+            value={fieldAlias}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <button
+            className={style.buttonGreen}
+            onClick={() => this.createNewAlias()}
+          >
+            {isLoading ? <Loading /> : i18n.t("SET_ALIAS_SAVE_NAME")}
+          </button>
+        </Grid>
+      </Grid>
+    );
+  };
+
   render() {
-    let { coins, errorInput } = this.props;
+    let { coins } = this.props;
 
     return (
       <div>
-        <Hidden smUp>
-          <div className={style.description}>
-            {" "}
-            {i18n.t("SET_ALIAS_DESCRIPTION")}{" "}
-          </div>
-        </Hidden>
-
         <div className={style.box}>
-          <Hidden xsDown>
-            <div className={style.description}>
-              {" "}
-              {i18n.t("SET_ALIAS_DESCRIPTION")}{" "}
-            </div>
-          </Hidden>
+          <div className={style.description}>
+            <p>{i18n.t("SET_ALIAS_DESCRIPTION")}</p>
+            <p>
+              {i18n.t("ALIAS_RULES_1")}
+              <br />
+              {i18n.t("ALIAS_RULES_2")}
+            </p>
+          </div>
           <Grid container justify="center" spacing={16}>
             <Grid item xs={11} md={2}>
               <Grid container>
@@ -65,24 +142,7 @@ class AliasPage extends React.Component {
               />
               <div>
                 <Grid container className={style.aliasNameRow}>
-                  <Grid item xs={12} md={8}>
-                    <input
-                      type="text"
-                      className={style.inputClear}
-                      disabled
-                      value={i18n.t("MESSAGE_NOT_SERVICE")}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={4}>
-                    <button
-                      className={style.buttonGreen}
-                      onClick={() =>
-                        errorInput(i18n.t("MESSAGE_NOT_SERVICE_YET"))
-                      }
-                    >
-                      {i18n.t("SET_ALIAS_SAVE_NAME")}
-                    </button>
-                  </Grid>
+                  {this.renderAliases()}
                 </Grid>
               </div>
             </Grid>
@@ -95,15 +155,33 @@ class AliasPage extends React.Component {
 
 AliasPage.propTypes = {
   coins: PropTypes.array,
-  errorInput: PropTypes.func
+  errorInput: PropTypes.func,
+  createAlias: PropTypes.func,
+  getAliases: PropTypes.func,
+  settings: PropTypes.object,
+  user: PropTypes.object,
+  aliasCreated: PropTypes.string,
+  isLoading: PropTypes.bool,
+  loading: PropTypes.func
 };
 
 const mapSateToProps = store => ({
-  coins: store.skeleton.coins
+  coins: store.skeleton.coins,
+  settings: store.settings,
+  user: store.user.user,
+  aliasCreated: store.skeleton.lunesCoin.alias,
+  isLoading: store.user.loading
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ errorInput }, dispatch);
+  bindActionCreators(
+    {
+      loading,
+      createAlias,
+      errorInput
+    },
+    dispatch
+  );
 
 export default connect(
   mapSateToProps,

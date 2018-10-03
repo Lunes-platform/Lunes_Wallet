@@ -35,7 +35,6 @@ class Content extends Component {
   componentDidUpdate() {
     let { type } = this.state;
     let { loading, errors } = this.props.skeleton;
-
     if (errors) {
       if (type !== "error") {
         errorRequest();

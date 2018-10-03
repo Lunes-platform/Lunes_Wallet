@@ -2,13 +2,14 @@
 const webpack = require('webpack');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ObjectRestSpreadPlugin = require('@sucrase/webpack-object-rest-spread-plugin');
 
 console.log("\n", "\x1b[1m", "\x1b[31m");
 console.log("------------------------------------------------------------------------------------------");
 console.log("---------------------------------- VISERION IS RISING! -----------------------------------");
-console.log("---------------------------------------- V 1.0 -------------------------------------------");
-console.log("-----------------------------------------------------------------------------------------",);
+console.log("---------------------------------------- V 2.0 -------------------------------------------");
+console.log("------------------------------------------------------------------------------------------",);
 console.log("\n");
 
 console.log("                                                       /===-_---~~~~~~~~~------____");
@@ -82,15 +83,24 @@ module.exports = {
     port: 6001
   },
   plugins: [
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
     new ObjectRestSpreadPlugin(),
+    new UglifyJSPlugin({
+      uglifyOptions: {
+        beautify: false,
+        ecma: 6,
+        compress: true,
+        comments: false
+      }
+    }),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production"),
       },
-    }),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true
     }),
     new HtmlWebpackPlugin({
       template: "public/index.html"

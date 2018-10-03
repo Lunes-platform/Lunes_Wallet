@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { compose } from "recompose";
 
 // REDUX
 import { connect } from "react-redux";
@@ -11,13 +12,16 @@ import CustomSelectImage from "./customSelectImage";
 // UTILS
 import i18n from "../../../utils/i18n";
 
-// MATERIAL
+// MATERIAL UI
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Switch from "@material-ui/core/Switch";
 import Hidden from "@material-ui/core/Hidden";
+
+// STYLE
 import style from "./style.css";
-import { compose } from "recompose";
+
+// UTILS
 import {
   setDefinitionMetadata,
   getDefinitionMetadata,

@@ -14,11 +14,12 @@ export const cancelLeasing = data => ({
   data
 });
 
-export const getLeasingInfo = (coin, address, decimalPoint) => ({
+export const getLeasingInfo = (coin, address, decimalPoint, password) => ({
   type: "GET_INFO_LEASING_API",
   coin,
   address,
-  decimalPoint
+  decimalPoint,
+  password
 });
 
 export const setLeasingLoading = isLoading => ({
