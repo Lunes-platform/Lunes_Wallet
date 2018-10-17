@@ -6,3 +6,24 @@
 :local .buttonEnable {
   composes: buttonEnable from "../../../../components/bases/buttonBase.css";
 }
+
+:local(.credit) {
+  color: #68f285;
+}
+
+#hr hr {
+  border: 0;
+  width: 80%;
+  border-bottom: 2px dashed #654fa4;
+  height: 4px;
+}
+
+#hr {
+  display: flex;
+}
+
+@media screen and (max-width: 599px) {
+  #hr hr {
+    width: 35%;
+  }
+}
