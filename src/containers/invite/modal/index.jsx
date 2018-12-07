@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import style from "./style.css";
 
 // REDUX
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 // COMPONENTS
@@ -36,4 +37,10 @@ const mapStateToProps = store => ({
   invite: store.invite.invites
 });
 
-export default connect(mapStateToProps)(InviteSend);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+  )(InviteSend);

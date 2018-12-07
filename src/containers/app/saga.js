@@ -112,7 +112,8 @@ import {
   getInviteAddressSaga,
   sendMailInviteSaga, 
   getInviteSentSaga,
-  sendWithdrawSaga
+  sendWithdrawSaga,
+  clearInviteSaga
 } from "../invite/redux/inviteSaga";
 
 export default function* rootSaga() {
@@ -240,6 +241,7 @@ export default function* rootSaga() {
     fork(takeLatest, "SEND_MAIL_INVITE", sendMailInviteSaga),
     fork(takeLatest, "GET_INVITE_SENT", getInviteSentSaga),
     fork(takeLatest, "SEND_WITHDRAW_INVITE", sendWithdrawSaga),
+    fork(takeLatest, "CLEAR_INVITE_STATE", clearInviteSaga),
 
   ];
 }

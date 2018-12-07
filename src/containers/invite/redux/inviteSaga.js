@@ -116,3 +116,9 @@ export function* sendWithdrawSaga(address) {
     type: "SEND_WITHDRAW_INVITE_REDUCER"
   });
 }
+
+export function* clearInviteSaga() {
+  yield put({
+    type: "CLEAR_INVITE_REDUCER"
+  });
+}

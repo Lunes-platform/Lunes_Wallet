@@ -9,7 +9,8 @@ import {
   getInviteAddress,
   sendMailInvite,
   getInviteSent,
-  sendWithdraw
+  sendWithdraw,
+  clearState
 } from "./redux/inviteAction";
 import { successRequest, errorInput } from "../errors/redux/errorAction";
 
@@ -70,12 +71,21 @@ class Invite extends React.Component {
     };
   }
   componentDidMount = () => {
+    this.mounted = true;
     const { getInviteAddress, getInviteSent } = this.props;
     getInviteAddress();
     getInviteSent();
+
   };
 
-  setEmail = email => {    
+  componentWillUnmount = () => {
+    const { clearState } = this.props;
+    this.state = {};
+    clearState();
+    this.mounted = false;
+  };
+  
+  setEmail = email => {
     this.setState({ ...this.state, email });
   };
 
@@ -243,8 +253,8 @@ class Invite extends React.Component {
                 </div>
                 
               </Grid>
-              <Grid item>
-                <div className={style.inviteInput}>
+              <Grid item>                
+                <div className={style.inviteInput}>                  
                   <Input
                     placeholder="Lunes@gmail.com"
                     classes={{
@@ -255,14 +265,14 @@ class Invite extends React.Component {
                     onChange={event => this.setEmail(event.target.value)}
                     value={email}
                   />
-                  {this.renderErrors()}
+                  {this.renderErrors()}                  
                 </div>
               </Grid>
             </Grid>
             <div className={style.linkTitle}>
               {i18n.t("INVITE_LINK_SHARE")}
             </div>
-            <div className={style.adressShared}>
+            <div className={style.adressShared}>                    
               {loadingAddress ? <Loading color="lunes" /> : address_copy}
             </div>
 
@@ -292,8 +302,8 @@ class Invite extends React.Component {
                 {loadingSent ? (
                   <Loading color="lunes" />
                 ) : (
-                  i18n.t("INVITE_BUTTON_SEND")
-                )}
+                    i18n.t("INVITE_BUTTON_SEND")
+                  )}
               </button>
 
               <div className={style.accumulatedBalance}>
@@ -310,8 +320,8 @@ class Invite extends React.Component {
                 {loadingWithdraw ? (
                   <Loading color="lunes" />
                 ) : (
-                  i18n.t("INVITE_TEXT_BUTTON")
-                )}
+                    i18n.t("INVITE_TEXT_BUTTON")
+                  )}
               </button>
             </div>
           </Grid>
@@ -346,7 +356,8 @@ Invite.propTypes = {
   loadingSent: PropTypes.bool,
   loadingAddress: PropTypes.bool,
   sendWithdraw: PropTypes.func,
-  loadingWithdraw: PropTypes.bool
+  loadingWithdraw: PropTypes.bool,
+  clearState: PropTypes.func
 };
 
 const mapStateToProps = store => ({
@@ -368,7 +379,8 @@ const mapDispatchToProps = dispatch =>
       getInviteSent,
       successRequest,
       sendWithdraw,
-      errorInput
+      errorInput,
+      clearState
     },
     dispatch
   );

@@ -79,6 +79,10 @@ const invite = (state = initialState, action) => {
         ...state,
         loadingWithdraw: false
       };
+    case "CLEAR_INVITE_REDUCER":
+      return {
+        ...initialState
+      };
 
     default: {
       return {
