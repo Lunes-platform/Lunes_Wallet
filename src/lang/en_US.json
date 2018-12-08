@@ -482,6 +482,7 @@
   "P2P_TO_BUY": "To buy",
   "P2P_STATUS_TEXT_1": "Progress",
   "P2P_STATUS_TEXT_2": "Completed",
+  "P2P_STATUS_TEXT_3": "Canceled",
   "P2P_CREATE_OFFER_DESCRIPTION_PLACEHOLDER": "Enter additional info about the ad that potential buyers need to know.",
   "P2P_CREATE_OFFER_BUTTON_CONFIRMATION": "CREATE AD",
   "P2P_CREATE_OFFER_DESCRIPTION": "Description",

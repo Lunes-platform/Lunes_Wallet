@@ -71,6 +71,7 @@ class Offers extends React.Component {
     this.state = {
       tabGiving: true,
       tabDone: false,
+      tabCancel:false,
       coinSelect: {
         name: "Lunes",
         value: "lunes",
@@ -105,10 +106,12 @@ class Offers extends React.Component {
   };
 
   onChangeTab(status) {
-    if (status == 1) {
-      this.setState({ ...this.state, tabGiving: false, tabDone: true });
+    if (status == 0) {
+      this.setState({...this.state, tabGiving: true, tabDone: false, tabCancel:false});
+    }else if (status == 1) {
+      this.setState({...this.state, tabGiving: false, tabDone: true,tabCancel:false });
     } else {
-      this.setState({ ...this.state, tabGiving: true, tabDone: false });
+      this.setState({...this.state, tabGiving: false, tabDone: false,tabCancel:true });
     }
     this.filterMyOrders(false);
   }
@@ -125,8 +128,8 @@ class Offers extends React.Component {
   };
 
   renderOders = () => {
-    const { orders, loading, type } = this.props;
-    const { tabGiving, tabDone } = this.state;
+    const {orders, loading, type} = this.props;
+    const {tabGiving, tabDone, tabCancel} = this.state;
     if (loading) return <Loading color="lunes" margin={"50% 0% 0% 0%"} />;
 
     if (orders.length <= 0) return (<div className={style.noOrder}>
@@ -134,12 +137,17 @@ class Offers extends React.Component {
     </div> );
     if (type == "myhistory") {
       return orders.map((val, key) => {
-        if(!tabDone){
+        if (tabGiving) {
+        if (val.status != "confirmed" && val.status != "canceled")
+            return <CardOffer key={key} order={val} />;
+        }
+        if(tabDone){
           if(val.status == "confirmed")
           return <CardOffer key={key} order={val} />;
         }
-        if (!tabGiving) {
-          if (val.status != "confirmed")
+        
+        if (tabCancel) {
+          if (val.status == "canceled")
             return <CardOffer key={key} order={val} />;
         }
       });
@@ -170,23 +178,29 @@ class Offers extends React.Component {
   };
 
   renderFilters = () => {
-    const { type } = this.props;
-    const { tabGiving, tabDone } = this.state;
+    const {type} = this.props;
+    const {tabGiving, tabDone, tabCancel} = this.state;
 
     if (type === "myhistory") {
       return (
         <div className={style.tabContent}>
           <div
-            className={tabGiving ? style.itemTab : style.itemTabActive}
-            onClick={() => this.onChangeTab(1)}
+            className={tabGiving ? style.itemTabActive : style.itemTab}
+            onClick={() => this.onChangeTab(0)}
           >
             {i18n.t("P2P_STATUS_TEXT_1")}
           </div>
           <div
-            className={tabDone ? style.itemTab : style.itemTabActive}
-            onClick={() => this.onChangeTab(0)}
+            className={tabDone ? style.itemTabActive : style.itemTab}
+            onClick={() => this.onChangeTab(1)}
           >
             {i18n.t("P2P_STATUS_TEXT_2")}
+          </div>
+          <div
+            className={tabCancel ? style.itemTabActive : style.itemTab}
+            onClick={() => this.onChangeTab(2)}
+          >
+            {i18n.t("P2P_STATUS_TEXT_3")}
           </div>
         </div>
       );

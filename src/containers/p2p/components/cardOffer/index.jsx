@@ -83,9 +83,9 @@ class CardOffer extends React.Component {
     }
   };
 
-  rederPictureGravatar(email){
+  rederPictureGravatar(email) {
     const defaultImg = "https://luneswallet.app/images/icons/p2p/lunio-user300x300.jpg";
-    return "https://s.gravatar.com/avatar/"+encryptMd5(email.toLowerCase())+"?s=300"+"&d="+defaultImg;
+    return "https://s.gravatar.com/avatar/" + encryptMd5(email.toLowerCase()) + "?s=300" + "&d=" + defaultImg;
   }
 
   render() {
@@ -124,18 +124,25 @@ class CardOffer extends React.Component {
             <div className={style.boxStar}>
               <StarVotes votes={order.sell.user.rating} />
               {userEmail == order.sell.user.email &&
-              order.status != "confirmed" ? (
-                <button
-                  className={style.btnClose}
-                  onClick={this.handleCancelOrder}
-                >
-                  <img
-                    className={style.btnCloseImg}
-                    src="images/icons/p2p/btn-CloseP2p.png"
-                    alt="closep2p"
-                  />
-                </button>
-              ) : null}
+                order.status != "confirmed" ? (
+                  order.status != "canceled" ? (
+                    <button
+                      className={style.btnClose}
+                      onClick={this.handleCancelOrder}
+                    >
+                      <img
+                        className={style.btnCloseImg}
+                        src="images/icons/p2p/btn-CloseP2p.png"
+                        alt="closep2p"
+                      />
+                    </button>
+                  ) :
+                    <img
+                      className={style.closeImg}
+                      src="images/icons/p2p/btn-CloseP2p.png"
+                      alt="closep2p"
+                    />
+                ) : null}
             </div>
             <span className={style.textSmall}>
               {i18n.t("P2P_VALUE_UNITY")} {defaultFiat}{" "}

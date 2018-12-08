@@ -89,6 +89,11 @@
   width: 20px;
   display: block;
 }
+:local .closeImg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
 
 :local .offerText {
   display: flex;

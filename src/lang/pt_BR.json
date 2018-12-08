@@ -472,6 +472,7 @@
   "INSTRUCTION_MODAL_COINSALE_INFO_3": "O tempo da operação varia de acordo com a rede da moeda escolhida como meio de pagamento.",
   "P2P_STATUS_TEXT_1": "Andamento",
   "P2P_STATUS_TEXT_2": "Concluído",
+  "P2P_STATUS_TEXT_3": "Cancelado",
   "P2P_CREATE_OFFER_DESCRIPTION_PLACEHOLDER": "Coloque informações complementares sobre o anúncio que os compradores precisam saber.",
   "P2P_CREATE_OFFER_BUTTON_CONFIRMATION": "CRIAR ANÚNCIO",
   "P2P_CREATE_OFFER_DESCRIPTION": "Descrição",
