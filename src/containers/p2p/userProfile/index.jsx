@@ -16,7 +16,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 
 // COMPONENTS
-import StarVotes from "../components/starvotes";
+import StarVotes from "../components/starVotes";
 import Loading from "../../../components/loading";
 
 // styles

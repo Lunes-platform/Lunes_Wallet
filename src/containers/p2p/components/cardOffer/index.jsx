@@ -22,7 +22,7 @@ import { Grid, Avatar } from "@material-ui/core/";
 import { ArrowForward } from "@material-ui/icons/";
 
 // COMPONENTS
-import StarVotes from "../starvotes";
+import StarVotes from "../starVotes";
 import ConfirmModal from "../../modal/confirm";
 
 // STYLE
@@ -139,10 +139,10 @@ class CardOffer extends React.Component {
           <Grid item xs={5}>
             <div className={style.boxStar}>
               <StarVotes votes={order.sell.user.rating} />
-              <img 
+              <img
                 className={style.cancelOffer}
                 src="images/icons/close/close.png"
-                > 
+                >
                 </img>
               {userEmail == order.sell.user.email &&
               order.status != "confirmed" ? (

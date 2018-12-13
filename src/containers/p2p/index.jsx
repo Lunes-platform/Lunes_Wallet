@@ -11,7 +11,7 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons/";
 
 //COMPONENTS
 import Offers from "./offers";
-import TabIcons from "./components/tabicons";
+import TabIcons from "./components/tabIcons";
 import UserProfile from "./userProfile";
 import ConfirmModal from "./modal/confirm";
 import SellConfirmModal from "./modal/sellConfirm";
@@ -89,7 +89,7 @@ class P2P extends React.Component {
     return (
       <div className={showBox}>
         {/* <Hidden smDown>
-          
+
         </Hidden> */}
         <div className={style.headerP2P}>{this.renderArrow()}</div>
 

@@ -16,7 +16,7 @@ import i18n from "../../../../utils/i18n";
 import style from "./style.css";
 
 //COMPONENTS
-import Starvotes from "../../components/starvotes";
+import Starvotes from "../../components/starVotes";
 
 class ConfirmModal extends React.Component {
   close = () => {

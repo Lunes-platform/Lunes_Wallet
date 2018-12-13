@@ -20,8 +20,8 @@ import { ArrowBack } from "@material-ui/icons/";
 import { KeyboardArrowDown } from "@material-ui/icons";
 
 // COMPONENTS
-import StarVotes from "../starvotes";
-import HeaderDetails from "../headerdetails/index";
+import StarVotes from "../starVotes";
+import HeaderDetails from "../headerDetails/index";
 
 // STYLE
 import style from "./style.css";
@@ -51,7 +51,7 @@ class Header extends React.Component {
       arrowDown: !this.state.arrowDown
     });
   };
-  
+
   rederPictureGravatar(email){
     const defaultImg = "https://luneswallet.app/images/icons/p2p/lunio-user300x300.jpg";
     return "https://s.gravatar.com/avatar/"+encryptMd5(email.toLowerCase())+"?s=300"+"&d="+defaultImg;
@@ -64,7 +64,7 @@ class Header extends React.Component {
     let defaultFiat = getDefaultFiat();
     const unitValue = order.unitValue[defaultFiat.toLowerCase()];
     const total =  unitValue * order.sell.amount;
-    
+
     return (
       <div className={style.topBar}>
         <div className={style.header}>
@@ -95,7 +95,7 @@ class Header extends React.Component {
             </Grid>
             </Grid>
 
-            <Grid container>          
+            <Grid container>
 
             <Grid item xs={3} />
             <Grid item xs={4}>
@@ -135,7 +135,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   closeChat: PropTypes.func.isRequired,
-  order: PropTypes.object, 
+  order: PropTypes.object,
   setUserProfile: PropTypes.func
 };
 

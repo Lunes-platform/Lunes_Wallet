@@ -22,7 +22,7 @@ import { Lens } from "@material-ui/icons";
 
 // COMPONENTS
 import Select from "../../../components/select";
-import StarVotes from "../components/starvotes";
+import StarVotes from "../components/starVotes";
 import Loading from "../../../components/loading";
 
 // UTILS

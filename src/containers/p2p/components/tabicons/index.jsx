@@ -19,33 +19,35 @@ class TabIcons extends React.Component {
     setTabIcon(key);
   };
 
-  render() {
-    const { content } = this.props;
-    const { tabIcon } = this.props.p2pStore;
+  renderContent = () => {
+    let { content } = this.props;
+    let { tabIcon } = this.props.p2pStore;
+    let open;
+    let icon_img;
+    return content.map((val, key) => {
+      if (key == tabIcon) {
+        open = style.itemTabActive;
+        icon_img = val;
+      } else {
+        open = style.itemTab;
+        icon_img = val + "-purple";
+      }
 
+      return (
+        <div
+          key={key}
+          onClick={() => this.handleIcon(key)}
+          className={open}
+        >
+          <img src={`images/icons/p2p/${icon_img}.png`} />
+        </div>
+      );
+    })
+  }
+  render() {
     return (
       <div className={style.baseTab}>
-        {content.map((val, key) => {
-          let open;
-          let icon_img;
-          if (key == tabIcon) {
-            open = style.itemTabActive;
-            icon_img = val;
-          } else {
-            open = style.itemTab;
-            icon_img = val + "-purple";
-          }
-
-          return (
-            <div
-              key={key}
-              onClick={() => this.handleIcon(key)}
-              className={open}
-            >
-              <img src={`images/icons/p2p/${icon_img}.png`} />
-            </div>
-          );
-        })}
+        { this.renderContent() }
       </div>
     );
   }
