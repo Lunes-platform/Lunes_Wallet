@@ -162,12 +162,9 @@ class CardOffer extends React.Component {
 
   validateTypeUser = typeWay => {
     const { order } = this.props;
-    const typeWayIsSell = typeWay === "sell";
     if (!order || (order && !order.buy) || (order && !order.sell)) return;
 
-    const user = typeWayIsSell ? order.buy.user : order.sell.user;
-
-    // if (typeWayIsSell && !user.id) return order.sell;
+    const user = typeWay === "sell" && order.status !== 'canceled' ? order.buy.user : order.sell.user;
 
     return user;
   };
@@ -237,6 +234,7 @@ class CardOffer extends React.Component {
           </Grid>
 
           <Grid item xs={5}>
+            {console.warn('cardOffer>>>', {user})}
             <span className={style.name} onClick={this.openUserProfile}>
               {user.name} {user.surname}
             </span>
