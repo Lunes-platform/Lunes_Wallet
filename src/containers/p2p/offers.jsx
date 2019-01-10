@@ -157,9 +157,29 @@ class Offers extends React.Component {
     } else {
       getFilter("p2p", "");
     }
+
+    setTimeout(() => {
+      let contentEL = document.querySelector('.jsContent')
+      let showBoxEL = document.querySelector('.jsShowBox')
+
+      let baseHeight = showBoxEL.clientHeight
+      let newContentHeight = baseHeight - 59 - 38 - 48 - 35
+      contentEL.style.height = newContentHeight+'px'
+      this.contentInterval = setInterval(() => {
+        let baseHeight = showBoxEL.clientHeight
+        let newContentHeight = baseHeight - 59 - 38 - 48 - 35
+        if (type === 'myhistory')
+          newContentHeight -= 40
+        contentEL.style.height = newContentHeight+'px'
+      }, 1000)
+    }, 1000)
   };
 
-  renderOrders = () => {
+  componentWillUnmount() {
+    clearInterval(this.contentInterval)
+  }
+
+  renderOders = () => {
     let { orders, loading, type } = this.props;
     const {
       typeOfSort,
@@ -430,7 +450,7 @@ class Offers extends React.Component {
       <div>
         {this.renderMenu()}
         {this.renderContentFilters()}
-        <div className={style.content}>{this.renderOrders()}</div>
+        <div className={style.content+" jsContent"}>{this.renderOders()}</div>
       </div>
     );
   }

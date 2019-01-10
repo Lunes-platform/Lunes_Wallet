@@ -67,7 +67,7 @@ class P2P extends React.Component {
 
   renderContent = () => {
     const { tabIcon } = this.props.p2pStore;
-    
+
     const contents = [
       <Offers key={1} type="general" />,
       <Offers key={2} type="myhistory" />,
@@ -97,7 +97,7 @@ class P2P extends React.Component {
 
     if (!isOpen) {
       return (
-        <div>
+        <div style={{height: '100%'}}>
           <div className={style.baseContent}>{this.renderContent()}</div>
           <TabIcons content={contentTabIcons} handle={this.handleTabIcon} />
         </div>
@@ -121,7 +121,7 @@ class P2P extends React.Component {
     const showBox = openP2P ? style.baseWidget : style.baseWidgetClose;
 
     return (
-      <div className={showBox + " p2pContainer"}>
+      <div className={showBox + " p2pContainer jsShowBox"}>
         <div className={style.headerP2P}>{this.renderArrow()}</div>
         {this.renderModals()}
       </div>

@@ -87,7 +87,7 @@
 }
 
 :local .baseUserProfile {
-  height: calc(95vh - 200px);
+  height: calc(100% - 100px);
   overflow: auto;
 }
 
@@ -231,6 +231,7 @@
 }
 
 :local .baseContent {
+  height: 100%;
   margin: 15px;
 }
 
