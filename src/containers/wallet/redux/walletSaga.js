@@ -128,25 +128,26 @@ export function* getWalletCoinHistory(action) {
       token
     );
 
-    if (!response.error) {
+    if (!response.data.error && response.code == 200) {
       yield put({
         type: "SET_WALLET_HISTORY",
-        history: response
+        history: response.data
       });
 
+      return;
+    }else{
+      yield put({
+        type: "CHANGE_WALLET_ERROR_STATE",
+        state: true
+      });
       yield put({
         type: "SET_WALLET_HISTORY_LOADING"
       });
+      yield put(internalServerError());
 
       return;
     }
 
-    yield put({
-      type: "SET_WALLET_HISTORY_LOADING",
-      state: true
-    });
-
-    return;
   } catch (error) {
     yield put({
       type: "CHANGE_WALLET_ERROR_STATE",

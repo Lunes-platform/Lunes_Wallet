@@ -67,6 +67,35 @@ class CoinsBar extends React.Component {
     }
   };
 
+  componentDidMount = () => {
+    let { coins } = this.props.skeleton;
+
+    let favoritesCoins = getFavoritesCrypto();
+    favoritesCoins = favoritesCoins ? favoritesCoins : ["lunes"];
+    
+    let lunesPosition = favoritesCoins.indexOf("lunes");
+    let coin = null;
+
+    if(lunesPosition < 0){
+      coin = coins[favoritesCoins[0]];
+    }else{
+      coin = coins[favoritesCoins[lunesPosition]];
+    }
+
+    if (coin!=null){
+      let coinBalanceStatus = coin.balance ? true : false;
+      let coinAddressStatus = coin.address ? true : false;
+      let coinStatus =
+        coin.status === "active" && coinBalanceStatus && coinAddressStatus
+          ? true
+          : false;
+
+      if (coinStatus) {
+        this.setCoin(coin.abbreviation, coin.address);
+      }
+    }
+  };
+
   renderCoins = () => {
     let { wallet } = this.props;
     let { coins } = this.props.skeleton;

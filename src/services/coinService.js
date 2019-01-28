@@ -312,7 +312,7 @@ class CoinService {
         API_HEADER
       );
       setAuthToken(response.headers[HEADER_RESPONSE]);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       internalServerError();
       return;
