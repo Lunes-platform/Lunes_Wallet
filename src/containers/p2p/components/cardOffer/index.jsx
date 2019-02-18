@@ -19,6 +19,7 @@ import { formatDate } from "../../../../utils/numbers";
 import i18n from "./../../../../utils/i18n";
 import { getDefaultFiat } from "../../../../utils/localStorage";
 import { encryptMd5 } from "../../../../utils/cryptography";
+import getImage from "./../../../../utils/icons"
 
 // MATERIAL
 import { Grid, Avatar } from "@material-ui/core/";
@@ -247,7 +248,7 @@ class CardOffer extends React.Component {
             <span className={style.textSmall}>{i18n.t("P2P_OFFER")}</span>
 
             <div className={style.offerText}>
-              <img src={`images/icons/coins/${orderSell.coin}.png`} />
+              <img src={getImage('coin', orderSell.coin, 'png')} />
               {orderSell.coin.toUpperCase()}
             </div>
           </Grid>
@@ -286,7 +287,7 @@ class CardOffer extends React.Component {
             </span>
             <span className={style.textSmall}>{i18n.t("P2P_SELLS")}</span>
             <div className={style.offerText}>
-              <img src={`images/icons/coins/${orderBuy.coin}.png`} />
+              <img src={getImage('coin', orderBuy.coin, 'png')} />
               {orderBuy.coin.toUpperCase()}
             </div>
           </Grid>

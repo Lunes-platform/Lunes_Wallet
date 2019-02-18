@@ -12,10 +12,15 @@ import {
 import {
   setAuthToken
 } from "../utils/localStorage";
+
+//UTILS
 import {
   encryptMd5
 } from "../utils/cryptography";
+
 import i18n from "../utils/i18n";
+
+import { getProfileImg } from "../utils/user"
 
 class UserService {
   async createUser(userInfo) {
@@ -76,13 +81,13 @@ class UserService {
   async getUserPicture(email) {
     const defaultImg = "images/lunio/lunio-user@300x300.jpg";
     try {
-      let emailEncrypt = encryptMd5(email);
-      let response = await axios.get(
-        "https://en.gravatar.com/" + emailEncrypt + ".json",
-        HEADER_REQUEST
-      );
-
-      return response.data.entry[0].thumbnailUrl;
+      // let emailEncrypt = encryptMd5(email);
+      // let response = await axios.get(
+      //   "https://en.gravatar.com/" + emailEncrypt + ".json",
+      //   HEADER_REQUEST
+      // );
+      // return response.data.entry[0].thumbnailUrl;
+      return getProfileImg(200, email)
     } catch (error) {
       return defaultImg;
     }
@@ -146,7 +151,7 @@ class UserService {
         `${BASE_URL}/user/email-verify/${hash}`,
         API_HEADER
       );
-      
+
       return response.data;
     }catch(error){
       return internalServerError();

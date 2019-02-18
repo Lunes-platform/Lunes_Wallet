@@ -53,7 +53,7 @@ class DepositModal extends React.Component {
           renderAs="svg"
         />
         <div className={style.inputCopyBtnDeposit}>
-          <input className={style.inputDeposit} value={order.sell.address} />
+          <input className={style.inputDeposit} value={order.sell.address} readOnly/>
           <button
             className={style.copyCodeDeposit}
             onClick={() => this.copyCoinAddress()}
