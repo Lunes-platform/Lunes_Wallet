@@ -181,6 +181,11 @@
   width: 25%;
 }
 
+:local(.marginPhoneNumber) {
+  float: left;
+  width: 50%;
+}
+
 :local(.pUserStatus_1) {
   composes: textDefault;
   margin: 1rem 0 0 0;
@@ -224,6 +229,13 @@
   composes: textDefault;
   display: block;
   position: relative;
+  width: 70%;
+}
+:local(.selectLabelPhoneNumber) {
+  composes: textDefault;
+  display: block;
+  position: relative;
+  width: 40%;
 }
 
 /* 4 AVATAR */
@@ -276,6 +288,22 @@ input::-webkit-inner-spin-button {
   color: white;
 }
 
+:local(.inputTextPhone) {
+  composes: inputTextDefault from "../../../components/bases/inputBase.css";
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  border-bottom: 1px solid #3b1878 !important;
+  height: 30px !important;
+  color: white !important;
+  position: relative;
+  top: 9px;
+  left: 11%;
+}
+
+:local(.inputTextPhone::placeholder) {
+  font-size: 10px;
+}
 :local(.inputTextDefault::placeholder) {
   font-size: 10px;
 }
@@ -287,7 +315,7 @@ input::-webkit-inner-spin-button {
 
 :local(.inputUserNumber) {
   composes: inputTextDefault;
-  width: 63%;
+  width: 83%;
 }
 
 /* ------------------------------------------------------------------------- */

@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-
 // REDUX
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -15,11 +14,13 @@ import {
 // UTILS
 import i18n from "../../../utils/i18n";
 import compose from "recompose/compose";
-import { getProfileImg } from "./../../../utils/user.js"
+import { getProfileImg } from "./../../../utils/user.js";
 
 // STYLE
 import colors from "../../../components/bases/colors";
 import style from "./style.css";
+import "react-phone-number-input/style.css";
+//import "react-responsive-ui/style.css";
 
 // COMPONENTS
 import Loading from "../../../components/loading";
@@ -30,6 +31,10 @@ import { Grid, Avatar } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 import { withStyles } from "@material-ui/core/styles";
 import { Done, Close } from "@material-ui/icons";
+import PhoneInput from "react-phone-number-input";
+import { parsePhoneNumber } from "libphonenumber-js";
+
+import CountrySelectNative from "./select/phoneSelect";
 
 // STYLE DO MATERIAL UI (Permitido)
 const customStyle = {
@@ -75,14 +80,14 @@ class User extends React.Component {
       birthMonth: "",
       birthYear: "",
       phone: "",
-      directDistanceDialing: "",
       address: "",
       city: "",
       zipcode: "",
       state: "",
       password: "",
       newPassword: "",
-      confirmNewPassword: ""
+      confirmNewPassword: "",
+      country: ""
     };
   }
 
@@ -95,14 +100,11 @@ class User extends React.Component {
     let day = date.substring(10, 8);
     let month = date.substring(7, 5);
     let year = date.substring(0, 4);
-
+    
     this.setState({
       name: !user.name ? "" : user.name,
       surname: !user.surname ? "" : user.surname,
-      phone: !user.phone ? "" : user.phone.toString().substring(2),
-      directDistanceDialing: !user.phone
-        ? ""
-        : user.phone.toString().substring(2, 0),
+      phone: !user.phone ? "" : "+"+(user.phone).toString(),
       address: !user.street ? "" : user.street,
       city: !user.city ? "" : user.city,
       zipcode: !user.zipcode ? "" : user.zipcode,
@@ -125,8 +127,6 @@ class User extends React.Component {
       case "city":
         value = value.replace(/([\d\\/])/g, "");
         break;
-      case "phone":
-      case "directDistanceDialing":
       case "zipcode":
         value = value.replace(/([^\d/])/g, "");
         break;
@@ -160,7 +160,6 @@ class User extends React.Component {
       name,
       surname,
       phone,
-      directDistanceDialing,
       address,
       city,
       zipcode,
@@ -174,7 +173,7 @@ class User extends React.Component {
       name,
       surname,
       birthday: `${birthMonth}/${birthDay}/${birthYear}`,
-      phone: `${directDistanceDialing}${phone}`,
+      phone: phone.toString(),
       street: address,
       city,
       state,
@@ -264,6 +263,18 @@ class User extends React.Component {
     ));
   };
 
+  handlePhoneNumber = phone => {
+    
+    const { country } = this.state;
+    let phoneNumber;
+    try {
+      phoneNumber = parsePhoneNumber(phone, country);
+    } catch (error) {
+      phoneNumber = "";
+    }
+    this.setState({ phone: phoneNumber.number });
+  };
+
   render() {
     const { classes, user, isLoading, twoFactor } = this.props;
     const {
@@ -274,16 +285,16 @@ class User extends React.Component {
       name,
       surname,
       city,
-      directDistanceDialing,
       phone,
       address,
       zipcode,
       state,
       password,
       newPassword,
-      confirmNewPassword
+      confirmNewPassword,
+      country
     } = this.state;
-
+    
     return (
       <div>
         <Grid item xs={12} className={style.containerHeaderSettings}>
@@ -441,7 +452,7 @@ class User extends React.Component {
           </Grid>
 
           {/* USER INFO */}
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} md={9}>
             <Grid item xs={12} className={style.row}>
               <Grid container>
                 <Grid item xs={12} md={6}>
@@ -526,7 +537,7 @@ class User extends React.Component {
                         <div className={style.selectLabel}>
                           {i18n.t("SETTINGS_USER_MONTH")}
                         </div>
-                        <FormControl className={classes.formControl}>
+                        <FormControl>
                           <Select
                             classes={{
                               selectMenu: classes.underlineItems
@@ -581,33 +592,19 @@ class User extends React.Component {
                       <p className={style.textDefault}>
                         {i18n.t("SETTINGS_USER_CONTACT")}
                       </p>
-                      <div className={style.marginUserContact}>
-                        <div className={style.selectLabel}>
-                          {i18n.t("SETTINGS_USER_CODE")}
-                        </div>
-                        <input
-                          maxLength="2"
-                          className={style.inputUserContact}
-                          onChange={event =>
-                            this.handleSelectChange(
-                              "direct",
-                              event.target.value
-                            )
+                      <FormControl className={classes.formControl}>
+                        <PhoneInput
+                          placeholder=""
+                          inputClassName={style.inputTextPhone}
+                          countrySelectComponent={CountrySelectNative}
+                          className={style.phoneNumberSelect}
+                          value={phone}
+                          onChange={ phone => this.handlePhoneNumber(phone)}
+                          onCountryChange={country =>
+                            this.setState({ country })
                           }
-                          value={directDistanceDialing}
                         />
-                      </div>
-                      <div className={style.selectLabel}>
-                        {i18n.t("SETTINGS_USER_NUMBER")}
-                      </div>
-                      <input
-                        className={style.inputUserNumber}
-                        maxLength="9"
-                        onChange={event =>
-                          this.handleSelectChange("phone", event.target.value)
-                        }
-                        value={phone}
-                      />
+                      </FormControl>
                     </div>
                   </Grid>
                 </Hidden>
@@ -617,33 +614,19 @@ class User extends React.Component {
                       <p className={style.textDefault}>
                         {i18n.t("SETTINGS_USER_CONTACT")}
                       </p>
-                      <div className={style.marginUserContact}>
-                        <div className={style.selectLabel}>
-                          {i18n.t("SETTINGS_USER_CODE")}
-                        </div>
-                        <input
-                          maxLength="2"
-                          className={style.inputUserContact}
-                          onChange={event =>
-                            this.handleSelectChange(
-                              "direct",
-                              event.target.value
-                            )
+                      <FormControl className={classes.formControl}>
+                        <PhoneInput
+                          placeholder=""
+                          inputClassName={style.inputTextPhone}
+                          countrySelectComponent={CountrySelectNative}
+                          className={style.phoneNumberSelect}
+                          value={phone}
+                          onChange={ phone => this.handlePhoneNumber(phone)}
+                          onCountryChange={country =>
+                            this.setState({ country })
                           }
-                          value={directDistanceDialing}
                         />
-                      </div>
-                      <div className={style.selectLabel}>
-                        {i18n.t("SETTINGS_USER_NUMBER")}
-                      </div>
-                      <input
-                        className={style.inputUserNumber}
-                        maxLength="9"
-                        onChange={event =>
-                          this.handleSelectChange("phone", event.target.value)
-                        }
-                        value={phone}
-                      />
+                      </FormControl>
                     </div>
                   </Grid>
                 </Hidden>
