@@ -58,3 +58,7 @@ export const getPaymentMethodService = (serviceId) => ({
   type: "GET_PAYMENT_METHOD_SERVICE_CREDIT",
   serviceId
 });
+
+export const getGeneralInfo = () => ({
+  type: "GET_DEPOSIT_GENERAL_INFO"
+});

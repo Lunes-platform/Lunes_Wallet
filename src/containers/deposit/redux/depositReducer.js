@@ -4,6 +4,7 @@ const initialState = {
   user: {},
   modalStep: 1,
   loading: false,
+  loadingGeneral: false,
   paymentMethod: null,
   kyc: {
     data: {},
@@ -18,7 +19,7 @@ const initialState = {
   selectedValue: 0,
   paymentMethods: undefined,
   SelectedPaymentMethod: undefined,
-  paymentsMethodsService:[]
+  paymentsMethodsService: []
 };
 
 const deposit = (state = initialState, action) => {
@@ -48,6 +49,11 @@ const deposit = (state = initialState, action) => {
       return {
         ...state,
         loading: action.loading
+      };
+    case "SET_GENERAL_LOADING":
+      return {
+        ...state,
+        loadingGeneral: action.loading
       };
     case "SET_PAYMENT_METHODS":
       return {

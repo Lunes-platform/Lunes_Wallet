@@ -179,3 +179,18 @@ export function* getPaymentsMethodsServiceCreditSaga(payload) {
     yield put(internalServerError());
   }
 }
+
+export function* getGeneralInfo(){
+  yield put({
+    type: "SET_GENERAL_LOADING",
+    loading: true
+  });
+  yield put({type: "GET_PACKAGES"});
+  yield put({type: "GET_PAYMENT_METHODS_API"});
+  yield put({type: "GET_KYC_DATA_API"});
+  yield put({
+    type: "SET_GENERAL_LOADING",
+    loading: false
+  });
+
+}

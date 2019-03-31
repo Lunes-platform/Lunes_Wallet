@@ -6,10 +6,7 @@ import Slider from "react-slick";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
-  getPackages,
   setPaymentMethod,
-  getPaymentsMethods,
-  getKycData,
   setKycValidation,
   setSelectedValue
 } from "../redux/depositAction";
@@ -105,12 +102,6 @@ class Invoice extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { getPackages, getKycData, getPaymentsMethods } = this.props;
-    getPackages();
-    getPaymentsMethods();
-    getKycData();
-  }
 
   moveSlide = (direction = "next") => {
     if (direction === "prev") this.slider.slickPrev();
@@ -430,12 +421,9 @@ class Invoice extends React.Component {
 }
 
 Invoice.propTypes = {
-  getPackages: PropTypes.func,
-  getPaymentsMethods: PropTypes.func.isRequired,
   openModal: PropTypes.func,
   setPaymentMethod: PropTypes.func,
   openModal: PropTypes.func,
-  getKycData: PropTypes.func.isRequired,
   setKycValidation: PropTypes.func.isRequired,
   setSelectedValue: PropTypes.func.isRequired,
   loading: PropTypes.bool,
@@ -451,12 +439,9 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getPackages,
       setPaymentMethod,
-      getKycData,
       setKycValidation,
       setSelectedValue,
-      getPaymentsMethods,
       setPaymentMethod
     },
     dispatch
