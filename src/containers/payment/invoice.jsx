@@ -274,7 +274,7 @@ class Invoice extends React.Component {
   inputValidator = () => {
     const { payment, coins, errorInput } = this.props;
     const { invoice, coin, selectedPaymentMethod, serviceCoinId } = this.state;
-    
+
     const coinBLRL =
       selectedPaymentMethod.value === 4
         ? payment.value
@@ -283,8 +283,8 @@ class Invoice extends React.Component {
       selectedPaymentMethod.value === 4
         ? ""
         : coins[invoice.coin.abbreviation]
-        ? coins[invoice.coin.abbreviation].address
-        : undefined;
+          ? coins[invoice.coin.abbreviation].address
+          : undefined;
     let invoiceData = {
       ...invoice,
       assignor: payment.assignor || invoice.assignor,
@@ -547,53 +547,52 @@ class Invoice extends React.Component {
             <h4>{i18n.t("DEPOSIT_PAYMENT_METHODS")}</h4>
           </Grid>
         </Grid>
-        <Grid item xs={12} className={style.box} style={{ marginTop: "10px" }}>
-          <Grid container>
-            <Grid item xs={12} sm={6} className={style.alignSelectItem_1}>
-              <Hidden smUp>
-                <Select
-                  list={methodPaymentsList}
-                  title={paymentTitle}
-                  selectItem={this.handlePayment}
-                  error={errors.includes("Payment Method")}
-                  width={"100%"}
-                />
-              </Hidden>
-              <Hidden xsDown>
-                <Select
-                  list={methodPaymentsList}
-                  title={paymentTitle}
-                  selectItem={this.handlePayment}
-                  error={errors.includes("Payment Method")}
-                />
-              </Hidden>
-            </Grid>
-            {selectedPaymentMethod.value === 3 ? (
-              <Grid item xs={12} sm={6} className={style.alignSelectItem_2}>
+          <Grid item xs={12} className={style.box} style={{ marginTop: "10px" }}>
+            <Grid container>
+              <Grid item xs={12} sm={6} className={style.alignSelectItem_1}>
                 <Hidden smUp>
                   <Select
-                    list={coinsRedux}
-                    title={title}
-                    titleImg={img}
-                    selectItem={this.coinSelected}
-                    error={errors.includes("coin")}
-                    width={"94%"}
+                    list={methodPaymentsList}
+                    title={paymentTitle}
+                    selectItem={this.handlePayment}
+                    error={errors.includes("Payment Method")}
+                    width={"100%"}
                   />
                 </Hidden>
                 <Hidden xsDown>
                   <Select
-                    list={coinsRedux}
-                    title={title}
-                    titleImg={img}
-                    selectItem={this.coinSelected}
-                    error={errors.includes("coin")}
+                    list={methodPaymentsList}
+                    title={paymentTitle}
+                    selectItem={this.handlePayment}
+                    error={errors.includes("Payment Method")}
                   />
                 </Hidden>
               </Grid>
-            ) : null}
+              {selectedPaymentMethod.value === 3 ? (
+                <Grid item xs={12} sm={6} className={style.alignSelectItem_2}>
+                  <Hidden smUp>
+                    <Select
+                      list={coinsRedux}
+                      title={title}
+                      titleImg={img}
+                      selectItem={this.coinSelected}
+                      error={errors.includes("coin")}
+                      width={"94%"}
+                    />
+                  </Hidden>
+                  <Hidden xsDown>
+                    <Select
+                      list={coinsRedux}
+                      title={title}
+                      titleImg={img}
+                      selectItem={this.coinSelected}
+                      error={errors.includes("coin")}
+                    />
+                  </Hidden>
+                </Grid>
+              ) : null}
+            </Grid>
           </Grid>
-        </Grid>
-
         <Grid
           item
           xs={12}

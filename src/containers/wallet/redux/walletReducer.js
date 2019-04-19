@@ -8,6 +8,7 @@ const initialModalSendState = {
   address: undefined,
   sendAmount: undefined,
   finalAmount: undefined,
+  describe: undefined,
   feeValue: {
     fee: {
       low: 0.001,
@@ -206,6 +207,15 @@ const wallet = (state = initialState, action) => {
           sendAmount: action.amount
         }
       };
+
+    case "SET_WALLET_MODAL_SEND_DESCRIBE":
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          describe: action.descripton
+        }
+      };  
 
     case "GET_WALLET_MODAL_SEND_FEE":
       return {

@@ -49,7 +49,7 @@ export function* getRechargeCoinsEnabledSaga() {
     }, []);
 
     yield put({
-      type: "GET_COINS_REDUCER",
+      type: "GET_COINS_RECHARGE_REDUCER",
       coins: coins
     });
   } catch (error) {

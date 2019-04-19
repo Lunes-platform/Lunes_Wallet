@@ -7,7 +7,8 @@ import { bindActionCreators } from "redux";
 import {
   setWalletSendModalAmount,
   getWalletSendModalFee,
-  setWalletSendModalLoading
+  setWalletSendModalLoading,
+  setWalletSendModalDescribe
 } from "../../redux/walletAction";
 import { errorInput } from "../../../errors/redux/errorAction";
 
@@ -24,7 +25,8 @@ class BoxAmount extends React.Component {
   constructor() {
     super();
     this.state = {
-      amount: ""
+      amount: "",
+      descripton: ""
     };
   }
 
@@ -34,6 +36,10 @@ class BoxAmount extends React.Component {
     if (!amount || regex.test(amount.toString())) {
       this.setState({ ...this.state, amount });
     }
+  };
+
+  setDescrption = descripton => {
+    this.setState({ ...this.state, descripton });
   };
 
   calcPercent = value => {
@@ -46,7 +52,7 @@ class BoxAmount extends React.Component {
   };
 
   confirmAmount = () => {
-    let { amount } = this.state;
+    let { amount,descripton } = this.state;
     let {
       modal,
       coins,
@@ -54,7 +60,8 @@ class BoxAmount extends React.Component {
       errorInput,
       setWalletSendModalLoading,
       getWalletSendModalFee,
-      setWalletSendModalAmount
+      setWalletSendModalAmount,
+      setWalletSendModalDescribe
     } = this.props;
     let coinBalance = coins[coin].balance.available;
 
@@ -65,6 +72,7 @@ class BoxAmount extends React.Component {
     if (parseFloat(amount) <= coinBalance) {
       setWalletSendModalLoading();
       setWalletSendModalAmount(parseFloat(amount));
+      setWalletSendModalDescribe(descripton);
       getWalletSendModalFee(
         coin,
         coins[coin].address,
@@ -79,7 +87,7 @@ class BoxAmount extends React.Component {
   };
 
   render() {
-    let { amount } = this.state;
+    let { amount,descripton } = this.state;
     let { modal, coin } = this.props;
 
     return (
@@ -108,8 +116,14 @@ class BoxAmount extends React.Component {
         <div className={style.textHelp}>
           {i18n.t("MODAL_SEND_AMOUNT_INSTRUCTIONS")}
         </div>
-
-        <span className={style.addressConfirm}>{modal.address}</span>
+        <label className={style.txtDescriptionLabel}>{i18n.t("MODAL_SEND_DESCRIPTION")}</label><br />
+        <input
+          className={style.txtDescription}
+          type="text"
+          name="inputDescription"
+          value={descripton}
+          onChange={event => this.setDescrption(event.target.value)}
+        />
 
         <div className={style.paddingTop8}>
           <ButtonContinue
@@ -129,7 +143,8 @@ BoxAmount.propTypes = {
   errorInput: PropTypes.func.isRequired,
   getWalletSendModalFee: PropTypes.func.isRequired,
   setWalletSendModalAmount: PropTypes.func.isRequired,
-  setWalletSendModalLoading: PropTypes.func.isRequired
+  setWalletSendModalLoading: PropTypes.func.isRequired,
+  setWalletSendModalDescribe: PropTypes.func.isRequired,
 };
 
 const mapSateToProps = store => ({
@@ -143,7 +158,8 @@ const mapDispatchToProps = dispatch =>
       getWalletSendModalFee,
       setWalletSendModalAmount,
       setWalletSendModalLoading,
-      errorInput
+      errorInput,
+      setWalletSendModalDescribe
     },
     dispatch
   );

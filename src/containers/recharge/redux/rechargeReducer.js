@@ -53,7 +53,7 @@ const recharge = (state=initialState, action) => {
           loadingValores: action.payload
         };
 
-      case "GET_COINS_REDUCER":
+      case "GET_COINS_RECHARGE_REDUCER":
         return {
           ...state,
           coins: action.coins

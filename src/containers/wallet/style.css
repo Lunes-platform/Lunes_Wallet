@@ -669,6 +669,14 @@
   font-size: 42px;
   text-align: center;
 }
+:local .txtDescriptionLabel {
+  width: 100%;
+}
+:local .txtDescription {
+  composes: inputTextDefault from "../../components/bases/inputBase.css";
+  font-size: 20px;
+  text-align: center;
+}
 
 :local(.inputTextDefault) {
   composes: inputTextDefault from "../../components/bases/inputBase.css";

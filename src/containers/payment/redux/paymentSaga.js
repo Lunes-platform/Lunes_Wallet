@@ -130,6 +130,9 @@ export function* setPaymentSaga(payload) {
       type: "SET_PAYMENT_REDUCER",
       payload: data
     });
+    yield put({
+      type: "SET_CLEAR_PAYMENT_REDUCER"
+    });    
   } catch (error) {
     yield put(internalServerError());
     yield put({

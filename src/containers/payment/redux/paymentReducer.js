@@ -28,7 +28,7 @@ const initialState = {
   },
   history: [],
   loading: false,
-  modalStep: 1
+  modalStep: 1,
 };
 
 const payment = (state = initialState, action) => {
@@ -113,7 +113,6 @@ const payment = (state = initialState, action) => {
         loading: false,
         modalStep: 1
       };
-
     case "SET_PAYMENT_INVOICE_ERROR":
       return {
         ...state,

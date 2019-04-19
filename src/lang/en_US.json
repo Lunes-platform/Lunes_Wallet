@@ -25,6 +25,7 @@
   "LEASING_TITLE_AMOUNT": "Leased",
   "PAYMENT_FEE_AMOUNT": "Your transaction fee on the network ",
   "MODAL_SEND_AMOUNT": "Enter the quantity",
+  "MODAL_SEND_DESCRIPTION":"Describe your transaction",
   "MESSAGE_INVALID_PASSWORD": "Invalid Password",
   "PLACEHOLDER_USER_PASSWORD": "Username or Password",
   "SETTINGS_USER_PASSWORD": "Change password",

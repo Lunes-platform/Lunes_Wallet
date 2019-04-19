@@ -112,3 +112,8 @@ export const setUtxos = (coin, address) => ({
 export const resetModalSend = () => ({
   type: "SET_RESET_MODAL_SEND"
 })
+
+export const setWalletSendModalDescribe = descripton => ({
+  type: "SET_WALLET_MODAL_SEND_DESCRIBE",
+  descripton
+});

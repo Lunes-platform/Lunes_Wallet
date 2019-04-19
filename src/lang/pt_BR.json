@@ -24,6 +24,7 @@
   "LEASING_TITLE_AMOUNT": "Em Leasing",
   "PAYMENT_FEE_AMOUNT": "Taxa da sua transação na rede ",
   "MODAL_SEND_AMOUNT": "Insira a quantidade",
+  "MODAL_SEND_DESCRIPTION": "Descreva sua transação",
   "MESSAGE_INVALID_PASSWORD": "Senha inválida",
   "PLACEHOLDER_USER_PASSWORD": "Usuário ou Senha",
   "SETTINGS_USER_PASSWORD": "Troque a senha",

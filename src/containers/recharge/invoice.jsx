@@ -264,10 +264,10 @@ class Invoice extends React.Component {
   inputValidator = () => {
     const { openModal, setRecharge, coins } = this.props;
     const { invoice, coin, selectedPaymentMethod, serviceCoinId } = this.state;
-    const coinBLRL =
-      invoice.coin === null
-        ? invoice.valor.value
-        : coins[invoice.coin.abbreviation].decimalPoint;
+    
+    const coinVAL = invoice.coin == null
+          ? ""
+          : coins[invoice.coin.abbreviation].decimalPoint;
     const addr =
       invoice.coin == null
         ? ""
@@ -278,10 +278,10 @@ class Invoice extends React.Component {
     let invoiceData = {
       value: invoice.valor.value,
       number: invoice.phone,
-      coin: invoice.coin === null ? "lbrl" : invoice.coin,
+      coin: selectedPaymentMethod.value === 2 ? "lbrl" : invoice.coin,
       operatorId: invoice.operadora.value,
       operatorName: invoice.operadora.title,
-      decimalPoint: coinBLRL,
+      decimalPoint: selectedPaymentMethod.value === 2? invoice.valor.value :coinVAL,
       address: addr,
       servicePaymentMethodId: selectedPaymentMethod.value
     };
@@ -553,7 +553,7 @@ Invoice.propTypes = {
 };
 
 const mapStateToProps = store => ({
-  coinsRedux: store.payment.coins,
+  coinsRedux: store.recharge.coins,
   loading: store.recharge.loading,
   loadingValores: store.recharge.loadingValores,
   operadoras: store.recharge.operadoras,

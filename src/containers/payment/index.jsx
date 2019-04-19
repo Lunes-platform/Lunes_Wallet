@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setModalStep, setClearPayment } from "./redux/paymentAction";
+import { setModalStep, setClearPayment,getCoinsEnabled } from "./redux/paymentAction";
 
 // UTILS
 import i18n from "../../utils/i18n";
@@ -28,16 +28,17 @@ class Payment extends React.Component {
       scannerOpen: false
     };
   }
+
   handleModal = () =>
     this.setState({ ...this.state, isOpen: !this.state.isOpen });
   openScannerModal = () =>
     this.setState({ ...this.state, scannerOpen: !this.state.scannerOpen });
 
   closeModal = () => {
-    const { setModalStep, setClearPayment } = this.props;
+    const { setModalStep,getCoinsEnabled } = this.props;
     this.handleModal();
-    setClearPayment();
     setModalStep(1);
+    getCoinsEnabled();
   }
 
   render() {
@@ -92,7 +93,8 @@ class Payment extends React.Component {
 Payment.propTypes = {
   modalStep: PropTypes.number.isRequired,
   setModalStep: PropTypes.func.isRequired,
-  setClearPayment: PropTypes.func.isRequired
+  setClearPayment: PropTypes.func.isRequired,
+  getCoinsEnabled: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
@@ -103,7 +105,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       setModalStep,
-      setClearPayment
+      setClearPayment,
+      getCoinsEnabled
     },
     dispatch
   );
