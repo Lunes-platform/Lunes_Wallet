@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // REDUX
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setModalStep } from "./redux/rechargeAction";
+import { setModalStep,getCoinsEnabled } from "./redux/rechargeAction";
 
 // UTILS
 import i18n from "../../utils/i18n";
@@ -29,9 +29,10 @@ class Recharge extends React.Component {
   handleModal = () => this.setState({ isOpen: !this.state.isOpen });
 
   closeModal(){
-    const {setModalStep} = this.props;
+    const {setModalStep, getCoinsEnabled} = this.props;
     this.handleModal();
     setModalStep(1);
+    getCoinsEnabled();
   }
 
   render() {
@@ -69,7 +70,8 @@ class Recharge extends React.Component {
 
 Recharge.propTypes = {
   modalStep: PropTypes.number.isRequired,
-  setModalStep: PropTypes.func.isRequired
+  setModalStep: PropTypes.func.isRequired,
+  getCoinsEnabled: PropTypes.func.isRequired
 }
 
 const mapStateToProps = store => ({
@@ -78,7 +80,8 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch =>bindActionCreators(
   {
-    setModalStep
+    setModalStep,
+    getCoinsEnabled
   },
   dispatch
 );

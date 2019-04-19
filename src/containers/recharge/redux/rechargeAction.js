@@ -55,3 +55,7 @@ export const getHistoryRecharge = () => ({
 export const setClearRecharge = () => ({
   type: "SET_CLEAR_RECHARGE_REDUCER"
 });
+
+export const setClearStateRecharge = () => ({
+  type: "SET_CLEAN_STATE_RECHERGE_COIN_REDUCER"
+});

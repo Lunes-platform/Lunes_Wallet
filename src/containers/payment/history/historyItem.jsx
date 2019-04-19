@@ -8,6 +8,7 @@ import style from "./style.css";
 import { Grid } from "@material-ui/core";
 
 import { convertBiggestCoinUnit, formatDate } from "../../../utils/numbers";
+import {getDefaultFiat, getDefaultCrypto } from "../../../utils/localStorage";
 
 class HistoryItem extends React.Component {
   constructor() {
@@ -20,7 +21,7 @@ class HistoryItem extends React.Component {
       ? skeleton.coins[item.coin.toLowerCase()].decimalPoint
       : 8;
     let date =
-      formatDate(item.date, "DMY", true) + " " + formatDate(item.date, "HM");
+    formatDate(item.date, "DMY", true) + " " + formatDate(item.date, "HM");
 
     return (
       <Grid container>

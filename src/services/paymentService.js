@@ -29,7 +29,6 @@ class PaymentService {
         API_HEADER
       );
       setAuthToken(response.headers[HEADER_RESPONSE]);
-
       return response.data;
     } catch (error) {
       console.warn(error);

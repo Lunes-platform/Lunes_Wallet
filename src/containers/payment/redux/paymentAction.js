@@ -6,7 +6,7 @@ export const setModalStep = step => ({
 export const getCoinsEnabled = () => ({
   type: "GET_API_COINS"
 });
-
+ 
 export const setPayment = pay => ({
   type: "SET_PAYMENT",
   pay
@@ -53,4 +53,8 @@ export const confirmPay = payment => ({
 export const uploadBarcode = image => ({
   type: "POST_UPLOAD_BARCODE_API",
   image
+});
+
+export const setClearStatePayment = () => ({
+  type: "SET_CLEAN_STATE_PAYMENT_COIN_REDUCER"
 });

@@ -4,7 +4,7 @@ const initialState = {
     error: false,
     fee: "",
     number: "",
-    coin: {
+    coin: { 
       abbreviation: "",
       address: ""
     },
@@ -28,7 +28,9 @@ const initialState = {
   },
   history: [],
   loading: false,
-  modalStep: 1
+  loadingCoins: true,
+  cleanState :false,
+  modalStep: 1,
 };
 
 const payment = (state = initialState, action) => {
@@ -111,9 +113,9 @@ const payment = (state = initialState, action) => {
         },
         history: [],
         loading: false,
-        modalStep: 1
+        modalStep: 1,
+        cleanState : true
       };
-
     case "SET_PAYMENT_INVOICE_ERROR":
       return {
         ...state,
@@ -122,7 +124,16 @@ const payment = (state = initialState, action) => {
           error: true
         }
       };
-
+    case "SET_CLEAN_STATE_PAYMENT_COIN_REDUCER":
+      return {
+        ...state,
+        cleanState: false
+      };
+    case "SET_LOADING_PAYMENT_REDUCER":
+      return {
+        ...state,
+        loadingCoins: action.loading
+      };
     default: {
       return {
         ...state

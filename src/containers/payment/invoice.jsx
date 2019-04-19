@@ -9,7 +9,8 @@ import {
   setPayment,
   getInvoice,
   setClearPayment,
-  uploadBarcode
+  uploadBarcode,
+  setClearStatePayment
 } from "./redux/paymentAction";
 import { errorInput } from "../errors/redux/errorAction";
 import { getPaymentMethodService } from "../deposit/redux/depositAction";
@@ -111,12 +112,12 @@ class Invoice extends React.Component {
   componentDidMount() {
     const {
       getCoinsEnabled,
-      setClearPayment,
-      getPaymentMethodService
+      getPaymentMethodService,
+      setClearPayment
     } = this.props;
-    setClearPayment();
     getCoinsEnabled();
     getPaymentMethodService(4);
+    setClearPayment();
   }
 
   validatePaymentCoins = () => {
@@ -180,30 +181,35 @@ class Invoice extends React.Component {
   };
 
   setDefaultState = () => {
-    const emptyValue = {
-      number: "",
-      assignor: "",
-      name: "",
-      description: "",
-      dueDate: "",
-      cpfCnpj: "",
-      value: "",
-      coin: {
-        abbreviation: "",
-        address: ""
-      }
-    };
+    const { cleanState, setClearStatePayment } = this.props;
+    if (cleanState) {
+      const emptyValue = {
+        number: "",
+        assignor: "",
+        name: "",
+        description: "",
+        dueDate: "",
+        cpfCnpj: "",
+        value: "",
+        coin: {
+          abbreviation: "",
+          address: ""
+        }
+      };
 
-    this.setState({
-      ...this.state,
-      disableNumberInput: false,
-      invoice: emptyValue,
-      coin: {
-        name: undefined,
-        value: undefined,
-        img: undefined
-      }
-    });
+      this.setState({
+        ...this.state,
+        disableNumberInput: false,
+        invoice: emptyValue,
+        coin: {
+          name: undefined,
+          value: undefined,
+          img: undefined
+        }
+      });
+      setClearStatePayment();
+    }
+
   };
 
   handleInvoiceNumberChange = value => {
@@ -221,23 +227,12 @@ class Invoice extends React.Component {
     });
 
     if (newValue.length == 0) {
-      this.setDefaultState();
+      //this.setDefaultState();
       setClearPayment();
     } else if (newValue.length >= 47) {
       if (disableNumberInput) {
         return;
       }
-
-      this.setState({
-        invoice: {
-          ...invoice,
-          number: newValue,
-          assignor: "",
-          dueDate: "",
-          value: "",
-          description: ""
-        }
-      });
 
       getInvoice(newValue);
     }
@@ -294,7 +289,7 @@ class Invoice extends React.Component {
   inputValidator = () => {
     const { payment, coins, errorInput } = this.props;
     const { invoice, coin, selectedPaymentMethod, serviceCoinId } = this.state;
-    
+
     const coinBLRL =
       selectedPaymentMethod.value === 4
         ? payment.value
@@ -303,8 +298,8 @@ class Invoice extends React.Component {
       selectedPaymentMethod.value === 4
         ? ""
         : coins[invoice.coin.abbreviation]
-        ? coins[invoice.coin.abbreviation].address
-        : undefined;
+          ? coins[invoice.coin.abbreviation].address
+          : undefined;
     let invoiceData = {
       ...invoice,
       assignor: payment.assignor || invoice.assignor,
@@ -369,7 +364,7 @@ class Invoice extends React.Component {
     }
     this.setPayment(invoiceData);
     this.openModal();
-    this.setDefaultState();
+    //this.setDefaultState();
 
     return;
   };
@@ -422,6 +417,7 @@ class Invoice extends React.Component {
       loading,
       coinsRedux,
       payment,
+      loadingCoins,
       methodPaymentsList
     } = this.props;
     const { coin, invoice, errors, selectedPaymentMethod } = this.state;
@@ -433,6 +429,8 @@ class Invoice extends React.Component {
     const paymentTitle = selectedPaymentMethod.title
       ? selectedPaymentMethod.title
       : i18n.t("SELECT_PAYMENT");
+
+    this.setDefaultState();
 
     return (
       <Grid container direction="row" justify="center">
@@ -588,7 +586,12 @@ class Invoice extends React.Component {
                 />
               </Hidden>
             </Grid>
-            {selectedPaymentMethod.value === 3 ? (
+            {(selectedPaymentMethod.value === 1 && loadingCoins) ? (
+              <div style={{ margin: "10px auto", textAlign: "center" }}>
+                <Loading color="lunes" />
+              </div>
+            ) : null}
+            {(selectedPaymentMethod.value === 3 && !loadingCoins) ? (
               <Grid item xs={12} sm={6} className={style.alignSelectItem_2}>
                 <Hidden smUp>
                   <Select
@@ -613,7 +616,6 @@ class Invoice extends React.Component {
             ) : null}
           </Grid>
         </Grid>
-
         <Grid
           item
           xs={12}
@@ -658,7 +660,10 @@ Invoice.propTypes = {
   coins: PropTypes.array,
   errorInput: PropTypes.func.isRequired,
   uploadBarcode: PropTypes.func.isRequired,
-  methodPaymentsList: PropTypes.array
+  methodPaymentsList: PropTypes.array,
+  setClearStatePayment: PropTypes.func.isRequired,
+  loadingCoins: PropTypes.bool.isRequired,
+  cleanState: PropTypes.bool,
 };
 
 const mapStateToProps = store => ({
@@ -666,7 +671,9 @@ const mapStateToProps = store => ({
   payment: store.payment.payment,
   loading: store.payment.loading,
   coins: store.skeleton.coins,
-  methodPaymentsList: store.deposit.paymentsMethodsService
+  methodPaymentsList: store.deposit.paymentsMethodsService,
+  loadingCoins: store.payment.loadingCoins,
+  cleanState: store.payment.cleanState
 });
 
 const mapDispatchToProps = dispatch =>
@@ -678,7 +685,8 @@ const mapDispatchToProps = dispatch =>
       setClearPayment,
       errorInput,
       uploadBarcode,
-      getPaymentMethodService
+      getPaymentMethodService,
+      setClearStatePayment
     },
     dispatch
   );

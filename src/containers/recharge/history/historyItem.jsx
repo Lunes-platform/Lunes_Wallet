@@ -9,6 +9,8 @@ import { Grid } from "@material-ui/core";
 
 import { convertBiggestCoinUnit, formatDate } from "../../../utils/numbers";
 
+import {getDefaultFiat, getDefaultCrypto } from "../../../utils/localStorage";
+
 class HistoryItem extends React.Component {
   constructor() {
     super();
@@ -57,11 +59,11 @@ class HistoryItem extends React.Component {
 
 HistoryItem.propTypes = {
   item: PropTypes.object,
-  skeleton: PropTypes.object
+  skeleton: PropTypes.object,
 };
 
 const mapSateToProps = store => ({
-  skeleton: store.skeleton
+  skeleton: store.skeleton,
 });
 
 export default connect(mapSateToProps)(HistoryItem);

@@ -9,6 +9,7 @@ import {
   getOperators,
   getValoresRecarga,
   setRecharge,
+  setClearStateRecharge,
   setClearRecharge
 } from "./redux/rechargeAction";
 import {
@@ -118,12 +119,13 @@ class Invoice extends React.Component {
   componentDidMount() {
     const {
       getCoinsEnabled,
-      setClearRecharge,
-      getPaymentMethodService
+      getPaymentMethodService,
+      setClearRecharge
     } = this.props;
-    setClearRecharge();
     getCoinsEnabled();
     getPaymentMethodService(3);
+    setClearRecharge();
+    
   }
   validatePaymentCoins = () => {
     const { coins, coinsRedux } = this.props;
@@ -253,39 +255,46 @@ class Invoice extends React.Component {
   };
 
   setDefaultState = () => {
-    const emptyValue = {
-      errors: [],
-      disableNumberInput: false,
-      invoiceLoading: false,
-      coin: {
-        name: undefined,
-        value: undefined,
-        img: undefined
-      },
-      invoice: {
-        coin: null,
-        phone: "",
-        operadora: {
-          value: null,
-          title: i18n.t("RECHARGE_SELECT_TITLE_OPERATOR")
+    const {cleanState,setClearStateRecharge } = this.props;
+    if(cleanState){
+      const emptyValue = {
+        errors: [],
+        disableNumberInput: false,
+        invoiceLoading: false,
+        coin: {
+          name: undefined,
+          value: undefined,
+          img: undefined
         },
-        valor: {
-          value: null,
-          title: i18n.t("RECHARGE_SELECT_TITLE_VALUE")
+        invoice: {
+          coin: null,
+          phone: "",
+          operadora: {
+            value: null,
+            title: i18n.t("RECHARGE_SELECT_TITLE_OPERATOR")
+          },
+          valor: {
+            value: null,
+            title: i18n.t("RECHARGE_SELECT_TITLE_VALUE")
+          }
         }
-      }
-    };
-
-    this.setState(emptyValue);
+      };
+  
+      this.setState(emptyValue);
+      setClearStateRecharge();
+    }
+    
   };
 
   inputValidator = () => {
-    const { openModal, setRecharge, coins } = this.props;
+    const { openModal, setRecharge, coins,cleanState } = this.props;
     const { invoice, coin, selectedPaymentMethod, serviceCoinId } = this.state;
-    const coinBLRL =
-      invoice.coin === null
-        ? invoice.valor.value
-        : coins[invoice.coin.abbreviation].decimalPoint;
+    if(cleanState){
+      return;
+    }
+    const coinVAL = invoice.coin == null
+          ? ""
+          : coins[invoice.coin.abbreviation].decimalPoint;
     const addr =
       invoice.coin == null
         ? ""
@@ -296,10 +305,10 @@ class Invoice extends React.Component {
     let invoiceData = {
       value: invoice.valor.value,
       number: invoice.phone,
-      coin: invoice.coin === null ? "lbrl" : invoice.coin,
+      coin: selectedPaymentMethod.value === 2 ? "lbrl" : invoice.coin,
       operatorId: invoice.operadora.value,
       operatorName: invoice.operadora.title,
-      decimalPoint: coinBLRL,
+      decimalPoint: selectedPaymentMethod.value === 2? invoice.valor.value :coinVAL,
       address: addr,
       servicePaymentMethodId: selectedPaymentMethod.value
     };
@@ -339,6 +348,10 @@ class Invoice extends React.Component {
         });
         return;
       }
+    }else{
+      if(!invoice.valor.value || !invoice.operadora.value || !invoice.phone){
+        return;
+      }
     }
     if (selectedPaymentMethod.value === 2) {
       invoiceData = {
@@ -349,7 +362,7 @@ class Invoice extends React.Component {
 
     openModal();
     setRecharge(invoiceData);
-    this.setDefaultState();
+    //this.setDefaultState();
   };
 
   checkAllInputs = () => {
@@ -371,6 +384,7 @@ class Invoice extends React.Component {
       operadoras,
       valores,
       loadingValores,
+      loadingCoins,
       valueError,
       methodPaymentsList,
       coins
@@ -382,6 +396,8 @@ class Invoice extends React.Component {
     const paymentTitle = selectedPaymentMethod.title
       ? selectedPaymentMethod.title
       : i18n.t("SELECT_PAYMENT");
+    
+    this.setDefaultState();
 
     return (
       <Grid container direction="row" justify="center">
@@ -493,7 +509,13 @@ class Invoice extends React.Component {
                 />
               </Hidden>
             </Grid>
-            {selectedPaymentMethod.value === 1 ? (
+            {(selectedPaymentMethod.value === 1 && loadingCoins) ? (
+            <div style={{ margin: "10px auto", textAlign: "center" }}>
+              <Loading color="lunes" />
+            </div>
+          ) : null}
+            {(selectedPaymentMethod.value === 1 && !loadingCoins) ? (
+              
               <Grid item xs={12} sm={6} className={style.alignSelectItem_2}>
                 <Hidden smUp>
                   <Select
@@ -564,21 +586,26 @@ Invoice.propTypes = {
   getCoinsEnabled: PropTypes.func.isRequired,
   getValoresRecarga: PropTypes.func.isRequired,
   getOperators: PropTypes.func.isRequired,
-  setClearRecharge: PropTypes.func.isRequired,
   coins: PropTypes.array,
   valueError: PropTypes.bool,
-  methodPaymentsList: PropTypes.array
+  methodPaymentsList: PropTypes.array,
+  loadingCoins:PropTypes.bool.isRequired,
+  setClearStateRecharge:PropTypes.func.isRequired,
+  cleanState:PropTypes.bool,
+  setClearRecharge: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = store => ({
-  coinsRedux: store.payment.coins,
+  coinsRedux: store.recharge.coins,
   loading: store.recharge.loading,
   loadingValores: store.recharge.loadingValores,
   operadoras: store.recharge.operadoras,
   valores: store.recharge.valores,
   coins: store.skeleton.coins,
   valueError: store.recharge.valueError,
-  methodPaymentsList: store.deposit.paymentsMethodsService
+  methodPaymentsList: store.deposit.paymentsMethodsService,
+  loadingCoins: store.recharge.loadingCoins,
+  cleanState:store.recharge.cleanState,  
 });
 
 const mapDispatchToProps = dispatch =>
@@ -588,9 +615,10 @@ const mapDispatchToProps = dispatch =>
       getValoresRecarga,
       getCoinsEnabled,
       setRecharge,
-      setClearRecharge,
       getPaymentMethodService,
-      setMethodServiceId
+      setMethodServiceId,
+      setClearStateRecharge,
+      setClearRecharge
     },
     dispatch
   );
