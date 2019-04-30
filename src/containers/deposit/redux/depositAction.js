@@ -81,3 +81,7 @@ export const validateDepositCep = cep =>({
   type: "GET_CEP_VALIDATION_API",
   cep
 });
+
+export const getDepositGeneralInfo = () => ({
+  type: "GET_DEPOSIT_GENERAL_INFO"
+});

@@ -6,10 +6,7 @@ import Slider from "react-slick";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
-  getPackages,
   setPaymentInformation,
-  getPaymentsMethods,
-  getKycData,
   setKycValidation,
   setSelectedValue
 } from "../redux/depositAction";
@@ -114,13 +111,6 @@ class Invoice extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { getPackages, getKycData, getPaymentsMethods } = this.props;
-    getPackages();
-    getPaymentsMethods();
-    getKycData();
-  }
-
   moveSlide = (direction = "next") => {
     if (direction === "prev") this.slider.slickPrev();
     else this.slider.slickNext();
@@ -211,8 +201,8 @@ class Invoice extends React.Component {
   }
 
   handleChangePaymentMethod = value => {
-   const { methods } = this.props;
-    const { paymentMethods} = this.state;
+    const { methods } = this.props;
+    const { paymentMethods } = this.state;
     let index = 0;
     for (let i = 0; i < methods.length; i++) {
       if (methods[i].id === value) {
@@ -229,8 +219,8 @@ class Invoice extends React.Component {
     });
   };
   returnPaymentMethodIndex = () => {
-    const {methods} = this.props;
-    let {payment} = this.state;
+    const { methods } = this.props;
+    let { payment } = this.state;
     for (let i = 0; i < methods.length; i++) {
       if (methods[i].id === payment) {
         return i;
@@ -259,7 +249,7 @@ class Invoice extends React.Component {
         <Grid item xs={12} className="payments">
           <h4>{i18n.t("DEPOSIT_PAYMENT_METHODS")}</h4>
         </Grid>
-        
+
         <Grid container spacing={8}>
           <Grid item xs={12} sm={12}>
             <div className={style.containerInput}>
@@ -342,14 +332,17 @@ class Invoice extends React.Component {
       userData,
       methods
     } = this.props;
-    
+
     const { payment, depositValue, activeCard } = this.state;
     setPaymentInformation({
       service: "Deposit",
       packageId: activeCard,
       paymentMethodId: payment
     });
-    if (depositValue > methods[this.returnPaymentMethodIndex()].limitKycAmount && userData.status !== "confirmed") {
+    if (
+      depositValue > methods[this.returnPaymentMethodIndex()].limitKycAmount &&
+      userData.status !== "confirmed"
+    ) {
       this.setState({
         error: true,
         errorMsg: i18n.t("DEPOSIT_KYC_CONFIRMATION_REQUIRED")
@@ -361,10 +354,10 @@ class Invoice extends React.Component {
       });
     } else if (userData.status !== null && userData.address.country !== "BR") {
       this.setState({
-        error:true,
+        error: true,
         errorMsg: i18n.t("DEPOSIT_KYC_COUNTRY_VALIDATION")
       });
-    }else {
+    } else {
       this.setState({ error: false });
       //validações
       openModal();
@@ -375,7 +368,6 @@ class Invoice extends React.Component {
     const { payment, depositValue, error, errorMsg } = this.state;
     const { packages, loading } = this.props;
 
-    if (loading) return <Loading />;
     if (!packages.length)
       return (
         <div className={style.boxContainer}>
@@ -467,11 +459,8 @@ class Invoice extends React.Component {
 }
 
 Invoice.propTypes = {
-  getPackages: PropTypes.func,
-  getPaymentsMethods: PropTypes.func.isRequired,
   openModal: PropTypes.func,
   setPaymentInformation: PropTypes.func,
-  getKycData: PropTypes.func.isRequired,
   setKycValidation: PropTypes.func.isRequired,
   setSelectedValue: PropTypes.func.isRequired,
   loading: PropTypes.bool,
@@ -489,12 +478,9 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getPackages,
       setPaymentInformation,
-      getKycData,
       setKycValidation,
       setSelectedValue,
-      getPaymentsMethods
     },
     dispatch
   );

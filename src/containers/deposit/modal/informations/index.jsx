@@ -9,7 +9,6 @@ import {
   setLoading,
   setUserData,
   setModalSteps,
-  depositGetStates,
   depositGetCity,
   validateDepositCep
 } from "../../redux/depositAction";
@@ -208,9 +207,7 @@ class InformationModal extends React.Component {
     }
   };
   componentDidMount() {
-    const { depositGetStates } = this.props;
     this.setInputValue();
-    depositGetStates("BR");
   }
   componentDidUpdate(prevProps, prevState) {
     const { country, document, documentType, zipcode } = this.state;
@@ -694,7 +691,6 @@ InformationModal.propTypes = {
   setLoading: PropTypes.func,
   setUserData: PropTypes.func,
   setModalSteps: PropTypes.func,
-  depositGetStates: PropTypes.func.isRequired,
   depositGetCity: PropTypes.func.isRequired,
   states: PropTypes.array,
   city: PropTypes.array,
@@ -727,7 +723,6 @@ const mapDispatchToProps = dispatch =>
       setLoading,
       setUserData,
       setModalSteps,
-      depositGetStates,
       depositGetCity,
       validateDepositCep
     },

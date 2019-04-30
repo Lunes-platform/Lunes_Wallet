@@ -2,7 +2,7 @@ import React from "react";
 
 // REDUX
 import { connect } from "react-redux";
-import { setModalSteps } from "./redux/depositAction";
+import { setModalSteps,getDepositGeneralInfo } from "./redux/depositAction";
 import { bindActionCreators } from "redux";
 
 // UTILS
@@ -17,7 +17,7 @@ import Invoice from "./invoice";
 import History from "./history";
 import DepositModal from "./modal/";
 import Modal from "../../components/modal";
-
+import Loading from "../../components/loading";
 // MATERIAL UI
 import { Grid } from "@material-ui/core";
 
@@ -33,7 +33,10 @@ class Deposit extends React.Component {
       isOpen: false
     };
   }
-
+  componentDidMount() {
+    const { getDepositGeneralInfo } = this.props;
+    getDepositGeneralInfo();
+  }
 
   handleSteps = step => {
     const { setModalSteps } = this.props;
@@ -55,7 +58,7 @@ class Deposit extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { modalStep } = this.props;
+    const { modalStep, loading } = this.props;
     const titles = [
       i18n.t("DEPOSIT_TAB_TITLE"),
       i18n.t("DEPOSIT_TAB_HISTORY_TITLE")
@@ -64,6 +67,13 @@ class Deposit extends React.Component {
       <Invoice openModal={() => this.handleModal()} key={0} />,
       <History key={1} />
     ];
+    if (loading) {
+      return (
+        <div>
+          <Loading color="wallet" height="80vh" width="100px" />
+        </div>
+      );
+    }
     return (
       <Grid container justify="center">
         <Modal
@@ -87,17 +97,21 @@ class Deposit extends React.Component {
 
 Deposit.propTypes = {
   modalStep: PropTypes.number,
-  setModalSteps: PropTypes.func
+  setModalSteps: PropTypes.func,
+  loading: PropTypes.bool,
+  getDepositGeneralInfo:PropTypes.func.isRequired,
 };
 
 const mapStateToProps = store => ({
-  modalStep: store.deposit.modalStep
+  modalStep: store.deposit.modalStep,
+  loading: store.deposit.loading
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setModalSteps
+      setModalSteps,
+      getDepositGeneralInfo
     },
     dispatch
   );

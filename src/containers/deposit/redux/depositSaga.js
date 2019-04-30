@@ -12,12 +12,14 @@ import i18n from "../../../utils/i18n";
 const depositService = new DepositService();
 const settingsService = new SettingsService();
 
+
+
 export function* getPackagesSaga() {
   try {
-    yield put({
-      type: "SET_LOADING_DEPOSIT",
-      loading: true
-    });
+    // yield put({
+    //   type: "SET_LOADING_DEPOSIT",
+    //   loading: true
+    // });
     let token = yield call(getAuthToken);
     let response = yield call(depositService.getPackages, token);
     yield put({
@@ -27,10 +29,10 @@ export function* getPackagesSaga() {
   } catch (error) {
     yield put(internalServerError());
   }
-  yield put({
-    type: "SET_LOADING_DEPOSIT",
-    loading: false
-  });
+  // yield put({
+  //   type: "SET_LOADING_DEPOSIT",
+  //   loading: false
+  // });
 }
 
 export function* getDepositHistorySaga() {
@@ -325,4 +327,19 @@ export function* getDepositBillSaga(payload) {
   } catch (error) {
     yield put(internalServerError());
   }
+}
+
+export function* getDepositGeneralInfo(){
+  yield put({
+    type: "SET_LOADING_DEPOSIT",
+    loading: true
+  });
+  yield* getPackagesSaga();
+  yield* getPaymentsMethods();
+  yield* getKycData();
+  yield* depositGetStates({country: "BR"});
+  yield put({
+    type: "SET_LOADING_DEPOSIT",
+    loading: false
+  });
 }
