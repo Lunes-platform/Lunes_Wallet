@@ -13,7 +13,7 @@ import {
   depositGetCity,
   validateDepositCep
 } from "../../redux/depositAction";
-
+import {clearSettings} from "../../../settings/redux/settingsAction";
 // STYLE
 import style from "./style.css";
 import colors from "../../../../components/bases/colors";
@@ -208,8 +208,9 @@ class InformationModal extends React.Component {
     }
   };
   componentDidMount() {
-    const { depositGetStates } = this.props;
+    const { depositGetStates,clearSettings } = this.props;
     this.setInputValue();
+    clearSettings();
     depositGetStates("BR");
   }
   componentDidUpdate(prevProps, prevState) {
@@ -705,7 +706,8 @@ InformationModal.propTypes = {
   cep: PropTypes.object,
   methods: PropTypes.array,
   loadingAddress: PropTypes.bool,
-  payloadPayment: PropTypes.object
+  payloadPayment: PropTypes.object,
+  clearSettings: PropTypes.func,
 };
 
 const mapStateToProps = store => ({
@@ -729,7 +731,8 @@ const mapDispatchToProps = dispatch =>
       setModalSteps,
       depositGetStates,
       depositGetCity,
-      validateDepositCep
+      validateDepositCep,
+      clearSettings
     },
     dispatch
   );

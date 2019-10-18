@@ -109,3 +109,6 @@ export const setFeeP2P = fee => ({
   type: "SET_FEE_P2P",
   fee
 });
+export const clearSettings = () => ({
+  type: "SET_CLEAR_SETTINGS_REDUCER"
+});

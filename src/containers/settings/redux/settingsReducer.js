@@ -224,7 +224,10 @@ const settings = (state = initialState, action) => {
           fee: action.fee
         }
       };
-
+    case "SET_CLEAR_SETTINGS_REDUCER":
+      return {
+        ...initialState
+      };
     default: {
       return {
         ...state
