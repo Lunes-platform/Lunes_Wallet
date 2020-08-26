@@ -50,6 +50,7 @@ class TwoFactoryAuthenticate extends React.Component {
                  level={"L"}
                  renderAs="svg"
                />
+               <small>{settings.security.uriQrCode.replace("otpauth://totp/Lunes?secret=","")}</small>
              </div>
             ) : (
               <Loading />
