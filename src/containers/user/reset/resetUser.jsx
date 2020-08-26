@@ -30,7 +30,10 @@ class ResetUser extends React.Component {
       errors: undefined
     };
   }
-
+  componentDidMount() {
+    let { clearMessage } = this.props;
+    clearMessage();
+  }
   getInput = input => {
     let { name, value } = input;
     this.setState({

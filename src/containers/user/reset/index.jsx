@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
+import { clearMessage } from "../../errors/redux/errorAction";
 // COMPONENTS
 import Footer from "../footer";
 import ResetUser from "./resetUser";
@@ -17,7 +17,10 @@ class Reset extends React.Component {
     if (reset === 0) return <ResetUser />;
     if (reset === 1) return <Email />;
   };
-
+  componentDidMount() {
+    let { clearMessage } = this.props;
+    clearMessage();
+  }
   render() {
     return (
       <div className={style.contGeneral}>
@@ -29,14 +32,15 @@ class Reset extends React.Component {
 }
 
 Reset.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  clearMessage:PropTypes.func
 };
 
 const mapSateToProps = store => ({
   user: store.user
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({clearMessage}, dispatch);
 
 export default connect(
   mapSateToProps,
