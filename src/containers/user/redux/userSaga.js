@@ -339,8 +339,9 @@ export function* updateUserPasswordSaga(action) {
 
     /* eslint-disable */
     const rules = new RegExp(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/g
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=(?:.*?[!@#$%^&*(),.?"':{}|<>]){1})(?!.*\s)[0-9a-zA-Z!@#$%^&*(),.?"':{}|<>](?=.{8,})/g
     );
+    
     /* eslint-enable */
 
     if (
