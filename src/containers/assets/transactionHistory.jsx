@@ -39,7 +39,7 @@ class TransactionHistory extends React.Component {
     });
   };
 
-  reloadAsset = () => {
+  reloadHistory = () => {
     let { skeleton, assets, reloadAsset } = this.props;
     let { selectedCoin } = assets;
     let address = skeleton.coins.lunes.address;
@@ -228,7 +228,7 @@ class TransactionHistory extends React.Component {
             <div className={style.alignItemsHeaderHistory}>
               <div
                 className={style.refleshIcon}
-                onClick={() => this.reloadAsset()}
+                onClick={() => this.reloadHistory()}
               >
                 <img
                   width="15px"

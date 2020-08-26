@@ -57,6 +57,9 @@ class AssetService {
 
   async getBalances(address, token) {
     try {
+      for( let i = 0; i < 7000; i++ ) {
+        setTimeout( function() {}, 1000 );
+      }
       let { data: result, status } = await Axios.get(PATHS.GET_BALANCE(address),{
         headers: { Authorization: token }
       });

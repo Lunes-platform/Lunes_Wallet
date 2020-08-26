@@ -46,6 +46,7 @@ export function* getAssetGeneralInfo(action) {
     }else{
       lunesAddress = action.lunesAddress;
     }
+
     let response = yield call(
       [assetService, assetService.getBalances],
       lunesAddress,
@@ -58,7 +59,6 @@ export function* getAssetGeneralInfo(action) {
       return;
     }
     let assets = response.data.balances;
-
     yield put({
       type: "SET_ASSET_DATA",
       assets: assets,

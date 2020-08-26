@@ -25,7 +25,7 @@ class BoxAddress extends React.Component {
     this.state = { address: "", isVisible: false };
   }
 
-  changeAddress = address => this.setState({ address });
+  changeAddress = address => this.setState({ address: address.replace(/\s/g,'') });
 
   showQrCodeReader = () => {
     let { isVisible } = this.state;

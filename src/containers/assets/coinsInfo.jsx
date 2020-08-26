@@ -8,7 +8,8 @@ import {
   setAssetsSendModalOpen,
   setAssetsReceiveModalOpen,
   setAddressModalStep,
-  resetModalSend
+  resetModalSend,
+  reloadAsset
 } from "./redux/assetsAction";
 
 import { loadWalletInfo } from "../skeleton/redux/skeletonAction";
@@ -47,6 +48,14 @@ class CoinsInfo extends React.Component {
       return <ArrowDropUp className={style.arrowPercentUp} />;
     }
   };
+  reloadHistory = () => {
+    let { skeleton, assets, reloadAsset } = this.props;
+    let { selectedCoin } = assets;
+    let address = skeleton.coins.lunes.address;
+
+    reloadAsset(assets.assets[selectedCoin].assetId, address);
+  };
+
 
   previousStep = () => {
     let { step } = this.props.assets.modal;
@@ -60,14 +69,20 @@ class CoinsInfo extends React.Component {
 
   handleModalSendClose = () => {
     this.props.resetModalSend();
-    let { user, assets, setAssetsSendModalOpen, loadWalletInfo } = this.props;
+    let { user, 
+         assets, 
+         setAssetsSendModalOpen,
+         loadWalletInfo 
+    } = this.props;
     let step = assets.modal.step;
 
     if (step === 4) {
       return null;
-    } else if (step === 5 || step === 6) {
+    } else if (step === 5 || step === 6) {     
+      this.reloadHistory(); 
       return () => {
-        setAssetsSendModalOpen(), loadWalletInfo(user.password);
+        setAssetsSendModalOpen(), 
+        loadWalletInfo(user.password);
       };
     } else {
       return () => setAssetsReceiveModalOpen();
@@ -230,7 +245,8 @@ CoinsInfo.propTypes = {
   setAssetsReceiveModalOpen: PropTypes.func.isRequired,
   resetModalSend: PropTypes.func.isRequired,
   setAddressModalStep: PropTypes.func.isRequired,
-  skeleton: PropTypes.object.isRequired
+  skeleton: PropTypes.object.isRequired,
+  reloadAsset: PropTypes.func.isRequired
 };
 
 const mapSateToProps = store => ({
@@ -248,7 +264,8 @@ const mapDispatchToProps = dispatch =>
       setAssetsReceiveModalOpen,
       resetModalSend,
       setAddressModalStep,
-      loadWalletInfo
+      loadWalletInfo,
+      reloadAsset 
     },
     dispatch
   );
