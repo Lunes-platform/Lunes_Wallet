@@ -318,7 +318,7 @@
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #979797;
-  width: 49px;
+  width: 40px;
   height: 50px;
   margin: 25px 1px 0px 0px;
   font-size: 32px;
@@ -331,7 +331,7 @@
   border-bottom: 1px solid #f05252;
   color: #f05252;
 }
-
+ 
 :local(.alignInputTwoFactorAuthenticator) {
   display: flex;
   justify-content: space-around;
