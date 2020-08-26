@@ -8,6 +8,7 @@ import style from "./style.css";
 import { Grid } from "@material-ui/core";
 
 import { convertBiggestCoinUnit, formatDate } from "../../../utils/numbers";
+import {getDefaultFiat, getDefaultCrypto } from "../../../utils/localStorage";
 
 class HistoryItem extends React.Component {
   constructor() {
@@ -20,8 +21,19 @@ class HistoryItem extends React.Component {
       ? skeleton.coins[item.coin.toLowerCase()].decimalPoint
       : 8;
     let date =
-      formatDate(item.date, "DMY", true) + " " + formatDate(item.date, "HM");
+    formatDate(item.date, "DMY", true) + " " + formatDate(item.date, "HM");
 
+    let coinSelected = getDefaultCrypto();
+    let fiatSelected = getDefaultFiat();
+    let coinFiatSymbol = skeleton.coins[coinSelected]
+        ? skeleton.coins[coinSelected].price[fiatSelected].symbol
+        : "USD";
+    let valueFiatDefult = skeleton.coins[item.coin.toLowerCase()]
+        ? skeleton.coins[item.coin.toLowerCase()].price[fiatSelected].price
+        : 0;
+    let fiatMont = convertBiggestCoinUnit(item.amountCripto, decimalPoint).toFixed(
+                        decimalPoint
+                      ) * valueFiatDefult;
     return (
       <Grid container>
         <Grid item xs={12} className={style.row}>
@@ -44,7 +56,7 @@ class HistoryItem extends React.Component {
                 decimalPoint
               )}
             </p>
-            <p>R$ {parseFloat(item.amountFiat).toFixed(2)}</p>
+            <p>{coinFiatSymbol} {parseFloat(fiatMont).toFixed(2)}</p>
           </div>
         </Grid>
         <div className={style.line} />
