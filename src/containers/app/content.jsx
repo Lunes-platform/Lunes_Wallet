@@ -40,7 +40,8 @@ class Content extends Component {
         errorRequest();
         this.changeContent(<InternalError />, "error");
         setTimeout(() => {
-          window.location.reload();
+          //window.location.reload();
+          window.location.href = "/";
         }, 9000);
       }
 

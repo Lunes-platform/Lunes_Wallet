@@ -1,6 +1,5 @@
 import React from "react";
 import i18n from "../../utils/i18n";
-
 // MATERIAL UI
 import Grid from "@material-ui/core/Grid";
 
@@ -18,7 +17,7 @@ class InternalError extends React.Component {
 
   counter = () => {
     let { timer, isRedirect } = this.state;
-    if(isRedirect){
+    if (isRedirect) {
       return;
     }
     if (timer > 0) {
@@ -26,14 +25,11 @@ class InternalError extends React.Component {
         ...this.state,
         timer: this.state.timer - 1
       });
-    } else if (timer <= 0) {
-      //location.reload();
-      window.location.href ="/";
+    } else if (timer <= 0) {  
       this.setState({
         ...this.state,
         isRedirect: true
       });
-      return;
     }
   };
 

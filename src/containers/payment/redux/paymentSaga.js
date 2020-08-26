@@ -30,6 +30,10 @@ export function* setModalStepSaga(payload) {
 
 export function* getCoinsEnabledSaga() {
   try {
+    yield put({
+      type: "CHANGE_SKELETON_ERROR_STATE",
+      state: true
+    });
     let token = yield call(getAuthToken);
     let response = yield call(paymentService.getCoins, token);
 
