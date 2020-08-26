@@ -1,10 +1,9 @@
 /* eslint-disable */
-const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const ObjectRestSpreadPlugin = require("@sucrase/webpack-object-rest-spread-plugin");
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require("webpack");
 console.log("\n", "\x1b[1m", "\x1b[31m");
 console.log(
   "------------------------------------------------------------------------------------------"
@@ -76,6 +75,8 @@ console.log("                         ");
 console.log("\n", "\x1b[0m", "\x1b[21m");
 
 module.exports = {
+  mode: 'production',
+  devtool:'source-map',
   entry: ["babel-polyfill", "./src/index.jsx"],
   module: {
     rules: [
@@ -115,12 +116,12 @@ module.exports = {
     port: 6001
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
     }),
-    new ObjectRestSpreadPlugin(),
     new UglifyJSPlugin({
       uglifyOptions: {
         beautify: false,
@@ -131,11 +132,6 @@ module.exports = {
           safari10: true,
           keep_fnames: true
         }
-      }
-    }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production")
       }
     }),
     new HtmlWebpackPlugin({
