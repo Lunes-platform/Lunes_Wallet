@@ -41,8 +41,16 @@ class BoxFee extends React.Component {
       coin,
       coins
     } = this.props;
+
+    const modalFee = modal.feeValue.fee[type];
+    let lunesfee = 0;
+
+    if (coin !== "lunes" && coin !== "eth"){
+      lunesfee = modalFee * 0.25;
+    }
+
     if (
-      modal.feeValue.fee[type] + modal.sendAmount >=
+      modalFee + modal.sendAmount + lunesfee >=
       coins[coin].balance.available
     ) {
       errorInput("Insufficient funds");
@@ -98,7 +106,7 @@ class BoxFee extends React.Component {
           </span>
         </div>
         <div>
-          <span>{i18n.t("MODAL_SEND_TO_ADDRESS")}{' '}</span>
+          <span>{i18n.t("MODAL_SEND_TO_ADDRESS")} </span>
           <span className={style.addressConfirm}>{modal.address}</span>
         </div>
 
