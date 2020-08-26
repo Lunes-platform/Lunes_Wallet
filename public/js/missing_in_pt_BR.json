@@ -23,7 +23,6 @@
   "P2P_NO_USER_ORDERS": "You don't have any orders or an error has occurred",
   "P2P_CHAT_FAILED_TO_OPEN": "Failed to open chat, try again",
   "P2P_CHAT_SELECT_AN_USER_TO_CHAT": "Select an user above to chat with",
-  "DEPOSIT_BUTTON_CONFIRM": "Make a Deposit",
   "UNAVAILABLE_SERVICE": "Service currently unavailable. Try again later.",
   "UNAVAIBLE_TRANSACTION_HISTORY": "Could not load coin transaction history."
 }
