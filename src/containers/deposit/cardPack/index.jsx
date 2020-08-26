@@ -15,13 +15,14 @@ class CardPack extends React.Component {
   render() {
     const { pack, onSelect, selected, active } = this.props;
     const styleCard = selected ? style.cardActive : style.card;
+    console.log("Aqui -- "+ active);
     return (
       <div
         className={styleCard}
          onClick={active === "active" ? () => onSelect(pack.id, pack.value) : () => onSelect(0,0)}
       >
         <img
-          src={`/images/icons/deposit/balance_deposit-2x.png`}
+          src={selected ? "/images/icons/coins/lbrl.png" : "/images/icons/coins/whiteIcons/lbrl.png" }
           alt={"lbrl"}
           className={style.cardIcon}
         />
